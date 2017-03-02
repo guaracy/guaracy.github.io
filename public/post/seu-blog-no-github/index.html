@@ -263,7 +263,7 @@ Para testar o site no navegador, digite <code>nicola serve -b</code>. Este é um
 </div>
   </section>
   <footer>
-    
+        
     <section class="author-info row">
       <div class="author-avatar col-md-2">
         
@@ -273,12 +273,14 @@ Para testar o site no navegador, digite <code>nicola serve -b</code>. Este é um
         <h1 class="author-name text-primary">Guaracy Monteiro</h1>
         
         
+        <div class="author-bio">Apenas um programador esforçado.</div>
+        
       </div>
       
       <div class="author-contact col-md-4">
         <a href="mailto:guaracy.bm@gmail.com">
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
-          &nbsp;Contact me
+          &nbsp;Contato
         </a>
       </div>
       
@@ -292,6 +294,64 @@ Para testar o site no navegador, digite <code>nicola serve -b</code>. Este é um
       
     </ul>
   </footer>
+
+  
+  <div><h1 class="author-name text-primary">Comentários</h1></div>
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+    
+    FB.init({
+    appId      : 'guaracy',
+    status     : true,
+    xfbml      : true
+    });
+
+    };
+
+    
+    (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script><div class="fb-comments" data-href="https://guaracy.github.io/posts/gerenciando-blog-estatico/" data-width="470"></div>
+
+
+</section></article><div id="fb-root"></div>
+<script>
+  
+  $('.fb-comments-count').each(function(i, obj) {
+  var url = obj.attributes['data-url'].value;
+  
+  
+  obj.innerHTML = '<fb:comments-count href="' + url + '"></fb:comments-count> comments';
+  });
+
+  window.fbAsyncInit = function() {
+  
+  FB.init({
+  appId      : 'guaracy',
+  status     : true,
+  xfbml      : true
+  });
+
+  };
+
+  
+  (function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/all.js";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</div>
+
+
 </article>
 
   </main>
@@ -328,7 +388,6 @@ Para testar o site no navegador, digite <code>nicola serve -b</code>. Este é um
 </div>
 
   </footer>
-
   <script src="https://guaracy.github.io/js/highlight.pack.js"></script>
   <script>
     hljs.initHighlightingOnLoad();

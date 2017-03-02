@@ -33,7 +33,7 @@
       })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    {{ end }}
+    {{ end }}    
     <section class="author-info row">
       <div class="author-avatar col-md-2">
         {{ with .Site.Params.avatar }}
@@ -52,7 +52,7 @@
       <div class="author-contact col-md-4">
         <a href="{{ . }}">
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
-          &nbsp;Contact me
+          &nbsp;Contato
         </a>
       </div>
       {{ end }}
@@ -70,6 +70,64 @@
       {{ end }}
     </ul>
   </footer>
+
+  <!-- COMENTÁRIOS facebook -->
+  <div><h1 class="author-name text-primary">Comentários</h1></div>
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+    appId      : 'guaracy',
+    status     : true,
+    xfbml      : true
+    });
+
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script><div class="fb-comments" data-href="https://guaracy.github.io/posts/gerenciando-blog-estatico/" data-width="470"></div>
+
+
+</section></article><div id="fb-root"></div>
+<script>
+  // thank lxml for this
+  $('.fb-comments-count').each(function(i, obj) {
+  var url = obj.attributes['data-url'].value;
+  // change here if you dislike the default way of displaying
+  // this
+  obj.innerHTML = '<fb:comments-count href="' + url + '"></fb:comments-count> comments';
+  });
+
+  window.fbAsyncInit = function() {
+  // init the FB JS SDK
+  FB.init({
+  appId      : 'guaracy',
+  status     : true,
+  xfbml      : true
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/all.js";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</div>
+<!-- FIM COMENTÁRIOS facebook -->
+
 </article>
 
 {{ partial "footer.html" . }}
