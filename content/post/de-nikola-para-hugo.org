@@ -1,6 +1,6 @@
 #+TITLE: De nikola para Hugo
 #+AUTHOR: Guaracy Monteiro
-#+DRAFT = true
+#+DRAFT = false
 #+DATE: 2017-03-02
 #+TAGS: hugo emacs nikola org-mode
 #+CATEGORIES: info
@@ -76,4 +76,4 @@ O org-mode do hugo ainda não está 100% mas funciona. Como o autor usa emacs, o
 
 Sobre os temas, parece que o site mostra do atualizado mais recente para o menos. Fica por sua conta e risco utilizar um thema muito antigo. Pode ser que você tenha que efetuar alguma alteração para que ele funcione corretamente em versões mais novas ou futuras do hugo.
 
-Como eu tinha poucas entradas no blog feito com o nikola, foi fácil converter os cabeçalhos para se adaptar ao hugo. Se tiver muitos posts, pode ser necessário fazer um script para efetuar as alterações ou esperar que alguém desenvolva para você.
+Como eu tinha poucas entradas no blog feito com o nikola, foi fácil converter os cabeçalhos para se adaptar ao hugo. Se tiver muitos posts, pode ser necessário fazer um script para efetuar as alterações ou esperar que alguém desenvolva para você.]

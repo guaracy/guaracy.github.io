@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Org Mode on Cadafalso</title>
-    <link>https://guaracy.github.io/tags/org-mode/index.xml</link>
-    <description>Recent content in Org Mode on Cadafalso</description>
+    <title>Hugo on Cadafalso</title>
+    <link>https://guaracy.github.io/tags/hugo/index.xml</link>
+    <description>Recent content in Hugo on Cadafalso</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-BR</language>
-    <atom:link href="https://guaracy.github.io/tags/org-mode/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://guaracy.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>De nikola para Hugo</title>
@@ -81,56 +81,6 @@
 
 &lt;p&gt;Como eu tinha poucas entradas no blog feito com o nikola, foi fácil converter os cabeçalhos para se adaptar ao hugo. Se tiver muitos posts, pode ser necessário fazer um script para efetuar as alterações ou esperar que alguém desenvolva para você.]&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Gerenciando Blog Estático</title>
-      <link>https://guaracy.github.io/post/gerenciando-blog-estatico/</link>
-      <pubDate>Wed, 08 Feb 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://guaracy.github.io/post/gerenciando-blog-estatico/</guid>
-      <description>&lt;div class=&#34;document&#34;&gt;
-
-
-&lt;div class=&#34;section&#34; id=&#34;introducao&#34;&gt;
-&lt;h1&gt;Introdução&lt;/h1&gt;
-&lt;p&gt;Fora a facilidade de uso, o outro motivo importante de escolher o Nikola como gerenciador de blog estático foi a possibilidade de editar as entradas no formato &lt;a class=&#34;reference external&#34; href=&#34;http://orgmode.org/&#34;&gt;org-mode&lt;/a&gt; diretamente, isto é, edito direto no formato org e mando o Nikola gerar o blog. Poderia converter para .rst ou .md mas as etapas intermediárias são chatas e podem resultar em erros difíceis de serem resolvidos ou localizados. Não, não é apenas mais uma linguagem de marcação. É a linguagem de marcação definitiva.&lt;/p&gt;
-&lt;p&gt;Usar o emacs não é nenhum bicho de sete cabeças. Para quem usa o vim, existe o &lt;a class=&#34;reference external&#34; href=&#34;http://spacemacs.org/&#34;&gt;spacemacs&lt;/a&gt; que foi feito pensando nesses usuários. Mesmo funcionamento do teclado (nunca usei i vim para confirmar) com o coração do emacs. Muitos profissionais de outras áreas (principalmente educação) fizeram a troca apenas para usar o org-mode. O &lt;a class=&#34;reference external&#34; href=&#34;http://kitchingroup.cheme.cmu.edu/blog/2014/08/08/What-we-are-using-org-mode-for/&#34;&gt;John Kitchin&lt;/a&gt;, por exemplo, utiliza org-mode para escrever artigos científicos e livros, agenda profissional/pessoal, apresentações e até para lecionar indo desde a preparação do material até a avaliação dos alunos como pode ser visto neste &lt;a class=&#34;reference external&#34; href=&#34;https://www.youtube.com/watch?v=cRUCiF2MwP4&#34;&gt;vídeo&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- TEASER_END --&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;blog-admin&#34;&gt;
-&lt;h1&gt;blog-admin&lt;/h1&gt;
-&lt;p&gt;O &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/guaracy/blog-admin&#34;&gt;blog-admin&lt;/a&gt; facilita a administração de um blog criado pelo hexo, org-page e Nikola (que é o que me interessa) utilizando o emacs. A aparência é assim:&lt;/p&gt;
-&lt;img alt=&#34;/images/blog-admin.png&#34; src=&#34;https://guaracy.github.io/images/blog-admin.png&#34; /&gt;
-&lt;p&gt;As operações ficam a uma tecla de distância e as entradas disponíveis na tabela sendo facilmente visualizadas (data, rascunho, título). Só pela visualização já seria um facilitador e é como está sendo usado neste momento. Já fiz um fork do repositório do GitHub e pretendo efetuar as alterações necessárias para que se ajuste ao meu fluxo de trabalho e corrigir alguns probleminhas.&lt;/p&gt;
-&lt;ul class=&#34;simple&#34;&gt;
-&lt;li&gt;&lt;strong&gt;s&lt;/strong&gt; : Altera entre o modo rascunho e publicação&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;d&lt;/strong&gt; : Funcionou corretamente. Provavelmente seria utilizados apenas para apagar posts marcados como &lt;tt class=&#34;docutils literal&#34;&gt;draft&lt;/tt&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;c&lt;/strong&gt; : Não testei mas também não sei quando iria duplicar um post.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;w&lt;/strong&gt; : Funcionou corretamente mas deveria ter a opção para outros formatos e não apenas .rst.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;RET&lt;/strong&gt; : Enter e o emacs abre o post corretamente.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;r&lt;/strong&gt; : Apenas escaneia o diretório para refazer a estrutura.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;B&lt;/strong&gt; : Não funcionou com posts .org que necessitem de uma intervenção.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;C&lt;/strong&gt; : Apenas abre o arquivo de configuração &lt;tt class=&#34;docutils literal&#34;&gt;conf.py&lt;/tt&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;D&lt;/strong&gt; : Preciso verificar melhor se existe uma configuração para entregar direto no GitHub.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;F&lt;/strong&gt; : Filtrou corretamente as entradas quando um título tinha o termo indicado.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Pretendo criar mais uma opção. Talvez um &lt;strong&gt;L&lt;/strong&gt; para testar localmente. Iria executar &lt;cite&gt;nikola build ; nikola serve -b&lt;/cite&gt; para gerar e abrir no navegador padrão do sistema. Apesar do &lt;strong&gt;w3m&lt;/strong&gt; oferecer uma boa visualização de sites, não é uma opção.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;conclusao&#34;&gt;
-&lt;h1&gt;Conclusão&lt;/h1&gt;
-&lt;p&gt;Precisa de umas alterações mas já mostrou ser uma boa opção para quem trabalha com sites estáticos e emacs. Resolvi fazer um vídeo mostrando um pouco o funcionamento do blog-admin mas, talvez, com um pouco de enfase na digitação de um documento usando o org-mode. Especificamente na digitação de trechos de código em três linguagens sendo o resultado calculado e apresentado diretamente, evitando o problema de digitar o resultado incorretamente ou ter que rodar o programa externamente, copiar o resultado e colar no documento.&lt;/p&gt;
-&lt;script type=&#34;text/javascript&#34; src=&#34;https://asciinema.org/a/ehgwjtapwsytr0txgr7h6v36x.js&#34; id=&#34;asciicast-ehgwjtapwsytr0txgr7h6v36x&#34; async&gt;&lt;/script&gt;&lt;/div&gt;
-&lt;div class=&#34;section&#34; id=&#34;atualizacoes&#34;&gt;
-&lt;h1&gt;Atualizações&lt;/h1&gt;
-&lt;ol class=&#34;arabic simple&#34;&gt;
-&lt;li&gt;Adicionei a possibilidade de utilizar &lt;code&gt;nikola github_deploy&lt;/code&gt; para facilitar a entrega no GitHub.&lt;/li&gt;
-&lt;li&gt;Adicionei a opção &lt;strong&gt;&amp;quot;O&amp;quot;&lt;/strong&gt; no menu para abrir o site em um navegar externo. Falta incluir a opção para o usuário escolher o navegador (está o &lt;cite&gt;firefox&lt;/cite&gt;). Necessita do &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/skeeto/emacs-web-server&#34;&gt;emacs-web-server&lt;/a&gt;. Funciona como &lt;tt class=&#34;docutils literal&#34;&gt;nikola serve &lt;span class=&#34;pre&#34;&gt;-b&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;As alterações ainda não estão no GitHub mas esta postagem já foi feita com a versão loca atualizada do blog-admin. É só pressionar &amp;quot;B&amp;quot; para recriar o site, &amp;quot;O&amp;quot; para testar no firefox se está tudo ok e um &amp;quot;D&amp;quot; para enviar para o GitHub.&lt;/p&gt;
-&lt;img alt=&#34;/images/ba-git.png&#34; src=&#34;https://guaracy.github.io/images/ba-git.png&#34; /&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
     </item>
     
   </channel>
