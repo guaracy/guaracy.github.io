@@ -7,17 +7,16 @@ else
     msg=$1
 fi
 
-echo "atualizando site"
+echo "** Atualizando site"
 hugo
 
-echo "Enviandopara o GitHub - master"
+echo "\n\n** Enviandopara o GitHub - master"
 git add .
 git commit -am "$msg"
 git rev-parse source
 ghp-import -n -m "$msg" -p -r origin -b master public
 
-echo "Enviandopara o GitHub - source"
+echo "\n\n** Enviandopara o GitHub - source"
 git push -u origin source
 
-echo $msg
 

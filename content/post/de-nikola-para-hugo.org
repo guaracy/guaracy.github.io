@@ -1,114 +1,79 @@
-+++
-date = "2017-02-28T19:08:59-03:00"
-title = "De Nikola para Hugo"
-draft = true
-tags = ["nikola", "hugo", "emacs", "orgmode"]
-+++
+#+TITLE: De nikola para Hugo
+#+AUTHOR: Guaracy Monteiro
+#+DRAFT = true
+#+DATE: 2017-03-02
+#+TAGS: hugo emacs nikola org-mode
+#+CATEGORIES: info
 
-Bem, um dos motivos de ter escolhido o Nikola para a criação do site estático foi o plugin para trabalhar diretamente com [[http://orgmode.org/][org-mode]]. 
+* Introdução
 
-#+BEGIN_SRC python :exports both :results output
-  class BankAccount(object):
-      def __init__(self, initial_balance=0):
-          self.balance = initial_balance
-      def deposit(self, amount):
-          self.balance += amount
-      def withdraw(self, amount):
-          self.balance -= amount
-      def overdrawn(self):
-          return self.balance < 0
-  my_account = BankAccount(15)
-  my_account.withdraw(5)
-  print (my_account.balance)
+Um dos motivos para a utilização do nikola na primeira fase de construção deste site foi a possibilidade de trabalhar com arquivos no formato org-mode. É claro que as facilidades de instalação e /deploy/ influenciaram na escolha. 
+
+De qualquer forma, tinham algumas coisinhas que não estavam bem integradas com o emacs. Após algums STFW, descobri que o [[http://gohugo.io/][Hugo]], [[https://github.com/spf13/hugo/pull/3001][recentemente]], começou a aceitar documentos no formato org-mode. A abordagem dos dois é diferente. Enquanto o nikola usa o proprio emacs para gerar o .html e depois converter, o Hugo utiliza um módulo (escrito em Go). Olhando o site do [[https://chaseadams.io/getting-started-with-emacs/][Chase]], que desenvolveu o parser para os arquivos .org, e descobri que é mais um novo usuário que se encantou com o [[http://orgmode.org/worg/org-screenshots.html][org-mode]] e o emacs.
+
+O Hugo, pelo menos por enquanto, não é tão amigável como o Nikola para algumas tarefas mas, para outras, sou obrigado a tirar o chapéu. Existem diversas [[http://gohugo.io/tools/][ferramentas]] que cobrem a migração de um blog antigo para o Hugo (não tem Nikola), o /deploy/ do site, diversos /frontends/ que dispensam um editor, /plugins/ para editores (inclusive para emacs). Mas o mais legal, pelo menos eu achei, é que basta gravar as alterações em algum post, arquivo de configuração, etc., que elas são imediatamente detectadas, os procedimentos necessários são executados e o navegador é atualizado. 
+
+Se você estiver interessado, existe uma discussão no [[https://www.reddit.com/r/emacs/comments/5wibiv/hugo_v019_with_native_emacs_orgmode_content/][reddit]] sobre o suporte do hugo para org-mode. 
+
+* Instalação
+
+Primeiro é necessário instalar o [[http://gohugo.io/][Hugo]], é claro. Veja se a sua distribuição possui nos repositórios para a instalação ou siga os passos da página. Para utilizar o script de /deploy/ que se encontra abaixo, você deverá ter instalado o [[https://github.com/davisp/ghp-import][ghp-import]]. Como estava usando o Nikola, já tinha instalado. Pode ser que sua distro disponha para a instalação.
+
+O primeiro passo é criar um diretorio =<usuário>github.io= no GitHub. Podemos ter os seguintes passos para criar um blog na pasta =~/myblog= :
+
+#+BEGIN_SRC shell
+  git clone https://github.com/guaracy.github.io.git ~/myblog
+  cd ~/myblog
+  git checkout -b source
+  hugo new site myblog
+  mv myblog/* .
+  rm -r myblog
+  git clone https://github.com/beli3ver/hemingway2.git themes/hemingway2
+  echo "theme = \"hemingway2\"" >> config.toml
+  hugo new post/primeiro.md
 #+END_SRC
 
-#+RESULTS:
-: None
+Foi escolhido o tema *hemingway2* mas você pode escolher outro [[https://themes.gohugo.io/][tema]] que achar melhor (trocando o nome do tema nas instruções acima). Verifique as instruções de instalação e veja os comentários na pasta do tema para saber como configurá-lo. Agora você pode digitar o comando abaixo e
 
-#+BEGIN_SRC ruby
-  # Program to find the factorial of a number
-  # Save this as fact.rb
-
-  def fact(n)
-    if n == 0
-      1
-    else
-      n * fact(n-1)
-    end
-  end
-
-  puts "Entre om um número:"
-  puts fact(ARGV[0].to_i)
+#+BEGIN_SRC shell
+  hugo serve
 #+END_SRC
 
-#+BEGIN_SRC red :exports both :results output list
-  a: 1
-  b: 2
-  print a + b
+abrir no seu navegado =localhost:1313= . Se tudo deu certo, você verá o seu site. Você pode abrir e verificar o arquivo =config.toml= alterado a variável =baseURL= para https://usuário.github.io, o titulo do site e grave. Altere também o post que você criou e deve estar em =content/post/primeiro.md=
+
+Para criar o site, apenas digite =hugo=
+
+* Deploy
+
+Criei um script que funciona da mesma forma que o Nikola. Colocará no /branch/ master o conteúdo do site e no /branch/ source o conteúdo de desenvolvimento. Existem outras formas, mas vamos ficar no KISS. Se o script for chamado com um parâmetro, será assumido como mensagem para o /commit/.
+
+#+BEGIN_SRC shell :exports both :results output
+  #!/usr/bin/bash
+
+  if [ -z "$1" ]
+  then
+      msg="Rebuild on `date`"
+  else
+      msg=$1
+  fi
+
+  echo "** Atualizando site"
+  hugo
+
+  echo "\n\n** Enviandopara o GitHub - master"
+  git add .
+  git commit -am "$msg"
+  git rev-parse source
+  ghp-import -n -m "$msg" -p -r origin -b master public
+
+  echo "\n\n** Enviandopara o GitHub - source"
+  git push -u origin source
 #+END_SRC
 
-#+RESULTS:
-: - 3
+* Conclusão
 
-#+BEGIN_SRC red
+O org-mode do hugo ainda não está 100% mas funciona. Como o autor usa emacs, org-mode e hugo, é mais fácil que mantenha atualizado e faça melhorias. 
 
-    Red []
+Sobre os temas, parece que o site mostra do atualizado mais recente para o menos. Fica por sua conta e risco utilizar um thema muito antigo. Pode ser que você tenha que efetuar alguma alteração para que ele funcione corretamente em versões mais novas ou futuras do hugo.
 
-    ;; teste de syntax highlight  
-
-    #macro do-basic: function [src /local math][
-        output: clear []
-        lines:  clear []
-        value!: [integer! | string! | word!]
-        op:     ['+ | '- | '* | slash]
-        comp:   ['= | '<> | '< | '> | '<= | '>=]
-        line:   [p: integer! (repend lines [p/1 index? tail output])]
-        cmd:    [
-            token: 'let word! '= value! opt [copy math [op value!]] (
-                emit reduce [to-set-word token/2 token/4]
-                if math [emit/part math 2]
-            )
-            | 'if value! comp value! 'then (
-                emit/part token 4
-                emit/only make block! 1
-                parent: output
-                output: last parent
-            ) cmd (output: parent)
-            
-            | 'print value! (emit/part token 2)
-            | 'goto integer! (
-                line: select/skip lines token/2 2
-                emit compose [jump: (line)]
-            )
-        ]
-        emit: function [value /only /part n [integer!]][
-            if part [value: copy/part value n]            
-            either only [append/only output value][append output value]
-        ]
-        
-        unless parse src [some [line cmd]][
-            print ["*** BASIC Syntax error at:" mold token]
-        ]
-        compose/deep [
-            (to-set-word 'eval-basic) function [pc [block!]][
-                bind pc 'pc
-                while [not tail? pc][
-                    do/next pc 'pc
-                    if jump [
-                        pc: at head pc jump
-                        jump: none
-                    ]
-                ]
-            ]
-            eval-basic [(output)]
-        ]
-    ]
-
-    do-basic [
-        10 LET A = "hi!"
-        20 LET N = 3
-        30 PRINT A
-        40 LET N = N - 1
-        50 IF N > 0 THEN GOTO 30
-    ]
-#+END_SRC
+Como eu tinha poucas entradas no blog feito com o nikola, foi fácil converter os cabeçalhos para se adaptar ao hugo. Se tiver muitos posts, pode ser necessário fazer um script para efetuar as alterações ou esperar que alguém desenvolva para você.
