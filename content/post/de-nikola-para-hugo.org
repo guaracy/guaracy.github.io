@@ -1,0 +1,114 @@
++++
+date = "2017-02-28T19:08:59-03:00"
+title = "De Nikola para Hugo"
+draft = true
+tags = ["nikola", "hugo", "emacs", "orgmode"]
++++
+
+Bem, um dos motivos de ter escolhido o Nikola para a criação do site estático foi o plugin para trabalhar diretamente com [[http://orgmode.org/][org-mode]]. 
+
+#+BEGIN_SRC python :exports both :results output
+  class BankAccount(object):
+      def __init__(self, initial_balance=0):
+          self.balance = initial_balance
+      def deposit(self, amount):
+          self.balance += amount
+      def withdraw(self, amount):
+          self.balance -= amount
+      def overdrawn(self):
+          return self.balance < 0
+  my_account = BankAccount(15)
+  my_account.withdraw(5)
+  print (my_account.balance)
+#+END_SRC
+
+#+RESULTS:
+: None
+
+#+BEGIN_SRC ruby
+  # Program to find the factorial of a number
+  # Save this as fact.rb
+
+  def fact(n)
+    if n == 0
+      1
+    else
+      n * fact(n-1)
+    end
+  end
+
+  puts "Entre om um número:"
+  puts fact(ARGV[0].to_i)
+#+END_SRC
+
+#+BEGIN_SRC red :exports both :results output list
+  a: 1
+  b: 2
+  print a + b
+#+END_SRC
+
+#+RESULTS:
+: - 3
+
+#+BEGIN_SRC red
+
+    Red []
+
+    ;; teste de syntax highlight  
+
+    #macro do-basic: function [src /local math][
+        output: clear []
+        lines:  clear []
+        value!: [integer! | string! | word!]
+        op:     ['+ | '- | '* | slash]
+        comp:   ['= | '<> | '< | '> | '<= | '>=]
+        line:   [p: integer! (repend lines [p/1 index? tail output])]
+        cmd:    [
+            token: 'let word! '= value! opt [copy math [op value!]] (
+                emit reduce [to-set-word token/2 token/4]
+                if math [emit/part math 2]
+            )
+            | 'if value! comp value! 'then (
+                emit/part token 4
+                emit/only make block! 1
+                parent: output
+                output: last parent
+            ) cmd (output: parent)
+            
+            | 'print value! (emit/part token 2)
+            | 'goto integer! (
+                line: select/skip lines token/2 2
+                emit compose [jump: (line)]
+            )
+        ]
+        emit: function [value /only /part n [integer!]][
+            if part [value: copy/part value n]            
+            either only [append/only output value][append output value]
+        ]
+        
+        unless parse src [some [line cmd]][
+            print ["*** BASIC Syntax error at:" mold token]
+        ]
+        compose/deep [
+            (to-set-word 'eval-basic) function [pc [block!]][
+                bind pc 'pc
+                while [not tail? pc][
+                    do/next pc 'pc
+                    if jump [
+                        pc: at head pc jump
+                        jump: none
+                    ]
+                ]
+            ]
+            eval-basic [(output)]
+        ]
+    ]
+
+    do-basic [
+        10 LET A = "hi!"
+        20 LET N = 3
+        30 PRINT A
+        40 LET N = N - 1
+        50 IF N > 0 THEN GOTO 30
+    ]
+#+END_SRC

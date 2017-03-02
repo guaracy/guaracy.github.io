@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bootstrap3 on Cadafalso</title>
+    <link>https://guaracy.github.io/tags/bootstrap3/index.xml</link>
+    <description>Recent content in Bootstrap3 on Cadafalso</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-BR</language>
+    <atom:link href="https://guaracy.github.io/tags/bootstrap3/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Temas no Nikola</title>
+      <link>https://guaracy.github.io/post/temas-no-nikola/</link>
+      <pubDate>Fri, 27 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://guaracy.github.io/post/temas-no-nikola/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;O meu objetivo não é ser webdesiner ou coisa parecida. Apenas ter um local onde possa ser facilmente ser armazenadas e disponibilizadas as informações. A escolha no &lt;a class=&#34;reference external&#34; href=&#34;https://getnikola.com/&#34;&gt;Nikola&lt;/a&gt; se deu, em parte, pela facilidade de uso. Até para entregar no GitHub é simples.&lt;/p&gt;
+&lt;p&gt;Como resolvi fazer alguns ajustes no site, resolvi colocar aqui o que foi feito para facilitar qualquer trabalho futuro. Não eram necessários Basicamente alguns ícones no menu e alguns botões sociais no rodapé.&lt;/p&gt;
+&lt;!-- TEASER_END --&gt;
+&lt;div class=&#34;sidebar&#34;&gt;
+&lt;p class=&#34;first sidebar-title&#34;&gt;Nikola - Fluxo de tarefas&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Criação do site&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nikola init site&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Criação/edição de entradas&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nikola new_post -e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Criação e teste o site localmente&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nikola build&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nikola serve -b&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Colocar site GitHub&lt;/strong&gt;&lt;/p&gt;
+&lt;p class=&#34;last&#34;&gt;&lt;code&gt;nikola github_deploy&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;De qualquer forma, queremos um site com uma apresentação simples mas que seja visualmente agradável (não precisa ser aqueles sites da década de 40; até o site do &lt;a class=&#34;reference external&#34; href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt; está mais moderno) mas não queremos aprender a criar novos temas, alterar CSS ou JavaScript. Nosso foco são os artigos. Abaixo, quatro formas de alterar a aparência do nosso site:&lt;/p&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;O Nikola utiliza como framework o &lt;a class=&#34;reference external&#34; href=&#34;http://getbootstrap.com/&#34;&gt;Bootstrap 3&lt;/a&gt;. A maneira mais simples de alterar cores e tipografia é visitar &lt;a class=&#34;reference external&#34; href=&#34;http://bootswatch.com/&#34;&gt;Bootswatch&lt;/a&gt;  e escolher um tema que lhe agrade. No diretório do seu site digite &lt;code&gt;nikola bootswatch_theme -s cerulean&lt;/code&gt; caso você tenha escolhido o tema Cerulean. Será criado um subdiretório &lt;cite&gt;custom&lt;/cite&gt; no diretório &lt;cite&gt;themes&lt;/cite&gt;. Depois é só editar o arquivo &lt;cite&gt;conf.py&lt;/cite&gt; e alterar o nome do tema em uso para &lt;cite&gt;custom&lt;/cite&gt; que ficará &lt;code&gt;THEME = &amp;quot;custom&amp;quot;&lt;/code&gt;. É só criar e testar o site localmente. Se você conhece um pouco de CSS, poderá efetuar algum ajuste necessário.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;A segunda maneira é escolher um tema diretamente do &lt;a class=&#34;reference external&#34; href=&#34;https://themes.getnikola.com/&#34;&gt;site&lt;/a&gt; do Nikola. Basta selecionar o tema da relação existente, ver como é a aparência e seguir as instruções que estão no site. &lt;a class=&#34;footnote-reference&#34; href=&#34;#id2&#34; id=&#34;id1&#34;&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Você poderá criar um tema novo. Até pode ser interessante mas, se não for a sua área, deverá ler um pouco a respeito para aprender sobre CSS, templates, etc..&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Resolvi colocar o quarto, pois achei interessante compartilhar. Gostaria de colocar uns ícones junto com as palavras do menu superior e em outros locais mas possibilidades disponíveis no Nikola não eram suficientes. Poderia utilizar alguma fonte &lt;a class=&#34;reference external&#34; href=&#34;http://fontawesome.io/&#34;&gt;Font Awesom&lt;/a&gt; mas eu considero que é muito byte para o pouco que eu precisava. Um canhão para matar uma formiga. Os procedimentos são os seguintes:&lt;/p&gt;
+&lt;p&gt;4.1 Ir no site &lt;a class=&#34;reference external&#34; href=&#34;https://icomoon.io/app/&#34;&gt;IcoMoon&lt;/a&gt; e selecionar os ícones desejados (selecionei do IcoMoon Free).&lt;/p&gt;
+&lt;p&gt;4.2 Clicar em Gerar Fonte.&lt;/p&gt;
+&lt;p&gt;4.3 Clicar em Download.&lt;/p&gt;
+&lt;p&gt;4.4 Abrir o arquivo &lt;cite&gt;icomoon.zip&lt;/cite&gt;, copiar as fontes do diretório &lt;cite&gt;fonts&lt;/cite&gt; para o diretório &lt;cite&gt;seublog/themes/custom/assets/fonts&lt;/cite&gt; e copiar o arquivo &lt;cite&gt;style.css&lt;/cite&gt; para o diretório &lt;cite&gt;seublog/themes/custom/assets/css&lt;/cite&gt;&lt;/p&gt;
+&lt;p&gt;4.5 Renomeie o arquivo &lt;cite&gt;style.css&lt;/cite&gt; para &lt;cite&gt;custom.css&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;4.6 Edite o arquivo &lt;cite&gt;custom.css&lt;/cite&gt; é coloque &lt;cite&gt;../&lt;/cite&gt; no caminho para os arquivos de fontes (melhor manter a estrutura original criada de diretórios criada pelo Nikola).&lt;/p&gt;
+&lt;p&gt;4.7 Ok. Sempre que você precisar de um dos símbolos &lt;span class=&#34;icon-tux&#34;&gt;&lt;/span&gt; basta incluir &lt;code&gt;&amp;lt;span class=&amp;quot;icon-tux&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/code&gt; (troque &lt;cite&gt;icon-tux&lt;/cite&gt; pelo ícone desejado). Descompactando o arquivo icomoon.zip, tem um arquivo &lt;cite&gt;demo.html&lt;/cite&gt;. Abrindo-o você poderá visualizar todos os símbolos existentes. Se for em um texto, use a diretova &lt;code&gt;.. |icon-tux| raw: html&lt;/code&gt; com o código html acima.&lt;/p&gt;
+&lt;p&gt;4.8 Para incluir mais algum ícone, siga os passos 4.1 até 4.6.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table class=&#34;docutils footnote&#34; frame=&#34;void&#34; id=&#34;id2&#34; rules=&#34;none&#34;&gt;
+&lt;colgroup&gt;&lt;col class=&#34;label&#34; /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr&gt;&lt;td class=&#34;label&#34;&gt;&lt;a class=&#34;fn-backref&#34; href=&#34;#id1&#34;&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Nem todos os temas são responsivos, isto é, são apresentados adequadamente em computadores, smartphones, etc.. Pode ser interessante testar antes de adotar o tema. Não é muito legal você abrir um site em um smartphone e ver aquelas letras minúsculas, sendo obrigado a dar um zoom e ficar movendo o site para um lado e outro para ler.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Por curiosidade, o meu menu no &lt;code&gt;conf.py&lt;/code&gt; ficou assim:&lt;/p&gt;
+&lt;pre class=&#34;code python literal-block&#34;&gt;
+&lt;span class=&#34;name&#34;&gt;NAVIGATION_LINKS&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;name&#34;&gt;DEFAULT_LANG&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;
+        &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal string double&#34;&gt;&amp;quot;/archive.html&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;literal string double&#34;&gt;&amp;quot;&amp;lt;span class=&#39;icon-folder-open&#39;&amp;gt;&amp;lt;/span&amp;gt; Arquivos&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;),&lt;/span&gt;
+        &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal string double&#34;&gt;&amp;quot;/categories/&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;literal string double&#34;&gt;&amp;quot;&amp;lt;span class=&#39;icon-price-tags&#39;&amp;gt;&amp;lt;/span&amp;gt; Tags&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;),&lt;/span&gt;
+        &lt;span class=&#34;punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;literal string double&#34;&gt;&amp;quot;/rss.xml&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;literal string double&#34;&gt;&amp;quot;&amp;lt;span class=&#39;icon-rss&#39;&amp;gt;&amp;lt;/span&amp;gt; RSS&amp;quot;&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;),&lt;/span&gt;
+    &lt;span class=&#34;punctuation&#34;&gt;),&lt;/span&gt;
+&lt;span class=&#34;punctuation&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;O rodapé, com a inclusão dos ícones. Tem uma variável &lt;cite&gt;SOCIAL_BUTTONS_CODE&lt;/cite&gt; que poderia ser utilizada. Pode ser que, futuramente, veja melhor como ela funciona e alguns ajustes.&lt;/p&gt;
+&lt;pre class=&#34;code python literal-block&#34;&gt;
+&lt;span class=&#34;name&#34;&gt;CONTENT_FOOTER&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;literal string double&#34;&gt;&amp;quot;&amp;quot;&amp;quot;
+&amp;lt;span class=&amp;quot;social-menu&amp;quot;&amp;gt;
+&amp;lt;a href=&amp;quot;mailto:{email}&amp;quot; title=&amp;quot;e-mail&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon-envelop&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;a href=&amp;quot;&amp;quot; title=&amp;quot;Google Plus&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon-google-plus&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;a href=&amp;quot;https://www.facebook.com/guaracybm&amp;quot; title=&amp;quot;Facebook&amp;quot;&amp;gt; &amp;lt;span class=&amp;quot;icon-facebook2&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;a href=&amp;quot;https://twitter.com/guaracybm&amp;quot; title=&amp;quot;Twitter&amp;quot;&amp;gt; &amp;lt;span class=&amp;quot;icon-twitter&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;a href=&amp;quot;https://github.com/guaracy&amp;quot; title=&amp;quot;GitHub&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon-github&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;/span&amp;gt;
+&amp;lt;br/&amp;gt;
+Contents &amp;amp;copy; {date} {author} - Powered by
+&amp;lt;a href=&amp;quot;https://getnikola.com&amp;quot; rel=&amp;quot;nofollow&amp;quot;&amp;gt;Nikola&amp;lt;/a&amp;gt;         {license}&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Também adicionei no &lt;cite&gt;custom.css&lt;/cite&gt; um pouco de código para formatar os ícones do rodapé. Ficou assim:&lt;/p&gt;
+&lt;pre class=&#34;code css literal-block&#34;&gt;
+&lt;span class=&#34;punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;name class&#34;&gt;social-menu&lt;/span&gt; &lt;span class=&#34;name tag&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;punctuation&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;keyword&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;keyword constant&#34;&gt;black&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;keyword&#34;&gt;text-decoration&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;keyword constant&#34;&gt;none&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;keyword&#34;&gt;font-size&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;keyword constant&#34;&gt;x-large&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;punctuation&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Por enquanto é só.&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

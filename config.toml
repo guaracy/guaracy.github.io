@@ -1,0 +1,20 @@
+languageCode = "pt-BR"
+defaultContentLanguage = "pt-BR"
+title = "Cadafalso"
+baseURL = "https://guaracy.github.io/"
+PygmentsCodeFences = true
+PygmentsStyle = "default"
+theme = "zgbm"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[Params]
+  Author = "Guaracy Monteiro"
+  subtitle = "sub título"
+  twitter = "guaracybm"
+  github = "guaracy"
+  facebook = "guaracybm"
+  contact = "mailto:guaracy.bm@gmail.com"
+  themecolor = "#ff0000"

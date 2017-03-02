@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on Cadafalso</title>
+    <link>https://guaracy.github.io/tags/github/index.xml</link>
+    <description>Recent content in Github on Cadafalso</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-BR</language>
+    <atom:link href="https://guaracy.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Gerenciando Blog Estático</title>
+      <link>https://guaracy.github.io/post/gerenciando-blog-estatico/</link>
+      <pubDate>Wed, 08 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://guaracy.github.io/post/gerenciando-blog-estatico/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;div class=&#34;section&#34; id=&#34;introducao&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Fora a facilidade de uso, o outro motivo importante de escolher o Nikola como gerenciador de blog estático foi a possibilidade de editar as entradas no formato &lt;a class=&#34;reference external&#34; href=&#34;http://orgmode.org/&#34;&gt;org-mode&lt;/a&gt; diretamente, isto é, edito direto no formato org e mando o Nikola gerar o blog. Poderia converter para .rst ou .md mas as etapas intermediárias são chatas e podem resultar em erros difíceis de serem resolvidos ou localizados. Não, não é apenas mais uma linguagem de marcação. É a linguagem de marcação definitiva.&lt;/p&gt;
+&lt;p&gt;Usar o emacs não é nenhum bicho de sete cabeças. Para quem usa o vim, existe o &lt;a class=&#34;reference external&#34; href=&#34;http://spacemacs.org/&#34;&gt;spacemacs&lt;/a&gt; que foi feito pensando nesses usuários. Mesmo funcionamento do teclado (nunca usei i vim para confirmar) com o coração do emacs. Muitos profissionais de outras áreas (principalmente educação) fizeram a troca apenas para usar o org-mode. O &lt;a class=&#34;reference external&#34; href=&#34;http://kitchingroup.cheme.cmu.edu/blog/2014/08/08/What-we-are-using-org-mode-for/&#34;&gt;John Kitchin&lt;/a&gt;, por exemplo, utiliza org-mode para escrever artigos científicos e livros, agenda profissional/pessoal, apresentações e até para lecionar indo desde a preparação do material até a avaliação dos alunos como pode ser visto neste &lt;a class=&#34;reference external&#34; href=&#34;https://www.youtube.com/watch?v=cRUCiF2MwP4&#34;&gt;vídeo&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- TEASER_END --&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;blog-admin&#34;&gt;
+&lt;h1&gt;blog-admin&lt;/h1&gt;
+&lt;p&gt;O &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/guaracy/blog-admin&#34;&gt;blog-admin&lt;/a&gt; facilita a administração de um blog criado pelo hexo, org-page e Nikola (que é o que me interessa) utilizando o emacs. A aparência é assim:&lt;/p&gt;
+&lt;img alt=&#34;/images/blog-admin.png&#34; src=&#34;https://guaracy.github.io/images/blog-admin.png&#34; /&gt;
+&lt;p&gt;As operações ficam a uma tecla de distância e as entradas disponíveis na tabela sendo facilmente visualizadas (data, rascunho, título). Só pela visualização já seria um facilitador e é como está sendo usado neste momento. Já fiz um fork do repositório do GitHub e pretendo efetuar as alterações necessárias para que se ajuste ao meu fluxo de trabalho e corrigir alguns probleminhas.&lt;/p&gt;
+&lt;ul class=&#34;simple&#34;&gt;
+&lt;li&gt;&lt;strong&gt;s&lt;/strong&gt; : Altera entre o modo rascunho e publicação&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;d&lt;/strong&gt; : Funcionou corretamente. Provavelmente seria utilizados apenas para apagar posts marcados como &lt;tt class=&#34;docutils literal&#34;&gt;draft&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;c&lt;/strong&gt; : Não testei mas também não sei quando iria duplicar um post.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;w&lt;/strong&gt; : Funcionou corretamente mas deveria ter a opção para outros formatos e não apenas .rst.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RET&lt;/strong&gt; : Enter e o emacs abre o post corretamente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;r&lt;/strong&gt; : Apenas escaneia o diretório para refazer a estrutura.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;B&lt;/strong&gt; : Não funcionou com posts .org que necessitem de uma intervenção.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C&lt;/strong&gt; : Apenas abre o arquivo de configuração &lt;tt class=&#34;docutils literal&#34;&gt;conf.py&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;D&lt;/strong&gt; : Preciso verificar melhor se existe uma configuração para entregar direto no GitHub.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;F&lt;/strong&gt; : Filtrou corretamente as entradas quando um título tinha o termo indicado.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pretendo criar mais uma opção. Talvez um &lt;strong&gt;L&lt;/strong&gt; para testar localmente. Iria executar &lt;cite&gt;nikola build ; nikola serve -b&lt;/cite&gt; para gerar e abrir no navegador padrão do sistema. Apesar do &lt;strong&gt;w3m&lt;/strong&gt; oferecer uma boa visualização de sites, não é uma opção.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;conclusao&#34;&gt;
+&lt;h1&gt;Conclusão&lt;/h1&gt;
+&lt;p&gt;Precisa de umas alterações mas já mostrou ser uma boa opção para quem trabalha com sites estáticos e emacs. Resolvi fazer um vídeo mostrando um pouco o funcionamento do blog-admin mas, talvez, com um pouco de enfase na digitação de um documento usando o org-mode. Especificamente na digitação de trechos de código em três linguagens sendo o resultado calculado e apresentado diretamente, evitando o problema de digitar o resultado incorretamente ou ter que rodar o programa externamente, copiar o resultado e colar no documento.&lt;/p&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://asciinema.org/a/ehgwjtapwsytr0txgr7h6v36x.js&#34; id=&#34;asciicast-ehgwjtapwsytr0txgr7h6v36x&#34; async&gt;&lt;/script&gt;&lt;/div&gt;
+&lt;div class=&#34;section&#34; id=&#34;atualizacoes&#34;&gt;
+&lt;h1&gt;Atualizações&lt;/h1&gt;
+&lt;ol class=&#34;arabic simple&#34;&gt;
+&lt;li&gt;Adicionei a possibilidade de utilizar &lt;code&gt;nikola github_deploy&lt;/code&gt; para facilitar a entrega no GitHub.&lt;/li&gt;
+&lt;li&gt;Adicionei a opção &lt;strong&gt;&amp;quot;O&amp;quot;&lt;/strong&gt; no menu para abrir o site em um navegar externo. Falta incluir a opção para o usuário escolher o navegador (está o &lt;cite&gt;firefox&lt;/cite&gt;). Necessita do &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/skeeto/emacs-web-server&#34;&gt;emacs-web-server&lt;/a&gt;. Funciona como &lt;tt class=&#34;docutils literal&#34;&gt;nikola serve &lt;span class=&#34;pre&#34;&gt;-b&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As alterações ainda não estão no GitHub mas esta postagem já foi feita com a versão loca atualizada do blog-admin. É só pressionar &amp;quot;B&amp;quot; para recriar o site, &amp;quot;O&amp;quot; para testar no firefox se está tudo ok e um &amp;quot;D&amp;quot; para enviar para o GitHub.&lt;/p&gt;
+&lt;img alt=&#34;/images/ba-git.png&#34; src=&#34;https://guaracy.github.io/images/ba-git.png&#34; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Seu blog no GitHub</title>
+      <link>https://guaracy.github.io/post/seu-blog-no-github/</link>
+      <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://guaracy.github.io/post/seu-blog-no-github/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;Para quem está impaciente (&lt;strong&gt;TL;DR&lt;/strong&gt;), basta seguir os 8 passos abaixo para ter seu blog funcionando. Mas é interessante ler o resto do texto.&lt;/p&gt;
+&lt;ol class=&#34;arabic&#34;&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Crie um repositório no &lt;a class=&#34;reference external&#34; href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; com o nome &lt;strong&gt;usuário&lt;/strong&gt;.github.io&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Clone o repositório localmente&lt;/p&gt;
+&lt;pre class=&#34;literal-block&#34;&gt;
+git clone https://github.com/usuário/usuário.github.io.git ~/blog
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Crie seu blog com o &lt;a class=&#34;reference external&#34; href=&#34;https://getnikola.com&#34;&gt;Nikola&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;literal-block&#34;&gt;
+cd ~/blog
+nikola init meublog
+mv meublog/* .
+rm -r meublog
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Crie uma entrada e edite o texto&lt;/p&gt;
+&lt;pre class=&#34;literal-block&#34;&gt;
+nikola new_post -e
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Gere o blog e teste localmente&lt;/p&gt;
+&lt;pre class=&#34;literal-block&#34;&gt;
+nikola build
+nikola serve -b
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Coloque o blog no github&lt;/p&gt;
+&lt;pre class=&#34;literal-block&#34;&gt;
+nikola github_deploy
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Repita as etapas 4 a 6 para criar outras entradas no blog&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&#34;first&#34;&gt;Seja feliz.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- TEASER_END --&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;table class=&#34;docutils field-list&#34; frame=&#34;void&#34; rules=&#34;none&#34;&gt;
+&lt;col class=&#34;field-name&#34; /&gt;
+&lt;col class=&#34;field-body&#34; /&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;th class=&#34;field-name&#34; colspan=&#34;2&#34;&gt;PRIMEIROS PASSOS:&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&#34;field-body&#34;&gt;&lt;p class=&#34;first&#34;&gt;O GitHub permite que o usuário armazene páginas estáticas para servir como um site ou blog pessoal. Eles indicam utilizar o Jekyll mas eu vou usar o &lt;a class=&#34;reference external&#34; href=&#34;https://getnikola.com&#34;&gt;Nikola&lt;/a&gt;. Se você deseja informações de como criar o site com o Jekyll, o Wanderson criou um &lt;a class=&#34;reference external&#34; href=&#34;https://wandersonwhcr.github.io/github/2017/01/20/paginas-pessoais-no-github.html&#34;&gt;artigo&lt;/a&gt; sobre criação de páginas pessoais no GitHub e Jekyll&lt;/p&gt;
+&lt;p class=&#34;last&#34;&gt;Basicamente o usuário apenas deverá criar um repositório com o nome &lt;strong&gt;usuário&lt;/strong&gt;.github.io que abrigará o conteúdo do site. O site ficará disponível no endereço &lt;strong&gt;`https://usuário.github.io`&lt;/strong&gt;.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;table class=&#34;docutils field-list&#34; frame=&#34;void&#34; rules=&#34;none&#34;&gt;
+&lt;col class=&#34;field-name&#34; /&gt;
+&lt;col class=&#34;field-body&#34; /&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;th class=&#34;field-name&#34; colspan=&#34;2&#34;&gt;CLONANDO O SITE LOCALMENTE:&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&#34;field-body&#34;&gt;O próximo passo é clonar o repositório para que você possa efetuar a criação, alterações, testes no site localmente antes de enviar para o GitHub. Para tanto, digite na linha de comando &lt;code&gt;git clone https://github.com/usuário/usuário.github.io.git ~/blog&lt;/code&gt;. Isto deverá clonar seu repositório em um diretório chamado &lt;cite&gt;blog&lt;/cite&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;table class=&#34;docutils field-list&#34; frame=&#34;void&#34; rules=&#34;none&#34;&gt;
+&lt;col class=&#34;field-name&#34; /&gt;
+&lt;col class=&#34;field-body&#34; /&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;th class=&#34;field-name&#34; colspan=&#34;2&#34;&gt;CRIANDO O SITE LOCAL:&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&#34;field-body&#34;&gt;&lt;p class=&#34;first&#34;&gt;Parto do princípio de que você já tenha seguido os passos do &lt;a class=&#34;reference external&#34; href=&#34;https://getnikola.com/getting-started.html&#34;&gt;site&lt;/a&gt; e instalado o Nikola. É necessário criar a estrutura do seu site digitando:&lt;/p&gt;
+&lt;pre class=&#34;literal-block&#34;&gt;
+cd ~/blog
+nikola init meublog
+mv meublog/* .
+rm -r meublog
+&lt;/pre&gt;
+&lt;p&gt;O que fizemos aqui foi:&lt;/p&gt;
+&lt;ol class=&#34;arabic simple&#34;&gt;
+&lt;li&gt;Com &lt;code&gt;cd ~/blog&lt;/code&gt; para irmos ao diretório de trabalho que foi clonado do GitHub e contém o seu site.&lt;/li&gt;
+&lt;li&gt;Após &lt;code&gt;nikola init meublog&lt;/code&gt;, responda as perguntas corretamente e será criado a estrutura do site em um subdiretório chamado &lt;cite&gt;meublog&lt;/cite&gt;.&lt;/li&gt;
+&lt;li&gt;Usamos &lt;code&gt;mv meublog/* .&lt;/code&gt; para mover a estrutura criada pelo Nikola do subdiretório &lt;cite&gt;meublog&lt;/cite&gt; para o raiz (&lt;cite&gt;blog&lt;/cite&gt;).&lt;/li&gt;
+&lt;li&gt;Finalmente, &lt;code&gt;rm -r meublog&lt;/code&gt; irá remover o subdiretório &lt;cite&gt;meublog&lt;/cite&gt; que não é mais necessário.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p class=&#34;last&#34;&gt;Agora podemos começar a entrar com as páginas para, depois, entregar o nosso blog ao público.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;table class=&#34;docutils field-list&#34; frame=&#34;void&#34; rules=&#34;none&#34;&gt;
+&lt;col class=&#34;field-name&#34; /&gt;
+&lt;col class=&#34;field-body&#34; /&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;th class=&#34;field-name&#34; colspan=&#34;2&#34;&gt;CRIANDO AS PÁGINAS:&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&#34;field-body&#34;&gt;&lt;p class=&#34;first&#34;&gt;Para criar uma nova página para o blog, basta o comando &lt;code&gt;nikola new_post -e&lt;/code&gt;. Será perguntado o título da página e o parâmetro &lt;strong&gt;-e&lt;/strong&gt; irá abrir o editor padrão para a edição da página. Você poderá editar quando desejar para complementá-la ou efetuar qualquer alteração. Ela estará disponível no subdiretório &lt;cite&gt;posts&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;É importante salientar que, o formato padrão em caso de omissão, é &lt;strong&gt;.rst&lt;/strong&gt; (reStructuredText) e não &lt;strong&gt;.md&lt;/strong&gt; (Markdown) como é padrão no GitHub. Não é nenhum problema pois no GitHub apenas as páginas &lt;strong&gt;.html&lt;/strong&gt; geradas que interessam. O &lt;strong&gt;rst&lt;/strong&gt; é um formato de marcação mais poderoso que o &lt;strong&gt;md&lt;/strong&gt; e cmais chatinho para algumas coisas. Você pode olhar a &lt;a class=&#34;reference external&#34; href=&#34;https://getnikola.com/quickstart.html&#34;&gt;introdução rápida&lt;/a&gt; para ter uma pequena ideia de como funciona. Se você acha que está velho ou está com preguiça para aprender alguma coisa nova e só editará páginas se for em Markdow, então você terá que editar o arquivo &lt;strong&gt;conf.py&lt;/strong&gt; e adicionar as duas linhas abaixo.&lt;/p&gt;
+&lt;pre class=&#34;literal-block&#34;&gt;
+POSTS = POSTS + ((&amp;quot;posts/*.md&amp;quot;, &amp;quot;posts&amp;quot;, &amp;quot;post.tmpl&amp;quot;),)
+PAGES = PAGES + ((&amp;quot;stories/*.md&amp;quot;, &amp;quot;stories&amp;quot;, &amp;quot;story.tmpl&amp;quot;),)
+&lt;/pre&gt;
+&lt;p class=&#34;last&#34;&gt;Agora você deverá informar ao nikola que deseja a criação de uma página no formato Markdown. O comando será &lt;code&gt;nikola news_post -e -f markdown&lt;/code&gt;. Pronto.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;table class=&#34;docutils field-list&#34; frame=&#34;void&#34; rules=&#34;none&#34;&gt;
+&lt;col class=&#34;field-name&#34; /&gt;
+&lt;col class=&#34;field-body&#34; /&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;th class=&#34;field-name&#34; colspan=&#34;2&#34;&gt;TESTANDO O SITE LOCALMENTE:&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&#34;field-body&#34;&gt;A próxima etapa será criar o site estático e testar para ver se tudo está funcionando. Para criar o site basta você entrar com o comando &lt;code&gt;nikola build&lt;/code&gt;. Serão geradas as páginas html, os tag com os respectivos links, RSS (estou ficando velho; acho RSS a melhor forma de acompanhar as novidades de um determinado site).
+Para testar o site no navegador, digite &lt;code&gt;nicola serve -b&lt;/code&gt;. Este é um comando para velho preguiçoso. Ele inicia e aponta o servidor para o seu site e já abre o site no navegador padrão. Nada de ficar digitando localhost:8000 ou algo parecido.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;table class=&#34;docutils field-list&#34; frame=&#34;void&#34; rules=&#34;none&#34;&gt;
+&lt;col class=&#34;field-name&#34; /&gt;
+&lt;col class=&#34;field-body&#34; /&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;th class=&#34;field-name&#34; colspan=&#34;2&#34;&gt;ENTREGANDO O SEU SITE PARA O MUNDO:&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&#34;field-body&#34;&gt;Ok. Você já criou o se repositório, clonou localmente, criou a estrutura do blog, adicionou algumas entradas interessantes. Está na hora de você mostrar para o mundo o seu trabalho. Digite &lt;code&gt;nikola github_deploy&lt;/code&gt;, responda algumas perguntas como nome e senha e pronto. Já pode avisar para seus amigos acessarem &lt;em&gt;https://usuário.github.io&lt;/em&gt; para ver o seu trabalho.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;table class=&#34;docutils field-list&#34; frame=&#34;void&#34; rules=&#34;none&#34;&gt;
+&lt;col class=&#34;field-name&#34; /&gt;
+&lt;col class=&#34;field-body&#34; /&gt;
+&lt;tbody valign=&#34;top&#34;&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;th class=&#34;field-name&#34; colspan=&#34;2&#34;&gt;CONSIDERAÇÕES FINAIS:&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&#34;field&#34;&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&#34;field-body&#34;&gt;&lt;p class=&#34;first&#34;&gt;Foi apresentado apenas uma pequena visão do que pode ser feito com o Nikola. Alguns tópicos que podem ser explorados:&lt;/p&gt;
+&lt;ul class=&#34;last simple&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Criação&lt;/strong&gt; : É possível criar blogs ou sites. Aconselho a criar um site demo &lt;cite&gt;nikola init --demo site&lt;/cite&gt; e seguir os links que possuem algums exemplos interessante de páginas como galeria ou outros formatos. Veja também os sites criados por &lt;a class=&#34;reference external&#34; href=&#34;https://users.getnikola.com/&#34;&gt;usuários&lt;/a&gt; para ter uma ideia das diversas apresentações possíveis.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuração&lt;/strong&gt; : Olhe o arquivo &lt;em&gt;conf.py&lt;/em&gt; para uma ideia do que é possível configurar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Temas&lt;/strong&gt; : Existem diversos &lt;a class=&#34;reference external&#34; href=&#34;https://themes.getnikola.com/&#34;&gt;temas&lt;/a&gt; que você pode baixar e configurar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plugins&lt;/strong&gt; : Existem diversos &lt;a class=&#34;reference external&#34; href=&#34;https://plugins.getnikola.com/&#34;&gt;plugins&lt;/a&gt; para diversas finalidades. Dê uma olhada e, se achar algum interessante, clique no link para ver mais informações.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nikola&lt;/strong&gt; : Digite &lt;cite&gt;nikola help&lt;/cite&gt; para uma ideia do que o Nikola pode fazer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr class=&#34;docutils&#34; /&gt;
+&lt;p&gt;Ainda não configurei nem decidi por um sistema para comentário nem o fomato final do blog. Por hora era isto e obrigado se você leu até aqui.&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
