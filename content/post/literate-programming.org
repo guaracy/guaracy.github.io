@@ -1,0 +1,37 @@
+#+TITLE: Literate Programming
+#+AUTHOR: Guaracy Monteiro
+#+DRAFT = true
+#+DATE: 2017-03-03
+#+TAGS: emacs org-mode literate-programming LP J
+#+CATEGORIES: info
+
+#+PROPERTY: header-args :exports code
+
+* Introdução
+
+Não vou traduzir [[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming]] (LP) pois não gosto das traduções possíveis. Prefiro algo como /documento inteligente/. Basicamente é o desenvolvimento de documentação/explanação lógica e programa simultâneamente. O emacs junto com o org-mode facilitam muito a tarefa pois:
+
+- Você pode executar os programas ou trecho do programa e incluir o resultado automaticamente no documento. Evita que uma alteração qualquer implique em executar o programa externamente, copiar e colar o resultado no documento podendo introduzir erros.
+- Você pode gerar automaticamente o programa ou os programas, mesmo juntando diversos fragmentos em um só ao final. Também evita a possível erros entre versões.
+
+Pessoalmente não utilizo para grandes projetos mas é interessante para pequenos projetos e, principalmente se desejamos publicá-lo.
+
+No início eu disse que não gostava da tradução mas, como ficaria a trqadução em diversas linguas de "Literate Programming" pelo google translator?
+
+#+BEGIN_SRC translate :src en :dest de,fr,ar,ja,pt,es :exports both 
+  Literate Programming
+#+END_SRC
+
+#+RESULTS:
+| de | Literate Programmierung    |
+| fr | Programmation alphabétique |
+| ar | البرمجة القراءة والكتابة   |
+| ja | 文学プログラミング         |
+| pt | Programação Alfabetizada   |
+| es | Programación alfabetizada  |
+
+O que foi interessante nas traduções acima é que eu apenas digitei "Literate Programming" dentro de um bloco =#+BEGIN_SRC= e =#+END_SRC= indicando o programa ou rotina que interpretaria os dados, o idioma original e os idiomas destinos da tradução bem como o formato para a exportação dos dados (=translate :src en :dest de,fr,ar,ja,pt,es :exports both=). Depois pressionei Ctrl+C Ctrl+C e as traduções foram buscadas automaticamente. Basta alterar o texto ou incluir/excluir alguma linguagem, pressionar a mesma sequência de teclas e o resultado será alterado (nem preciso excluir o resultado anterior).
+
+* Prática
+
+https://github.com/carteiro/ceps

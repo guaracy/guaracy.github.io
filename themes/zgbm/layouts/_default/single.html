@@ -5,7 +5,7 @@
     <h1 class="text-primary">{{ .Title }}</h1>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
-        Posted on
+        Enviado em
         <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
           {{ .Date.Format "Jan 2, 2006" }}
         </time>
@@ -59,14 +59,14 @@
     </section>
     <ul class="pager">
       {{ if .Next }}
-      <li class="previous"><a href="{{ .Next.Permalink }}"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous"><a href="{{ .Next.Permalink }}"><span aria-hidden="true">&larr;</span> Antigos</a></li>
       {{ else }}
-      <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+      <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Antigos</a></li>
       {{ end }}
       {{ if .Prev }}
-      <li class="next"><a href="{{ .Prev.Permalink }}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="{{ .Prev.Permalink }}">Novos <span aria-hidden="true">&rarr;</span></a></li>
       {{ else }}
-      <li class="next disabled"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next disabled"><a href="#">Novos <span aria-hidden="true">&rarr;</span></a></li>
       {{ end }}
     </ul>
   </footer>

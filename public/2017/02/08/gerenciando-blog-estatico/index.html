@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" Gerenciando Blog Estático &middot;  Cadafalso" />
+  
+  <meta property="og:site_name" content="Cadafalso" />
+  <meta property="og:url" content="https://guaracy.github.io/2017/02/08/gerenciando-blog-estatico/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:author" content="https://facebook.com/guaracybm" />
+  
+  <meta property="og:article:published_time" content="2017-02-08T00:00:00Z" />
+  
+  <meta property="og:article:tag" content="blog-admin" />
+  
+  <meta property="og:article:tag" content="emacs" />
+  
+  <meta property="og:article:tag" content="github" />
+  
+  <meta property="og:article:tag" content="org-mode" />
+  
+  <meta property="og:article:tag" content="nikola" />
+  
+  
+
+  <title>
+     Gerenciando Blog Estático &middot;  Cadafalso
+  </title>
+
+  <link rel="stylesheet" href="https://guaracy.github.io/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://guaracy.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://guaracy.github.io/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://guaracy.github.io/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://guaracy.github.io/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://guaracy.github.io/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://guaracy.github.io/">Cadafalso</a></h1>
+      
+      <div class="tag-line">
+        Apenas mais um blog
+      </div>
+      
+      <div class="sns-links hidden-print">
+  <a href="/tags/">
+    <spam title="Tags"  class="fa fa-tags"></spam>
+  </a>
+  <a href="/categories/">
+    <spam title="Categorias"  class="fa fa-sitemap"></spam>
+  </a>
+
+  
+  <a href="https://twitter.com/guaracybm" target="_blank">
+    <spam title="Twitter"  class="fa fa-twitter"></spam>
+  </a>
+  
+  
+  
+  
+  <a href="https://facebook.com/guaracybm" target="_blank">
+    <spam title="Facebook"  class="fa fa-facebook"></spam>
+  </a>
+  
+  
+  <a href="https://github.com/guaracy" target="_blank">
+    <spam title="GitHub" class="fa fa-github"></spam>
+  </a>
+  
+  
+  
+  
+  
+  <a href="mailto:guaracy.bm@gmail.com">
+    <spam title="Contato"  class="fa fa-envelope"></spam>
+  </a>
+  
+  <a href="/about/" name="About">
+    <spam title="Sobre" class="fa fa-user"></spam>
+  </a>
+</div>
+
+      
+      <a href="https://guaracy.github.io/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">Gerenciando Blog Estático</h1>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Enviado em
+        <time datetime="2017-02-08T00:00:00Z">
+          Feb 8, 2017
+        </time>
+      </div>
+      <div class="pull-right">
+        
+        <span class="post-tag small"><a href="https://guaracy.github.io//tags/blog-admin">#blog-admin</a></span>
+        
+        <span class="post-tag small"><a href="https://guaracy.github.io//tags/emacs">#emacs</a></span>
+        
+        <span class="post-tag small"><a href="https://guaracy.github.io//tags/github">#github</a></span>
+        
+        <span class="post-tag small"><a href="https://guaracy.github.io//tags/org-mode">#org-mode</a></span>
+        
+        <span class="post-tag small"><a href="https://guaracy.github.io//tags/nikola">#nikola</a></span>
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="document">
+
+
+<div class="section" id="introducao">
+<h1>Introdução</h1>
+<p>Fora a facilidade de uso, o outro motivo importante de escolher o Nikola como gerenciador de blog estático foi a possibilidade de editar as entradas no formato <a class="reference external" href="http://orgmode.org/">org-mode</a> diretamente, isto é, edito direto no formato org e mando o Nikola gerar o blog. Poderia converter para .rst ou .md mas as etapas intermediárias são chatas e podem resultar em erros difíceis de serem resolvidos ou localizados. Não, não é apenas mais uma linguagem de marcação. É a linguagem de marcação definitiva.</p>
+<p>Usar o emacs não é nenhum bicho de sete cabeças. Para quem usa o vim, existe o <a class="reference external" href="http://spacemacs.org/">spacemacs</a> que foi feito pensando nesses usuários. Mesmo funcionamento do teclado (nunca usei i vim para confirmar) com o coração do emacs. Muitos profissionais de outras áreas (principalmente educação) fizeram a troca apenas para usar o org-mode. O <a class="reference external" href="http://kitchingroup.cheme.cmu.edu/blog/2014/08/08/What-we-are-using-org-mode-for/">John Kitchin</a>, por exemplo, utiliza org-mode para escrever artigos científicos e livros, agenda profissional/pessoal, apresentações e até para lecionar indo desde a preparação do material até a avaliação dos alunos como pode ser visto neste <a class="reference external" href="https://www.youtube.com/watch?v=cRUCiF2MwP4">vídeo</a>.</p>
+<!-- TEASER_END -->
+</div>
+<div class="section" id="blog-admin">
+<h1>blog-admin</h1>
+<p>O <a class="reference external" href="https://github.com/guaracy/blog-admin">blog-admin</a> facilita a administração de um blog criado pelo hexo, org-page e Nikola (que é o que me interessa) utilizando o emacs. A aparência é assim:</p>
+<img alt="/images/blog-admin.png" src="/images/blog-admin.png" />
+<p>As operações ficam a uma tecla de distância e as entradas disponíveis na tabela sendo facilmente visualizadas (data, rascunho, título). Só pela visualização já seria um facilitador e é como está sendo usado neste momento. Já fiz um fork do repositório do GitHub e pretendo efetuar as alterações necessárias para que se ajuste ao meu fluxo de trabalho e corrigir alguns probleminhas.</p>
+<ul class="simple">
+<li><strong>s</strong> : Altera entre o modo rascunho e publicação</li>
+<li><strong>d</strong> : Funcionou corretamente. Provavelmente seria utilizados apenas para apagar posts marcados como <tt class="docutils literal">draft</tt>.</li>
+<li><strong>c</strong> : Não testei mas também não sei quando iria duplicar um post.</li>
+<li><strong>w</strong> : Funcionou corretamente mas deveria ter a opção para outros formatos e não apenas .rst.</li>
+<li><strong>RET</strong> : Enter e o emacs abre o post corretamente.</li>
+<li><strong>r</strong> : Apenas escaneia o diretório para refazer a estrutura.</li>
+<li><strong>B</strong> : Não funcionou com posts .org que necessitem de uma intervenção.</li>
+<li><strong>C</strong> : Apenas abre o arquivo de configuração <tt class="docutils literal">conf.py</tt>.</li>
+<li><strong>D</strong> : Preciso verificar melhor se existe uma configuração para entregar direto no GitHub.</li>
+<li><strong>F</strong> : Filtrou corretamente as entradas quando um título tinha o termo indicado.</li>
+</ul>
+<p>Pretendo criar mais uma opção. Talvez um <strong>L</strong> para testar localmente. Iria executar <cite>nikola build ; nikola serve -b</cite> para gerar e abrir no navegador padrão do sistema. Apesar do <strong>w3m</strong> oferecer uma boa visualização de sites, não é uma opção.</p>
+</div>
+<div class="section" id="conclusao">
+<h1>Conclusão</h1>
+<p>Precisa de umas alterações mas já mostrou ser uma boa opção para quem trabalha com sites estáticos e emacs. Resolvi fazer um vídeo mostrando um pouco o funcionamento do blog-admin mas, talvez, com um pouco de enfase na digitação de um documento usando o org-mode. Especificamente na digitação de trechos de código em três linguagens sendo o resultado calculado e apresentado diretamente, evitando o problema de digitar o resultado incorretamente ou ter que rodar o programa externamente, copiar o resultado e colar no documento.</p>
+<script type="text/javascript" src="https://asciinema.org/a/ehgwjtapwsytr0txgr7h6v36x.js" id="asciicast-ehgwjtapwsytr0txgr7h6v36x" async></script></div>
+<div class="section" id="atualizacoes">
+<h1>Atualizações</h1>
+<ol class="arabic simple">
+<li>Adicionei a possibilidade de utilizar <code>nikola github_deploy</code> para facilitar a entrega no GitHub.</li>
+<li>Adicionei a opção <strong>&quot;O&quot;</strong> no menu para abrir o site em um navegar externo. Falta incluir a opção para o usuário escolher o navegador (está o <cite>firefox</cite>). Necessita do <a class="reference external" href="https://github.com/skeeto/emacs-web-server">emacs-web-server</a>. Funciona como <tt class="docutils literal">nikola serve <span class="pre">-b</span></tt></li>
+</ol>
+<p>As alterações ainda não estão no GitHub mas esta postagem já foi feita com a versão loca atualizada do blog-admin. É só pressionar &quot;B&quot; para recriar o site, &quot;O&quot; para testar no firefox se está tudo ok e um &quot;D&quot; para enviar para o GitHub.</p>
+<img alt="/images/ba-git.png" src="/images/ba-git.png" />
+</div>
+</div>
+  </section>
+  <footer>
+        
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        <h1 class="author-name text-primary">Guaracy Monteiro</h1>
+        
+        
+        <div class="author-bio">Apenas um programador esforçado.</div>
+        
+      </div>
+      
+      <div class="author-contact col-md-4">
+        <a href="mailto:guaracy.bm@gmail.com">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          &nbsp;Contato
+        </a>
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://guaracy.github.io/2017/01/31/rotulos-na-linha-de-comando/"><span aria-hidden="true">&larr;</span> Antigos</a></li>
+      
+      
+      <li class="next"><a href="https://guaracy.github.io/2017/02/23/parser-extraindo-dados-de-paginas/">Novos <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+
+  
+  <div><h1 class="author-name text-primary">Comentários</h1></div>
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+    
+    FB.init({
+    appId      : 'guaracy',
+    status     : true,
+    xfbml      : true
+    });
+
+    };
+
+    
+    (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script><div class="fb-comments" data-href="https://guaracy.github.io/posts/gerenciando-blog-estatico/" data-width="470"></div>
+
+
+</section></article><div id="fb-root"></div>
+<script>
+  
+  $('.fb-comments-count').each(function(i, obj) {
+  var url = obj.attributes['data-url'].value;
+  
+  
+  obj.innerHTML = '<fb:comments-count href="' + url + '"></fb:comments-count> comments';
+  });
+
+  window.fbAsyncInit = function() {
+  
+  FB.init({
+  appId      : 'guaracy',
+  status     : true,
+  xfbml      : true
+  });
+
+  };
+
+  
+  (function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/all.js";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</div>
+
+
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  <a href="/tags/">
+    <spam title="Tags"  class="fa fa-tags"></spam>
+  </a>
+  <a href="/categories/">
+    <spam title="Categorias"  class="fa fa-sitemap"></spam>
+  </a>
+
+  
+  <a href="https://twitter.com/guaracybm" target="_blank">
+    <spam title="Twitter"  class="fa fa-twitter"></spam>
+  </a>
+  
+  
+  
+  
+  <a href="https://facebook.com/guaracybm" target="_blank">
+    <spam title="Facebook"  class="fa fa-facebook"></spam>
+  </a>
+  
+  
+  <a href="https://github.com/guaracy" target="_blank">
+    <spam title="GitHub" class="fa fa-github"></spam>
+  </a>
+  
+  
+  
+  
+  
+  <a href="mailto:guaracy.bm@gmail.com">
+    <spam title="Contato"  class="fa fa-envelope"></spam>
+  </a>
+  
+  <a href="/about/" name="About">
+    <spam title="Sobre" class="fa fa-user"></spam>
+  </a>
+</div>
+
+  </footer>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-92986383-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+  
+</body>
+</html>
+

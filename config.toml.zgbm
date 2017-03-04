@@ -1,0 +1,35 @@
+languageCode = "pt-BR"
+defaultContentLanguage = "pt-BR"
+title = "Cadafalso"
+baseURL = "https://guaracy.github.io/"
+PygmentsCodeFences = true
+PygmentsStyle = "default"
+theme = "zgbm"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[Params]
+  Author = "Guaracy Monteiro"
+  subtitle = "Apenas mais um blog"
+  twitter = "guaracybm"
+  github = "guaracy"
+  facebook = "guaracybm"
+  contact = "mailto:guaracy.bm@gmail.com"
+  themecolor = "#ff0000"
+  bio = "Apenas um programador esforçado."
+
+# greyshade
+subscribe_rss = "/index.xml"
+
+facebook_user = "zeca"
+googleplus_user = "zeca"
+twitter_user = "zeca"
+github_user = ""
+coderwall_user = ""
+
+facebook_like = true
+twitter_tweet_button = true
+google_plus_one = "true"
+addthis_profile_id = ""

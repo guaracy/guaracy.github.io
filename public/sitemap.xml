@@ -2,33 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://guaracy.github.io/post/de-nikola-para-hugo/</loc>
+    <loc>https://guaracy.github.io/2017/03/03/literate-programming/</loc>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://guaracy.github.io/2017/03/02/de-nikola-para-hugo/</loc>
     <lastmod>2017-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://guaracy.github.io/post/parser-extraindo-dados-de-paginas/</loc>
+    <loc>https://guaracy.github.io/2017/02/23/parser-extraindo-dados-de-paginas/</loc>
     <lastmod>2017-02-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://guaracy.github.io/post/gerenciando-blog-estatico/</loc>
+    <loc>https://guaracy.github.io/2017/02/08/gerenciando-blog-estatico/</loc>
     <lastmod>2017-02-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://guaracy.github.io/post/rotulos-na-linha-de-comando/</loc>
+    <loc>https://guaracy.github.io/2017/01/31/rotulos-na-linha-de-comando/</loc>
     <lastmod>2017-01-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://guaracy.github.io/post/temas-no-nikola/</loc>
+    <loc>https://guaracy.github.io/2017/01/27/temas-no-nikola/</loc>
     <lastmod>2017-01-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://guaracy.github.io/post/seu-blog-no-github/</loc>
+    <loc>https://guaracy.github.io/2017/01/25/seu-blog-no-github/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://guaracy.github.io/about/</loc>
   </url>
   
   <url>
@@ -57,7 +66,7 @@
   
   <url>
     <loc>https://guaracy.github.io/</loc>
-    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -68,7 +77,7 @@
   
   <url>
     <loc>https://guaracy.github.io/tags/emacs/</loc>
-    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -104,7 +113,25 @@
   
   <url>
     <loc>https://guaracy.github.io/categories/info/</loc>
-    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://guaracy.github.io/tags/j/</loc>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://guaracy.github.io/tags/literate-programming/</loc>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://guaracy.github.io/tags/lp/</loc>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -116,7 +143,7 @@
   
   <url>
     <loc>https://guaracy.github.io/tags/org-mode/</loc>
-    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -128,7 +155,7 @@
   
   <url>
     <loc>https://guaracy.github.io/post/</loc>
-    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -151,13 +178,13 @@
   </url>
   
   <url>
-    <loc>https://guaracy.github.io/tags/</loc>
+    <loc>https://guaracy.github.io/tags/tags/</loc>
+    <lastmod>2017-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://guaracy.github.io/tags/tags/</loc>
-    <lastmod>2017-01-31T00:00:00+00:00</lastmod>
+    <loc>https://guaracy.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   

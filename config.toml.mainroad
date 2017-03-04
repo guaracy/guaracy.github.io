@@ -1,0 +1,62 @@
+languageCode = "pt-BR"
+defaultContentLanguage = "pt-BR"
+title = "Cadafalso"
+baseURL = "https://guaracy.github.io/"
+PygmentsCodeFences = true
+PygmentsStyle = "default"
+theme = "mainroad"
+paginate = "10"
+#googleAnalytics = "" # Enable Google Analytics by entering your tracking id
+
+[Author]
+    name = "Guaracy"
+    bio = "Apenas mais um programador. :D"
+    avatar = "img/avatar.png"
+
+#[taxonomies]
+#  category = "categories"
+#  tag = "tags"
+  
+[permalinks]
+    post = "/:year/:month/:day/:slug/"
+    code = "/:slug/"
+
+[Params]
+    subtitle = "Apenas mais um blog" # Subtitle of your site
+    description = " Blog pessoal do Guaracy Monteiro" # Description of your site
+    opengraph = true
+    leftsidebar = false # Move sidebar to the left side if true
+    authorbox = true
+    post_navigation = true
+
+#[Params]
+#  Author = "Guaracy Monteiro"
+#  subtitle = "Apenas mais um blog"
+#  twitter = "guaracybm"
+#  github = "guaracy"
+#  facebook = "guaracybm"
+#  contact = "mailto:guaracy.bm@gmail.com"
+#  themecolor = "#ff0000"
+#  bio = "Apenas um programador esforçado."
+
+# greyshade
+
+[Params.widgets]
+    search = true # Enable "Search" widget
+    recent_articles = true # Enable "Recent arcticles" widget 
+    categories = true # Enable "Categories" widget
+    tags = true # Enable "Tags" widget
+
+
+subscribe_rss = "/index.xml"
+
+facebook_user = "zeca"
+googleplus_user = "zeca"
+twitter_user = "zeca"
+github_user = ""
+coderwall_user = ""
+
+facebook_like = true
+twitter_tweet_button = true
+google_plus_one = "true"
+addthis_profile_id = ""

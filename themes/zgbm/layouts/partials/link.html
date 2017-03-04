@@ -1,12 +1,14 @@
 <div class="sns-links hidden-print">
-  {{ with .Site.Params.contact }}
-  <a href="{{ . }}">
-    <i class="fa fa-envelope"></i>
+  <a href="/tags/">
+    <spam title="Tags"  class="fa fa-tags"></spam>
   </a>
-  {{ end }}
+  <a href="/categories/">
+    <spam title="Categorias"  class="fa fa-sitemap"></spam>
+  </a>
+<!--   commenting pencil-square reorder sitemap user file -->
   {{ with .Site.Params.twitter }}
   <a href="https://twitter.com/{{ . }}" target="_blank">
-    <i class="fa fa-twitter"></i>
+    <spam title="Twitter"  class="fa fa-twitter"></spam>
   </a>
   {{ end }}
   {{ with .Site.Params.instagram }}
@@ -21,12 +23,12 @@
   {{ end }}
   {{ with .Site.Params.facebook }}
   <a href="https://facebook.com/{{ . }}" target="_blank">
-    <i class="fa fa-facebook"></i>
+    <spam title="Facebook"  class="fa fa-facebook"></spam>
   </a>
   {{ end }}
   {{ with .Site.Params.github }}
   <a href="https://github.com/{{ . }}" target="_blank">
-    <i class="fa fa-github"></i>
+    <spam title="GitHub" class="fa fa-github"></spam>
   </a>
   {{ end }}
   {{ with .Site.Params.stackoverflow }}
@@ -44,4 +46,12 @@
     <i class="fa fa-key"></i>
   </a>
   {{ end }}
+  {{ with .Site.Params.contact }}
+  <a href="{{ . }}">
+    <spam title="Contato"  class="fa fa-envelope"></spam>
+  </a>
+  {{ end }}
+  <a href="/about/" name="About">
+    <spam title="Sobre" class="fa fa-user"></spam>
+  </a>
 </div>

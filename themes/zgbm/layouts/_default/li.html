@@ -3,9 +3,9 @@
     <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
     <div class="post-meta clearfix">
       <div class="post-date pull-left">
-        Posted on
+        <spam class="fa fa-calendar"></spam> Enviado em
         <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
-          {{ .Date.Format "Jan 2, 2006" }}
+          {{ .Date.Format "January 2006" }}
         </time>
       </div>
     </div>
@@ -16,7 +16,7 @@
   {{ if .Truncated }}
   <footer>
     <ul class="pager">
-      <li class="next"><a href="{{ .Permalink }}">Read more <span aria-hidden="true">&raquo;</span></a></li>
+      <li class="next"><a href="{{ .Permalink }}">Continue lendo <span aria-hidden="true">&raquo;</span></a></li>
     </ul>
   </footer>
   {{ end }}
