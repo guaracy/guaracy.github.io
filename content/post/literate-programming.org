@@ -1,6 +1,6 @@
 #+TITLE: Literate Programming
 #+AUTHOR: Guaracy Monteiro
-#+DRAFT = true
+#+DRAFT: false
 #+DATE: 2017-03-03
 #+TAGS: emacs org-mode literate-programming LP J
 #+CATEGORIES: info
@@ -9,14 +9,14 @@
 
 * Introdução
 
-Não vou traduzir [[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming]] (LP) pois não gosto das traduções possíveis. Prefiro algo como /documento inteligente/. Basicamente é o desenvolvimento de documentação/explanação lógica e programa simultâneamente. O emacs junto com o org-mode facilitam muito a tarefa pois:
+Não vou traduzir [[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming]] (LP) pois não gosto das traduções possíveis. Prefiro algo como /documento inteligente/. Basicamente é o desenvolvimento de documentação/explanação lógica e programa simultaneamente. O emacs junto com o org-mode facilitam muito a tarefa pois:
 
 - Você pode executar os programas ou trecho do programa e incluir o resultado automaticamente no documento. Evita que uma alteração qualquer implique em executar o programa externamente, copiar e colar o resultado no documento podendo introduzir erros.
 - Você pode gerar automaticamente o programa ou os programas, mesmo juntando diversos fragmentos em um só ao final. Também evita a possível erros entre versões.
 
 Pessoalmente não utilizo para grandes projetos mas é interessante para pequenos projetos e, principalmente se desejamos publicá-lo.
 
-No início eu disse que não gostava da tradução mas, como ficaria a trqadução em diversas linguas de "Literate Programming" pelo google translator?
+No início eu disse que não gostava da tradução mas, como ficaria a tradução em diversas línguas de "Literate Programming" pelo google translator?
 
 #+BEGIN_SRC translate :src en :dest de,fr,ar,ja,pt,es :exports both 
   Literate Programming
@@ -30,8 +30,289 @@ No início eu disse que não gostava da tradução mas, como ficaria a trqaduç�
 | pt | Programação Alfabetizada   |
 | es | Programación alfabetizada  |
 
-O que foi interessante nas traduções acima é que eu apenas digitei "Literate Programming" dentro de um bloco =#+BEGIN_SRC= e =#+END_SRC= indicando o programa ou rotina que interpretaria os dados, o idioma original e os idiomas destinos da tradução bem como o formato para a exportação dos dados (=translate :src en :dest de,fr,ar,ja,pt,es :exports both=). Depois pressionei Ctrl+C Ctrl+C e as traduções foram buscadas automaticamente. Basta alterar o texto ou incluir/excluir alguma linguagem, pressionar a mesma sequência de teclas e o resultado será alterado (nem preciso excluir o resultado anterior).
+O que foi interessante nas traduções acima é que eu apenas digitei "Literate Programming" dentro de um bloco =#+BEGIN_SRC= e =#+END_SRC= indicando o programa ou rotina que interpretaria os dados, o idioma original e os idiomas destinos da tradução bem como o formato para a exportação dos dados (=translate :src en :dest de,fr,ar,ja,pt,es :exports both=). Depois pressionei =Ctrl + C Ctrl + C= e as traduções foram buscadas automaticamente. Basta alterar o texto ou incluir/excluir alguma linguagem, pressionar a mesma sequência de teclas e o resultado será alterado (nem preciso excluir o resultado anterior).
+
+Diferente da abordagem de foco no programa e documentação baseada em comentários do programa como é comum ver atualmente, LP parte do texto para gerar a documentação e os programas.
+
+[[file:/images/lp.png]]
 
 * Prática
 
-https://github.com/carteiro/ceps
+Este tópico apresenta um exemplo mais concreto de LP e, apesar das ferramentas para Red e o parse para org-mode do hugo ainda não estarem suficientemente maduras, é possível ter uma ideia melhor. Os principais problemas são:
+- org-red/org-babel : ainda não aceita =:ssession= para Red que permitiria utilizar diversos fragmentos do código mantendo o valor das variáveis e funções dentro de uma mesma sessão. Contornado com =:noweb yes= e =<<nome-codigo>>= que faz parte da especificação original de LP.
+- org-mode/hugo : ainda não aceita numeração de linhas no código fonte o que facilitaria explicações do tipo "linha tal faz tal coisa" nem links internos na página.
+
+A ideia deste post surgiu do projeto do [[https://wandersonwhcr.github.io/][Wanderson]] de manter uma base atualizada de [[https://github.com/carteiro/ceps][CEPs]]. O principal problema é que os dados fornecidos pelos correios são pagos e fechados (pagando se obtém as atualizações também). Iniciando do zero, mesmo com a colaboração de diversas pessoas, é um trabalho monstruoso. A obtenção dos ceps de uma cidade grande demandaria um grande tempo para obtenção e transcrição, sem contar com o perigo da obtenção em locais perigosos.
+
+Pensei em obter de forma automatizada e, para tanto, precisaria das ruas que por sua vez necessitaria do nome das cidades. Vamos focar na obtenção do nome dos municípios de um determinado estado e, como brinde, já obteremos outras informações. Pelo site do IBGE é possível obter mapas, municípios e algumas outras informações de um determinado estado. É uma continuação do artigo [[/2017/02/23/parser-extraindo-dados-de-paginas/][Parser - extraindo dados de páginas]]. 
+
+** Estados
+
+Para obter os estados não tem mistérios. Podemos escrever
+
+#+NAME: red-estados
+#+BEGIN_SRC red :exports both :results output :tangle yes :session cep
+  estados: "ac,al,ap,am,ba,ce,df,es,go,ma,mt,ms,mg,pa,pb,pr,pe,pi,rj,rn,rs,ro,rr,sc,sp,se,to"
+  estados: split estados ","
+#+END_SRC
+
+Assim teremos em *estados* uma lista de todos so estados.
+
+#+BEGIN_SRC red :exports both :results output :session cep :noweb yes
+  <<red-estados>>
+  probe estados
+#+END_SRC
+
+#+RESULTS:
+: ["ac" "al" "ap" "am" "ba" "ce" "df" "es" "go" "ma" "mt" "ms" "mg" "pa" "pb" "pr" "pe" "pi" "rj" "rn" "rs" "ro" "rr" "sc" "sp" "se" "to"]
+
+Para obter as informações de um determinado estado, acessamos  =http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf= com a siga do estado desejado. O primeiro passo seria colocar em uma variável (em Red não existe variável como estamos acostumados; são símbolos definidos em contexto dinâmico) o valor da raiz do endereço da página.
+
+#+NAME: red-url
+#+BEGIN_SRC red :exports both :results output :tangle yes :session cep
+  url: "http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf="
+#+END_SRC
+
+Depois, um loop poderia processar a página de cada estado, extraindo os dados desejados;
+
+#+BEGIN_SRC red :exports both :results output list :session cep :noweb yes
+  <<red-estados>>
+  <<red-url>>
+  foreach uf estados [
+     print ["processa: " rejoin [url uf]]
+  ]
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ac
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=al
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ap
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=am
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ba
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ce
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=df
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=es
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=go
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ma
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=mt
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ms
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=mg
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pa
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pb
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pr
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pe
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pi
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rj
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rn
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rs
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ro
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rr
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=sc
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=sp
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=se
+- processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=to
+#+end_example
+
+Passando "ac" e olhando o fonte da página retornada teremos:
+
+#+BEGIN_SRC html :exports both
+  <body>
+    <div id="conteudo">
+      <h1>Acre - AC</h1>
+      <ul id="info">
+      <li>Capital: Rio Branco</li>
+      <li>Nº de municípios: 22</li>
+      </ul>
+#+END_SRC
+
+Pelo fragmento acima podemos observar:
+- O nome e sigla do estado estão no primeiro cabeçalho da página =<h1>=, separados por hífen. Então deveremos procurar por =<h1>= e coletar as informação até o hífen (se copiar até o espaço irá falhar em cidades como Porto Alegre - RS), pular informações indesejadas e copiar as duas letras.
+- Seguindo, veremos que a próxima informação que é a capital e encontra-se após o =:=. Coletamos a informação até =<li>=.
+- A próxima informação pode seguir o mesmo princípio da anterior, isto é, coletamos após =:= até =<li>=.
+
+Assim terminamos de coletar as informações principais sobre o estado. Pulamos a parte com o mapa no formato =svg=. Agora teremos que analisar os dados contendo as informações dos municípios. 
+
+
+#+BEGIN_SRC html
+  <table id="municipios">
+    <thead>
+      <tr>
+        <th class="nome">Municípios</th>
+        <th class="codigo">Código</th>
+        <th class="gentilico">Gentílico</th>
+        <th class="populacao">População 2010</th>
+        <th class="area">Área da unidade territorial 2015 (km²)	</th>
+        <th class="densidade">Densidade demográfica 2010 (hab/km²)</th>
+        <th class="pib"><b>Série revisada</b> - Valor adicionado bruto Total, a preços correntes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="1200013 par">
+        <td class="nome">Acrelândia</td>
+        <td class="codigo">1200013</td>
+        <td class="gentilico">acrelandense</td>
+        <td>12.538</td>
+        <td>1.807,95</td>
+        <td>6,9</td>
+        <td>200.194</td>
+      </tr>
+      <tr class="1200054 impar">
+        <td class="nome">Assis Brasil</td>
+        <td class="codigo">1200054</td>
+        <td class="gentilico">assis-brasiliense</td>
+        <td>6.072</td>
+        <td>4.974,18</td>
+        <td>1,2</td>
+        <td>71.773</td>
+      </tr>
+      <!-- repete até o final da tabela -->
+#+END_SRC
+
+Os dados desejados iniciam na linha =<tr= após o cabeçalho da tabela =<thead></thead>=. Então teremos que ignorar todos os dados até lá. Depois, para cada linha da tabela teremos:
+- coletar nome do município que inicia após =nome">= e vai até =</td>=
+- coletar código ibge que inicia após =codigo">= e vai até =</td>=
+- coletar a designação do indivíduo nascido no município que inicia após =gentilico">=  e vai até =</td>=
+- para coletar a população, área, densidade demográfica e pib seguimos o mesmo procedimento que é coletar as informação que estão após =<td>=  e vai até =</td>=.
+
+A regra para processar a página ficaria assim:
+
+#+BEGIN_SRC red :exports both :results output :tangle yes
+  rule: [
+    thru "<h1>"	   ; posiciona após <h1>
+    collect [
+      keep to " -"		 ; nome do estado
+      thru "- " keep to "<"	 ; sigla do estado
+      thru ": " keep to "<"	 ; capital
+      thru ": " keep to "<"      ; num. municipios
+      thru "<tbody>" [	 ; pula cabeçalho <thread> para trabalhar com as cidades
+        collect [
+          any [
+            thru {"nome">}
+            keep to "<"	; nome da cidade
+            collect [
+            thru {"codigo">}
+            keep to "<" ; codigo da cidade ibge
+            thru {"gentilico">}
+            keep to "<" ; tratamento
+              4 [			  ; repete 4 vezes
+                thru "<td>"
+                keep to "<"	  ; população / área / densidade demográfica / pib
+              ]
+            ]
+          ]
+        ]
+        to end
+      ]
+    ]
+  ]
+#+END_SRC
+
+Para processar uma página, basta ler e processar da seguinte forma (no caso o primeiro elemento da lista que é *ac*):
+
+#+BEGIN_SRC red :exports both :results output
+  page: read to-url rejoin [url estados/1]
+  cidades: parse page rule
+#+END_SRC
+
+O resultado de cidades seria um bloco aninhado no formato [ =dados estado= [ =cidade= [ =dados cidade= ] ... ] ]
+
+#+BEGIN_SRC 
+[ "Acre" 
+  "AC" 
+  "Rio Branco" 
+  "22" [
+    "Acrelândia" [
+      "1200013" 
+      "acrelandense" 
+      "12.538" 
+      "1.807,95" 
+      "6,9" "200.194"
+    ] 
+    "Assis Brasil" [
+      "1200054" 
+      "assis-brasiliense" 
+      "6.072" 
+      "4.974,18" 
+      "1,2" 
+      "71.773"
+    ]
+    ...
+    "Xapuri" [
+      "1200708" 
+      "xapuriense" 
+      "16.091" 
+      "5.347,47" 
+      "3,0" 
+      "193.734"
+    ]
+  ]   
+#+END_SRC
+
+Finalmente, para ler as páginas com os dados de todos os estados, aplicar as regras e gravar os resultados (municípios, etc) temos:
+
+#+BEGIN_SRC red :exports both :results output :tangle yes
+  foreach es estados [
+    cidades: copy []
+    page: read to-url rejoin [url es]
+    parse page rule
+    save to-file es cidades
+  ]
+#+END_SRC
+
+E teremos um arquivo para cada estado com os dados. 
+
+** Conclusão
+
+Note que a  *Introdução* e *Conclusão* não fazem parte da LP (até poderiam fazer como se encontra neste documento). Apenas de *Prática em diante. Sendo assim, temos a documentação do nosso programa em diversos fragmentos. Cada fragmento que desejamos exportar tem a diretiva =:tangle yes=. Ao término, podemos pressionar =Ctrl + c Ctrl + e h h= e iremos gerar um arquivo html (podemos escolher outro formato com pdf, etc.) contendo a documentação como é vista aqui. E, ao pressionar =Ctrl + c Ctrl +-v t= iremos gerar o fonte do nosso programa que irá pegar todos os blocos marcados com /tanle/ e gravar em um arquivo com o nome escolhido (ou nome do documento se for o casos). Se tivermos outras linguagens no documento, os blocos de cada linguagem serão juntados e gravados os respectivos programas. No caso aqui ficaria:
+
+
+#+BEGIN_SRC red
+  Red []
+  estados: "ac,al,ap,am,ba,ce,df,es,go,ma,mt,ms,mg,pa,pb,pr,pe,pi,rj,rn,rs,ro,rr,sc,sp,se,to"
+  estados: split estados ","
+   
+  url: "http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf="
+   
+  rule: [
+    thru "<h1>"	   ; posiciona após <h1>
+    collect [
+      keep to " -"		 ; nome do estado
+      thru "- " keep to "<"	 ; sigla do estado
+      thru ": " keep to "<"	 ; capital
+      thru ": " keep to "<"      ; num. municipios
+      thru "<tbody>" [	 ; pula cabeçalho <thread> para trabalhar com as cidades
+        collect [
+          any [
+            thru {"nome">}
+            keep to "<"	; nome da cidade
+            collect [
+            thru {"codigo">}
+            keep to "<" ; codigo da cidade ibge
+            thru {"gentilico">}
+            keep to "<" ; tratamento
+              4 [			  ; repete 4 vezes
+                thru "<td>"
+                keep to "<"	  ; população / área / densidade demográfica / pib
+              ]
+            ]
+          ]
+        ]
+        to end
+      ]
+    ]
+  ]
+   
+  foreach es estados [
+    cidades: copy []
+    page: read to-url rejoin [url es]
+    parse page rule
+    save to-file es cidades
+  ]
+#+END_SRC
+
+A parte de busca dos logradouros e ceps ficam de fora deste documento para que o mesmo não fique muito longo e por não saber se seria legal publicar como foram acessados.
+
+Caso você tenha lido até aqui, iniciei um [[/parse][manual]] do parse de Red em português. As atualizações do manual estarão no [[https://github.com/guaracy/red/tree/master/doc/parse][GitHub]].
+
+
