@@ -127,7 +127,7 @@
   <section>
     <h1 id="introdução">Introdução</h1>
 
-<p>Não vou traduzir <a href="https://en.wikipedia.org/wiki/Literate_programming" title="Literate Programming">Literate Programming</a> (LP) pois não gosto das traduções possíveis. Prefiro algo como <em>documento inteligente</em>. Basicamente é o desenvolvimento de documentação/explanação lógica e programa simultâneamente. O emacs junto com o org-mode facilitam muito a tarefa pois:</p>
+<p>Não vou traduzir <a href="https://en.wikipedia.org/wiki/Literate_programming" title="Literate Programming">Literate Programming</a> (LP) pois não gosto das traduções possíveis. Prefiro algo como <em>documento inteligente</em>. Basicamente é o desenvolvimento de documentação/explanação lógica e programa simultaneamente. O emacs junto com o org-mode facilitam muito a tarefa pois:</p>
 
 <ul>
 <li>Você pode executar os programas ou trecho do programa e incluir o resultado automaticamente no documento. Evita que uma alteração qualquer implique em executar o programa externamente, copiar e colar o resultado no documento podendo introduzir erros.</li>
@@ -136,7 +136,7 @@
 
 <p>Pessoalmente não utilizo para grandes projetos mas é interessante para pequenos projetos e, principalmente se desejamos publicá-lo.</p>
 
-<p>No início eu disse que não gostava da tradução mas, como ficaria a trqadução em diversas linguas de "Literate Programming" pelo google translator?</p>
+<p>No início eu disse que não gostava da tradução mas, como ficaria a tradução em diversas línguas de "Literate Programming" pelo google translator?</p>
 
   Literate Programming
 
@@ -174,11 +174,273 @@
 </tbody>
 </table>
 
-<p>O que foi interessante nas traduções acima é que eu apenas digitei "Literate Programming" dentro de um bloco <code>#+BEGIN_SRC</code> e <code>#+END_SRC</code> indicando o programa ou rotina que interpretaria os dados, o idioma original e os idiomas destinos da tradução bem como o formato para a exportação dos dados (<code>translate :src en :dest de,fr,ar,ja,pt,es :exports both</code>). Depois pressionei Ctrl+C Ctrl+C e as traduções foram buscadas automaticamente. Basta alterar o texto ou incluir/excluir alguma linguagem, pressionar a mesma sequência de teclas e o resultado será alterado (nem preciso excluir o resultado anterior).</p>
+<p>O que foi interessante nas traduções acima é que eu apenas digitei "Literate Programming" dentro de um bloco <code>#+BEGIN_SRC</code> e <code>#+END_SRC</code> indicando o programa ou rotina que interpretaria os dados, o idioma original e os idiomas destinos da tradução bem como o formato para a exportação dos dados (<code>translate :src en :dest de,fr,ar,ja,pt,es :exports both</code>). Depois pressionei <code>Ctrl + C Ctrl + C</code> e as traduções foram buscadas automaticamente. Basta alterar o texto ou incluir/excluir alguma linguagem, pressionar a mesma sequência de teclas e o resultado será alterado (nem preciso excluir o resultado anterior).</p>
+
+<p>Diferente da abordagem de foco no programa e documentação baseada em comentários do programa como é comum ver atualmente, LP parte do texto para gerar a documentação e os programas.</p>
+
+<p><img src="/images/lp.png" alt="/images/lp.png" title="/images/lp.png" /></p>
 
 <h1 id="prática">Prática</h1>
 
-<p>https://github.com/carteiro/ceps</p>
+<p>Este tópico apresenta um exemplo mais concreto de LP e, apesar das ferramentas para Red e o parse para org-mode do hugo ainda não estarem suficientemente maduras, é possível ter uma ideia melhor. Os principais problemas são:</p>
+
+<ul>
+<li>org-red/org-babel : ainda não aceita <code>:ssession</code> para Red que permitiria utilizar diversos fragmentos do código mantendo o valor das variáveis e funções dentro de uma mesma sessão. Contornado com <code>:noweb yes</code> e <code>&lt;&lt;nome-codigo&gt;&gt;</code> que faz parte da especificação original de LP.</li>
+<li>org-mode/hugo : ainda não aceita numeração de linhas no código fonte o que facilitaria explicações do tipo "linha tal faz tal coisa" nem links internos na página.</li>
+</ul>
+
+<p>A ideia deste post surgiu do projeto do <a href="https://wandersonwhcr.github.io/" title="Wanderson">Wanderson</a> de manter uma base atualizada de <a href="https://github.com/carteiro/ceps" title="CEPs">CEPs</a>. O principal problema é que os dados fornecidos pelos correios são pagos e fechados (pagando se obtém as atualizações também). Iniciando do zero, mesmo com a colaboração de diversas pessoas, é um trabalho monstruoso. A obtenção dos ceps de uma cidade grande demandaria um grande tempo para obtenção e transcrição, sem contar com o perigo da obtenção em locais perigosos.</p>
+
+<p>Pensei em obter de forma automatizada e, para tanto, precisaria das ruas que por sua vez necessitaria do nome das cidades. Vamos focar na obtenção do nome dos municípios de um determinado estado e, como brinde, já obteremos outras informações. Pelo site do IBGE é possível obter mapas, municípios e algumas outras informações de um determinado estado. É uma continuação do artigo <a href="/2017/02/23/parser-extraindo-dados-de-paginas/" title="Parser - extraindo dados de páginas">Parser - extraindo dados de páginas</a>.</p>
+
+<h2 id="estados">Estados</h2>
+
+<p>Para obter os estados não tem mistérios. Podemos escrever</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #800080; font-weight: bold">estados:</span> <span style="color: #BA2121">&quot;ac,al,ap,am,ba,ce,df,es,go,ma,mt,ms,mg,pa,pb,pr,pe,pi,rj,rn,rs,ro,rr,sc,sp,se,to&quot;</span>
+  <span style="color: #800080; font-weight: bold">estados:</span> <span style="color: #19177C">split</span> <span style="color: #19177C">estados</span> <span style="color: #BA2121">&quot;,&quot;</span>
+</pre></div>
+
+<p>Assim teremos em <strong>estados</strong> uma lista de todos so estados.</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #19177C">&lt;&lt;red-estados&gt;&gt;</span>
+  <span style="color: #D2413A; font-weight: bold">probe</span> <span style="color: #19177C">estados</span>
+</pre></div>
+
+<p>: ["ac" "al" "ap" "am" "ba" "ce" "df" "es" "go" "ma" "mt" "ms" "mg" "pa" "pb" "pr" "pe" "pi" "rj" "rn" "rs" "ro" "rr" "sc" "sp" "se" "to"]</p>
+
+<p>Para obter as informações de um determinado estado, acessamos  <code>http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf</code> com a siga do estado desejado. O primeiro passo seria colocar em uma variável (em Red não existe variável como estamos acostumados; são símbolos definidos em contexto dinâmico) o valor da raiz do endereço da página.</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #800080; font-weight: bold">url:</span> <span style="color: #BA2121">&quot;http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=&quot;</span>
+</pre></div>
+
+<p>Depois, um loop poderia processar a página de cada estado, extraindo os dados desejados;</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #19177C">&lt;&lt;red-estados&gt;&gt;</span>
+  <span style="color: #19177C">&lt;&lt;red-url&gt;&gt;</span>
+  <span style="color: #008000">foreach</span> <span style="color: #19177C">uf</span> <span style="color: #19177C">estados</span> <span style="font-weight: bold">[</span>
+     <span style="color: #008000">print</span> <span style="font-weight: bold">[</span><span style="color: #BA2121">&quot;processa: &quot;</span> <span style="color: #19177C">rejoin</span> <span style="font-weight: bold">[</span><span style="color: #19177C">url</span> <span style="color: #19177C">uf</span><span style="font-weight: bold">]]</span>
+  <span style="font-weight: bold">]</span>
+</pre></div>
+
+<ul>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ac</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=al</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ap</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=am</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ba</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ce</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=df</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=es</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=go</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ma</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=mt</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ms</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=mg</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pa</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pb</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pr</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pe</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=pi</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rj</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rn</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rs</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=ro</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=rr</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=sc</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=sp</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=se</li>
+<li>processa:  http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=to</li>
+</ul>
+
+<p>Passando "ac" e olhando o fonte da página retornada teremos:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
+    &lt;<span style="color: #008000; font-weight: bold">div</span> <span style="color: #7D9029">id</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;conteudo&quot;</span>&gt;
+      &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;Acre - AC&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
+      &lt;<span style="color: #008000; font-weight: bold">ul</span> <span style="color: #7D9029">id</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;info&quot;</span>&gt;
+      &lt;<span style="color: #008000; font-weight: bold">li</span>&gt;Capital: Rio Branco&lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
+      &lt;<span style="color: #008000; font-weight: bold">li</span>&gt;Nº de municípios: 22&lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
+      &lt;/<span style="color: #008000; font-weight: bold">ul</span>&gt;
+</pre></div>
+
+<p>Pelo fragmento acima podemos observar:</p>
+
+<ul>
+<li>O nome e sigla do estado estão no primeiro cabeçalho da página <code>&lt;h1&gt;</code>, separados por hífen. Então deveremos procurar por <code>&lt;h1&gt;</code> e coletar as informação até o hífen (se copiar até o espaço irá falhar em cidades como Porto Alegre - RS), pular informações indesejadas e copiar as duas letras.</li>
+<li>Seguindo, veremos que a próxima informação que é a capital e encontra-se após o <code>:</code>. Coletamos a informação até <code>&lt;li&gt;</code>.</li>
+<li>A próxima informação pode seguir o mesmo princípio da anterior, isto é, coletamos após <code>:</code> até <code>&lt;li&gt;</code>.</li>
+</ul>
+
+<p>Assim terminamos de coletar as informações principais sobre o estado. Pulamos a parte com o mapa no formato <code>svg</code>. Agora teremos que analisar os dados contendo as informações dos municípios.</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  &lt;<span style="color: #008000; font-weight: bold">table</span> <span style="color: #7D9029">id</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;municipios&quot;</span>&gt;
+    &lt;<span style="color: #008000; font-weight: bold">thead</span>&gt;
+      &lt;<span style="color: #008000; font-weight: bold">tr</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">th</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;nome&quot;</span>&gt;Municípios&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">th</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;codigo&quot;</span>&gt;Código&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">th</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;gentilico&quot;</span>&gt;Gentílico&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">th</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;populacao&quot;</span>&gt;População 2010&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">th</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;area&quot;</span>&gt;Área da unidade territorial 2015 (km²)	&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">th</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;densidade&quot;</span>&gt;Densidade demográfica 2010 (hab/km²)&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">th</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;pib&quot;</span>&gt;&lt;<span style="color: #008000; font-weight: bold">b</span>&gt;Série revisada&lt;/<span style="color: #008000; font-weight: bold">b</span>&gt; - Valor adicionado bruto Total, a preços correntes&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
+      &lt;/<span style="color: #008000; font-weight: bold">tr</span>&gt;
+    &lt;/<span style="color: #008000; font-weight: bold">thead</span>&gt;
+    &lt;<span style="color: #008000; font-weight: bold">tbody</span>&gt;
+      &lt;<span style="color: #008000; font-weight: bold">tr</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;1200013 par&quot;</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;nome&quot;</span>&gt;Acrelândia&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;codigo&quot;</span>&gt;1200013&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;gentilico&quot;</span>&gt;acrelandense&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;12.538&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;1.807,95&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;6,9&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;200.194&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+      &lt;/<span style="color: #008000; font-weight: bold">tr</span>&gt;
+      &lt;<span style="color: #008000; font-weight: bold">tr</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;1200054 impar&quot;</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;nome&quot;</span>&gt;Assis Brasil&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;codigo&quot;</span>&gt;1200054&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span> <span style="color: #7D9029">class</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;gentilico&quot;</span>&gt;assis-brasiliense&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;6.072&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;4.974,18&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;1,2&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+        &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;71.773&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
+      &lt;/<span style="color: #008000; font-weight: bold">tr</span>&gt;
+      <span style="color: #408080; font-style: italic">&lt;!-- repete até o final da tabela --&gt;</span>
+</pre></div>
+
+<p>Os dados desejados iniciam na linha <code>&lt;tr</code> após o cabeçalho da tabela <code>&lt;thead&gt;&lt;/thead&gt;</code>. Então teremos que ignorar todos os dados até lá. Depois, para cada linha da tabela teremos:</p>
+
+<ul>
+<li>coletar nome do município que inicia após <code>nome&quot;&gt;</code> e vai até <code>&lt;/td&gt;</code></li>
+<li>coletar código ibge que inicia após <code>codigo&quot;&gt;</code> e vai até <code>&lt;/td&gt;</code></li>
+<li>coletar a designação do indivíduo nascido no município que inicia após <code>gentilico&quot;&gt;</code>  e vai até <code>&lt;/td&gt;</code></li>
+<li>para coletar a população, área, densidade demográfica e pib seguimos o mesmo procedimento que é coletar as informação que estão após <code>&lt;td&gt;</code>  e vai até <code>&lt;/td&gt;</code>.</li>
+</ul>
+
+<p>A regra para processar a página ficaria assim:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #800080; font-weight: bold">rule:</span> <span style="font-weight: bold">[</span>
+    <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;&lt;h1&gt;&quot;</span>	   <span style="color: #408080; font-style: italic">; posiciona após &lt;h1&gt;</span>
+    <span style="color: #19177C">collect</span> <span style="font-weight: bold">[</span>
+      <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot; -&quot;</span>		 <span style="color: #408080; font-style: italic">; nome do estado</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;- &quot;</span> <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	 <span style="color: #408080; font-style: italic">; sigla do estado</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;: &quot;</span> <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	 <span style="color: #408080; font-style: italic">; capital</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;: &quot;</span> <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>      <span style="color: #408080; font-style: italic">; num. municipios</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;&lt;tbody&gt;&quot;</span> <span style="font-weight: bold">[</span>	 <span style="color: #408080; font-style: italic">; pula cabeçalho &lt;thread&gt; para trabalhar com as cidades</span>
+        <span style="color: #19177C">collect</span> <span style="font-weight: bold">[</span>
+          <span style="color: #008000">any</span> <span style="font-weight: bold">[</span>
+            <span style="color: #19177C">thru</span> <span style="color: #BA2121">{&quot;nome&quot;&gt;}</span>
+            <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	<span style="color: #408080; font-style: italic">; nome da cidade</span>
+            <span style="color: #19177C">collect</span> <span style="font-weight: bold">[</span>
+            <span style="color: #19177C">thru</span> <span style="color: #BA2121">{&quot;codigo&quot;&gt;}</span>
+            <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span> <span style="color: #408080; font-style: italic">; codigo da cidade ibge</span>
+            <span style="color: #19177C">thru</span> <span style="color: #BA2121">{&quot;gentilico&quot;&gt;}</span>
+            <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span> <span style="color: #408080; font-style: italic">; tratamento</span>
+              <span style="color: #666666">4</span> <span style="font-weight: bold">[</span>			  <span style="color: #408080; font-style: italic">; repete 4 vezes</span>
+                <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;&lt;td&gt;&quot;</span>
+                <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	  <span style="color: #408080; font-style: italic">; população / área / densidade demográfica / pib</span>
+              <span style="font-weight: bold">]</span>
+            <span style="font-weight: bold">]</span>
+          <span style="font-weight: bold">]</span>
+        <span style="font-weight: bold">]</span>
+        <span style="color: #0000FF">to</span> <span style="color: #19177C">end</span>
+      <span style="font-weight: bold">]</span>
+    <span style="font-weight: bold">]</span>
+  <span style="font-weight: bold">]</span>
+</pre></div>
+
+<p>Para processar uma página, basta ler e processar da seguinte forma (no caso o primeiro elemento da lista que é <strong>ac</strong>):</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #800080; font-weight: bold">page:</span> <span style="color: #0000FF">read</span> <span style="color: #008000; font-weight: bold">to-url</span> <span style="color: #19177C">rejoin</span> <span style="font-weight: bold">[</span><span style="color: #19177C">url</span> <span style="color: #19177C">estados</span><span style="color: #7D9029">/1</span><span style="font-weight: bold">]</span>
+  <span style="color: #800080; font-weight: bold">cidades:</span> <span style="color: #D2413A; font-weight: bold">parse</span> <span style="color: #19177C">page</span> <span style="color: #19177C">rule</span>
+</pre></div>
+
+<p>O resultado de cidades seria um bloco aninhado no formato [ <code>dados estado</code> [ <code>cidade</code> [ <code>dados cidade</code> ] ... ] ]</p>
+
+<pre><code>
+[ &quot;Acre&quot; 
+  &quot;AC&quot; 
+  &quot;Rio Branco&quot; 
+  &quot;22&quot; [
+    &quot;Acrelândia&quot; [
+      &quot;1200013&quot; 
+      &quot;acrelandense&quot; 
+      &quot;12.538&quot; 
+      &quot;1.807,95&quot; 
+      &quot;6,9&quot; &quot;200.194&quot;
+    ] 
+    &quot;Assis Brasil&quot; [
+      &quot;1200054&quot; 
+      &quot;assis-brasiliense&quot; 
+      &quot;6.072&quot; 
+      &quot;4.974,18&quot; 
+      &quot;1,2&quot; 
+      &quot;71.773&quot;
+    ]
+    ...
+    &quot;Xapuri&quot; [
+      &quot;1200708&quot; 
+      &quot;xapuriense&quot; 
+      &quot;16.091&quot; 
+      &quot;5.347,47&quot; 
+      &quot;3,0&quot; 
+      &quot;193.734&quot;
+    ]
+  ]   
+</code></pre>
+
+<p>Finalmente, para ler as páginas com os dados de todos os estados, aplicar as regras e gravar os resultados (municípios, etc) temos:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #008000">foreach</span> <span style="color: #19177C">es</span> <span style="color: #19177C">estados</span> <span style="font-weight: bold">[</span>
+    <span style="color: #800080; font-weight: bold">cidades:</span> <span style="color: #0000FF">copy</span> <span style="font-weight: bold">[]</span>
+    <span style="color: #800080; font-weight: bold">page:</span> <span style="color: #0000FF">read</span> <span style="color: #008000; font-weight: bold">to-url</span> <span style="color: #19177C">rejoin</span> <span style="font-weight: bold">[</span><span style="color: #19177C">url</span> <span style="color: #19177C">es</span><span style="font-weight: bold">]</span>
+    <span style="color: #D2413A; font-weight: bold">parse</span> <span style="color: #19177C">page</span> <span style="color: #19177C">rule</span>
+    <span style="color: #19177C">save</span> <span style="color: #008000; font-weight: bold">to-file</span> <span style="color: #19177C">es</span> <span style="color: #19177C">cidades</span>
+  <span style="font-weight: bold">]</span>
+</pre></div>
+
+<p>E teremos um arquivo para cada estado com os dados.</p>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Note que a  <strong>Introdução</strong> e <strong>Conclusão</strong> não fazem parte da LP (até poderiam fazer como se encontra neste documento). Apenas de *Prática em diante. Sendo assim, temos a documentação do nosso programa em diversos fragmentos. Cada fragmento que desejamos exportar tem a diretiva <code>:tangle yes</code>. Ao término, podemos pressionar <code>Ctrl + c Ctrl + e h h</code> e iremos gerar um arquivo html (podemos escolher outro formato com pdf, etc.) contendo a documentação como é vista aqui. E, ao pressionar <code>Ctrl + c Ctrl +-v t</code> iremos gerar o fonte do nosso programa que irá pegar todos os blocos marcados com <em>tanle</em> e gravar em um arquivo com o nome escolhido (ou nome do documento se for o casos). Se tivermos outras linguagens no documento, os blocos de cada linguagem serão juntados e gravados os respectivos programas. No caso aqui ficaria:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #19177C">Red</span> <span style="font-weight: bold">[]</span>
+  <span style="color: #800080; font-weight: bold">estados:</span> <span style="color: #BA2121">&quot;ac,al,ap,am,ba,ce,df,es,go,ma,mt,ms,mg,pa,pb,pr,pe,pi,rj,rn,rs,ro,rr,sc,sp,se,to&quot;</span>
+  <span style="color: #800080; font-weight: bold">estados:</span> <span style="color: #19177C">split</span> <span style="color: #19177C">estados</span> <span style="color: #BA2121">&quot;,&quot;</span>
+
+  <span style="color: #800080; font-weight: bold">url:</span> <span style="color: #BA2121">&quot;http://www.cidades.ibge.gov.br/download/mapa_e_municipios.php?uf=&quot;</span>
+
+  <span style="color: #800080; font-weight: bold">rule:</span> <span style="font-weight: bold">[</span>
+    <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;&lt;h1&gt;&quot;</span>	   <span style="color: #408080; font-style: italic">; posiciona após &lt;h1&gt;</span>
+    <span style="color: #19177C">collect</span> <span style="font-weight: bold">[</span>
+      <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot; -&quot;</span>		 <span style="color: #408080; font-style: italic">; nome do estado</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;- &quot;</span> <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	 <span style="color: #408080; font-style: italic">; sigla do estado</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;: &quot;</span> <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	 <span style="color: #408080; font-style: italic">; capital</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;: &quot;</span> <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>      <span style="color: #408080; font-style: italic">; num. municipios</span>
+      <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;&lt;tbody&gt;&quot;</span> <span style="font-weight: bold">[</span>	 <span style="color: #408080; font-style: italic">; pula cabeçalho &lt;thread&gt; para trabalhar com as cidades</span>
+        <span style="color: #19177C">collect</span> <span style="font-weight: bold">[</span>
+          <span style="color: #008000">any</span> <span style="font-weight: bold">[</span>
+            <span style="color: #19177C">thru</span> <span style="color: #BA2121">{&quot;nome&quot;&gt;}</span>
+            <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	<span style="color: #408080; font-style: italic">; nome da cidade</span>
+            <span style="color: #19177C">collect</span> <span style="font-weight: bold">[</span>
+            <span style="color: #19177C">thru</span> <span style="color: #BA2121">{&quot;codigo&quot;&gt;}</span>
+            <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span> <span style="color: #408080; font-style: italic">; codigo da cidade ibge</span>
+            <span style="color: #19177C">thru</span> <span style="color: #BA2121">{&quot;gentilico&quot;&gt;}</span>
+            <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span> <span style="color: #408080; font-style: italic">; tratamento</span>
+              <span style="color: #666666">4</span> <span style="font-weight: bold">[</span>			  <span style="color: #408080; font-style: italic">; repete 4 vezes</span>
+                <span style="color: #19177C">thru</span> <span style="color: #BA2121">&quot;&lt;td&gt;&quot;</span>
+                <span style="color: #19177C">keep</span> <span style="color: #0000FF">to</span> <span style="color: #BA2121">&quot;&lt;&quot;</span>	  <span style="color: #408080; font-style: italic">; população / área / densidade demográfica / pib</span>
+              <span style="font-weight: bold">]</span>
+            <span style="font-weight: bold">]</span>
+          <span style="font-weight: bold">]</span>
+        <span style="font-weight: bold">]</span>
+        <span style="color: #0000FF">to</span> <span style="color: #19177C">end</span>
+      <span style="font-weight: bold">]</span>
+    <span style="font-weight: bold">]</span>
+  <span style="font-weight: bold">]</span>
+
+  <span style="color: #008000">foreach</span> <span style="color: #19177C">es</span> <span style="color: #19177C">estados</span> <span style="font-weight: bold">[</span>
+    <span style="color: #800080; font-weight: bold">cidades:</span> <span style="color: #0000FF">copy</span> <span style="font-weight: bold">[]</span>
+    <span style="color: #800080; font-weight: bold">page:</span> <span style="color: #0000FF">read</span> <span style="color: #008000; font-weight: bold">to-url</span> <span style="color: #19177C">rejoin</span> <span style="font-weight: bold">[</span><span style="color: #19177C">url</span> <span style="color: #19177C">es</span><span style="font-weight: bold">]</span>
+    <span style="color: #D2413A; font-weight: bold">parse</span> <span style="color: #19177C">page</span> <span style="color: #19177C">rule</span>
+    <span style="color: #19177C">save</span> <span style="color: #008000; font-weight: bold">to-file</span> <span style="color: #19177C">es</span> <span style="color: #19177C">cidades</span>
+  <span style="font-weight: bold">]</span>
+</pre></div>
+
+<p>A parte de busca dos logradouros e ceps ficam de fora deste documento para que o mesmo não fique muito longo e por não saber se seria legal publicar como foram acessados.</p>
+
+<p>Caso você tenha lido até aqui, iniciei um <a href="/parse" title="manual">manual</a> do parse de Red em português. As atualizações do manual estarão no <a href="https://github.com/guaracy/red/tree/master/doc/parse" title="GitHub">GitHub</a>.</p>
 
   </section>
   <footer>
