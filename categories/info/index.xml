@@ -9,11 +9,74 @@
     <atom:link href="https://guaracy.github.io/categories/info/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Literate Programming</title>
+      <link>https://guaracy.github.io/2017/03/03/literate-programming/</link>
+      <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://guaracy.github.io/2017/03/03/literate-programming/</guid>
+      <description>&lt;h1 id=&#34;introdução&#34;&gt;Introdução&lt;/h1&gt;
+
+&lt;p&gt;Não vou traduzir &lt;a href=&#34;https://en.wikipedia.org/wiki/Literate_programming&#34; title=&#34;Literate Programming&#34;&gt;Literate Programming&lt;/a&gt; (LP) pois não gosto das traduções possíveis. Prefiro algo como &lt;em&gt;documento inteligente&lt;/em&gt;. Basicamente é o desenvolvimento de documentação/explanação lógica e programa simultâneamente. O emacs junto com o org-mode facilitam muito a tarefa pois:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Você pode executar os programas ou trecho do programa e incluir o resultado automaticamente no documento. Evita que uma alteração qualquer implique em executar o programa externamente, copiar e colar o resultado no documento podendo introduzir erros.&lt;/li&gt;
+&lt;li&gt;Você pode gerar automaticamente o programa ou os programas, mesmo juntando diversos fragmentos em um só ao final. Também evita a possível erros entre versões.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pessoalmente não utilizo para grandes projetos mas é interessante para pequenos projetos e, principalmente se desejamos publicá-lo.&lt;/p&gt;
+
+&lt;p&gt;No início eu disse que não gostava da tradução mas, como ficaria a trqadução em diversas linguas de &#34;Literate Programming&#34; pelo google translator?&lt;/p&gt;
+
+  Literate Programming
+
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;de&lt;/td&gt;
+&lt;td&gt;Literate Programmierung&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fr&lt;/td&gt;
+&lt;td&gt;Programmation alphabétique&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ar&lt;/td&gt;
+&lt;td&gt;البرمجة القراءة والكتابة&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ja&lt;/td&gt;
+&lt;td&gt;文学プログラミング&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;pt&lt;/td&gt;
+&lt;td&gt;Programação Alfabetizada&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;es&lt;/td&gt;
+&lt;td&gt;Programación alfabetizada&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;O que foi interessante nas traduções acima é que eu apenas digitei &#34;Literate Programming&#34; dentro de um bloco &lt;code&gt;#+BEGIN_SRC&lt;/code&gt; e &lt;code&gt;#+END_SRC&lt;/code&gt; indicando o programa ou rotina que interpretaria os dados, o idioma original e os idiomas destinos da tradução bem como o formato para a exportação dos dados (&lt;code&gt;translate :src en :dest de,fr,ar,ja,pt,es :exports both&lt;/code&gt;). Depois pressionei Ctrl+C Ctrl+C e as traduções foram buscadas automaticamente. Basta alterar o texto ou incluir/excluir alguma linguagem, pressionar a mesma sequência de teclas e o resultado será alterado (nem preciso excluir o resultado anterior).&lt;/p&gt;
+
+&lt;h1 id=&#34;prática&#34;&gt;Prática&lt;/h1&gt;
+
+&lt;p&gt;https://github.com/carteiro/ceps&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>De nikola para Hugo</title>
-      <link>https://guaracy.github.io/post/de-nikola-para-hugo/</link>
+      <link>https://guaracy.github.io/2017/03/02/de-nikola-para-hugo/</link>
       <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://guaracy.github.io/post/de-nikola-para-hugo/</guid>
+      <guid>https://guaracy.github.io/2017/03/02/de-nikola-para-hugo/</guid>
       <description>&lt;h1 id=&#34;introdução&#34;&gt;Introdução&lt;/h1&gt;
 
 &lt;p&gt;Um dos motivos para a utilização do nikola na primeira fase de construção deste site foi a possibilidade de trabalhar com arquivos no formato org-mode. É claro que as facilidades de instalação e &lt;em&gt;deploy&lt;/em&gt; influenciaram na escolha.&lt;/p&gt;

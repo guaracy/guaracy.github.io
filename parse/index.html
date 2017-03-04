@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+<!-- 2017-03-03 sex 21:31 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Red - Parse</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Guaracy Monteiro">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Red - Parse</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#section-intro">1. Introdução</a>
+<ul>
+<li><a href="#org3d483de">1.1. <span class="done DONE">DONE</span> Red</a></li>
+<li><a href="#orgab47ab3">1.2. <span class="done DONE">DONE</span> Parse</a></li>
+</ul>
+</li>
+<li><a href="#org708201f">2. Manipulação de dados</a>
+<ul>
+<li><a href="#orgb7b5c48">2.1. <span class="done DONE">DONE</span> Busca</a></li>
+<li><a href="#orgf581c9d">2.2. <span class="todo TODO">TODO</span> Substituição</a></li>
+<li><a href="#orgefaea3c">2.3. <span class="todo TODO">TODO</span> Divisão</a></li>
+</ul>
+</li>
+<li><a href="#orgb91ce3a">3. <span class="todo TODO">TODO</span> Parse</a>
+<ul>
+<li><a href="#orgba93ee8">3.1. <span class="todo TODO">TODO</span> Parse</a>
+<ul>
+<li><a href="#orgc0a3abc">3.1.1. <span class="todo TODO">TODO</span> Casamento</a></li>
+<li><a href="#orgfa39546">3.1.2. <span class="todo TODO">TODO</span> Fluxo de controle</a></li>
+<li><a href="#orgee8d702">3.1.3. <span class="todo TODO">TODO</span> Interação</a></li>
+<li><a href="#org69cead2">3.1.4. <span class="todo TODO">TODO</span> Extração</a></li>
+<li><a href="#orgfe85dbd">3.1.5. <span class="todo TODO">TODO</span> Modificação</a></li>
+</ul>
+</li>
+<li><a href="#orge1fc547">3.2. <span class="todo TODO">TODO</span> Dialetos</a></li>
+<li><a href="#orgdfd5a39">3.3. <span class="todo TODO">TODO</span> Trace</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#section-intro">1. Introdução</a>
+<ul>
+<li><a href="#org3d483de">1.1. <span class="done DONE">DONE</span> Red</a></li>
+<li><a href="#orgab47ab3">1.2. <span class="done DONE">DONE</span> Parse</a></li>
+</ul>
+</li>
+<li><a href="#org708201f">2. Manipulação de dados</a>
+<ul>
+<li><a href="#orgb7b5c48">2.1. <span class="done DONE">DONE</span> Busca</a></li>
+<li><a href="#orgf581c9d">2.2. <span class="todo TODO">TODO</span> Substituição</a></li>
+<li><a href="#orgefaea3c">2.3. <span class="todo TODO">TODO</span> Divisão</a></li>
+</ul>
+</li>
+<li><a href="#orgb91ce3a">3. <span class="todo TODO">TODO</span> Parse</a>
+<ul>
+<li><a href="#orgba93ee8">3.1. <span class="todo TODO">TODO</span> Parse</a>
+<ul>
+<li><a href="#orgc0a3abc">3.1.1. <span class="todo TODO">TODO</span> Casamento</a></li>
+<li><a href="#orgfa39546">3.1.2. <span class="todo TODO">TODO</span> Fluxo de controle</a></li>
+<li><a href="#orgee8d702">3.1.3. <span class="todo TODO">TODO</span> Interação</a></li>
+<li><a href="#org69cead2">3.1.4. <span class="todo TODO">TODO</span> Extração</a></li>
+<li><a href="#orgfe85dbd">3.1.5. <span class="todo TODO">TODO</span> Modificação</a></li>
+</ul>
+</li>
+<li><a href="#orge1fc547">3.2. <span class="todo TODO">TODO</span> Dialetos</a></li>
+<li><a href="#orgdfd5a39">3.3. <span class="todo TODO">TODO</span> Trace</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org10cedfb" class="outline-2">
+<h2 id="section-intro"><a id="org10cedfb"></a><span class="section-number-2">1</span> Introdução</h2>
+<div class="outline-text-2" id="text-section-intro">
+<p>
+A ideia inicial deste documento é apenas apresentar a função <b>parse</b> bem como algumas outras funções para a manipulação de dados.
+</p>
+</div>
+<div id="outline-container-org3d483de" class="outline-3">
+<h3 id="org3d483de"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Red</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Apesar da linguagem ser de fácil assimilação por quem já conhece programação, se você deseja mais informações sobre a linguagem, poderá obter no site de <a href="http://www.red-lang.org/">Red</a> e na <a href="https://en.wikipedia.org/wiki/Red_(programming_language)">Wikipedia</a>. Caso você não conheça a linguagem, por enquanto basta saber que é baseada em REBOL, pode ser interpretada ou compilada em diversos sistemas operacionais (Windows, Linux, Mac OSX, Android) e, mesmo beta, já é possível fazer muita coisa interessante com ela. Red ainda está em desenvolvimento.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #e67128;">"Documento baseado em:"</span>
+<span style="color: #00ede1; font-weight: bold;">about</span>
+</pre>
+</div>
+
+<pre class="example">
+Documento baseado em:
+Red 0.6.1 - 3-Mar-2017/10:39:16-3:00
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgab47ab3" class="outline-3">
+<h3 id="orgab47ab3"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Parse</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Apenas dizer que o <b>parse</b> é o substituto usado por Red para <a href="https://pt.wikipedia.org/wiki/Express%C3%A3o_regular">expressões regulares</a> é omitir parte do todo. Seria como dizer que o <b>emacs</b> é um editor de texto. O <b>parse</b> é um dialeto (termo utilizado em Red para <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>) para analisar uma entrada utilizando regras de gramática. O uso comum é para a validação de informações, extração e modificação de dados e até mesmo para a criação de um dialeto (DSL).
+</p>
+
+<p>
+O parse foi desenvolvido na própria linguagem (na realidade na versão de baixo nível de Red chamada de Red/System que equivaleria a linguagem C) e atualmente conta com menos de 1800 linhas de <a href="https://github.com/red/red/blob/master/runtime/parse.reds">código</a>. O fato de ser desenvolvido na própria linguagem, além de mostrar uma sintaxe semelhante (diferente de uma regexp) permite uma total integração com o programa.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org708201f" class="outline-2">
+<h2 id="org708201f"><span class="section-number-2">2</span> Manipulação de dados</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Como Red é uma linguagem <a href="https://en.wikipedia.org/wiki/Homoiconicity">homoicônica</a>, quando falamos de dados podemos nos referir a um texto ou bloco de programa.
+</p>
+</div>
+
+<div id="outline-container-orgb7b5c48" class="outline-3">
+<h3 id="orgb7b5c48"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Busca</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Para a busca, utilizamos <code>find</code>. A sua definição (note que TBD significa que o refinamento ainda não foi criado pois estamos em uma versão beta) é a seguinte: 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span style="color: #00ede1; font-weight: bold;">help</span> <span style="color: #00ede1; font-weight: bold;">find</span>
+</pre>
+</div>
+
+<pre class="example">
+USAGE:
+      find series value /part length /only /case /same /any /with wild /skip size /last /reverse /tail /match
+
+DESCRIPTION:
+      Returns the series where a value is found, or NONE. 
+      find is of type: action! 
+
+ARGUMENTS:
+     series   [series! bitset! typeset! any-object! map! none!] 
+     value   [any-type!] 
+
+REFINEMENTS:
+     /part  =&gt; Limit the length of the search. 
+         length   [number! series!] 
+     /only  =&gt; Treat a series search value as a single value. 
+     /case  =&gt; Perform a case-sensitive search. 
+     /same  =&gt; Use "same?" as comparator. 
+     /any  =&gt; TBD: Use * and ? wildcards in string searches. 
+     /with  =&gt; TBD: Use custom wildcards in place of * and ?. 
+         wild   [string!] 
+     /skip  =&gt; Treat the series as fixed size records. 
+         size   [integer!] 
+     /last  =&gt; Find the last occurrence of value, from the tail. 
+     /reverse  =&gt; Find the last occurrence of value, from the current index. 
+     /tail  =&gt; Return the tail of the match found, rather than the head. 
+     /match  =&gt; Match at current index only and return tail of match.
+</pre>
+
+<p>
+Alguns exemplos de utilização em uma sequência de caracteres:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span style="color: #dbdb95;">s:</span> <span style="color: #e67128;">"nome:fulano;cidade:porto alegre;fone res:3322-7744;fone coml:3422-8855"</span>
+<span class="linenr">2: </span><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #00ede1; font-weight: bold;">find</span> s <span style="color: #e67128;">"fone"</span>
+<span class="linenr">3: </span><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #00ede1; font-weight: bold;">find</span>/<span style="color: #00ede1; font-weight: bold;">last</span> s <span style="color: #e67128;">"fone"</span>
+<span class="linenr">4: </span><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #00ede1; font-weight: bold;">find</span>/<span style="color: #00ede1; font-weight: bold;">case</span> s <span style="color: #e67128;">"Res:"</span>
+<span class="linenr">5: </span><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #00ede1; font-weight: bold;">find</span> s <span style="color: #e67128;">"Res:"</span>
+<span class="linenr">6: </span><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #00ede1; font-weight: bold;">find</span>/<span style="color: #00ede1; font-weight: bold;">tail</span> s <span style="color: #e67128;">"res:"</span>
+</pre>
+</div>
+
+<pre class="example">
+fone res:3322-7744;fone coml:3422-8855
+fone coml:3422-8855
+none
+res:3322-7744;fone coml:3422-8855
+3322-7744;fone coml:3422-8855
+</pre>
+
+<p>
+Aplicando <code>find</code> em um bloco (considere uma matriz):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span style="color: #dbdb95;">nome:</span> <span style="color: #e67128;">"Manoel"</span>
+<span class="linenr">2: </span><span style="color: #dbdb95;">blk:</span> <span style="color: #8c8c8c;">[</span><span style="color: #008b8b;">23</span> <span style="color: #008b8b;">50%</span> <span style="color: #008b8b;">255.5.45</span> <span style="color: #008b8b;">34.67</span> nome <span style="color: #008b8b;">18%</span> <span style="color: #008b8b;">5x2</span><span style="color: #8c8c8c;">]</span>
+<span class="linenr">3: </span><span style="color: #00ede1; font-weight: bold;">probe</span> <span style="color: #00ede1; font-weight: bold;">find</span> blk <span style="color: #34cae2;">pair!</span>
+<span class="linenr">4: </span><span style="color: #00ede1; font-weight: bold;">probe</span> <span style="color: #00ede1; font-weight: bold;">find</span> blk <span style="color: #34cae2;">word!</span>
+<span class="linenr">5: </span><span style="color: #00ede1; font-weight: bold;">probe</span> <span style="color: #00ede1; font-weight: bold;">find</span> blk <span style="color: #34cae2;">percent!</span>
+<span class="linenr">6: </span><span style="color: #00ede1; font-weight: bold;">probe</span> <span style="color: #00ede1; font-weight: bold;">find</span> blk <span style="color: #34cae2;">tuple!</span>
+<span class="linenr">7: </span><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #00ede1; font-weight: bold;">find</span> blk <span style="color: #34cae2;">word!</span>
+<span class="linenr">8: </span><span style="color: #00ede1; font-weight: bold;">print</span> <span style="color: #00ede1; font-weight: bold;">find</span> blk <span style="color: #34cae2;">float!</span>
+</pre>
+</div>
+
+<pre class="example">
+[5x2]
+[nome 18% 5x2]
+[50% 255.5.45 34.67 nome 18% 5x2]
+[255.5.45 34.67 nome 18% 5x2]
+Manoel 18% 5x2
+34.67 Manoel 18% 5x2
+</pre>
+
+<div class="tip">
+<p>
+Note que no exemplo anterior, print avaliou o bloco e retornou o contepudo da palavra <code>nome</code>. 
+</p>
+
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf581c9d" class="outline-3">
+<h3 id="orgf581c9d"><span class="section-number-3">2.2</span> <span class="todo TODO">TODO</span> Substituição</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span style="color: #00ede1; font-weight: bold;">help</span> <span style="color: #00ede1; font-weight: bold;">replace</span>
+</pre>
+</div>
+
+<pre class="example">
+USAGE:
+      replace series pattern value /all
+ARGUMENTS:
+     series   [series!] 
+     pattern 
+     value 
+
+REFINEMENTS:
+     /all
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgefaea3c" class="outline-3">
+<h3 id="orgefaea3c"><span class="section-number-3">2.3</span> <span class="todo TODO">TODO</span> Divisão</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-red"><span style="color: #00ede1; font-weight: bold;">help</span> <span style="color: #00ede1; font-weight: bold;">split</span>
+</pre>
+</div>
+
+<pre class="example">
+USAGE:
+      split series dlm
+
+DESCRIPTION:
+      Break a string series into pieces using the provided delimiters. 
+      split is of type: function! 
+
+ARGUMENTS:
+     series   [any-string!] 
+     dlm   [string! char! bitset!] 
+
+REFINEMENTS:
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb91ce3a" class="outline-2">
+<h2 id="orgb91ce3a"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Parse</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgba93ee8" class="outline-3">
+<h3 id="orgba93ee8"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Parse</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-red"><span style="color: #00ede1; font-weight: bold;">help</span> <span style="color: #00ede1; font-weight: bold;">parse</span>
+</pre>
+</div>
+
+<pre class="example">
+USAGE:
+      parse input rules /case /part length /trace callback
+ARGUMENTS:
+     input   [binary! any-block! any-string!] 
+     rules   [block!] 
+
+REFINEMENTS:
+     /case 
+     /part 
+         length   [number! series!] 
+     /trace 
+         callback   [function! [
+    event [word!] 
+    match? [logic!] 
+    rule [block!] 
+    input [series!] 
+    stack [block!] 
+    return: [logic!]
+]]
+</pre>
+
+<p>
+The Parse dialect
+</p>
+
+<p>
+Parse's core principles are:
+</p>
+
+<ul class="org-ul">
+<li>Advance input series by matching grammar rules until top-level rule failure (returning false) or input exhaustion (returning true). (*)</li>
+<li>Ordered choices (e.g. in ["a" | "ab"] rule, the second one will never succeed).</li>
+<li>Rules composability (unlimited).</li>
+<li>Limited backtracking: only input and rules positions are backtracked, other changes remain.</li>
+<li>Two modes: string-parsing (for example: external DSL) or block-parsing (for example: embedded DSL).</li>
+</ul>
+
+<p>
+(*) If collect keyword is used in any rule in its simplest form, a block will be returned by parse no matter if the root rule succeeded or not.
+</p>
+
+
+<p>
+The Parse rules can be made from:
+</p>
+
+<ul class="org-ul">
+<li><code>keyword</code> : a dialect reserved word (see the tables below).</li>
+<li><code>word</code> : word will be evaluated and its value used as a rule.</li>
+<li><code>word:</code> : set the word to the current input position.</li>
+<li><code>:word</code> : resume input at the position referenced by the word.</li>
+<li><code>integer value</code> : specify an iterated rule with a fixed number or a range of iterations.</li>
+<li><code>value</code> : match the input to a value</li>
+<li><code>|</code> : backtrack and match next alternate rule</li>
+<li><code>[rules]</code> : a block of sub-rules</li>
+<li><code>(expression)</code> : escape the Parse dialect, evaluate a Red expression and return to the Parse dialect.</li>
+</ul>
+
+<p>
+The following keywords are currently available in Red's Parse implementation. They can be composed together freely.
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Matching</b></td>
+<td class="org-left"><a href="#org6348420">ahead</a> rule</td>
+<td class="org-left">look-ahead rule, match the rule, but do not advance input</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org8bba497">end</a></td>
+<td class="org-left">return success if current input position is at end</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org15b2afe">none</a></td>
+<td class="org-left">always return success (catch-all rule)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org21e141c">not</a> rule</td>
+<td class="org-left">invert the result of the sub-rule</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgbaee01f">opt</a> rule</td>
+<td class="org-left">look-ahead rule, optionally match the rule</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org3b91265">quote</a> value</td>
+<td class="org-left">match next value literally (for dialect escaping needs)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgeea2d1c">skip</a></td>
+<td class="org-left">advance the input by one element (a character or a value)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org23af4ec">thru</a> rule</td>
+<td class="org-left">advance input until rule matches, input is set past the match</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgf8f53be">to</a> rule</td>
+<td class="org-left">advance input until rule matches, input is set at head of the match</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Control flow</b></td>
+<td class="org-left"><a href="#org5fce7af">break</a></td>
+<td class="org-left">break out of a matching loop, returning success</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org3226fd1">if</a> (expr)</td>
+<td class="org-left">evaluate the Red expression, if false or none, fail and backtrack</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org4fe01e5">into</a> rule</td>
+<td class="org-left">switch input to matched series (string or block) and parse it with rule</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgb13b129">fail</a></td>
+<td class="org-left">force current rule to fail and backtrack</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orga278ae0">then</a></td>
+<td class="org-left">regardless of failure or success of what follows, skip the next alternate rule</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgf451f1f">reject</a></td>
+<td class="org-left">break out of a matching loop, returning failure</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Iteration</b></td>
+<td class="org-left"><a href="#orgcbe3c7d">any</a> rule</td>
+<td class="org-left">repeat rule zero or more times until failure or if input does not advance</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org7f9998d">some</a> rule</td>
+<td class="org-left">repeat rule one or more times until failure or if input does not advance</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org8e20d7c">while</a> rule</td>
+<td class="org-left">repeat rule zero or more times until failure regardless of input advancing</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Extraction</b></td>
+<td class="org-left"><a href="#org93261d7">collect</a> [rule]</td>
+<td class="org-left">return a block of collected values from the matched rule</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgb576b4c">collect</a> set word [rule]</td>
+<td class="org-left">collect values from the matched rule, in a block and set the word to it</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgaa4c98a">collect</a> into word [rule]</td>
+<td class="org-left">collect values from the matched rule and insert them in the block referred by word</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org218a3d3">copy</a> word rule</td>
+<td class="org-left">set the word to a copy of the matched input</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org0186f62">keep</a> rule</td>
+<td class="org-left">append a copy of the matched input to the collecting block</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgd360a6e">keep</a> (expr)</td>
+<td class="org-left">append the last value from the Red expression to the collecting block</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org2ac4ac1">set</a> word rule</td>
+<td class="org-left">set the word to the first value of the matched input</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Modification</b></td>
+<td class="org-left"><a href="#org94d0069">insert</a> only value</td>
+<td class="org-left">insert[/only] a value at the current input position and advance input after the value</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org79325ee">remove</a> rule</td>
+<td class="org-left">remove the matched input</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgc0a3abc" class="outline-4">
+<h4 id="orgc0a3abc"><span class="section-number-4">3.1.1</span> <span class="todo TODO">TODO</span> Casamento</h4>
+<div class="outline-text-4" id="text-3-1-1">
+</div><ol class="org-ol"><li><a id="org5716cdc"></a><a id="org6348420"></a>ahead<br></li>
+<li><a id="org24cddee"></a><a id="org8bba497"></a>end<br></li>
+<li><a id="orgf291884"></a><a id="org15b2afe"></a>none<br></li>
+<li><a id="org1844e8f"></a><a id="org21e141c"></a>not rule<br></li>
+<li><a id="org19e13ce"></a><a id="orgbaee01f"></a>opt rule<br></li>
+<li><a id="orged8556e"></a><a id="org3b91265"></a>quote value<br></li>
+<li><a id="orgf7c7f34"></a><a id="orgeea2d1c"></a>skip<br></li>
+<li><a id="org478166b"></a><a id="org23af4ec"></a>thru rule<br></li>
+<li><a id="orgdfe5ce0"></a><a id="orgf8f53be"></a>to rule<br></li></ol>
+</div>
+<div id="outline-container-orgfa39546" class="outline-4">
+<h4 id="orgfa39546"><span class="section-number-4">3.1.2</span> <span class="todo TODO">TODO</span> Fluxo de controle</h4>
+<div class="outline-text-4" id="text-3-1-2">
+</div><ol class="org-ol"><li><a id="org06bb961"></a><a id="org5fce7af"></a>break<br></li>
+<li><a id="orge3ed033"></a><a id="org3226fd1"></a>if (expr)<br></li>
+<li><a id="org3f40dda"></a><a id="org4fe01e5"></a>into rule<br></li>
+<li><a id="orga95744f"></a><a id="orgb13b129"></a>fail<br></li>
+<li><a id="org4af1ee6"></a><a id="orga278ae0"></a>then<br></li>
+<li><a id="org02fb78d"></a><a id="orgf451f1f"></a>reject<br></li></ol>
+</div>
+<div id="outline-container-orgee8d702" class="outline-4">
+<h4 id="orgee8d702"><span class="section-number-4">3.1.3</span> <span class="todo TODO">TODO</span> Interação</h4>
+<div class="outline-text-4" id="text-3-1-3">
+</div><ol class="org-ol"><li><a id="orgac974c9"></a><a id="orgcbe3c7d"></a>any rule<br></li>
+<li><a id="orgaf38418"></a><a id="org7f9998d"></a>some rule<br></li>
+<li><a id="org535a283"></a><a id="org8e20d7c"></a>while rule<br></li></ol>
+</div>
+<div id="outline-container-org69cead2" class="outline-4">
+<h4 id="org69cead2"><span class="section-number-4">3.1.4</span> <span class="todo TODO">TODO</span> Extração</h4>
+<div class="outline-text-4" id="text-3-1-4">
+</div><ol class="org-ol"><li><a id="org08dce0a"></a><a id="org93261d7"></a>collect rule<br></li>
+<li><a id="orgd948acd"></a><a id="orgb576b4c"></a>collect set word rule<br></li>
+<li><a id="org0fc6107"></a><a id="orgaa4c98a"></a>collect into word rule<br></li>
+<li><a id="org686e456"></a><a id="org218a3d3"></a>copy word rule<br></li>
+<li><a id="org81a53d3"></a><a id="org0186f62"></a>keep rule<br></li>
+<li><a id="org40de1e9"></a><a id="orgd360a6e"></a>keep (expr)<br></li>
+<li><a id="org86fc106"></a><a id="org2ac4ac1"></a>set word rule<br></li></ol>
+</div>
+<div id="outline-container-orgfe85dbd" class="outline-4">
+<h4 id="orgfe85dbd"><span class="section-number-4">3.1.5</span> <span class="todo TODO">TODO</span> Modificação</h4>
+<div class="outline-text-4" id="text-3-1-5">
+</div><ol class="org-ol"><li><a id="org73ee9c0"></a><a id="org94d0069"></a>insert only value<br></li>
+<li><a id="orgc49eb5f"></a><a id="org79325ee"></a>remove rule<br></li></ol>
+</div>
+</div>
+
+
+<div id="outline-container-orge1fc547" class="outline-3">
+<h3 id="orge1fc547"><span class="section-number-3">3.2</span> <span class="todo TODO">TODO</span> Dialetos</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+parse
+</p>
+</div>
+</div>
+<div id="outline-container-orgdfd5a39" class="outline-3">
+<h3 id="orgdfd5a39"><span class="section-number-3">3.3</span> <span class="todo TODO">TODO</span> Trace</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+callback
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Guaracy Monteiro</p>
+<p class="date">Created: 2017-03-03 sex 21:31</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -10,10 +10,10 @@
     
     <item>
       <title>De nikola para Hugo</title>
-      <link>https://guaracy.github.io/post/de-nikola-para-hugo/</link>
+      <link>https://guaracy.github.io/2017/03/02/de-nikola-para-hugo/</link>
       <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://guaracy.github.io/post/de-nikola-para-hugo/</guid>
+      <guid>https://guaracy.github.io/2017/03/02/de-nikola-para-hugo/</guid>
       <description>&lt;h1 id=&#34;introdução&#34;&gt;Introdução&lt;/h1&gt;
 
 &lt;p&gt;Um dos motivos para a utilização do nikola na primeira fase de construção deste site foi a possibilidade de trabalhar com arquivos no formato org-mode. É claro que as facilidades de instalação e &lt;em&gt;deploy&lt;/em&gt; influenciaram na escolha.&lt;/p&gt;
