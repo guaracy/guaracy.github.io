@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt_br">
+<html lang="pt_BR">
 <head>
-<!-- 2017-03-04 sáb 09:18 -->
+<!-- 2017-03-07 ter 16:55 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Red - Parse</title>
@@ -234,107 +234,127 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Red - Parse</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#section-intro">1. Introdução</a>
+<li><a href="#section-intro">1. <span class="done DONE">DONE</span> Introdução</a>
 <ul>
-<li><a href="#orgae70b9f">1.1. <span class="done DONE">DONE</span> Red</a></li>
-<li><a href="#orgc44c3c1">1.2. <span class="done DONE">DONE</span> Parse</a></li>
+<li><a href="#org5da0f45">1.1. <span class="done DONE">DONE</span> Red</a></li>
+<li><a href="#org3a85bc1">1.2. <span class="done DONE">DONE</span> Parse</a></li>
 </ul>
 </li>
-<li><a href="#org34dc322">2. Manipulação de dados</a>
+<li><a href="#org26809db">2. <span class="done DONE">DONE</span> Manipulação de dados</a>
 <ul>
-<li><a href="#org741c4ea">2.1. <span class="done DONE">DONE</span> Busca</a></li>
-<li><a href="#org4a5f274">2.2. <span class="todo TODO">TODO</span> Substituição</a></li>
-<li><a href="#org46acd01">2.3. <span class="todo TODO">TODO</span> Divisão</a></li>
+<li><a href="#org7e3137b">2.1. <span class="done DONE">DONE</span> Busca</a></li>
+<li><a href="#org77c4e31">2.2. <span class="done DONE">DONE</span> Substituição</a></li>
+<li><a href="#orgf97e1ea">2.3. <span class="done DONE">DONE</span> Divisão</a></li>
 </ul>
 </li>
-<li><a href="#org52fbaca">3. <span class="todo TODO">TODO</span> Parse</a>
+<li><a href="#orgc7d06ef">3. <span class="todo TODO">TODO</span> Parse</a>
 <ul>
-<li><a href="#org3ab4691">3.1. Sintaxe</a></li>
-<li><a href="#org1aba257">3.2. <span class="todo TODO">TODO</span> Dialeto</a>
+<li><a href="#org03f84c1">3.1. <span class="done DONE">DONE</span> Sintaxe</a></li>
+<li><a href="#orgad48a6a">3.2. <span class="todo TODO">TODO</span> Dialeto</a>
 <ul>
-<li><a href="#org85373e0">3.2.1. <span class="todo TODO">TODO</span> Casamento</a></li>
-<li><a href="#org65cc89a">3.2.2. <span class="todo TODO">TODO</span> Fluxo de controle</a></li>
-<li><a href="#orgc0ec7fb">3.2.3. <span class="todo TODO">TODO</span> Interação</a></li>
-<li><a href="#org8631cd1">3.2.4. <span class="todo TODO">TODO</span> Extração</a></li>
-<li><a href="#org25fbbde">3.2.5. <span class="todo TODO">TODO</span> Modificação</a></li>
+<li><a href="#org4fd6c25">3.2.1. <span class="todo TODO">TODO</span> Casamento</a></li>
+<li><a href="#orgdf1670d">3.2.2. <span class="todo TODO">TODO</span> Fluxo de controle</a></li>
+<li><a href="#org351d875">3.2.3. <span class="todo TODO">TODO</span> Interação</a></li>
+<li><a href="#org3269878">3.2.4. <span class="todo TODO">TODO</span> Extração</a></li>
+<li><a href="#org68002c1">3.2.5. <span class="todo TODO">TODO</span> Modificação</a></li>
 </ul>
 </li>
-<li><a href="#org3af08f0">3.3. <span class="todo TODO">TODO</span> Dialetos</a></li>
-<li><a href="#org96b3bc4">3.4. <span class="todo TODO">TODO</span> Trace</a></li>
+<li><a href="#orgc26a476">3.3. <span class="todo TODO">TODO</span> Dialetos</a></li>
+<li><a href="#org1ca54d3">3.4. <span class="todo TODO">TODO</span> Trace</a>
+<ul>
+<li><a href="#orgc57840f">3.4.1. parse-trace</a></li>
+<li><a href="#org4d48fc3">3.4.2. callback</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
+<div class="status" id="postamble">
+<p>
+<b>Autor</b> : Guaracy Monteiro <br>
+<b>Data</b> : 2017-03-07 16:54:55
+</p>
+</div>
+
+
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#section-intro">1. Introdução</a>
+<li><a href="#section-intro">1. <span class="done DONE">DONE</span> Introdução</a>
 <ul>
-<li><a href="#orgae70b9f">1.1. <span class="done DONE">DONE</span> Red</a></li>
-<li><a href="#orgc44c3c1">1.2. <span class="done DONE">DONE</span> Parse</a></li>
+<li><a href="#org5da0f45">1.1. <span class="done DONE">DONE</span> Red</a></li>
+<li><a href="#org3a85bc1">1.2. <span class="done DONE">DONE</span> Parse</a></li>
 </ul>
 </li>
-<li><a href="#org34dc322">2. Manipulação de dados</a>
+<li><a href="#org26809db">2. <span class="done DONE">DONE</span> Manipulação de dados</a>
 <ul>
-<li><a href="#org741c4ea">2.1. <span class="done DONE">DONE</span> Busca</a></li>
-<li><a href="#org4a5f274">2.2. <span class="todo TODO">TODO</span> Substituição</a></li>
-<li><a href="#org46acd01">2.3. <span class="todo TODO">TODO</span> Divisão</a></li>
+<li><a href="#org7e3137b">2.1. <span class="done DONE">DONE</span> Busca</a></li>
+<li><a href="#org77c4e31">2.2. <span class="done DONE">DONE</span> Substituição</a></li>
+<li><a href="#orgf97e1ea">2.3. <span class="done DONE">DONE</span> Divisão</a></li>
 </ul>
 </li>
-<li><a href="#org52fbaca">3. <span class="todo TODO">TODO</span> Parse</a>
+<li><a href="#orgc7d06ef">3. <span class="todo TODO">TODO</span> Parse</a>
 <ul>
-<li><a href="#org3ab4691">3.1. Sintaxe</a></li>
-<li><a href="#org1aba257">3.2. <span class="todo TODO">TODO</span> Dialeto</a>
+<li><a href="#org03f84c1">3.1. <span class="done DONE">DONE</span> Sintaxe</a></li>
+<li><a href="#orgad48a6a">3.2. <span class="todo TODO">TODO</span> Dialeto</a>
 <ul>
-<li><a href="#org85373e0">3.2.1. <span class="todo TODO">TODO</span> Casamento</a></li>
-<li><a href="#org65cc89a">3.2.2. <span class="todo TODO">TODO</span> Fluxo de controle</a></li>
-<li><a href="#orgc0ec7fb">3.2.3. <span class="todo TODO">TODO</span> Interação</a></li>
-<li><a href="#org8631cd1">3.2.4. <span class="todo TODO">TODO</span> Extração</a></li>
-<li><a href="#org25fbbde">3.2.5. <span class="todo TODO">TODO</span> Modificação</a></li>
+<li><a href="#org4fd6c25">3.2.1. <span class="todo TODO">TODO</span> Casamento</a></li>
+<li><a href="#orgdf1670d">3.2.2. <span class="todo TODO">TODO</span> Fluxo de controle</a></li>
+<li><a href="#org351d875">3.2.3. <span class="todo TODO">TODO</span> Interação</a></li>
+<li><a href="#org3269878">3.2.4. <span class="todo TODO">TODO</span> Extração</a></li>
+<li><a href="#org68002c1">3.2.5. <span class="todo TODO">TODO</span> Modificação</a></li>
 </ul>
 </li>
-<li><a href="#org3af08f0">3.3. <span class="todo TODO">TODO</span> Dialetos</a></li>
-<li><a href="#org96b3bc4">3.4. <span class="todo TODO">TODO</span> Trace</a></li>
+<li><a href="#orgc26a476">3.3. <span class="todo TODO">TODO</span> Dialetos</a></li>
+<li><a href="#org1ca54d3">3.4. <span class="todo TODO">TODO</span> Trace</a>
+<ul>
+<li><a href="#orgc57840f">3.4.1. parse-trace</a></li>
+<li><a href="#org4d48fc3">3.4.2. callback</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfc6081c" class="outline-2">
-<h2 id="section-intro"><a id="orgfc6081c"></a><span class="section-number-2">1</span> Introdução</h2>
+<div id="outline-container-org0a6bde0" class="outline-2">
+<h2 id="section-intro"><a id="org0a6bde0"></a><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Introdução</h2>
 <div class="outline-text-2" id="text-section-intro">
 <p>
-A ideia inicial deste documento é apenas apresentar a função <b>parse</b> bem como algumas outras funções para a manipulação de dados.
+A ideia inicial deste documento é apenas apresentar a função <b>parse</b> bem como algumas outras funções que facilitam a manipulação de dados.
 </p>
 </div>
-<div id="outline-container-orgae70b9f" class="outline-3">
-<h3 id="orgae70b9f"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Red</h3>
+<div id="outline-container-org5da0f45" class="outline-3">
+<h3 id="org5da0f45"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Red</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-Apesar da linguagem ser de fácil assimilação por quem já conhece programação, se você deseja mais informações sobre a linguagem, poderá obter no site de <a href="http://www.red-lang.org/">Red</a> e na <a href="https://en.wikipedia.org/wiki/Red_(programming_language)">Wikipedia</a>. Caso você não conheça a linguagem, por enquanto basta saber que é baseada em REBOL, pode ser interpretada ou compilada em diversos sistemas operacionais (Windows, Linux, Mac OSX, Android) e, mesmo beta, já é possível fazer muita coisa interessante com ela. Red ainda está em desenvolvimento.
+Apesar da linguagem ser de fácil assimilação por quem já conhece programação, se você deseja mais informações sobre a linguagem, poderá obter em <a href="http://www.red-by-example.org/">Red by Example</a>, no <a href="https://doc.red-lang.org/en/">GitBook</a> (em desenvolvimento), no site de <a href="http://www.red-lang.org/">Red</a> e na <a href="https://en.wikipedia.org/wiki/Red_(programming_language)">Wikipedia</a>. Caso você não conheça a linguagem, por enquanto basta saber que é baseada em REBOL, pode ser interpretada ou compilada em diversos sistemas operacionais (Windows, Linux, Mac OSX, Android) e, mesmo beta, já é possível fazer muita coisa interessante com ela. Red ainda está em desenvolvimento.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-red"><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #4E9A06;">"Documento baseado em:"</span>
-<span style="color: #00578E; font-weight: bold;">about</span>
+<pre class="src src-red"><span class="org-function-name">print</span> <span class="org-string">"Documento baseado em:"</span>
+<span class="org-function-name">about</span>
+<span class="org-function-name">print</span> <span class="org-function-name">system</span>/platform
 </pre>
 </div>
 
 <pre class="example">
 Documento baseado em:
-Red 0.6.1 - 3-Mar-2017/10:39:16-3:00
+Red 0.6.1 - 7-Mar-2017/11:47:20-3:00
+Linux
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgc44c3c1" class="outline-3">
-<h3 id="orgc44c3c1"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Parse</h3>
+<div id="outline-container-org3a85bc1" class="outline-3">
+<h3 id="org3a85bc1"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Parse</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Apenas dizer que o <b>parse</b> é o substituto usado por Red para <a href="https://pt.wikipedia.org/wiki/Express%C3%A3o_regular">expressões regulares</a> é omitir parte do todo. Seria como dizer que o <b>emacs</b> é um editor de texto. O <b>parse</b> é um dialeto (termo utilizado em Red para <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>) para analisar uma entrada utilizando regras de gramática. O uso comum é para a validação de informações, extração e modificação de dados e até mesmo para a criação de um dialeto (DSL).
@@ -346,8 +366,8 @@ O parse foi desenvolvido na própria linguagem (na realidade na versão de baixo
 </div>
 </div>
 </div>
-<div id="outline-container-org34dc322" class="outline-2">
-<h2 id="org34dc322"><span class="section-number-2">2</span> Manipulação de dados</h2>
+<div id="outline-container-org26809db" class="outline-2">
+<h2 id="org26809db"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> Manipulação de dados</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Como Red é uma linguagem <a href="https://en.wikipedia.org/wiki/Homoiconicity">homoicônica</a>, quando falamos de dados podemos nos referir a um texto ou bloco de programa. Apesar de ser possível fazer tudo com o Parse, foram criadas algumas funções para facilitar alguns procedimentos mais utilizados, como veremos a seguir. 
@@ -356,15 +376,15 @@ Como Red é uma linguagem <a href="https://en.wikipedia.org/wiki/Homoiconicity">
 
 
 
-<div id="outline-container-org741c4ea" class="outline-3">
-<h3 id="org741c4ea"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Busca</h3>
+<div id="outline-container-org7e3137b" class="outline-3">
+<h3 id="org7e3137b"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Busca</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Para a busca, utilizamos <code>find</code>. A sua definição (note que TBD significa que o refinamento ainda não foi criado pois estamos em uma versão beta) é a seguinte: 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-red"><span style="color: #00578E; font-weight: bold;">help</span> <span style="color: #00578E; font-weight: bold;">find</span>
+<pre class="src src-red"><span class="org-function-name">help</span> <span class="org-function-name">find</span>
 </pre>
 </div>
 
@@ -402,12 +422,12 @@ Alguns exemplos de utilização em uma sequência de caracteres:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-red"><span class="linenr">1: </span><span style="color: #0084C8; font-weight: bold;">s:</span> <span style="color: #4E9A06;">"nome:fulano;cidade:porto alegre;fone res:3322-7744;fone coml:3422-8855"</span>
-<span class="linenr">2: </span><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #00578E; font-weight: bold;">find</span> s <span style="color: #4E9A06;">"fone"</span>
-<span class="linenr">3: </span><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #00578E; font-weight: bold;">find</span>/<span style="color: #00578E; font-weight: bold;">last</span> s <span style="color: #4E9A06;">"fone"</span>
-<span class="linenr">4: </span><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #00578E; font-weight: bold;">find</span>/<span style="color: #00578E; font-weight: bold;">case</span> s <span style="color: #4E9A06;">"Res:"</span>
-<span class="linenr">5: </span><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #00578E; font-weight: bold;">find</span> s <span style="color: #4E9A06;">"Res:"</span>
-<span class="linenr">6: </span><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #00578E; font-weight: bold;">find</span>/<span style="color: #00578E; font-weight: bold;">tail</span> s <span style="color: #4E9A06;">"res:"</span>
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-variable-name">s:</span> <span class="org-string">"nome:fulano;cidade:porto alegre;fone res:3322-7744;fone coml:3422-8855"</span>
+<span class="linenr">2: </span><span class="org-function-name">print</span> <span class="org-function-name">find</span> s <span class="org-string">"fone"</span>
+<span class="linenr">3: </span><span class="org-function-name">print</span> <span class="org-function-name">find</span>/<span class="org-function-name">last</span> s <span class="org-string">"fone"</span>
+<span class="linenr">4: </span><span class="org-function-name">print</span> <span class="org-function-name">find</span>/<span class="org-function-name">case</span> s <span class="org-string">"Res:"</span>
+<span class="linenr">5: </span><span class="org-function-name">print</span> <span class="org-function-name">find</span> s <span class="org-string">"Res:"</span>
+<span class="linenr">6: </span><span class="org-function-name">print</span> <span class="org-function-name">find</span>/<span class="org-function-name">tail</span> s <span class="org-string">"res:"</span>
 </pre>
 </div>
 
@@ -420,18 +440,18 @@ res:3322-7744;fone coml:3422-8855
 </pre>
 
 <p>
-Aplicando <code>find</code> em um bloco (considere uma matriz):
+Aplicando <code>find</code> em um bloco (considere uma lista):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-red"><span class="linenr">1: </span><span style="color: #0084C8; font-weight: bold;">nome:</span> <span style="color: #4E9A06;">"Manoel"</span>
-<span class="linenr">2: </span><span style="color: #0084C8; font-weight: bold;">blk:</span> <span style="color: #707183;">[</span><span style="color: #F5666D;">23</span> <span style="color: #F5666D;">50%</span> <span style="color: #F5666D;">255.5.45</span> <span style="color: #F5666D;">34.67</span> nome <span style="color: #F5666D;">18%</span> <span style="color: #F5666D;">5x2</span><span style="color: #707183;">]</span>
-<span class="linenr">3: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">find</span> blk <span style="color: #2F8B58; font-weight: bold;">pair!</span>
-<span class="linenr">4: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">find</span> blk <span style="color: #2F8B58; font-weight: bold;">word!</span>
-<span class="linenr">5: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">find</span> blk <span style="color: #2F8B58; font-weight: bold;">percent!</span>
-<span class="linenr">6: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">find</span> blk <span style="color: #2F8B58; font-weight: bold;">tuple!</span>
-<span class="linenr">7: </span><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #00578E; font-weight: bold;">find</span> blk <span style="color: #2F8B58; font-weight: bold;">word!</span>
-<span class="linenr">8: </span><span style="color: #00578E; font-weight: bold;">print</span> <span style="color: #00578E; font-weight: bold;">find</span> blk <span style="color: #2F8B58; font-weight: bold;">float!</span>
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-variable-name">nome:</span> <span class="org-string">"Manoel"</span>
+<span class="linenr">2: </span><span class="org-variable-name">blk:</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-constant">23</span> <span class="org-constant">50%</span> <span class="org-constant">255.5.45</span> <span class="org-constant">34.67</span> nome <span class="org-constant">18%</span> <span class="org-constant">5x2</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">3: </span><span class="org-function-name">probe</span> <span class="org-function-name">find</span> blk <span class="org-type">pair!</span>
+<span id="coderef-sc-probe" class="coderef-off"><span class="linenr">4: </span><span class="org-function-name">probe</span> <span class="org-function-name">find</span> blk <span class="org-type">word!</span></span>
+<span class="linenr">5: </span><span class="org-function-name">probe</span> <span class="org-function-name">find</span> blk <span class="org-type">percent!</span>
+<span class="linenr">6: </span><span class="org-function-name">probe</span> <span class="org-function-name">find</span> blk <span class="org-type">tuple!</span>
+<span id="coderef-sc-print" class="coderef-off"><span class="linenr">7: </span><span class="org-function-name">print</span> <span class="org-function-name">find</span> blk <span class="org-type">word!</span></span>
+<span class="linenr">8: </span><span class="org-function-name">print</span> <span class="org-function-name">find</span> blk <span class="org-type">float!</span>
 </pre>
 </div>
 
@@ -444,21 +464,17 @@ Manoel 18% 5x2
 34.67 Manoel 18% 5x2
 </pre>
 
-<div class="tip">
 <p>
-Note que no exemplo anterior, print avaliou o bloco e retornou o contepudo da palavra <code>nome</code>. 
+Note que na <a href="#coderef-sc-probe" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-probe');" onmouseout="CodeHighlightOff(this, 'coderef-sc-probe');">linha 4</a> o conteúdo da palavra <code>nome</code> não foi avaliado, ao passo que na linha <a href="#coderef-sc-print" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-print');" onmouseout="CodeHighlightOff(this, 'coderef-sc-print');">linha 7</a> foi.
 </p>
-
-</div>
 </div>
 </div>
 
-
-<div id="outline-container-org4a5f274" class="outline-3">
-<h3 id="org4a5f274"><span class="section-number-3">2.2</span> <span class="todo TODO">TODO</span> Substituição</h3>
+<div id="outline-container-org77c4e31" class="outline-3">
+<h3 id="org77c4e31"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Substituição</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-red"><span class="linenr">1: </span><span style="color: #00578E; font-weight: bold;">help</span> <span style="color: #00578E; font-weight: bold;">replace</span>
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-function-name">help</span> <span class="org-function-name">replace</span>
 </pre>
 </div>
 
@@ -473,14 +489,35 @@ ARGUMENTS:
 REFINEMENTS:
      /all
 </pre>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">print</span> <span class="org-function-name">replace</span> <span class="org-string">"1:2:3:4:5"</span> <span class="org-string">":"</span> <span class="org-string">"-"</span>
+<span class="org-function-name">print</span> <span class="org-function-name">replace</span>/<span class="org-function-name">all</span> <span class="org-string">"1:2:3:4:5"</span> <span class="org-string">":"</span> <span class="org-string">""</span>
+<span class="org-function-name">print</span> <span class="org-function-name">replace</span>/<span class="org-function-name">all</span> <span class="org-string">"1:2:3:4:5"</span> <span class="org-string">":"</span> <span class="org-string">"-"</span>
+<span class="org-variable-name">tok:</span> <span class="org-function-name">charset</span> <span class="org-string">":."</span>
+<span class="org-function-name">print</span> <span class="org-function-name">replace</span>/<span class="org-function-name">all</span> <span class="org-string">"1:2:3.4:5"</span> tok <span class="org-string">"-"</span>
+<span class="org-comment">;print replace/all "1:2:3.4:5" tok ""</span>
+<span class="org-function-name">print</span> <span class="org-function-name">replace</span> <span class="org-string">"emblema"</span> <span class="org-string">"em"</span> <span class="org-string">"pro"</span>
+</pre>
+</div>
+
+<pre class="example">
+1-2:3:4:5
+12345
+1-2-3-4-5
+1-2-3-4-5
+problema
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org46acd01" class="outline-3">
-<h3 id="org46acd01"><span class="section-number-3">2.3</span> <span class="todo TODO">TODO</span> Divisão</h3>
+
+
+<div id="outline-container-orgf97e1ea" class="outline-3">
+<h3 id="orgf97e1ea"><span class="section-number-3">2.3</span> <span class="done DONE">DONE</span> Divisão</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
-<pre class="src src-red"><span style="color: #00578E; font-weight: bold;">help</span> <span style="color: #00578E; font-weight: bold;">split</span>
+<pre class="src src-red"><span class="org-function-name">help</span> <span class="org-function-name">split</span>
 </pre>
 </div>
 
@@ -504,7 +541,7 @@ Podemos ver o código fonte de split que é:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-red"><span style="color: #00578E; font-weight: bold;">source</span> <span style="color: #00578E; font-weight: bold;">split</span>
+<pre class="src src-red"><span class="org-function-name">source</span> <span class="org-function-name">split</span>
 </pre>
 </div>
 
@@ -524,12 +561,12 @@ Isto é, a função recebe uma <code>serie</code> e um <code>delimitador</code> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-red"><span class="linenr">1: </span><span style="color: #0084C8; font-weight: bold;">s:</span> <span style="color: #4E9A06;">"nome,endere&#231;o,telefone:residencial:comercial"</span>
-<span class="linenr">2: </span><span style="color: #0084C8; font-weight: bold;">tok:</span> <span style="color: #00578E; font-weight: bold;">charset</span> <span style="color: #4E9A06;">":,"</span>
-<span class="linenr">3: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">split</span> s #<span style="color: #4E9A06;">":"</span>
-<span class="linenr">4: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">split</span> s <span style="color: #4E9A06;">","</span>
-<span class="linenr">5: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">split</span> s <span style="color: #4E9A06;">"de"</span>
-<span class="linenr">6: </span><span style="color: #00578E; font-weight: bold;">probe</span> <span style="color: #00578E; font-weight: bold;">split</span> s tok
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-variable-name">s:</span> <span class="org-string">"nome,endere&#231;o,telefone:residencial:comercial"</span>
+<span class="linenr">2: </span><span class="org-variable-name">tok:</span> <span class="org-function-name">charset</span> <span class="org-string">":,"</span>
+<span class="linenr">3: </span><span class="org-function-name">probe</span> <span class="org-function-name">split</span> s #<span class="org-string">":"</span>
+<span class="linenr">4: </span><span class="org-function-name">probe</span> <span class="org-function-name">split</span> s <span class="org-string">","</span>
+<span class="linenr">5: </span><span class="org-function-name">probe</span> <span class="org-function-name">split</span> s <span class="org-string">"de"</span>
+<span class="linenr">6: </span><span class="org-function-name">probe</span> <span class="org-function-name">split</span> s tok
 </pre>
 </div>
 
@@ -543,17 +580,60 @@ Isto é, a função recebe uma <code>serie</code> e um <code>delimitador</code> 
 <p>
 Como pode ser visto no código fonte de <code>split</code>, ele usa <code>collect</code> que retorna um bloco. Para o caso de dividir o texto casando com um caractere, não faz diferença se utilizamos o caractere ou uma string com um caractere. Na 5 linha utilizamos uma string "de" e a entrada foi dividida no en[de]reço e resi[de]ncial. Finalmente, para dividir a entrada nas ocorrências de <code>.</code> e <code>;</code>, utilizamos um <code>charset</code>.
 </p>
+
+<p>
+Mas split possui algumas limitações. Se você tiver uma linha de um arquivo CSV tipo : <code>{"José",35,1.67,"tv,radio,internet"}</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">linha:</span> <span class="org-string">{"Jos&#233;",35,1.67,"tv,radio,internet",20%,192.168.5.78,2x5,US$7.9}</span>
+<span class="org-function-name">probe</span> <span class="org-function-name">split</span> linha <span class="org-string">","</span>
+</pre>
+</div>
+
+<pre class="example">
+[{"José"} "35" "1.67" {"tv} "radio" {internet"} "20%" "192.168.5.78" "2x5" "US$7.9"]
+</pre>
+
+<p>
+Como pode ser visto, a string <code>tv,radio,internet</code> foi incorretamente dividida. Uma solução simples seria utilizar a seguinte regra: 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr"> 1: </span><span class="org-variable-name">linha:</span> <span class="org-string">{"Jos&#233;",35,1.67,"tv,radio,internet",20%,192.168.5.78,2x5,US$7.9}</span>
+<span class="linenr"> 2: </span><span class="org-function-name">probe</span> <span class="org-function-name">parse</span> linha <span class="org-rainbow-delimiters-depth-1">[</span>
+<span class="linenr"> 3: </span>    <span class="org-function-name">collect</span> <span class="org-rainbow-delimiters-depth-2">[</span>
+<span class="linenr"> 4: </span>        some <span class="org-rainbow-delimiters-depth-3">[</span>
+<span class="linenr"> 5: </span>            <span class="org-rainbow-delimiters-depth-4">{</span><span class="org-string">"} keep to {"</span><span class="org-rainbow-delimiters-depth-4">}</span> <span class="org-function-name">skip</span> opt <span class="org-function-name">comma</span>
+<span class="linenr"> 6: </span>            | <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> <span class="org-rainbow-delimiters-depth-4">[</span><span class="org-function-name">comma</span> | end<span class="org-rainbow-delimiters-depth-4">]</span>
+<span id="coderef-sc-load" class="coderef-off"><span class="linenr"> 7: </span>              keep <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-function-name">either</span> error? <span class="org-variable-name">e:</span> <span class="org-function-name">try</span> <span class="org-rainbow-delimiters-depth-5">[</span><span class="org-function-name">load</span> v<span class="org-rainbow-delimiters-depth-5">][</span>v<span class="org-rainbow-delimiters-depth-5">][</span>e<span class="org-rainbow-delimiters-depth-5">]</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-function-name">skip</span></span>
+<span class="linenr"> 8: </span>        <span class="org-rainbow-delimiters-depth-3">]</span>
+<span class="linenr"> 9: </span>    <span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="linenr">10: </span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+["José" 35 1.67 "tv,radio,internet" 20% 192.168.5.78 2x5 "US$7.9"]
+</pre>
+
+<div class="tip">
+<p>
+A <a href="#coderef-sc-load" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-load');" onmouseout="CodeHighlightOff(this, 'coderef-sc-load');">linha 7</a> tenta converter o valor para um tipo válido em Red. Se não conseguir, retorna uma string. Para ler apenas uma string, troque por <code>| keep to [comma | end] skip</code>
+</p>
+
 </div>
 </div>
 </div>
-<div id="outline-container-org52fbaca" class="outline-2">
-<h2 id="org52fbaca"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Parse</h2>
+</div>
+<div id="outline-container-orgc7d06ef" class="outline-2">
+<h2 id="orgc7d06ef"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Parse</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org3ab4691" class="outline-3">
-<h3 id="org3ab4691"><span class="section-number-3">3.1</span> Sintaxe</h3>
+</div><div id="outline-container-org03f84c1" class="outline-3">
+<h3 id="org03f84c1"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Sintaxe</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
-<pre class="src src-red"><span style="color: #00578E; font-weight: bold;">help</span> <span style="color: #00578E; font-weight: bold;">parse</span>
+<pre class="src src-red"><span class="org-function-name">help</span> <span class="org-function-name">parse</span>
 </pre>
 </div>
 
@@ -581,8 +661,8 @@ REFINEMENTS:
 </div>
 </div>
 
-<div id="outline-container-org1aba257" class="outline-3">
-<h3 id="org1aba257"><span class="section-number-3">3.2</span> <span class="todo TODO">TODO</span> Dialeto</h3>
+<div id="outline-container-orgad48a6a" class="outline-3">
+<h3 id="orgad48a6a"><span class="section-number-3">3.2</span> <span class="todo TODO">TODO</span> Dialeto</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Os princípios centrais do parse são:
@@ -600,20 +680,159 @@ As regras do <code>parse</code> podem ser compostas por.
 </p>
 
 <ul class="org-ul">
-<li><code>keyword</code> : uma palavra reservada do dialeto (veja tabela abaixo).</li>
-<li><code>word</code> : <code>word</code> será avaliada e seu valor usado como regra.</li>
+<li><code>keyword</code> : uma palavra reservada do dialeto (veja <a href="#org61c8b2d">tabela</a> abaixo).</li>
+</ul>
+
+<pre class="example">
+ahead end none skip end thru break etc.
+</pre>
+
+<ul class="org-ul">
+<li><code>word</code>  :  <code>word</code> será avaliada e seu valor usado como regra.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">tok1:</span> <span class="org-string">":"</span>
+<span class="org-variable-name">tok2:</span> <span class="org-string">"."</span>
+<span class="org-function-name">parse</span> <span class="org-string">"12:34.56789"</span> <span class="org-rainbow-delimiters-depth-1">[</span>thru tok1 <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> tok2 <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+"34"
+</pre>
+
+<ul class="org-ul">
 <li><code>word:</code> : ajusta <code>word</code> para a posição atual na entrada.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">parse</span> <span class="org-string">"12:45.6789"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">to</span> <span class="org-string">":"</span> <span class="org-variable-name">v:</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> <span class="org-variable-name">:v</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+":45.6789"
+</pre>
+
+<ul class="org-ul">
 <li><code>:word</code> : retoma a entrada na posição referenciada pela <code>word</code>.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">probe</span> <span class="org-function-name">parse</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-constant">23</span> <span class="org-string">"oi"</span> <span class="org-constant">45</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>
+   <span class="org-function-name">collect</span> <span class="org-rainbow-delimiters-depth-2">[</span>
+      <span class="org-variable-name">p:</span> <span class="org-function-name">to</span> <span class="org-type">string!</span> keep <span class="org-function-name">to</span> end 
+      <span class="org-variable-name">:p</span> keep <span class="org-type">integer!</span>
+   <span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">probe</span> <span class="org-function-name">parse</span> <span class="org-string">"12oi45"</span> <span class="org-rainbow-delimiters-depth-1">[</span>
+   <span class="org-function-name">collect</span> <span class="org-rainbow-delimiters-depth-2">[</span>
+      <span class="org-variable-name">p:</span> <span class="org-function-name">to</span> <span class="org-string">"oi"</span> keep <span class="org-function-name">to</span> end
+      <span class="org-variable-name">:p</span> keep <span class="org-function-name">to</span> <span class="org-string">"oi"</span>
+   <span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[["oi" 45] 23]
+["oi45" "12"]
+</pre>
+
+<ul class="org-ul">
 <li><code>integer value</code> : especifica o número de vezes que a regra será executada.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">parse</span> <span class="org-string">"12:45.6789"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-constant">3</span> <span class="org-function-name">skip</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> end <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+"45.6789"
+</pre>
+
+<ul class="org-ul">
 <li><code>value</code> : casa a entrada com o valor.</li>
+</ul>
+
+<pre class="example">
+Basta ver o exemplos acima. Em [to "oi" ...], "oi" é um value
+</pre>
+
+<ul class="org-ul">
 <li><code>|</code> : volta a posição na entrada e tenta casar com outra regra se a anterior falhou.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-function-name">parse</span> <span class="org-string">"123456"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"1"</span> | <span class="org-string">"3"</span> | <span class="org-string">"5"</span> <span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"inicia com 1, 3 ou 5"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">2: </span><span class="org-function-name">parse</span> <span class="org-string">"523456"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"1"</span> | <span class="org-string">"3"</span> | <span class="org-string">"5"</span> <span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"inicia com 1, 3 ou 5"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span id="coderef-sc-or" class="coderef-off"><span class="linenr">3: </span><span class="org-function-name">parse</span> <span class="org-string">"253456"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"1"</span> | <span class="org-string">"3"</span> | <span class="org-string">"5"</span> <span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"inicia com 1, 3 ou 5"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span></span>
+</pre>
+</div>
+
+<pre class="example">
+inicia com 1, 3 ou 5
+inicia com 1, 3 ou 5
+</pre>
+
+<p>
+A <a href="#coderef-sc-or" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-or');" onmouseout="CodeHighlightOff(this, 'coderef-sc-or');">linha 3</a> não retornou nada pois o casamento falho já que a string não inicia com 1, 2 ou 5.
+</p>
+
+<ul class="org-ul">
 <li><code>[rules]</code> : um bloco de sub-regras.</li>
-<li><code>(expression)</code> : interrompe o dialeto, avalia uma expressão em Red e retorna para o parse.</li>
 </ul>
 
 <p>
-The following keywords are currently available in Red's Parse implementation. They can be composed together freely.
-As seguintes palavras-chave estão atualmente disponíveis na implementação do Parse do Red. Elas podem ser compostas livremente.
+Pode ser um bloco ou uma variável contendo um bloco.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-variable-name">s:</span> <span class="org-string">"12:AB-C:99"</span>
+<span class="linenr">2: </span><span class="org-variable-name">regras:</span> <span class="org-rainbow-delimiters-depth-1">[</span>thru <span class="org-string">":"</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> <span class="org-string">":"</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">3: </span><span class="org-function-name">parse</span> s regras
+<span class="linenr">4: </span><span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span>thru <span class="org-string">":"</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> <span class="org-string">"-"</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+"AB-C"
+"AB"
+</pre>
+
+<ul class="org-ul">
+<li><code>(expression)</code> : interrompe o dialeto, avalia uma expressão em Red e retorna para o parse.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-variable-name">s:</span> <span class="org-string">"12:ABC:99-iii"</span>
+<span class="linenr">2: </span><span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span>
+<span id="coderef-sc-m1" class="coderef-off"><span class="linenr">3: </span>   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"&gt;&gt; In&#237;cio"</span><span class="org-rainbow-delimiters-depth-2">)</span></span>
+<span id="coderef-sc-m2" class="coderef-off"><span class="linenr">4: </span>   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> <span class="org-function-name">now</span>/time/precise<span class="org-rainbow-delimiters-depth-2">)</span></span>
+<span class="linenr">5: </span>   thru <span class="org-string">":"</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> <span class="org-string">"-"</span>
+<span id="coderef-sc-p1" class="coderef-off"><span class="linenr">6: </span>   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-string">"&gt;&gt; Valor de v ="</span> v<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span></span>
+<span id="coderef-sc-m3" class="coderef-off"><span class="linenr">7: </span>   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> <span class="org-function-name">now</span>/time/precise<span class="org-rainbow-delimiters-depth-2">)</span></span>
+<span id="coderef-sc-m4" class="coderef-off"><span class="linenr">8: </span>   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"&gt;&gt; Fim"</span><span class="org-rainbow-delimiters-depth-2">)</span></span>
+<span class="linenr">9: </span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&gt;&gt; Início
+16:55:02.293933
+&gt;&gt; Valor de v = ABC:99
+16:55:02.294246
+&gt;&gt; Fim
+</pre>
+
+<p>
+As linhas <a href="#coderef-sc-m1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-m1');" onmouseout="CodeHighlightOff(this, 'coderef-sc-m1');">3</a>, <a href="#coderef-sc-m2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-m2');" onmouseout="CodeHighlightOff(this, 'coderef-sc-m2');">4</a>, <a href="#coderef-sc-m3" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-m3');" onmouseout="CodeHighlightOff(this, 'coderef-sc-m3');">7</a> e <a href="#coderef-sc-m4" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-m4');" onmouseout="CodeHighlightOff(this, 'coderef-sc-m4');">8</a> não possuem nenhuma relação com as operações efetuadas pelo parse, apenas mostrando alguma mensagem. A <a href="#coderef-sc-p1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc-p1');" onmouseout="CodeHighlightOff(this, 'coderef-sc-p1');">linha 6</a> o valor de <code>v</code> que foi capturado pelo parse. 
+</p>
+
+<p>
+<a id="org61c8b2d"></a>As seguintes palavras-chave estão atualmente disponíveis na implementação do Parse do Red. Elas podem ser compostas livremente.
 </p>
 
 <table>
@@ -629,163 +848,163 @@ As seguintes palavras-chave estão atualmente disponíveis na implementação do
 <tbody>
 <tr>
 <td class="org-left"><b>Casamento</b></td>
-<td class="org-left"><a href="#org4a149a0">ahead</a> rule</td>
+<td class="org-left"><a href="#org596dcb8">ahead</a> rule</td>
 <td class="org-left">casa a regra mas não avança a posição de entrada</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org931bc9d">end</a></td>
+<td class="org-left"><a href="#org80a8f6c">end</a></td>
 <td class="org-left">retorna sucesso se a posição na entrada chegou ao fim</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#orgfae5884">none</a></td>
+<td class="org-left"><a href="#org76e5a1d">none</a></td>
 <td class="org-left">sempre retorna sucesso</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org5c1f5fb">not</a> rule</td>
+<td class="org-left"><a href="#orgf80a0d0">not</a> rule</td>
 <td class="org-left">inverte o resultado da regra</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org5f1e367">opt</a> rule</td>
+<td class="org-left"><a href="#org3ebf388">opt</a> rule</td>
 <td class="org-left">olha para frente, opcionalmente casando a regra</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org829d729">quote</a> value</td>
+<td class="org-left"><a href="#orgea79440">quote</a> value</td>
 <td class="org-left">casa o próximo valor literalmente (se for necessário sair do dialeto)</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org89e1087">skip</a></td>
+<td class="org-left"><a href="#org537bbb7">skip</a></td>
 <td class="org-left">avança a entrada um elemento (caractere ou valor)</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org6a41b81">thru</a> rule</td>
+<td class="org-left"><a href="#orgb2bc2f0">thru</a> rule</td>
 <td class="org-left">avança entrada até que a regra case posicionando a entrada após o casamento</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org1dcc545">to</a> rule</td>
+<td class="org-left"><a href="#org11c0bee">to</a> rule</td>
 <td class="org-left">avança entrada até que a regra case posicionando a entrada no início do casamento</td>
 </tr>
 
 <tr>
 <td class="org-left"><b>Controle de fluxo</b></td>
-<td class="org-left"><a href="#org94d858f">break</a></td>
+<td class="org-left"><a href="#orgf6245fa">break</a></td>
 <td class="org-left">interrompe o laço retornando sucesso</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org4198a85">if</a> (expr)</td>
+<td class="org-left"><a href="#orgf592f9a">if</a> (expr)</td>
 <td class="org-left">avalia uma expressão em Red. Se <code>false</code> ou <code>none</code>, falha e retorna</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org201a41f">into</a> rule</td>
+<td class="org-left"><a href="#orgca343b6">into</a> rule</td>
 <td class="org-left">muda a entrada para a série casada (<code>string</code> ou <code>block</code>) e analisa com a regra</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org8789dc8">fail</a></td>
+<td class="org-left"><a href="#org7ca3f19">fail</a></td>
 <td class="org-left">força a regra corrente a falhar e retorna</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#orge6e3ba6">then</a></td>
+<td class="org-left"><a href="#orgb780a26">then</a></td>
 <td class="org-left">independente de sucesso ou falha do que segue, pula para a próxima regra alternada</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org9a69199">reject</a></td>
+<td class="org-left"><a href="#orgdbdb705">reject</a></td>
 <td class="org-left">interrompe um loop e retorna falha</td>
 </tr>
 
 <tr>
 <td class="org-left"><b>Iteração</b></td>
-<td class="org-left"><a href="#org6eae406">any</a> rule</td>
+<td class="org-left"><a href="#orgf2572b8">any</a> rule</td>
 <td class="org-left">repete a regra zero ou mais vezes até falhar ou a entrada não avançar</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org8a30a8c">some</a> rule</td>
+<td class="org-left"><a href="#org2b0d03a">some</a> rule</td>
 <td class="org-left">repete a regra uma ou mais vezes até falhar ou a entrada não avançar</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#orgfe3a021">while</a> rule</td>
+<td class="org-left"><a href="#org14d0f0f">while</a> rule</td>
 <td class="org-left">repete a regra zero ou mais vezes até falhar independente do avanço da entrada</td>
 </tr>
 
 <tr>
 <td class="org-left"><b>Extração</b></td>
-<td class="org-left"><a href="#orgda90324">collect</a> [rule]</td>
+<td class="org-left"><a href="#orgf0fe037">collect</a> [rule]</td>
 <td class="org-left">retorna um bloco com os valores coletados que casaram com a regra _keep</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org27c86ac">collect</a> set word [rule]</td>
+<td class="org-left"><a href="#org23066dc">collect</a> set word [rule]</td>
 <td class="org-left">coleta valores que casaram com a regra em um bloco e coloca em <code>word</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org88cacf5">collect</a> into word [rule]</td>
+<td class="org-left"><a href="#org923e788">collect</a> into word [rule]</td>
 <td class="org-left">coleta valores que casaram com a regra inserindo no bloco referenciado por <code>word</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org5f509fa">copy</a> word rule</td>
+<td class="org-left"><a href="#org0266a34">copy</a> word rule</td>
 <td class="org-left">coloca em <code>word</code> da posição atual até o casamento da regra</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org52f9e9e">keep</a> rule</td>
+<td class="org-left"><a href="#orga887f58">keep</a> rule</td>
 <td class="org-left">adiciona a cópia do casamento na entrada no bloco <code>collect</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#org0630ed6">keep</a> (expr)</td>
+<td class="org-left"><a href="#org2b2721a">keep</a> (expr)</td>
 <td class="org-left">adiciona o último valor da expressão em Red no bloco <code>collect</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#orgce089a0">set</a> word rule</td>
+<td class="org-left"><a href="#org7f36cfe">set</a> word rule</td>
 <td class="org-left">coloca em <code>word</code> o primeiro valor que casar com a entrada</td>
 </tr>
 
 <tr>
 <td class="org-left"><b>Modificação</b></td>
-<td class="org-left"><a href="#org09cded2">insert</a> only value</td>
+<td class="org-left"><a href="#orgba5d8f2">insert</a> only value</td>
 <td class="org-left">insere[=/only=] o valor na posição atual da entrada e avança para depois do valor</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left"><a href="#orga9b10a2">remove</a> rule</td>
+<td class="org-left"><a href="#orgbecb88c">remove</a> rule</td>
 <td class="org-left">remove a entrada casada</td>
 </tr>
 </tbody>
@@ -793,75 +1012,128 @@ As seguintes palavras-chave estão atualmente disponíveis na implementação do
 </div>
 
 
-<div id="outline-container-org85373e0" class="outline-4">
-<h4 id="org85373e0"><span class="section-number-4">3.2.1</span> <span class="todo TODO">TODO</span> Casamento</h4>
+<div id="outline-container-org4fd6c25" class="outline-4">
+<h4 id="org4fd6c25"><span class="section-number-4">3.2.1</span> <span class="todo TODO">TODO</span> Casamento</h4>
 <div class="outline-text-4" id="text-3-2-1">
-</div><ol class="org-ol"><li><a id="orge7b0419"></a><a id="org4a149a0"></a>ahead<br></li>
-<li><a id="orgb0a9e64"></a><a id="org931bc9d"></a>end<br></li>
-<li><a id="org5ff6b19"></a><a id="orgfae5884"></a>none<br></li>
-<li><a id="org9cf6dd0"></a><a id="org5c1f5fb"></a>not rule<br></li>
-<li><a id="orgce174fb"></a><a id="org5f1e367"></a>opt rule<br></li>
-<li><a id="orga76c8fa"></a><a id="org829d729"></a>quote value<br></li>
-<li><a id="org0a7b32e"></a><a id="org89e1087"></a>skip<br></li>
-<li><a id="org6253f4e"></a><a id="org6a41b81"></a>thru rule<br></li>
-<li><a id="org7ddab40"></a><a id="org1dcc545"></a>to rule<br></li></ol>
+</div><ol class="org-ol"><li><a id="orgb1f877c"></a><a id="org596dcb8"></a>ahead<br></li>
+<li><a id="orgff4ca7c"></a><a id="org80a8f6c"></a>end<br></li>
+<li><a id="orgc7e035e"></a><a id="org76e5a1d"></a>none<br></li>
+<li><a id="orgb481a9b"></a><a id="orgf80a0d0"></a>not rule<br></li>
+<li><a id="org19fc406"></a><a id="org3ebf388"></a>opt rule<br></li>
+<li><a id="orge3271ac"></a><a id="orgea79440"></a>quote value<br></li>
+<li><a id="orge04d477"></a><a id="org537bbb7"></a>skip<br></li>
+<li><a id="orgcaeb6fa"></a><a id="orgb2bc2f0"></a>thru rule<br></li>
+<li><a id="org66d827a"></a><a id="org11c0bee"></a>to rule<br></li></ol>
 </div>
-<div id="outline-container-org65cc89a" class="outline-4">
-<h4 id="org65cc89a"><span class="section-number-4">3.2.2</span> <span class="todo TODO">TODO</span> Fluxo de controle</h4>
+<div id="outline-container-orgdf1670d" class="outline-4">
+<h4 id="orgdf1670d"><span class="section-number-4">3.2.2</span> <span class="todo TODO">TODO</span> Fluxo de controle</h4>
 <div class="outline-text-4" id="text-3-2-2">
-</div><ol class="org-ol"><li><a id="orgb115719"></a><a id="org94d858f"></a>break<br></li>
-<li><a id="orgd91f19a"></a><a id="org4198a85"></a>if (expr)<br></li>
-<li><a id="org2a2baec"></a><a id="org201a41f"></a>into rule<br></li>
-<li><a id="org718b520"></a><a id="org8789dc8"></a>fail<br></li>
-<li><a id="org5a001df"></a><a id="orge6e3ba6"></a>then<br></li>
-<li><a id="orgdad0513"></a><a id="org9a69199"></a>reject<br></li></ol>
+</div><ol class="org-ol"><li><a id="org448a32a"></a><a id="orgf6245fa"></a>break<br></li>
+<li><a id="orgb8da19d"></a><a id="orgf592f9a"></a>if (expr)<br></li>
+<li><a id="org06494e7"></a><a id="orgca343b6"></a>into rule<br></li>
+<li><a id="org0750de1"></a><a id="org7ca3f19"></a>fail<br></li>
+<li><a id="orgc530108"></a><a id="orgb780a26"></a>then<br></li>
+<li><a id="orgff7c6cd"></a><a id="orgdbdb705"></a>reject<br></li></ol>
 </div>
-<div id="outline-container-orgc0ec7fb" class="outline-4">
-<h4 id="orgc0ec7fb"><span class="section-number-4">3.2.3</span> <span class="todo TODO">TODO</span> Interação</h4>
+<div id="outline-container-org351d875" class="outline-4">
+<h4 id="org351d875"><span class="section-number-4">3.2.3</span> <span class="todo TODO">TODO</span> Interação</h4>
 <div class="outline-text-4" id="text-3-2-3">
-</div><ol class="org-ol"><li><a id="org240ac91"></a><a id="org6eae406"></a>any rule<br></li>
-<li><a id="org6736a73"></a><a id="org8a30a8c"></a>some rule<br></li>
-<li><a id="orgdb52447"></a><a id="orgfe3a021"></a>while rule<br></li></ol>
+</div><ol class="org-ol"><li><a id="org7934fb1"></a><a id="orgf2572b8"></a>any rule<br></li>
+<li><a id="orgdd04f7a"></a><a id="org2b0d03a"></a>some rule<br></li>
+<li><a id="org535de94"></a><a id="org14d0f0f"></a>while rule<br></li></ol>
 </div>
-<div id="outline-container-org8631cd1" class="outline-4">
-<h4 id="org8631cd1"><span class="section-number-4">3.2.4</span> <span class="todo TODO">TODO</span> Extração</h4>
+<div id="outline-container-org3269878" class="outline-4">
+<h4 id="org3269878"><span class="section-number-4">3.2.4</span> <span class="todo TODO">TODO</span> Extração</h4>
 <div class="outline-text-4" id="text-3-2-4">
-</div><ol class="org-ol"><li><a id="orgdeec851"></a><a id="orgda90324"></a>collect rule<br></li>
-<li><a id="orgb1f5580"></a><a id="org27c86ac"></a>collect set word rule<br></li>
-<li><a id="org2df5877"></a><a id="org88cacf5"></a>collect into word rule<br></li>
-<li><a id="orgbcfb078"></a><a id="org5f509fa"></a>copy word rule<br></li>
-<li><a id="org0dc47b1"></a><a id="org52f9e9e"></a>keep rule<br></li>
-<li><a id="org3cf53b5"></a><a id="org0630ed6"></a>keep (expr)<br></li>
-<li><a id="org9008a40"></a><a id="orgce089a0"></a>set word rule<br></li></ol>
+</div><ol class="org-ol"><li><a id="org1c6dd0d"></a><a id="orgf0fe037"></a>collect rule<br></li>
+<li><a id="org7f8ea66"></a><a id="org23066dc"></a>collect set word rule<br></li>
+<li><a id="orgb7330d9"></a><a id="org923e788"></a>collect into word rule<br></li>
+<li><a id="orgcea3a0d"></a><a id="org0266a34"></a>copy word rule<br></li>
+<li><a id="org06de909"></a><a id="orga887f58"></a>keep rule<br></li>
+<li><a id="orgd646ecf"></a><a id="org2b2721a"></a>keep (expr)<br></li>
+<li><a id="orgcc6ee68"></a><a id="org7f36cfe"></a>set word rule<br></li></ol>
 </div>
-<div id="outline-container-org25fbbde" class="outline-4">
-<h4 id="org25fbbde"><span class="section-number-4">3.2.5</span> <span class="todo TODO">TODO</span> Modificação</h4>
+<div id="outline-container-org68002c1" class="outline-4">
+<h4 id="org68002c1"><span class="section-number-4">3.2.5</span> <span class="todo TODO">TODO</span> Modificação</h4>
 <div class="outline-text-4" id="text-3-2-5">
-</div><ol class="org-ol"><li><a id="org0c09bcb"></a><a id="org09cded2"></a>insert only value<br></li>
-<li><a id="org809cde9"></a><a id="orga9b10a2"></a>remove rule<br></li></ol>
+</div><ol class="org-ol"><li><a id="orgd6104e0"></a><a id="orgba5d8f2"></a>insert only value<br></li>
+<li><a id="orgb1d98c9"></a><a id="orgbecb88c"></a>remove rule<br></li></ol>
 </div>
 </div>
 
 
-<div id="outline-container-org3af08f0" class="outline-3">
-<h3 id="org3af08f0"><span class="section-number-3">3.3</span> <span class="todo TODO">TODO</span> Dialetos</h3>
+<div id="outline-container-orgc26a476" class="outline-3">
+<h3 id="orgc26a476"><span class="section-number-3">3.3</span> <span class="todo TODO">TODO</span> Dialetos</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 parse
 </p>
 </div>
 </div>
-<div id="outline-container-org96b3bc4" class="outline-3">
-<h3 id="org96b3bc4"><span class="section-number-3">3.4</span> <span class="todo TODO">TODO</span> Trace</h3>
+<div id="outline-container-org1ca54d3" class="outline-3">
+<h3 id="org1ca54d3"><span class="section-number-3">3.4</span> <span class="todo TODO">TODO</span> Trace</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-callback
+Em alguns casos de erro, fica difícil encontrá-lo apenas olhando as regras e a entrda. Temos duas alternativas para ver o funcionamento interno do parse.
 </p>
+</div>
+
+<div id="outline-container-orgc57840f" class="outline-4">
+<h4 id="orgc57840f"><span class="section-number-4">3.4.1</span> parse-trace</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">help</span> <span class="org-function-name">parse-trace</span>
+</pre>
+</div>
+
+<pre class="example">
+USAGE:
+      parse-trace input rules /case /part limit
+
+DESCRIPTION:
+      Wrapper for parse/trace using the default event processor. 
+      parse-trace is of type: function! 
+
+ARGUMENTS:
+     input   [series!] 
+     rules   [block!] 
+
+REFINEMENTS:
+     /case 
+     /part 
+         limit   [integer!]
+</pre>
+
+<p>
+Em vez de usar <code>parse entrada regras</code>, usamos <code>parse-trace entrada regras</code> &#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4d48fc3" class="outline-4">
+<h4 id="org4d48fc3"><span class="section-number-4">3.4.2</span> callback</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+Podemos definir uma função para nanalisar o funcionamento do parse &#x2026;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red">callback    <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">function</span>! <span class="org-rainbow-delimiters-depth-2">[</span>
+    event   <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-type">word!</span><span class="org-rainbow-delimiters-depth-3">]</span> 
+    match?  <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-type">logic!</span><span class="org-rainbow-delimiters-depth-3">]</span> 
+    rule    <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-type">block!</span><span class="org-rainbow-delimiters-depth-3">]</span> 
+    <span class="org-function-name">input</span>   <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-type">series!</span><span class="org-rainbow-delimiters-depth-3">]</span> 
+    stack   <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-type">block!</span><span class="org-rainbow-delimiters-depth-3">]</span> 
+    <span class="org-function-name">return</span>: <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-type">logic!</span><span class="org-rainbow-delimiters-depth-3">]</span>
+<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
+<h2 class="footnotes">Notas de Rodap&eacute;: </h2>
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
@@ -871,10 +1143,5 @@ Se a palavra-chave <code>collect</code> é usada em qualquer regra em sua forma 
 
 </div>
 </div></div>
-<div id="postamble" class="status">
-<p class="author">Author: Guaracy Monteiro</p>
-<p class="date">Created: 2017-03-04 sáb 09:18</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
 </body>
 </html>
