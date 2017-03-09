@@ -1,0 +1,21 @@
+#+TITLE: Blog minimal
+#+AUTHOR: Guaracy Monteiro
+#+DRAFT = false
+#+DATE: 2017-03-09
+#+TAGS: blog-minimal emacs org-mode w3.css
+#+CATEGORIES: info
+
+Não comentei antes pois está no GitHub há uma semana e vi no blog da [[http://sacha.sachachua.com/blog/2017/03/2017-03-06-emacs-news/][Sacha]] no meio desta semana. Mas o [[https://github.com/thiefuniverse/blog-minimal][Blog minimal]] é uma opção interessante para quem usa Emacs e deseja um blog estático. Um resumo:
+
+- No início é necessário configurar algumas variáveis o que não deve significar problema para um usuário do emacs.
+
+- Para os artigos ele utiliza o [[https://en.wikipedia.org/wiki/Org-mode][org-mode]] que é uma opção que pode escrever um comentário, um artigo científico ou um livro. Certamente adequado para qualquer situação.
+
+- Usa o [[http://mustache.github.io/][mustache]] para os templates das páginas html. 
+
+- Como foi desenvolvido por um estudante chinês, a apresentação do [[https://thiefuniverse.github.io/][blog]] e as imagens não fecham com o meu gosto. Seria necessário utilizar um outro css e imagens. Acho que vou fazer alguns testes com o [[https://www.w3schools.com/w3css/default.asp][w3.css]] que acho interessante.
+
+
+Ainda não temos uma documentação e eu ainda não analisei o fonte para ter maiores informações (categorias, tags, etc.). 
+
+Nada como EYODF.
