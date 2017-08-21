@@ -1,15 +1,15 @@
 
 $(function() {
-    $('.note').before("<p class='admonition-title note'>Note</p>");
-    $('.seealso').before("<p class='admonition-title seealso'>See also</p>");
-    $('.warning').before("<p class='admonition-title warning'>Warning</p>");
-    $('.caution').before("<p class='admonition-title caution'>Caution</p>");
-    $('.attention').before("<p class='admonition-title attention'>Attention</p>");
-    $('.tip').before("<p class='admonition-title tip'>Tip</p>");
-    $('.important').before("<p class='admonition-title important'>Important</p>");
-    $('.hint').before("<p class='admonition-title hint'>Hint</p>");
-    $('.error').before("<p class='admonition-title error'>Error</p>");
-    $('.danger').before("<p class='admonition-title danger'>Danger</p>");
+    $('.note').before("<p class='admonition-title note'>Nota</p>");
+    $('.seealso').before("<p class='admonition-title seealso'>Veja também</p>");
+    $('.warning').before("<p class='admonition-title warning'>Aviso</p>");
+    $('.caution').before("<p class='admonition-title caution'>Cuidado</p>");
+    $('.attention').before("<p class='admonition-title attention'>Atenção</p>");
+    $('.tip').before("<p class='admonition-title tip'>Dica</p>");
+    $('.important').before("<p class='admonition-title important'>Importante</p>");
+    $('.hint').before("<p class='admonition-title hint'>Sugestão</p>");
+    $('.error').before("<p class='admonition-title error'>Erro</p>");
+    $('.danger').before("<p class='admonition-title danger'>Perigo</p>");
 });
 
 $( document ).ready(function() {
