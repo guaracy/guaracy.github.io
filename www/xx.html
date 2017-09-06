@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+
+    <a id="FacePage" href="http://rebol.com" title="REBOL">LINK</a>
+    <div style='border-left: 6px solid green;'>
+      Borda vermelha - left
+    </div>
+    <div id="pageUrl" style='border-bottom: 6px solid blue;'>
+      Borda azul - bottom
+    </div>
+
+    <span id="mySpan"></span>
+    <script>
+      document.getElementById('FacePage').title = window.location.href;
+      window.onload = novoEstilo();
+      function novoEstilo() {
+      var style = 'border-bottom: 6px solid red;';
+      document.getElementById('pageUrl').style = style;
+      //$url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+      //$url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
+      //$url .= $_SERVER["REQUEST_URI"];
+      alert("ALTEREI DE AZUL PARA VERMELHO");
+      //document.getElementById('pageUrl').style = $url;
+      }
+  </script>
+  <!--script>
+    function getUrl() {
+    $url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+    $url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
+    $url .= $_SERVER["REQUEST_URI"];
+    return $url;
+    }
+  -->
+  </body>
+</html>

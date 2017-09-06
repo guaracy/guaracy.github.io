@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR" xml:lang="pt_BR">
 <head>
-<!-- 2017-08-20 dom 21:16 -->
+<!-- 2017-08-21 seg 10:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuração do Emacs</title>
@@ -179,12 +179,12 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="kbd-style.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/readtheorg.css"/>
+<script type="text/javascript" src="assets/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="assets/js/readtheorg.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -239,51 +239,51 @@ for the JavaScript code in this tag.
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd9241d5">1. Introdução</a></li>
-<li><a href="#org6850ff0">2. Geração da configuração</a></li>
-<li><a href="#org946163e">3. Arquivo init.el</a>
+<li><a href="#orgdeb5650">1. Introdução</a></li>
+<li><a href="#org0002024">2. Geração da configuração</a></li>
+<li><a href="#org3bc943c">3. Arquivo init.el</a>
 <ul>
-<li><a href="#org9dd352f">3.1. Aspecto visual</a></li>
-<li><a href="#org80021fe">3.2. Repositórios</a></li>
-<li><a href="#org4d5a72f">3.3. Instalação dos pacotes</a>
+<li><a href="#orgcb45f3d">3.1. Aspecto visual</a></li>
+<li><a href="#orgb4edcc2">3.2. Repositórios</a></li>
+<li><a href="#orgc7eac5c">3.3. Instalação dos pacotes</a>
 <ul>
-<li><a href="#orgd073e5c">3.3.1. which-key</a></li>
-<li><a href="#orgad1d0bf">3.3.2. smex</a></li>
-<li><a href="#org846292c">3.3.3. iedit</a></li>
-<li><a href="#orga974253">3.3.4. multiple-cursors</a></li>
-<li><a href="#orge3c5720">3.3.5. htmlize</a></li>
-<li><a href="#org5ba999b">3.3.6. ido-grid-mode</a></li>
-<li><a href="#org309e5e8">3.3.7. ido-select-window</a></li>
-<li><a href="#org066f71c">3.3.8. ido-yes-or-no</a></li>
-<li><a href="#org7c8dcd2">3.3.9. auto-complete</a></li>
-<li><a href="#orgcc5909c">3.3.10. red.el</a></li>
-<li><a href="#orgd055a54">3.3.11. hlinum-mode</a></li>
-<li><a href="#org8a1cff8">3.3.12. linum-off</a></li>
-<li><a href="#org30a75ea">3.3.13. indent-guide</a></li>
-<li><a href="#org5d058a8">3.3.14. less-css-mode</a></li>
-<li><a href="#orgdc0678e">3.3.15. neotree</a></li>
-<li><a href="#orga2bb228">3.3.16. paradox</a></li>
-<li><a href="#org5c819be">3.3.17. magit</a></li>
-<li><a href="#org70e03f1">3.3.18. rainbow-delimiters</a></li>
-<li><a href="#org01847e0">3.3.19. el2org e ox-gfm</a></li>
-<li><a href="#org8da67d0">3.3.20. org-webpage</a></li>
+<li><a href="#org86b0ef5">3.3.1. which-key</a></li>
+<li><a href="#orgd05820f">3.3.2. smex</a></li>
+<li><a href="#org04b331e">3.3.3. iedit</a></li>
+<li><a href="#orgf4f0f2d">3.3.4. multiple-cursors</a></li>
+<li><a href="#org17d8432">3.3.5. htmlize</a></li>
+<li><a href="#org1bc996b">3.3.6. ido-grid-mode</a></li>
+<li><a href="#org11c8d07">3.3.7. ido-select-window</a></li>
+<li><a href="#orgcba1d5e">3.3.8. ido-yes-or-no</a></li>
+<li><a href="#org20374c1">3.3.9. auto-complete</a></li>
+<li><a href="#org7cfe856">3.3.10. red.el</a></li>
+<li><a href="#orge7925f5">3.3.11. hlinum-mode</a></li>
+<li><a href="#orgb65bfd3">3.3.12. linum-off</a></li>
+<li><a href="#org6aa6024">3.3.13. indent-guide</a></li>
+<li><a href="#orgf18dfd8">3.3.14. less-css-mode</a></li>
+<li><a href="#org6e31e27">3.3.15. neotree</a></li>
+<li><a href="#org9a2a9d7">3.3.16. paradox</a></li>
+<li><a href="#org1850a74">3.3.17. magit</a></li>
+<li><a href="#org3d60f16">3.3.18. rainbow-delimiters</a></li>
+<li><a href="#orge214bb1">3.3.19. el2org e ox-gfm</a></li>
+<li><a href="#org31f42cd">3.3.20. org-webpage</a></li>
 </ul>
 </li>
-<li><a href="#orgb4bc1c6">3.4. Configurações adicionais</a></li>
-<li><a href="#org67d9ce0">3.5. Definição de funções</a>
+<li><a href="#orgf21e151">3.4. Configurações adicionais</a></li>
+<li><a href="#org7fe29a3">3.5. Definição de funções</a>
 <ul>
-<li><a href="#org2068f07">3.5.1. Abrir lista de arquivos recente (C-x C-r))</a></li>
+<li><a href="#org57dde50">3.5.1. Abrir lista de arquivos recente (C-x C-r))</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org17943d9">4. Dicas</a></li>
+<li><a href="#org65b2492">4. Dicas</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd9241d5" class="outline-2">
-<h2 id="orgd9241d5"><span class="section-number-2">1</span> Introdução</h2>
+<div id="outline-container-orgdeb5650" class="outline-2">
+<h2 id="orgdeb5650"><span class="section-number-2">1</span> Introdução</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 O objetivo deste documento é gerar um arquivo de configuração para o Emacs utilizando <a href="http://howardism.org/Technical/Emacs/literate-programming-tutorial.html">Literate Programming</a>, isto é, iremos escrever a documentação e o código e depois o código será extraído automaticamente gerando o arquivo <b>init.el</b>.
@@ -303,8 +303,8 @@ De qualquer forma, existem mais de 3.600 pacotes para você configurar seu Emacs
 </div>
 </div>
 
-<div id="outline-container-org6850ff0" class="outline-2">
-<h2 id="org6850ff0"><span class="section-number-2">2</span> Geração da configuração</h2>
+<div id="outline-container-org0002024" class="outline-2">
+<h2 id="org0002024"><span class="section-number-2">2</span> Geração da configuração</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Poderíamos informar os pacotes desejados, <a href="http://www.wikemacs.org/wiki/Package.el">carregar</a> todos os necessários e efetuarmos as configurações individuais em tópicos específicos para cada um. Usarei o <a href="https://github.com/jwiegley/use-package">use-package</a> para manter a maioria da configuração dos pacotes agrupadas (menos as configurações para o org-mode que deixei para o final). 
@@ -318,16 +318,16 @@ Para não gerar um determinado código para a configuração do pacote, utiliza-
 
 
 
-<div id="outline-container-org946163e" class="outline-2">
-<h2 id="org946163e"><span class="section-number-2">3</span> Arquivo init.el</h2>
+<div id="outline-container-org3bc943c" class="outline-2">
+<h2 id="org3bc943c"><span class="section-number-2">3</span> Arquivo init.el</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 O que segue é o conteúdo disponibilizado para o arquivo <b>init.el</b>.
 </p>
 </div>
 
-<div id="outline-container-org9dd352f" class="outline-3">
-<h3 id="org9dd352f"><span class="section-number-3">3.1</span> Aspecto visual</h3>
+<div id="outline-container-orgcb45f3d" class="outline-3">
+<h3 id="orgcb45f3d"><span class="section-number-3">3.1</span> Aspecto visual</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Iremos definir tema, tamanho da janela e outros aspectos visuais.
@@ -369,8 +369,8 @@ Iremos definir tema, tamanho da janela e outros aspectos visuais.
 </div>
 </div>
 
-<div id="outline-container-org80021fe" class="outline-3">
-<h3 id="org80021fe"><span class="section-number-3">3.2</span> Repositórios</h3>
+<div id="outline-container-orgb4edcc2" class="outline-3">
+<h3 id="orgb4edcc2"><span class="section-number-3">3.2</span> Repositórios</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Incluímos o <a href="https://melpa.org">MELPA</a> que possui outros pacotes e/ou algumas versões atualizadas de pacotes existentes.
@@ -389,8 +389,8 @@ Incluímos o <a href="https://melpa.org">MELPA</a> que possui outros pacotes e/o
 </div>
 </div>
 
-<div id="outline-container-org4d5a72f" class="outline-3">
-<h3 id="org4d5a72f"><span class="section-number-3">3.3</span> Instalação dos pacotes</h3>
+<div id="outline-container-orgc7eac5c" class="outline-3">
+<h3 id="orgc7eac5c"><span class="section-number-3">3.3</span> Instalação dos pacotes</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Para gerenciar as configurações dos pacotes iremos utilizar o <a href="https://github.com/jwiegley/use-package">use-package</a> para deixar as coisas mais ordenadas. Não que seja necessário pois o arquivo será gerado automaticamente por este documento e, qualquer alteração, deverá ser feita por nele. Os pacotes que não estão instalados (caso algum seja incluído depois) serão automaticamente instalados e configurados pelo use-package.
@@ -419,8 +419,8 @@ Algumas opções do use-package:
 </div>
 </div>
 
-<div id="outline-container-orgd073e5c" class="outline-4">
-<h4 id="orgd073e5c"><span class="section-number-4">3.3.1</span> <a href="https://github.com/justbur/emacs-which-key">which-key</a></h4>
+<div id="outline-container-org86b0ef5" class="outline-4">
+<h4 id="org86b0ef5"><span class="section-number-4">3.3.1</span> <a href="https://github.com/justbur/emacs-which-key">which-key</a></h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 Mostra os atalhos disponíveis quando o usuário digita <code>Ctrl-x</code>, <code>Ctrl-c</code>, <code>Ctrl-h</code>, etc. e não digita imediatamente a sequência.
@@ -437,8 +437,8 @@ Mostra os atalhos disponíveis quando o usuário digita <code>Ctrl-x</code>, <co
 </div>
 </div>
 
-<div id="outline-container-orgad1d0bf" class="outline-4">
-<h4 id="orgad1d0bf"><span class="section-number-4">3.3.2</span> <a href="https://github.com/nonsequitur/smex">smex</a></h4>
+<div id="outline-container-orgd05820f" class="outline-4">
+<h4 id="orgd05820f"><span class="section-number-4">3.3.2</span> <a href="https://github.com/nonsequitur/smex">smex</a></h4>
 <div class="outline-text-4" id="text-3-3-2">
 <p>
 Facilita a execução de comandos quando o usuário digita <code>Alt-x</code> (comandos gerais) ou <code>Alt-X</code> (comandos do modo atual do buffer).
@@ -454,8 +454,8 @@ Facilita a execução de comandos quando o usuário digita <code>Alt-x</code> (c
 </div>
 </div>
 
-<div id="outline-container-org846292c" class="outline-4">
-<h4 id="org846292c"><span class="section-number-4">3.3.3</span> <a href="https://github.com/victorhge/iedit">iedit</a></h4>
+<div id="outline-container-org04b331e" class="outline-4">
+<h4 id="org04b331e"><span class="section-number-4">3.3.3</span> <a href="https://github.com/victorhge/iedit">iedit</a></h4>
 <div class="outline-text-4" id="text-3-3-3">
 <p>
 Parecido com <a href="https://github.com/magnars/multiple-cursors.el">multiple-cursors</a>, permite a edição simultânea de multiplas regiões. Pessoalmente, acho interessante o fato de <code>C-'</code> esconder o resto do texto para uma vizualização geral das ocorrências, editar apenas as ocorrências de uma função ou linha.
@@ -471,8 +471,8 @@ Parecido com <a href="https://github.com/magnars/multiple-cursors.el">multiple-c
 </div>
 </div>
 
-<div id="outline-container-orga974253" class="outline-4">
-<h4 id="orga974253"><span class="section-number-4">3.3.4</span> <a href="https://github.com/magnars/multiple-cursors.el">multiple-cursors</a></h4>
+<div id="outline-container-orgf4f0f2d" class="outline-4">
+<h4 id="orgf4f0f2d"><span class="section-number-4">3.3.4</span> <a href="https://github.com/magnars/multiple-cursors.el">multiple-cursors</a></h4>
 <div class="outline-text-4" id="text-3-3-4">
 <p>
 Trabalha com multiplos cursores.
@@ -488,8 +488,8 @@ Trabalha com multiplos cursores.
 </div>
 </div>
 
-<div id="outline-container-orge3c5720" class="outline-4">
-<h4 id="orge3c5720"><span class="section-number-4">3.3.5</span> <a href="https://github.com/hniksic/emacs-htmlize">htmlize</a></h4>
+<div id="outline-container-org17d8432" class="outline-4">
+<h4 id="org17d8432"><span class="section-number-4">3.3.5</span> <a href="https://github.com/hniksic/emacs-htmlize">htmlize</a></h4>
 <div class="outline-text-4" id="text-3-3-5">
 <p>
 Permite exportar o conteúdo de um buffer para uma página .html com o mesmo tema utilizado pelo emacs bem como salientar a sintaxe dos fontes no org-mode. 
@@ -504,8 +504,8 @@ Permite exportar o conteúdo de um buffer para uma página .html com o mesmo tem
 </div>
 </div>
 
-<div id="outline-container-org5ba999b" class="outline-4">
-<h4 id="org5ba999b"><span class="section-number-4">3.3.6</span> <a href="https://github.com/larkery/ido-grid-mode.el">ido-grid-mode</a></h4>
+<div id="outline-container-org1bc996b" class="outline-4">
+<h4 id="org1bc996b"><span class="section-number-4">3.3.6</span> <a href="https://github.com/larkery/ido-grid-mode.el">ido-grid-mode</a></h4>
 <div class="outline-text-4" id="text-3-3-6">
 <p>
 Apenas para combinar mais com a apresentação do which-key
@@ -524,8 +524,8 @@ Apenas para combinar mais com a apresentação do which-key
 </div>
 </div>
 
-<div id="outline-container-org309e5e8" class="outline-4">
-<h4 id="org309e5e8"><span class="section-number-4">3.3.7</span> <a href="https://github.com/pjones/ido-select-window">ido-select-window</a></h4>
+<div id="outline-container-org11c8d07" class="outline-4">
+<h4 id="org11c8d07"><span class="section-number-4">3.3.7</span> <a href="https://github.com/pjones/ido-select-window">ido-select-window</a></h4>
 <div class="outline-text-4" id="text-3-3-7">
 <p>
 Facilita a seleção da janela quando existem diversos buffers visualizados simultaneamente.
@@ -541,8 +541,8 @@ Facilita a seleção da janela quando existem diversos buffers visualizados simu
 </div>
 
 
-<div id="outline-container-org066f71c" class="outline-4">
-<h4 id="org066f71c"><span class="section-number-4">3.3.8</span> <a href="https://github.com/DarwinAwardWinner/ido-yes-or-no">ido-yes-or-no</a></h4>
+<div id="outline-container-orgcba1d5e" class="outline-4">
+<h4 id="orgcba1d5e"><span class="section-number-4">3.3.8</span> <a href="https://github.com/DarwinAwardWinner/ido-yes-or-no">ido-yes-or-no</a></h4>
 <div class="outline-text-4" id="text-3-3-8">
 <p>
 Facilita respostas com yes/no permitindo apenas o pressionamento de y/n e enter.
@@ -558,8 +558,8 @@ Facilita respostas com yes/no permitindo apenas o pressionamento de y/n e enter.
 </div>
 </div>
 
-<div id="outline-container-org7c8dcd2" class="outline-4">
-<h4 id="org7c8dcd2"><span class="section-number-4">3.3.9</span> <a href="https://github.com/auto-complete/auto-complete">auto-complete</a></h4>
+<div id="outline-container-org20374c1" class="outline-4">
+<h4 id="org20374c1"><span class="section-number-4">3.3.9</span> <a href="https://github.com/auto-complete/auto-complete">auto-complete</a></h4>
 <div class="outline-text-4" id="text-3-3-9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="linenr">76: </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">auto-complete</span>
@@ -571,8 +571,8 @@ Facilita respostas com yes/no permitindo apenas o pressionamento de y/n e enter.
 </div>
 </div>
 
-<div id="outline-container-orgcc5909c" class="outline-4">
-<h4 id="orgcc5909c"><span class="section-number-4">3.3.10</span> <a href="https://github.com/guaracy/red.el">red.el</a></h4>
+<div id="outline-container-org7cfe856" class="outline-4">
+<h4 id="org7cfe856"><span class="section-number-4">3.3.10</span> <a href="https://github.com/guaracy/red.el">red.el</a></h4>
 <div class="outline-text-4" id="text-3-3-10">
 <p>
 Salientar sintaxe para arquivos Red e Red/System. Utilizo a cópia local.
@@ -590,8 +590,8 @@ Salientar sintaxe para arquivos Red e Red/System. Utilizo a cópia local.
 </div>
 </div>
 
-<div id="outline-container-orgd055a54" class="outline-4">
-<h4 id="orgd055a54"><span class="section-number-4">3.3.11</span> <a href="https://github.com/tom-tan/hlinum-mode">hlinum-mode</a></h4>
+<div id="outline-container-orge7925f5" class="outline-4">
+<h4 id="orge7925f5"><span class="section-number-4">3.3.11</span> <a href="https://github.com/tom-tan/hlinum-mode">hlinum-mode</a></h4>
 <div class="outline-text-4" id="text-3-3-11">
 <p>
 Extende a seleção da linha atual para o número da linha. Veja outras configurações para <a href="https://www.emacswiki.org/emacs/LineNumbers">linum</a>
@@ -607,8 +607,8 @@ Extende a seleção da linha atual para o número da linha. Veja outras configur
 </div>
 </div>
 
-<div id="outline-container-org8a1cff8" class="outline-4">
-<h4 id="org8a1cff8"><span class="section-number-4">3.3.12</span> <a href="https://github.com/mattfidler/linum-off">linum-off</a></h4>
+<div id="outline-container-orgb65bfd3" class="outline-4">
+<h4 id="orgb65bfd3"><span class="section-number-4">3.3.12</span> <a href="https://github.com/mattfidler/linum-off">linum-off</a></h4>
 <div class="outline-text-4" id="text-3-3-12">
 <p>
 Desabilita número de linhas em determnados modos.
@@ -622,8 +622,8 @@ Desabilita número de linhas em determnados modos.
 </div>
 </div>
 
-<div id="outline-container-org30a75ea" class="outline-4">
-<h4 id="org30a75ea"><span class="section-number-4">3.3.13</span> <a href="https://github.com/zk-phi/indent-guide">indent-guide</a></h4>
+<div id="outline-container-org6aa6024" class="outline-4">
+<h4 id="org6aa6024"><span class="section-number-4">3.3.13</span> <a href="https://github.com/zk-phi/indent-guide">indent-guide</a></h4>
 <div class="outline-text-4" id="text-3-3-13">
 <p>
 Mostra uma linha para indentação do código para facilitar a visualização. Outra opção é o <a href="https://github.com/antonj/Highlight-Indentation-for-Emacs">highlight-indentention-for-Emacs</a>
@@ -639,8 +639,8 @@ Mostra uma linha para indentação do código para facilitar a visualização. O
 </div>
 </div>
 
-<div id="outline-container-org5d058a8" class="outline-4">
-<h4 id="org5d058a8"><span class="section-number-4">3.3.14</span> <a href="https://github.com/purcell/less-css-mode">less-css-mode</a></h4>
+<div id="outline-container-orgf18dfd8" class="outline-4">
+<h4 id="orgf18dfd8"><span class="section-number-4">3.3.14</span> <a href="https://github.com/purcell/less-css-mode">less-css-mode</a></h4>
 <div class="outline-text-4" id="text-3-3-14">
 <p>
 Para edição de arquivo .less para gerar .css (como não gosto e não precisei de s[a|c]ass)
@@ -654,8 +654,8 @@ Para edição de arquivo .less para gerar .css (como não gosto e não precisei 
 </div>
 </div>
 
-<div id="outline-container-orgdc0678e" class="outline-4">
-<h4 id="orgdc0678e"><span class="section-number-4">3.3.15</span> <a href="https://github.com/jaypei/emacs-neotree">neotree</a></h4>
+<div id="outline-container-org6e31e27" class="outline-4">
+<h4 id="org6e31e27"><span class="section-number-4">3.3.15</span> <a href="https://github.com/jaypei/emacs-neotree">neotree</a></h4>
 <div class="outline-text-4" id="text-3-3-15">
 <p>
 Permite a utilização do neotree para navegar no sistema de arquivos em vez do dired. Assinala <code>Ctrl-\</code> para mostrar/esconder neotree.
@@ -670,8 +670,8 @@ Permite a utilização do neotree para navegar no sistema de arquivos em vez do 
 </div>
 </div>
 
-<div id="outline-container-orga2bb228" class="outline-4">
-<h4 id="orga2bb228"><span class="section-number-4">3.3.16</span> <a href="https://github.com/Malabarba/paradox">paradox</a></h4>
+<div id="outline-container-org9a2a9d7" class="outline-4">
+<h4 id="org9a2a9d7"><span class="section-number-4">3.3.16</span> <a href="https://github.com/Malabarba/paradox">paradox</a></h4>
 <div class="outline-text-4" id="text-3-3-16">
 <p>
 Um gerenciador de pacotes melhorado.
@@ -687,8 +687,8 @@ Um gerenciador de pacotes melhorado.
 </div>
 </div>
 
-<div id="outline-container-org5c819be" class="outline-4">
-<h4 id="org5c819be"><span class="section-number-4">3.3.17</span> <a href="https://github.com/magit/magit">magit</a></h4>
+<div id="outline-container-org1850a74" class="outline-4">
+<h4 id="org1850a74"><span class="section-number-4">3.3.17</span> <a href="https://github.com/magit/magit">magit</a></h4>
 <div class="outline-text-4" id="text-3-3-17">
 <p>
 Interface com o Git
@@ -703,8 +703,8 @@ Interface com o Git
 </div>
 </div>
 
-<div id="outline-container-org70e03f1" class="outline-4">
-<h4 id="org70e03f1"><span class="section-number-4">3.3.18</span> <a href="https://github.com/Fanael/rainbow-delimiters">rainbow-delimiters</a></h4>
+<div id="outline-container-org3d60f16" class="outline-4">
+<h4 id="org3d60f16"><span class="section-number-4">3.3.18</span> <a href="https://github.com/Fanael/rainbow-delimiters">rainbow-delimiters</a></h4>
 <div class="outline-text-4" id="text-3-3-18">
 <p>
 Optei por utilizar apenas duas cores utilizando as cores do tema para <b>keyword</b> e <b>string</b>. 
@@ -746,8 +746,8 @@ Você pode deixar cada fechamento de delimitar de uma cor. Substitua da linha <a
 </div>
 </div>
 
-<div id="outline-container-org01847e0" class="outline-4">
-<h4 id="org01847e0"><span class="section-number-4">3.3.19</span> <a href="https://github.com/tumashu/el2org">el2org</a> e <a href="https://github.com/larstvei/ox-gfm">ox-gfm</a></h4>
+<div id="outline-container-orge214bb1" class="outline-4">
+<h4 id="orge214bb1"><span class="section-number-4">3.3.19</span> <a href="https://github.com/tumashu/el2org">el2org</a> e <a href="https://github.com/larstvei/ox-gfm">ox-gfm</a></h4>
 <div class="outline-text-4" id="text-3-3-19">
 <p>
 O <code>el2org</code> é necessário para o <code>org-webpage</code> e o <code>ox-gfm</code> é necessário para <code>el2org</code>.
@@ -763,8 +763,8 @@ O <code>el2org</code> é necessário para o <code>org-webpage</code> e o <code>o
 </div>
 </div>
 
-<div id="outline-container-org8da67d0" class="outline-4">
-<h4 id="org8da67d0"><span class="section-number-4">3.3.20</span> <a href="https://github.com/tumashu/org2web">org-webpage</a></h4>
+<div id="outline-container-org31f42cd" class="outline-4">
+<h4 id="org31f42cd"><span class="section-number-4">3.3.20</span> <a href="https://github.com/tumashu/org2web">org-webpage</a></h4>
 <div class="outline-text-4" id="text-3-3-20">
 <p>
 Para gerenciamento do blog estático no github.
@@ -791,8 +791,8 @@ Para gerenciamento do blog estático no github.
 </div>
 </div>
 
-<div id="outline-container-orgb4bc1c6" class="outline-3">
-<h3 id="orgb4bc1c6"><span class="section-number-3">3.4</span> Configurações adicionais</h3>
+<div id="outline-container-orgf21e151" class="outline-3">
+<h3 id="orgf21e151"><span class="section-number-3">3.4</span> Configurações adicionais</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Algumas configurações deixadas para o final
@@ -834,16 +834,16 @@ Algumas configurações deixadas para o final
 </div>
 
 
-<div id="outline-container-org67d9ce0" class="outline-3">
-<h3 id="org67d9ce0"><span class="section-number-3">3.5</span> Definição de funções</h3>
+<div id="outline-container-org7fe29a3" class="outline-3">
+<h3 id="org7fe29a3"><span class="section-number-3">3.5</span> Definição de funções</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Agora a definição de algumas funções que achei úteis (YMMV)
 </p>
 </div>
 
-<div id="outline-container-org2068f07" class="outline-4">
-<h4 id="org2068f07"><span class="section-number-4">3.5.1</span> Abrir lista de arquivos recente (C-x C-r))</h4>
+<div id="outline-container-org57dde50" class="outline-4">
+<h4 id="org57dde50"><span class="section-number-4">3.5.1</span> Abrir lista de arquivos recente (C-x C-r))</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="linenr">166: </span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">recentf</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -872,8 +872,8 @@ Pronto. E essas são as <a href="#coderef-sc-fim" class="coderef" onmouseover="C
 </div>
 </div>
 
-<div id="outline-container-org17943d9" class="outline-2">
-<h2 id="org17943d9"><span class="section-number-2">4</span> Dicas</h2>
+<div id="outline-container-org65b2492" class="outline-2">
+<h2 id="org65b2492"><span class="section-number-2">4</span> Dicas</h2>
 <div class="outline-text-2" id="text-4">
 <div class="tip">
 <p>
@@ -905,7 +905,7 @@ rodar o código abaixo
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Guaracy Monteiro</p>
-<p class="date">Created: 2017-08-20 dom 21:16</p>
+<p class="date">Created: 2017-08-21 seg 10:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

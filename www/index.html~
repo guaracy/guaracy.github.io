@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+<!-- 2017-09-06 qua 14:16 -->
+<meta charset="utf-8">
+<title></title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Guaracy Monteiro">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!-- fonts -->
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
+<!-- css -->
+<!--link rel='stylesheet' href='../res/css/code.css' /-->
+<link rel='stylesheet' href='../res/css/htmlize.css' />
+<link rel='stylesheet' href='../res/css/main.css' /><!-- js -->
+<script src='../res/js/main.js'></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<!-- header.html -->
+<header id="banner">
+  <h1><a href="/">Cadafalso</a></h1>
+  <p>Apenas mais um blog</p>
+  <hr />
+  <nav>
+    <ul>
+      <li><a href="/" title="Índice"><i class="fa fa-home"></i></a></li>
+      <li><a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a></li>
+      <li><a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a></li>
+      <li><a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <center>
+      <form method="get" id="searchform" action="http://www.google.com/search">
+        <i class="fa fa-search"></i>
+        <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
+        <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
+      </form>
+    </center>
+  </nav>
+</header>
+</div>
+<div id="content">
+<div id="outline-container-org3e66ef7" class="outline-2">
+<h2 id="org3e66ef7"><a href="blog/2017-09-05-helloworld.html">Alô Mundo</a></h2>
+<div class="outline-text-2" id="text-org3e66ef7">
+<p>
+<span id='publish'>Publicado em: 2017/set/06 - qua</span>
+</p>
+
+<p>
+Apresentação de um novo blog (que não é novo) &#x2026;
+<a href="blog/2017-09-05-helloworld.html">Leia mais&#x2026;</a>
+</p>
+<hr>
+</div>
+</div>
+<div id="outline-container-org2bafbf5" class="outline-2">
+<h2 id="org2bafbf5"><a href="blog/eg0.html">Apenas um exemplo</a></h2>
+<div class="outline-text-2" id="text-org2bafbf5">
+<p>
+<span id='publish'>Publicado em: 2017/set/05 - ter</span>
+</p>
+
+<p>
+Arquivo de teste para orgmode
+<a href="blog/eg0.html">Leia mais&#x2026;</a>
+</p>
+<hr>
+</div>
+</div>
+<div id="outline-container-org333e017" class="outline-2">
+<h2 id="org333e017"><a href="blog/red-parse.html">Red-Parse Quick'n'dirty</a></h2>
+<div class="outline-text-2" id="text-org333e017">
+<p>
+<span id='publish'>Publicado em: 2017/set/04 - seg</span>
+</p>
+
+<p>
+Parse é a resposta de <a href="https://github.com/red/red">Red</a> para <a href="https://pt.wikipedia.org/wiki/Express%C3%A3o_regular">ER</a>, mais verbosa mas totalmente integrada com a linguagem Red.
+<a href="blog/red-parse.html">Leia mais&#x2026;</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<!-- facebook comments -->
+  <div><h1 class="author-name text-primary">Comentários</h1></div>
+  <div id="fb-root"></div>
+  <script>
+    document.getElementById('fb-thishref').data-href = window.location.href;
+    window.fbAsyncInit = function() {
+    
+    FB.init({
+    appId      : 'guaracy',
+    status     : true,
+    xfbml      : true
+    });
+    };
+    
+    (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script><div id="fb-thishref" class="fb-comments" data-href="https://guaracy.github.io/" data-width="470"></div>
+
+
+</section></article><div id="fb-root"></div>
+<script>
+  
+  $('.fb-comments-count').each(function(i, obj) {
+  var url = obj.attributes['data-url'].value;
+  
+  
+  obj.innerHTML = '<fb:comments-count href="' + url + '"></fb:comments-count> comments';
+  });
+
+  window.fbAsyncInit = function() {
+  
+  FB.init({
+  appId      : 'guaracy',
+  status     : true,
+  xfbml      : true
+  });
+
+  };
+
+  
+  (function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/all.js";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<hr /><p><center>Guaracy Monteiro<br /><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 9.0.10)<br />
+Licença: <a href= \"https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR\">CC BY-SA 4.0</a></center></p>
+
+<!-- google analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-92986383-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</div>
+</body>
+</html>
