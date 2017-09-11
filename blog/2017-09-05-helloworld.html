@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+<!-- 2017-09-10 dom 23:32 -->
+<meta charset="utf-8">
+<title>Alô Mundo</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Guaracy Monteiro">
+<!-- inicio extra-head -->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!-- fonts -->
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
+<!-- css -->
+<!--link rel='stylesheet' href='../res/css/code.css' /-->
+<link rel='stylesheet' href='../res/css/htmlize.css' />
+<link rel='stylesheet' href='../res/css/main.css' /><!-- js -->
+<script src='../res/js/main.js'></script>
+<!-- fim extra-head -->
+</head>
+<body>
+<div id="preamble" class="status">
+<!-- início header.html -->
+<header id="banner">
+  <h1>Cadafalso</h1>
+  <p>Apenas mais um blog</p>
+</header>
+<nav>
+  <form method="get" id="searchform" action="http://www.google.com/search">
+    <a href="/"             title="Índice"> <i class="fa fa-home"></i></a>
+    <a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a>
+    <a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="https://twitter.com/guaracybm" title="Twitter"><i class="fa fa-twitter"></i></a>
+    <a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a>
+    <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
+    <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
+  </form>
+  <br/>
+</nav>
+  <!--    
+          <ul>
+            <li><a href="/" title="Índice"><i class="fa fa-home"></i></a></li>
+            <li><a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a></li>
+            <li><a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a></li>
+            <li><a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+          <center>
+            <form method="get" id="searchform" action="http://www.google.com/search">
+              <i class="fa fa-search"></i>
+              <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
+              <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
+            </form>
+          </center>
+          -->
+<!-- fim header.html -->
+</div>
+<div id="content">
+<h1 class="title">Alô Mundo</h1>
+<div class="PREVIEW">
+<p>
+Apresentação de um novo blog (que não é novo) &#x2026;
+</p>
+
+</div>
+<p>
+apenas para começar certinho.
+</p>
+
+<p>
+A ideia principal é ter um blog estático para hospedar no GitHub ou em outro servidor qualquer sem a necessidade de programas adicionais. Ja testei algums geradores de blog estatico como Hugo, Nikola. Apesar de ótimas opções (entre outros que não testei) em algum ponto eles falharam em integrar o <a href="https://www.gnu.org/software/emacs/">Emacs</a> com o <a href="http://orgmode.org/">org-mode</a>. Não miseravelmente, mas o resultado não foi o que eu desejava. Olhei algumas opções de blog escritas em emacs-lisp como org2web que se demonstraram eficientes mas achei que seria mais uma camada desnecessária entre o texto e o blog. Acabou prevalecendo a opção de exportar diretamente o texto para o blog, opção que não necessita muita coisa além de uma pequena configuração e uma estrutura de diretórios para facilitar a exportação.
+</p>
+
+<p>
+É possível, com o org-mode, desde a criação de listas de tarefas até livros, passando por agenda, pesquisas reproduzíveis, <a href="https://en.wikipedia.org/wiki/Literate_programming">programação letrada</a> e mais um milhão de coisas. Pode-se dizer que é uma linguagem de marcação como Markdown, ReStruturedText, etc., mas turbinada. Assim como o Emacs é mais do que um editor de textos, o org-mode é mais do que uma linguagem de marcação. Vejamos um exemplo de código fonte utilizando a linguagem <a href="http://www.red-lang.org/">Red</a>:
+</p>
+
+<div id="outline-container-org92d82e5" class="outline-2">
+<h2 id="org92d82e5">Exemplo de código fonte</h2>
+<div class="outline-text-2" id="text-org92d82e5">
+<p>
+Na linha <a href="#coderef-red-read" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-red-read');" onmouseout="CodeHighlightOff(this, 'coderef-red-read');">3</a> podemos ver como é feita a leitura de uma página em Red. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-variable-name">site:</span> <span class="org-string">"http://red-lang.org"</span>
+<span class="linenr">2: </span><span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Lendo a p&#225;gina:"</span> site<span class="org-rainbow-delimiters-depth-1">]</span> 
+<span id="coderef-red-read" class="coderef-off"><span class="linenr">3: </span><span class="org-variable-name">page:</span> <span class="org-function-name">read</span> to-url site</span>
+<span class="linenr">4: </span><span class="org-function-name">print</span> <span class="org-string">"Recuperando o t&#237;tulo da p&#225;gina."</span>
+<span id="coderef-red-parse" class="coderef-off"><span class="linenr">5: </span><span class="org-function-name">parse</span> page <span class="org-rainbow-delimiters-depth-1">[</span>thru &lt;title&gt; <span class="org-function-name">copy</span> tit <span class="org-function-name">to</span> &lt;/title&gt; <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Titulo:"</span> tit<span class="org-rainbow-delimiters-depth-1">]</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="linenr">6: </span><span class="org-function-name">print</span> <span class="org-string">"Feito o carreto."</span>
+</pre>
+</div>
+
+<pre class="example">
+Lendo a página: http://red-lang.org
+Recuperando o título da página.
+Titulo: Red Programming Language
+Feito o carreto.
+
+</pre>
+
+<p>
+O <a href="#coderef-red-parse" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-red-parse');" onmouseout="CodeHighlightOff(this, 'coderef-red-parse');">parse</a> aceita tags já que é um dos muitos tipos de dados de Red.
+</p>
+
+<p>
+O que acontece no exemplo anterior?
+</p>
+<ul class="org-ul">
+<li>Temos um trecho de um determinado código em uma determinada linguagem (no caso com as linhas numeradas) e a sintaxe salientada. Por si só, não é nenhuma novidade, mas &#x2026;</li>
+<li>Posso referenciar as linhas no texto sem me preocupar se tiver que incluir ou excluir linhas do programa.</li>
+<li>Colocando o cursor no trecho de código e digitando <code>C-c C-c</code>, o código será executado e o resultado mostrado no bloco seguinte. Qualquer alteração no código irá se refletir no resultado sem a necessidade do tedioso processo de executar externamente e copiar/color o resultado a cada alteração, diminuindo a possibilidade de erros. O resultado pode ser um gráfico gerado por <b>R</b> ou outro programa e, se for uma linguagem compilada com <b>C</b> ele será compilado e executado para mostrar o resultado.</li>
+<li>Posso gerar um arquivo com o código para ser executado externamente (o arquivo pode ser composto por diversos trechos de código e ainda posso ter diversãs linguagens gerando diversos arquivos).</li>
+<li>E, como sempre, mais um monte de coisas.</li>
+</ul>
+
+<p>
+Mas, voltemos ao blog. Supondo-se que eu coloque os artigos do meu blog na pasta <code>~/org/blog/</code>, poderia ter o seguinte trecho no meu arquivo de configuração do Emacs:
+</p>
+</div>
+</div>
+
+<div id="outline-container-org287a2bb" class="outline-2">
+<h2 id="org287a2bb">Exemplo de configuração do Emacs</h2>
+<div class="outline-text-2" id="text-org287a2bb">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-publish-project-alist
+      '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"blog"</span>
+         <span class="org-builtin">:components</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"artigos"</span>, <span class="org-string">"rss"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+        <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"artigos"</span>
+         <span class="org-builtin">:base-directory</span> <span class="org-string">"~/org/blog/"</span>
+         <span class="org-builtin">:html-extension</span> <span class="org-string">"html"</span>
+         <span class="org-builtin">:base-extension</span> <span class="org-string">"org"</span>
+         <span class="org-builtin">:publishing-directory</span> <span class="org-string">"~/public_html/"</span>
+         <span class="org-builtin">:publishing-function</span> org-html-publish-to-html
+         <span class="org-builtin">:html-preamble</span> nil
+         <span class="org-builtin">:html-postamble</span> nil<span class="org-rainbow-delimiters-depth-1">)</span>
+        <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"rss"</span>
+         <span class="org-builtin">:base-directory</span> <span class="org-string">"~/org/blog/"</span>
+         <span class="org-builtin">:base-extension</span> <span class="org-string">"org"</span>
+         <span class="org-builtin">:publishing-directory</span> <span class="org-string">"~/public_html/"</span>
+         <span class="org-builtin">:publishing-function</span> org-rss-publish-to-rss
+         <span class="org-builtin">:html-link-home</span> <span class="org-string">"http://mydomain.org/"</span>
+         <span class="org-builtin">:html-link-use-abs-url</span> t<span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+No exemplo acima, se for dado o comando para publicar os <code>artigos</code>, o org-mode irá verificar todos os arquivos com a extensão org do diretório <code>~/org/blog</code> que foram alterados desde a última públicação, aplicar a função <code>org-html-publish-to-html</code> e gravá-los no diretório <code>~/public_html/</code> com a extensão .html. Existem diversos ganchos que permitem adicionar algum código específico durante a conversão. No exemplo estão mostrados apenas <code>:html-preamble</code> para incluir algum código logo após <code class="src src-html">&lt;<span class="org-function-name">body</span>&gt;</code> e o <code>html-postamble</code> para incluir logo antes de <code class="src src-html">&lt;/<span class="org-function-name">body</span>&gt;</code>. Para atualizar o <i>feed</i> do site, basta executar o componente <code>rss</code> que será aplicada a função <code>org-rss-publish-to-rss</code>. Se for uma atualização geral, executamos <code>blog</code> que os dois componentes serão processados.
+</p>
+
+<p>
+Voce pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#org5e6466c">referências</a>.
+</p>
+
+<div class="error">
+<p>
+Estava com a versão <code>9.0</code> do org-mode com <code>Emacs 25.2</code>. Após uma atualização do org-mode para (<code>9.1</code>), algumas funções foram alteradas, retornando erro e impossibilitando a criação do blog. Para não postergar mais a publicação do blog, voltei para a versão anterior. Apaguei a versão nova do org-mode, baixei o arquivo <a href="http://orgmode.org/elpa/org-plus-contrib-20170828.tar">org-plus-contrib-20170828.tar</a> do <a href="http://orgmode.org/elpa/">site</a>, e descompactei no local. Depois eu verifico as incompatibilidades no <a href="http://orgmode.org/Changes.html">changelog</a>.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga35f58b" class="outline-2">
+<h2 id="orga35f58b">Problemas de um blog estático</h2>
+<div class="outline-text-2" id="text-orga35f58b">
+<p>
+Um dos "problemas" de um blog estático é o sistema de comentários. Nada que um e-mail não resolva mas a comunicação fica restrita quando poderia ser útil para outros usuários. Existem diversas opções para cntornar este problema. Por enquanto escolhi o sistema de comentários disponibilizado pelo Facebook.
+</p>
+
+<p>
+Ainda não decidi se coloco um sistema de tags. Incluí a opção de busca pelo Google e já resolve a maioria dass pesquisas.  
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga496333" class="outline-2">
+<h2 id="orga496333">Gerando documentação</h2>
+<div class="outline-text-2" id="text-orga496333">
+<p>
+O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#org5e6466c">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8ce3a8a" class="outline-2">
+<h2 id="org8ce3a8a">Palavras finais</h2>
+<div class="outline-text-2" id="text-org8ce3a8a">
+<p>
+Agora é só escrever um texto utilizando .org como marcação e o artigo do blog está pronto. Para publicá-lo basta digitar <code>M-x org-publish</code> e escolher qual o item que deverá ser gerado e publicado. Se escolher artigos, serão gerados os arquivos .html de todos os arquivos .org novos ou alterados e enviados para a pasta <code>~/public_html</code> ou posso criar uma entrada <code>blog</code> com todos os componentes necessários para a geração do blog. É possível ainda ter um componentes para a geração de manuais que irão gerar .pdf, ou para livros, etc.. A configuração aqui está um pouco mais complexa do qua a apresentada mas já é possível ter uma ideia.
+</p>
+
+<p>
+Alguns detalhes para a formatação da página ainda não estão como eu gostaria (como o menu, por exemplo) e outros podem estar faltando. Também preciso melhorar a responsividade do site como inclur uma tabela entre <code>&lt;div style</code>"overflow-x:auto;"&gt;&#x2026;&lt;/div&gt;= automaticamente para a visualização em dispositívos com tela pequena.
+</p>
+
+
+<div class="figure">
+<p><a href="../img/blog-emacs.png"><img src="../img/blog-emacs-small.png" alt="blog-emacs-small.png"></a>
+</p>
+<p><span class="figure-number">Figura 1: </span>Editando esta entrada</p>
+</div>
+
+
+<p>
+Até o próximo.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org0978c74" class="outline-2">
+<h2 id="org0978c74">Referências<a id="org5e6466c"></a></h2>
+<div class="outline-text-2" id="text-org0978c74">
+<ul class="org-ul">
+<li><a href="https://emacs-doctor.com/blogging-from-emacs.html">Blogging from GNU Emacs</a></li>
+<li><a href="https://ogbe.net/blog/blogging_with_org.html">Blogging using org-mode (and nothing else)</a></li>
+<li>O fonte desta entrada no formato <a href="../dl/2017-09-05-helloworld.txt">texto</a> gerou a mesma fonte em <a href="../dl/2017-09-05-helloworld.html">html</a>, uma entrada para o <a href="./2017-09-05-helloworld.html">blog</a>, uma <a href="../docs/2017-09-05-helloworld.html">documentação</a> um programa em <a href="../dl/hello.red">Red</a> e um <a href="../dl/conf.el">emacs lisp</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<!-- início facebook comments -->
+<h1>Comentários</h1>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) return;
+   js = d.createElement(s); js.id = id;
+   js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.10&appId=390897774602375";
+   fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="fb-comments" data-colorscheme="light" data-width="540" data-numposts="10"></div>
+</div>
+<div id="postamble" class="status">
+ <!-- fim facebook comments -->
+<center><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 9.0.10)</center><!-- início footer -->
+<center>
+Licença: <a href= 'https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR'>CC BY-SA 4.0</a></center></p>
+</center>
+<!-- fim footer -->
+<!-- início google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-92986383-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- fim google analytics -->
+</div>
+</body>
+</html>

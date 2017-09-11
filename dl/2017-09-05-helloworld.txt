@@ -1,0 +1,107 @@
+#+TITLE: Alô Mundo
+#+AUTHOR: Guaracy Monteiro
+#+EMAIL: guaracy.bm@gmail.com
+#+TAGS: emacs, org-mode, red
+#+DATE:
+#+STARTUP: showall
+#+STARTUP: inlineimages
+
+#+BEGIN_PREVIEW
+Apresentação de um novo blog (que não é novo) ...
+#+END_PREVIEW
+apenas para começar certinho.
+
+A ideia principal é ter um blog estático para hospedar no GitHub ou em outro servidor qualquer sem a necessidade de programas adicionais. Ja testei algums geradores de blog estatico como Hugo, Nikola. Apesar de ótimas opções (entre outros que não testei) em algum ponto eles falharam em integrar o [[https://www.gnu.org/software/emacs/][Emacs]] com o [[http://orgmode.org/][org-mode]]. Não miseravelmente, mas o resultado não foi o que eu desejava. Olhei algumas opções de blog escritas em emacs-lisp como org2web que se demonstraram eficientes mas achei que seria mais uma camada desnecessária entre o texto e o blog. Acabou prevalecendo a opção de exportar diretamente o texto para o blog, opção que não necessita muita coisa além de uma pequena configuração e uma estrutura de diretórios para facilitar a exportação.
+
+É possível, com o org-mode, desde a criação de listas de tarefas até livros, passando por agenda, pesquisas reproduzíveis, [[https://en.wikipedia.org/wiki/Literate_programming][programação letrada]] e mais um milhão de coisas. Pode-se dizer que é uma linguagem de marcação como Markdown, ReStruturedText, etc., mas turbinada. Assim como o Emacs é mais do que um editor de textos, o org-mode é mais do que uma linguagem de marcação. Vejamos um exemplo de código fonte utilizando a linguagem [[http://www.red-lang.org/][Red]]:
+
+** Exemplo de código fonte
+
+Na linha [[(red-read)]] podemos ver como é feita a leitura de uma página em Red. 
+
+#+begin_src red -n -r :exports both :tangle ../dl/hello.red
+  site: "http://red-lang.org"
+  print ["Lendo a página:" site] 
+  page: read to-url site  (ref:red-read)
+  print "Recuperando o título da página."
+  parse page [thru <title> copy tit to </title> (print ["Titulo:" tit])] (ref:red-parse)
+  print "Feito o carreto."
+#+end_src
+
+#+RESULTS:
+: Lendo a página: http://red-lang.org
+: Recuperando o título da página.
+: Titulo: Red Programming Language
+: Feito o carreto.
+
+O [[(red-parse)][parse]] aceita tags já que é um dos muitos tipos de dados de Red.
+
+O que acontece no exemplo anterior?
+- Temos um trecho de um determinado código em uma determinada linguagem (no caso com as linhas numeradas) e a sintaxe salientada. Por si só, não é nenhuma novidade, mas ...
+- Posso referenciar as linhas no texto sem me preocupar se tiver que incluir ou excluir linhas do programa.
+- Colocando o cursor no trecho de código e digitando =C-c C-c=, o código será executado e o resultado mostrado no bloco seguinte. Qualquer alteração no código irá se refletir no resultado sem a necessidade do tedioso processo de executar externamente e copiar/color o resultado a cada alteração, diminuindo a possibilidade de erros. O resultado pode ser um gráfico gerado por *R* ou outro programa e, se for uma linguagem compilada com *C* ele será compilado e executado para mostrar o resultado.
+- Posso gerar um arquivo com o código para ser executado externamente (o arquivo pode ser composto por diversos trechos de código e ainda posso ter diversãs linguagens gerando diversos arquivos).
+- E, como sempre, mais um monte de coisas.
+
+Mas, voltemos ao blog. Supondo-se que eu coloque os artigos do meu blog na pasta =~/org/blog/=, poderia ter o seguinte trecho no meu arquivo de configuração do Emacs:
+
+** Exemplo de configuração do Emacs
+
+#+BEGIN_SRC emacs-lisp :tangle ../dl/conf.el
+  (setq org-publish-project-alist
+        '(("blog"
+           :components ("artigos", "rss"))
+          ("artigos"
+           :base-directory "~/org/blog/"
+           :html-extension "html"
+           :base-extension "org"
+           :publishing-directory "~/public_html/"
+           :publishing-function org-html-publish-to-html
+           :html-preamble nil
+           :html-postamble nil)
+          ("rss"
+           :base-directory "~/org/blog/"
+           :base-extension "org"
+           :publishing-directory "~/public_html/"
+           :publishing-function org-rss-publish-to-rss
+           :html-link-home "http://mydomain.org/"
+           :html-link-use-abs-url t)))
+#+END_SRC
+
+No exemplo acima, se for dado o comando para publicar os =artigos=, o org-mode irá verificar todos os arquivos com a extensão org do diretório =~/org/blog= que foram alterados desde a última públicação, aplicar a função =org-html-publish-to-html= e gravá-los no diretório =~/public_html/= com a extensão .html. Existem diversos ganchos que permitem adicionar algum código específico durante a conversão. No exemplo estão mostrados apenas =:html-preamble= para incluir algum código logo após src_html[:exports code]{<body>} e o =html-postamble= para incluir logo antes de src_html[:exports code]{</body>}. Para atualizar o /feed/ do site, basta executar o componente =rss= que será aplicada a função =org-rss-publish-to-rss=. Se for uma atualização geral, executamos =blog= que os dois componentes serão processados.
+
+Voce pode ver informações completas para a publicação no [[http://orgmode.org/manual/Publishing.html#Publishing][site]] do org-mode e nas [[referencias][referências]].
+
+#+begin_error
+Estava com a versão =9.0= do org-mode com =Emacs 25.2=. Após uma atualização do org-mode para (=9.1=), algumas funções foram alteradas, retornando erro e impossibilitando a criação do blog. Para não postergar mais a publicação do blog, voltei para a versão anterior. Apaguei a versão nova do org-mode, baixei o arquivo [[http://orgmode.org/elpa/org-plus-contrib-20170828.tar][org-plus-contrib-20170828.tar]] do [[http://orgmode.org/elpa/][site]], e descompactei no local. Depois eu verifico as incompatibilidades no [[http://orgmode.org/Changes.html][changelog]].
+#+end_error
+
+** Problemas de um blog estático
+
+Um dos "problemas" de um blog estático é o sistema de comentários. Nada que um e-mail não resolva mas a comunicação fica restrita quando poderia ser útil para outros usuários. Existem diversas opções para cntornar este problema. Por enquanto escolhi o sistema de comentários disponibilizado pelo Facebook.
+
+Ainda não decidi se coloco um sistema de tags. Incluí a opção de busca pelo Google e já resolve a maioria dass pesquisas.  
+
+** Gerando documentação
+
+O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja [[referencias][referẽncias]]). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
+
+** Palavras finais
+
+Agora é só escrever um texto utilizando .org como marcação e o artigo do blog está pronto. Para publicá-lo basta digitar =M-x org-publish= e escolher qual o item que deverá ser gerado e publicado. Se escolher artigos, serão gerados os arquivos .html de todos os arquivos .org novos ou alterados e enviados para a pasta =~/public_html= ou posso criar uma entrada =blog= com todos os componentes necessários para a geração do blog. É possível ainda ter um componentes para a geração de manuais que irão gerar .pdf, ou para livros, etc.. A configuração aqui está um pouco mais complexa do qua a apresentada mas já é possível ter uma ideia.
+
+Alguns detalhes para a formatação da página ainda não estão como eu gostaria (como o menu, por exemplo) e outros podem estar faltando. Também preciso melhorar a responsividade do site como inclur uma tabela entre =<div style="overflow-x:auto;">...</div>= automaticamente para a visualização em dispositívos com tela pequena.
+
+#+CAPTION: Editando esta entrada
+[[file:../img/blog-emacs.png][file:../img/blog-emacs-small.png]]
+
+
+Até o próximo.
+
+
+** Referências<<referencias>>
+
+#+ATTR_HTML: target="_blank"
+- [[https://emacs-doctor.com/blogging-from-emacs.html][Blogging from GNU Emacs]]
+- [[https://ogbe.net/blog/blogging_with_org.html][Blogging using org-mode (and nothing else)]]
+- O fonte desta entrada no formato [[File:../dl/2017-09-05-helloworld.txt][texto]] gerou a mesma fonte em [[../dl/2017-09-05-helloworld.html][html]], uma entrada para o [[./2017-09-05-helloworld.html][blog]], uma [[../docs/2017-09-05-helloworld.html][documentação]] um programa em [[../dl/hello.red][Red]] e um [[../dl/conf.el][emacs lisp]].

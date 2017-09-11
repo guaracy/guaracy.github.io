@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.51 in css mode. -->
+<html>
+  <head>
+    <title>2017-09-05-helloworld.org</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #abb2bf;
+        background-color: #282c34;
+      }
+      .bold {
+        /* bold */
+        font-weight: bold;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #61afef;
+        font-weight: bold;
+      }
+      .default {
+        /* default */
+        color: #abb2bf;
+        background-color: #282c34;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #61afef;
+      }
+      .italic {
+        /* italic */
+        font-style: italic;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #c678dd;
+        font-weight: bold;
+      }
+      .org-block {
+        /* org-block */
+        color: #b3b3b3;
+      }
+      .org-block-begin-line {
+        /* org-block-begin-line */
+        color: #9eac8c;
+        background-color: #3d4a41;
+        font-size: 90%;
+      }
+      .org-block-end-line {
+        /* org-block-end-line */
+        color: #9eac8c;
+        background-color: #3d4a41;
+        font-size: 90%;
+      }
+      .org-code {
+        /* org-code */
+        color: #b3b3b3;
+      }
+      .org-document-info {
+        /* org-document-info */
+        color: #afeeee;
+      }
+      .org-document-info-keyword {
+        /* org-document-info-keyword */
+        color: #b3b3b3;
+      }
+      .org-document-title {
+        /* org-document-title */
+        color: #afeeee;
+        font-weight: bold;
+      }
+      .org-level-2 {
+        /* org-level-2 */
+        color: #c678dd;
+        font-weight: bold;
+      }
+      .org-link {
+        /* org-link */
+        color: #61afef;
+        text-decoration: underline;
+      }
+      .org-meta-line {
+        /* org-meta-line */
+        color: #687080;
+        font-style: italic;
+      }
+      .org-target {
+        /* org-target */
+        text-decoration: underline;
+      }
+      .org-verbatim {
+        /* org-verbatim */
+        color: #b3b3b3;
+      }
+      .rainbow-delimiters-depth-1 {
+        /* rainbow-delimiters-depth-1-face */
+        color: #c678dd;
+      }
+      .rainbow-delimiters-depth-2 {
+        /* rainbow-delimiters-depth-2-face */
+        color: #98be65;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #98be65;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #61afef;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Al&#244; Mundo
+</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">Guaracy Monteiro
+</span><span class="org-document-info-keyword">#+EMAIL:</span> <span class="org-document-info">guaracy.bm@gmail.com
+</span><span class="org-meta-line">#+TAGS: emacs, org-mode, red</span>
+<span class="org-document-info-keyword">#+DATE:</span><span class="org-document-info">
+</span><span class="org-meta-line">#+STARTUP: showall</span>
+<span class="org-meta-line">#+STARTUP: inlineimages</span>
+
+<span class="org-block-begin-line">#+BEGIN_PREVIEW
+</span>Apresenta&#231;&#227;o de um novo blog (que n&#227;o &#233; novo) ...<span class="org-meta-line">
+</span><span class="org-block-end-line">#+END_PREVIEW
+</span>apenas para come&#231;ar certinho.
+
+A ideia principal &#233; ter um blog est&#225;tico para hospedar no GitHub ou em outro servidor qualquer sem a necessidade de programas adicionais. Ja testei algums geradores de blog estatico como Hugo, Nikola. Apesar de &#243;timas op&#231;&#245;es (entre outros que n&#227;o testei) em algum ponto eles falharam em integrar o <span class="org-link"><a href="https://www.gnu.org/software/emacs/">Emacs</a></span> com o <span class="org-link"><a href="http://orgmode.org/">org-mode</a></span>. N&#227;o miseravelmente, mas o resultado n&#227;o foi o que eu desejava. Olhei algumas op&#231;&#245;es de blog escritas em emacs-lisp como org2web que se demonstraram eficientes mas achei que seria mais uma camada desnecess&#225;ria entre o texto e o blog. Acabou prevalecendo a op&#231;&#227;o de exportar diretamente o texto para o blog, op&#231;&#227;o que n&#227;o necessita muita coisa al&#233;m de uma pequena configura&#231;&#227;o e uma estrutura de diret&#243;rios para facilitar a exporta&#231;&#227;o.
+
+&#201; poss&#237;vel, com o org-mode, desde a cria&#231;&#227;o de listas de tarefas at&#233; livros, passando por agenda, pesquisas reproduz&#237;veis, <span class="org-link"><a href="https://en.wikipedia.org/wiki/Literate_programming">programa&#231;&#227;o letrada</a></span> e mais um milh&#227;o de coisas. Pode-se dizer que &#233; uma linguagem de marca&#231;&#227;o como Markdown, ReStruturedText, etc., mas turbinada. Assim como o Emacs &#233; mais do que um editor de textos, o org-mode &#233; mais do que uma linguagem de marca&#231;&#227;o. Vejamos um exemplo de c&#243;digo fonte utilizando a linguagem <span class="org-link"><a href="http://www.red-lang.org/">Red</a></span>:
+
+<span class="org-level-2">** Exemplo de c&#243;digo fonte</span>
+
+Na linha <span class="org-link"><a href="(red-read)">(red-read)</a></span> podemos ver como &#233; feita a leitura de uma p&#225;gina em Red. 
+
+<span class="org-block-begin-line">#+begin_src red -n -r :exports both :tangle ../dl/hello.red
+</span><span class="org-block">  </span><span class="org-block"><span class="variable-name">site:</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"<a href="http://red-lang.org">http://red-lang.org</a>"</span></span><span class="org-block">
+  </span><span class="org-block"><span class="function-name">print</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-1">[</span></span><span class="org-block"><span class="string">"Lendo a p&#225;gina:"</span></span><span class="org-block"> site</span><span class="org-block"><span class="rainbow-delimiters-depth-1">]</span></span><span class="org-block"> 
+  </span><span class="org-block"><span class="variable-name">page:</span></span><span class="org-block"> </span><span class="org-block"><span class="function-name">read</span></span><span class="org-block"> to-url site  </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="variable-name">ref:</span></span><span class="org-block">red-read</span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
+  </span><span class="org-block"><span class="function-name">print</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Recuperando o t&#237;tulo da p&#225;gina."</span></span><span class="org-block">
+  </span><span class="org-block"><span class="function-name">parse</span></span><span class="org-block"> page </span><span class="org-block"><span class="rainbow-delimiters-depth-1">[</span></span><span class="org-block">thru &lt;title&gt; </span><span class="org-block"><span class="function-name">copy</span></span><span class="org-block"> tit </span><span class="org-block"><span class="function-name">to</span></span><span class="org-block"> &lt;/title&gt; </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block"><span class="function-name">print</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-1">[</span></span><span class="org-block"><span class="string">"Titulo:"</span></span><span class="org-block"> tit</span><span class="org-block"><span class="rainbow-delimiters-depth-1">]</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">]</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="variable-name">ref:</span></span><span class="org-block">red-parse</span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
+  </span><span class="org-block"><span class="function-name">print</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Feito o carreto."</span></span><span class="org-block">
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-meta-line">#+RESULTS:</span>
+<span class="org-code">: Lendo a p&#225;gina: <a href="http://red-lang.org">http://red-lang.org</a>
+: Recuperando o t&#237;tulo da p&#225;gina.
+: Titulo: Red Programming Language
+: Feito o carreto.
+</span>
+O <span class="org-link"><a href="(red-parse)">parse</a></span> aceita tags j&#225; que &#233; um dos muitos tipos de dados de Red.
+
+O que acontece no exemplo anterior?
+- Temos um trecho de um determinado c&#243;digo em uma determinada linguagem (no caso com as linhas numeradas) e a sintaxe salientada. Por si s&#243;, n&#227;o &#233; nenhuma novidade, mas ...
+- Posso referenciar as linhas no texto sem me preocupar se tiver que incluir ou excluir linhas do programa.
+- Colocando o cursor no trecho de c&#243;digo e digitando <span class="org-verbatim">=C-c C-c=</span>, o c&#243;digo ser&#225; executado e o resultado mostrado no bloco seguinte. Qualquer altera&#231;&#227;o no c&#243;digo ir&#225; se refletir no resultado sem a necessidade do tedioso processo de executar externamente e copiar/color o resultado a cada altera&#231;&#227;o, diminuindo a possibilidade de erros. O resultado pode ser um gr&#225;fico gerado por <span class="bold">*R*</span> ou outro programa e, se for uma linguagem compilada com <span class="bold">*C*</span> ele ser&#225; compilado e executado para mostrar o resultado.
+- Posso gerar um arquivo com o c&#243;digo para ser executado externamente (o arquivo pode ser composto por diversos trechos de c&#243;digo e ainda posso ter divers&#227;s linguagens gerando diversos arquivos).
+- E, como sempre, mais um monte de coisas.
+
+Mas, voltemos ao blog. Supondo-se que eu coloque os artigos do meu blog na pasta <span class="org-verbatim">=~/org/blog/=</span>, poderia ter o seguinte trecho no meu arquivo de configura&#231;&#227;o do Emacs:
+
+<span class="org-level-2">** Exemplo de configura&#231;&#227;o do Emacs</span>
+
+<span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :tangle ../dl/conf.el
+</span><span class="org-block">  </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="keyword">setq</span></span><span class="org-block"> org-publish-project-alist
+        '</span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="string">"blog"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:components</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block"><span class="string">"artigos"</span></span><span class="org-block">, </span><span class="org-block"><span class="string">"rss"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
+          </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="string">"artigos"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:base-directory</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"~/org/blog/"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:html-extension</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"html"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:base-extension</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"org"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:publishing-directory</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"~/public_html/"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:publishing-function</span></span><span class="org-block"> org-html-publish-to-html
+           </span><span class="org-block"><span class="builtin">:html-preamble</span></span><span class="org-block"> nil
+           </span><span class="org-block"><span class="builtin">:html-postamble</span></span><span class="org-block"> nil</span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
+          </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="string">"rss"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:base-directory</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"~/org/blog/"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:base-extension</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"org"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:publishing-directory</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"~/public_html/"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:publishing-function</span></span><span class="org-block"> org-rss-publish-to-rss
+           </span><span class="org-block"><span class="builtin">:html-link-home</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"<a href="http://mydomain.org/">http://mydomain.org/</a>"</span></span><span class="org-block">
+           </span><span class="org-block"><span class="builtin">:html-link-use-abs-url</span></span><span class="org-block"> t</span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+No exemplo acima, se for dado o comando para publicar os <span class="org-verbatim">=artigos=</span>, o org-mode ir&#225; verificar todos os arquivos com a extens&#227;o org do diret&#243;rio <span class="org-verbatim">=~/org/blog=</span> que foram alterados desde a &#250;ltima p&#250;blica&#231;&#227;o, aplicar a fun&#231;&#227;o <span class="org-verbatim">=org-html-publish-to-html=</span> e grav&#225;-los no diret&#243;rio <span class="org-verbatim">=~/public_html/=</span> com a extens&#227;o .html. Existem diversos ganchos que permitem adicionar algum c&#243;digo espec&#237;fico durante a convers&#227;o. No exemplo est&#227;o mostrados apenas <span class="org-verbatim">=:html-preamble=</span> para incluir algum c&#243;digo logo ap&#243;s src_html[:exports code]{&lt;body&gt;} e o <span class="org-verbatim">=html-postamble=</span> para incluir logo antes de src_html[:exports code]{&lt;/body&gt;}. Para atualizar o <span class="italic">/feed/</span> do site, basta executar o componente <span class="org-verbatim">=rss=</span> que ser&#225; aplicada a fun&#231;&#227;o <span class="org-verbatim">=org-rss-publish-to-rss=</span>. Se for uma atualiza&#231;&#227;o geral, executamos <span class="org-verbatim">=blog=</span> que os dois componentes ser&#227;o processados.
+
+Voce pode ver informa&#231;&#245;es completas para a publica&#231;&#227;o no <span class="org-link"><a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a></span> do org-mode e nas <span class="org-link"><a href="referencias">refer&#234;ncias</a></span>.
+
+<span class="org-block-begin-line">#+begin_error
+</span>Estava com a vers&#227;o <span class="org-verbatim">=9.0=</span> do org-mode com <span class="org-verbatim">=Emacs 25.2=</span>. Ap&#243;s uma atualiza&#231;&#227;o do org-mode para (<span class="org-verbatim">=9.1=</span>), algumas fun&#231;&#245;es foram alteradas, retornando erro e impossibilitando a cria&#231;&#227;o do blog. Para n&#227;o postergar mais a publica&#231;&#227;o do blog, voltei para a vers&#227;o anterior. Apaguei a vers&#227;o nova do org-mode, baixei o arquivo <span class="org-link"><a href="http://orgmode.org/elpa/org-plus-contrib-20170828.tar">org-plus-contrib-20170828.tar</a></span> do <span class="org-link"><a href="http://orgmode.org/elpa/">site</a></span>, e descompactei no local. Depois eu verifico as incompatibilidades no <span class="org-link"><a href="http://orgmode.org/Changes.html">changelog</a></span>.<span class="org-meta-line">
+</span><span class="org-block-end-line">#+end_error
+</span>
+<span class="org-level-2">** Problemas de um blog est&#225;tico</span>
+
+Um dos "problemas" de um blog est&#225;tico &#233; o sistema de coment&#225;rios. Nada que um e-mail n&#227;o resolva mas a comunica&#231;&#227;o fica restrita quando poderia ser &#250;til para outros usu&#225;rios. Existem diversas op&#231;&#245;es para cntornar este problema. Por enquanto escolhi o sistema de coment&#225;rios disponibilizado pelo Facebook.
+
+Ainda n&#227;o decidi se coloco um sistema de tags. Inclu&#237; a op&#231;&#227;o de busca pelo Google e j&#225; resolve a maioria dass pesquisas.  
+
+<span class="org-level-2">** Gerando documenta&#231;&#227;o</span>
+
+O mesmo arquivo que gerou esta entrada para o blog tamb&#233;m poderia gerar um arquivo de documenta&#231;&#227;o (veja <span class="org-link"><a href="referencias">refer&#7869;ncias</a></span>). Gerei um .html pois j&#225; possuo uma formata&#231;&#227;o adequada para ele e, em diversos casos, uma documenta&#231;&#227;o em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indica&#231;&#227;o da linha do trecho quando passamos o mouse sobre a mesma.
+
+<span class="org-level-2">** Palavras finais</span>
+
+Agora &#233; s&#243; escrever um texto utilizando .org como marca&#231;&#227;o e o artigo do blog est&#225; pronto. Para public&#225;-lo basta digitar <span class="org-verbatim">=M-x org-publish=</span> e escolher qual o item que dever&#225; ser gerado e publicado. Se escolher artigos, ser&#227;o gerados os arquivos .html de todos os arquivos .org novos ou alterados e enviados para a pasta <span class="org-verbatim">=~/public_html=</span> ou posso criar uma entrada <span class="org-verbatim">=blog=</span> com todos os componentes necess&#225;rios para a gera&#231;&#227;o do blog. &#201; poss&#237;vel ainda ter um componentes para a gera&#231;&#227;o de manuais que ir&#227;o gerar .pdf, ou para livros, etc.. A configura&#231;&#227;o aqui est&#225; um pouco mais complexa do qua a apresentada mas j&#225; &#233; poss&#237;vel ter uma ideia.
+
+Alguns detalhes para a formata&#231;&#227;o da p&#225;gina ainda n&#227;o est&#227;o como eu gostaria (como o menu, por exemplo) e outros podem estar faltando. Tamb&#233;m preciso melhorar a responsividade do site como inclur uma tabela entre <span class="org-verbatim">=&lt;div style=</span>"overflow-x:auto;"&gt;...&lt;/div&gt;= automaticamente para a visualiza&#231;&#227;o em disposit&#237;vos com tela pequena.
+
+<span class="org-meta-line">#+CAPTION:</span> <span class="org-block">Editando esta entrada</span>
+<img src="../img/blog-emacs-small.png" alt="file:../img/blog-emacs-small.png" />
+
+
+At&#233; o pr&#243;ximo.
+
+
+<span class="org-level-2">** Refer&#234;ncias</span><span class="org-target">&lt;&lt;referencias&gt;&gt;</span>
+
+<span class="org-meta-line">#+ATTR_HTML: target="_blank"</span>
+- <span class="org-link"><a href="https://emacs-doctor.com/blogging-from-emacs.html">Blogging from GNU Emacs</a></span>
+- <span class="org-link"><a href="https://ogbe.net/blog/blogging_with_org.html">Blogging using org-mode (and nothing else)</a></span>
+- O fonte desta entrada no formato <span class="org-link"><a href="File:../dl/2017-09-05-helloworld.txt">texto</a></span> gerou a mesma fonte em <span class="org-link"><a href="../dl/2017-09-05-helloworld.html">html</a></span>, uma entrada para o <span class="org-link"><a href="./2017-09-05-helloworld.html">blog</a></span>, uma <span class="org-link"><a href="../docs/2017-09-05-helloworld.html">documenta&#231;&#227;o</a></span> um programa em <span class="org-link"><a href="../dl/hello.red">Red</a></span> e um <span class="org-link"><a href="../dl/conf.el">emacs lisp</a></span>.
+</pre>
+  </body>
+</html>
