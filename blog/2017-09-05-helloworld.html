@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-11 seg 01:22 -->
+<!-- 2017-09-11 seg 12:02 -->
 <meta charset="utf-8">
 <title>Alô Mundo</title>
 <meta name="generator" content="Org mode">
@@ -75,9 +75,9 @@ A ideia principal é ter um blog estático para hospedar no GitHub ou em outro s
 É possível, com o org-mode, desde a criação de listas de tarefas até livros, passando por agenda, pesquisas reproduzíveis, <a href="https://en.wikipedia.org/wiki/Literate_programming">programação letrada</a> e mais um milhão de coisas. Pode-se dizer que é uma linguagem de marcação como Markdown, ReStruturedText, etc., mas turbinada. Assim como o Emacs é mais do que um editor de textos, o org-mode é mais do que uma linguagem de marcação. Vejamos um exemplo de código fonte utilizando a linguagem <a href="http://www.red-lang.org/">Red</a>:
 </p>
 
-<div id="outline-container-org92d82e5" class="outline-2">
-<h2 id="org92d82e5">Exemplo de código fonte</h2>
-<div class="outline-text-2" id="text-org92d82e5">
+<div id="outline-container-org08da009" class="outline-2">
+<h2 id="org08da009">Exemplo de código fonte</h2>
+<div class="outline-text-2" id="text-org08da009">
 <p>
 Na linha <a href="#coderef-red-read" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-red-read');" onmouseout="CodeHighlightOff(this, 'coderef-red-read');">3</a> podemos ver como é feita a leitura de uma página em Red. 
 </p>
@@ -121,9 +121,9 @@ Mas, voltemos ao blog. Supondo-se que eu coloque os artigos do meu blog na pasta
 </div>
 </div>
 
-<div id="outline-container-org287a2bb" class="outline-2">
-<h2 id="org287a2bb">Exemplo de configuração do Emacs</h2>
-<div class="outline-text-2" id="text-org287a2bb">
+<div id="outline-container-org0ab9050" class="outline-2">
+<h2 id="org0ab9050">Exemplo de configuração do Emacs</h2>
+<div class="outline-text-2" id="text-org0ab9050">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-publish-project-alist
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"blog"</span>
@@ -151,7 +151,7 @@ No exemplo acima, se for dado o comando para publicar os <code>artigos</code>, o
 </p>
 
 <p>
-Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#org5e6466c">referências</a>.
+Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#orgce791e1">referências</a>.
 </p>
 
 <div class="error">
@@ -163,9 +163,9 @@ Estava com a versão <code>9.0</code> do org-mode com <code>Emacs 25.2</code>. A
 </div>
 </div>
 
-<div id="outline-container-orga35f58b" class="outline-2">
-<h2 id="orga35f58b">Problemas de um blog estático</h2>
-<div class="outline-text-2" id="text-orga35f58b">
+<div id="outline-container-orgf9c009a" class="outline-2">
+<h2 id="orgf9c009a">Problemas de um blog estático</h2>
+<div class="outline-text-2" id="text-orgf9c009a">
 <p>
 Um dos "problemas" de um blog estático é o sistema de comentários. Nada que um e-mail não resolva mas a comunicação fica restrita quando poderia ser útil para outros usuários. Existem diversas opções para contornar este problema. Por enquanto escolhi o sistema de comentários disponibilizado pelo Facebook.
 </p>
@@ -176,18 +176,18 @@ Ainda não decidi se coloco um sistema de tags. Incluí a opção de busca pelo 
 </div>
 </div>
 
-<div id="outline-container-orga496333" class="outline-2">
-<h2 id="orga496333">Gerando documentação</h2>
-<div class="outline-text-2" id="text-orga496333">
+<div id="outline-container-org236eaa0" class="outline-2">
+<h2 id="org236eaa0">Gerando documentação</h2>
+<div class="outline-text-2" id="text-org236eaa0">
 <p>
-O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#org5e6466c">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
+O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#orgce791e1">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8ce3a8a" class="outline-2">
-<h2 id="org8ce3a8a">Palavras finais</h2>
-<div class="outline-text-2" id="text-org8ce3a8a">
+<div id="outline-container-org14afe5d" class="outline-2">
+<h2 id="org14afe5d">Palavras finais</h2>
+<div class="outline-text-2" id="text-org14afe5d">
 <p>
 Agora é só escrever um texto utilizando .org como marcação e o artigo do blog está pronto. Para publicá-lo basta digitar <code>M-x org-publish</code> e escolher qual o item que deverá ser gerado e publicado. Se escolher artigos, serão gerados os arquivos .html de todos os arquivos .org novos ou alterados e enviados para a pasta <code>~/public_html</code> ou posso criar uma entrada <code>blog</code> com todos os componentes necessários para a geração do blog. É possível ainda ter um componentes para a geração de manuais que irão gerar .pdf, ou para livros, etc.. A configuração aqui está um pouco mais complexa do qua a apresentada mas já é possível ter uma ideia.
 </p>
@@ -202,7 +202,16 @@ Alguns detalhes para a formatação da página ainda não estão como eu gostari
 </p>
 <p><span class="figure-number">Figura 1: </span>Editando esta entrada</p>
 </div>
+</div>
+</div>
 
+
+<div id="outline-container-org3f6296e" class="outline-2">
+<h2 id="org3f6296e">Atualização</h2>
+<div class="outline-text-2" id="text-org3f6296e">
+<ul class="org-ul">
+<li><b>2017-09-11</b> : Sistema de comentários alterado do Facebook para o Disqus. Só para sair das garras do Zuckerberg: Dica do <a href="http://www.eustaquiorangel.com/">Taq</a>.</li>
+</ul>
 
 <p>
 Até o próximo.
@@ -211,9 +220,9 @@ Até o próximo.
 </div>
 
 
-<div id="outline-container-org0978c74" class="outline-2">
-<h2 id="org0978c74">Referências<a id="org5e6466c"></a></h2>
-<div class="outline-text-2" id="text-org0978c74">
+<div id="outline-container-orge4da864" class="outline-2">
+<h2 id="orge4da864">Referências<a id="orgce791e1"></a></h2>
+<div class="outline-text-2" id="text-orge4da864">
 <ul class="org-ul">
 <li><a href="https://emacs-doctor.com/blogging-from-emacs.html">Blogging from GNU Emacs</a></li>
 <li><a href="https://ogbe.net/blog/blogging_with_org.html">Blogging using org-mode (and nothing else)</a></li>
@@ -225,20 +234,31 @@ Até o próximo.
 <div id="postamble" class="status">
 <!-- início facebook comments -->
 <h1>Comentários</h1>
-<div id="fb-root"></div>
+<div id="disqus_thread"></div>
 <script>
-(function(d, s, id) {
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) return;
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.10&appId=390897774602375";
-   fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+  PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+  https://disqus.com/admin/universalcode/#configuration-variables*/
+
+  var disqus_config = function () {
+  this.page.url = document.location.toString().toLowerCase();
+  this.page.identifier = "cadafalso-gbm";
+  this.language = "pt_br";
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://cadafalso-gbm.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
 </script>
-<div class="fb-comments" data-colorscheme="light" data-width="540" data-numposts="10"></div>
-</div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by 
+    Disqus.</a></noscript>
 <div id="postamble" class="status">
- <!-- fim facebook comments -->
+  <!-- fim facebook comments -->
 <center><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 9.0.10)</center><!-- início footer -->
 <center>
 Licença: <a href= 'https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR'>CC BY-SA 4.0</a></center></p>

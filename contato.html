@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-10 dom 23:32 -->
+<!-- 2017-09-11 seg 11:56 -->
 <meta charset="utf-8">
 <title>Contato</title>
 <meta name="generator" content="Org mode">
@@ -58,9 +58,9 @@
 <div id="content">
 <h1 class="title">Contato</h1>
 
-<div id="outline-container-orgecc28b7" class="outline-2">
-<h2 id="orgecc28b7">Em construção</h2>
-<div class="outline-text-2" id="text-orgecc28b7">
+<div id="outline-container-orgbda835f" class="outline-2">
+<h2 id="orgbda835f">Em construção</h2>
+<div class="outline-text-2" id="text-orgbda835f">
 <p>
 Se você deseja entrar em contato, envie um e-mail para: 
 </p>
@@ -82,20 +82,31 @@ No mais, apenas outro programadorum progrmador esforçado que não gosta muito d
 <div id="postamble" class="status">
 <!-- início facebook comments -->
 <h1>Comentários</h1>
-<div id="fb-root"></div>
+<div id="disqus_thread"></div>
 <script>
-(function(d, s, id) {
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) return;
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.10&appId=390897774602375";
-   fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+  PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+  https://disqus.com/admin/universalcode/#configuration-variables*/
+
+  var disqus_config = function () {
+  this.page.url = document.location.toString().toLowerCase();
+  this.page.identifier = "cadafalso-gbm";
+  this.language = "pt_br";
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://cadafalso-gbm.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
 </script>
-<div class="fb-comments" data-colorscheme="light" data-width="540" data-numposts="10"></div>
-</div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by 
+    Disqus.</a></noscript>
 <div id="postamble" class="status">
- <!-- fim facebook comments -->
+  <!-- fim facebook comments -->
 <center><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 9.0.10)</center><!-- início footer -->
 <center>
 Licença: <a href= 'https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR'>CC BY-SA 4.0</a></center></p>
