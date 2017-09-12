@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-11 seg 22:11 -->
+<!-- 2017-09-11 seg 23:54 -->
 <meta charset="utf-8">
 <title>Alô Mundo</title>
 <meta name="generator" content="Org mode">
@@ -75,9 +75,9 @@ A ideia principal é ter um blog estático para hospedar no GitHub ou em outro s
 É possível, com o org-mode, desde a criação de listas de tarefas até livros, passando por agenda, pesquisas reproduzíveis, <a href="https://en.wikipedia.org/wiki/Literate_programming">programação letrada</a> e mais um milhão de coisas. Pode-se dizer que é uma linguagem de marcação como Markdown, ReStruturedText, etc., mas turbinada. Assim como o Emacs é mais do que um editor de textos, o org-mode é mais do que uma linguagem de marcação. Vejamos um exemplo de código fonte utilizando a linguagem <a href="http://www.red-lang.org/">Red</a>:
 </p>
 
-<div id="outline-container-orgf573c0b" class="outline-2">
-<h2 id="orgf573c0b">Exemplo de código fonte</h2>
-<div class="outline-text-2" id="text-orgf573c0b">
+<div id="outline-container-orgc955175" class="outline-2">
+<h2 id="orgc955175">Exemplo de código fonte</h2>
+<div class="outline-text-2" id="text-orgc955175">
 <p>
 Na linha <a href="#coderef-red-read" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-red-read');" onmouseout="CodeHighlightOff(this, 'coderef-red-read');">3</a> podemos ver como é feita a leitura de uma página em Red. 
 </p>
@@ -121,9 +121,9 @@ Mas, voltemos ao blog. Supondo-se que eu coloque os artigos do meu blog na pasta
 </div>
 </div>
 
-<div id="outline-container-org7fc41a3" class="outline-2">
-<h2 id="org7fc41a3">Exemplo de configuração do Emacs</h2>
-<div class="outline-text-2" id="text-org7fc41a3">
+<div id="outline-container-orge1b5a79" class="outline-2">
+<h2 id="orge1b5a79">Exemplo de configuração do Emacs</h2>
+<div class="outline-text-2" id="text-orge1b5a79">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-publish-project-alist
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"blog"</span>
@@ -151,7 +151,7 @@ No exemplo acima, se for dado o comando para publicar os <code>artigos</code>, o
 </p>
 
 <p>
-Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#org64de181">referências</a>.
+Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#org470881a">referências</a>.
 </p>
 
 <div class="error">
@@ -163,9 +163,9 @@ Estava com a versão <code>9.0</code> do org-mode com <code>Emacs 25.2</code>. A
 </div>
 </div>
 
-<div id="outline-container-org5c6e5ca" class="outline-2">
-<h2 id="org5c6e5ca">Problemas de um blog estático</h2>
-<div class="outline-text-2" id="text-org5c6e5ca">
+<div id="outline-container-org3f4bd19" class="outline-2">
+<h2 id="org3f4bd19">Problemas de um blog estático</h2>
+<div class="outline-text-2" id="text-org3f4bd19">
 <p>
 Um dos "problemas" de um blog estático é o sistema de comentários. Nada que um e-mail não resolva mas a comunicação fica restrita quando poderia ser útil para outros usuários. Existem diversas opções para contornar este problema. Por enquanto escolhi o sistema de comentários disponibilizado pelo Facebook.
 </p>
@@ -176,18 +176,18 @@ Ainda não decidi se coloco um sistema de tags. Incluí a opção de busca pelo 
 </div>
 </div>
 
-<div id="outline-container-org64b1251" class="outline-2">
-<h2 id="org64b1251">Gerando documentação</h2>
-<div class="outline-text-2" id="text-org64b1251">
+<div id="outline-container-org96c7767" class="outline-2">
+<h2 id="org96c7767">Gerando documentação</h2>
+<div class="outline-text-2" id="text-org96c7767">
 <p>
-O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#org64de181">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
+O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#org470881a">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org45dd90a" class="outline-2">
-<h2 id="org45dd90a">Palavras finais</h2>
-<div class="outline-text-2" id="text-org45dd90a">
+<div id="outline-container-org95e8e2f" class="outline-2">
+<h2 id="org95e8e2f">Palavras finais</h2>
+<div class="outline-text-2" id="text-org95e8e2f">
 <p>
 Agora é só escrever um texto utilizando .org como marcação e o artigo do blog está pronto. Para publicá-lo basta digitar <code>M-x org-publish</code> e escolher qual o item que deverá ser gerado e publicado. Se escolher artigos, serão gerados os arquivos .html de todos os arquivos .org novos ou alterados e enviados para a pasta <code>~/public_html</code> ou posso criar uma entrada <code>blog</code> com todos os componentes necessários para a geração do blog. É possível ainda ter um componentes para a geração de manuais que irão gerar .pdf, ou para livros, etc.. A configuração aqui está um pouco mais complexa do qua a apresentada mas já é possível ter uma ideia.
 </p>
@@ -206,9 +206,9 @@ Alguns detalhes para a formatação da página ainda não estão como eu gostari
 </div>
 
 
-<div id="outline-container-orgab7bc2a" class="outline-2">
-<h2 id="orgab7bc2a">Atualização</h2>
-<div class="outline-text-2" id="text-orgab7bc2a">
+<div id="outline-container-orgf7f7c33" class="outline-2">
+<h2 id="orgf7f7c33">Atualização</h2>
+<div class="outline-text-2" id="text-orgf7f7c33">
 <ul class="org-ul">
 <li><b>2017-09-11</b> : Sistema de comentários alterado do Facebook para o Disqus. Só para sair das garras do Zuckerberg: Dica do <a href="http://www.eustaquiorangel.com/">Taq</a>.</li>
 </ul>
@@ -220,9 +220,9 @@ Até o próximo.
 </div>
 
 
-<div id="outline-container-org2620992" class="outline-2">
-<h2 id="org2620992">Referências<a id="org64de181"></a></h2>
-<div class="outline-text-2" id="text-org2620992">
+<div id="outline-container-orge7c867c" class="outline-2">
+<h2 id="orge7c867c">Referências<a id="org470881a"></a></h2>
+<div class="outline-text-2" id="text-orge7c867c">
 <ul class="org-ul">
 <li><a href="https://emacs-doctor.com/blogging-from-emacs.html">Blogging from GNU Emacs</a></li>
 <li><a href="https://ogbe.net/blog/blogging_with_org.html">Blogging using org-mode (and nothing else)</a></li>
@@ -234,24 +234,27 @@ Até o próximo.
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
 <script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-var disqus_config = function () {
-this.page.url = 'https://guaracy.github.io/blog/2017-09-05-helloworld.html';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = 'cadafalso-gbm';  // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://cadafalso-gbm.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     * OK
+     */
+    
+    var disqus_config = function () {
+        this.page.url = 'https://guaracy.github.io/blog/2017-09-05-helloworld.html';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '2017-09-05-helloworld.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://cadafalso-gbm.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 <center><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 9.0.10)</center><!-- início footer -->
 <center>
 Licença: <a href= 'https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR'>CC BY-SA 4.0</a></center></p>
