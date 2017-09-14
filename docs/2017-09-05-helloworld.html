@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-11 seg 01:39 -->
+<!-- 2017-09-13 qua 14:37 -->
 <meta charset="utf-8">
 <title>Alô Mundo</title>
 <meta name="generator" content="Org mode">
@@ -239,12 +239,13 @@ for the JavaScript code in this tag.
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfec1565">1. Exemplo de código fonte</a></li>
-<li><a href="#orgfe9307b">2. Exemplo de configuração do Emacs</a></li>
-<li><a href="#org655eb44">3. Problemas de um blog estático</a></li>
-<li><a href="#orgfa5ea42">4. Gerando documentação</a></li>
-<li><a href="#orga304299">5. Palavras finais</a></li>
-<li><a href="#org00235c5">6. Referências</a></li>
+<li><a href="#org76e9fc9">1. Exemplo de código fonte</a></li>
+<li><a href="#orgdc4b84d">2. Exemplo de configuração do Emacs</a></li>
+<li><a href="#org9d70e89">3. Problemas de um blog estático</a></li>
+<li><a href="#orgb6ff790">4. Gerando documentação</a></li>
+<li><a href="#orgeb83cba">5. Palavras finais</a></li>
+<li><a href="#org2fccbcb">6. Atualização</a></li>
+<li><a href="#org48fe1c7">7. Referências</a></li>
 </ul>
 </div>
 </div>
@@ -266,8 +267,8 @@ A ideia principal é ter um blog estático para hospedar no GitHub ou em outro s
 É possível, com o org-mode, desde a criação de listas de tarefas até livros, passando por agenda, pesquisas reproduzíveis, <a href="https://en.wikipedia.org/wiki/Literate_programming">programação letrada</a> e mais um milhão de coisas. Pode-se dizer que é uma linguagem de marcação como Markdown, ReStruturedText, etc., mas turbinada. Assim como o Emacs é mais do que um editor de textos, o org-mode é mais do que uma linguagem de marcação. Vejamos um exemplo de código fonte utilizando a linguagem <a href="http://www.red-lang.org/">Red</a>:
 </p>
 
-<div id="outline-container-orgfec1565" class="outline-2">
-<h2 id="orgfec1565"><span class="section-number-2">1</span> Exemplo de código fonte</h2>
+<div id="outline-container-org76e9fc9" class="outline-2">
+<h2 id="org76e9fc9"><span class="section-number-2">1</span> Exemplo de código fonte</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Na linha <a href="#coderef-red-read" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-red-read');" onmouseout="CodeHighlightOff(this, 'coderef-red-read');">3</a> podemos ver como é feita a leitura de uma página em Red. 
@@ -312,8 +313,8 @@ Mas, voltemos ao blog. Supondo-se que eu coloque os artigos do meu blog na pasta
 </div>
 </div>
 
-<div id="outline-container-orgfe9307b" class="outline-2">
-<h2 id="orgfe9307b"><span class="section-number-2">2</span> Exemplo de configuração do Emacs</h2>
+<div id="outline-container-orgdc4b84d" class="outline-2">
+<h2 id="orgdc4b84d"><span class="section-number-2">2</span> Exemplo de configuração do Emacs</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-publish-project-alist
@@ -342,7 +343,7 @@ No exemplo acima, se for dado o comando para publicar os <code>artigos</code>, o
 </p>
 
 <p>
-Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#orgd1c8c05">referências</a>.
+Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#orge9cc39a">referências</a>.
 </p>
 
 <div class="error">
@@ -354,8 +355,8 @@ Estava com a versão <code>9.0</code> do org-mode com <code>Emacs 25.2</code>. A
 </div>
 </div>
 
-<div id="outline-container-org655eb44" class="outline-2">
-<h2 id="org655eb44"><span class="section-number-2">3</span> Problemas de um blog estático</h2>
+<div id="outline-container-org9d70e89" class="outline-2">
+<h2 id="org9d70e89"><span class="section-number-2">3</span> Problemas de um blog estático</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Um dos "problemas" de um blog estático é o sistema de comentários. Nada que um e-mail não resolva mas a comunicação fica restrita quando poderia ser útil para outros usuários. Existem diversas opções para contornar este problema. Por enquanto escolhi o sistema de comentários disponibilizado pelo Facebook.
@@ -367,17 +368,17 @@ Ainda não decidi se coloco um sistema de tags. Incluí a opção de busca pelo 
 </div>
 </div>
 
-<div id="outline-container-orgfa5ea42" class="outline-2">
-<h2 id="orgfa5ea42"><span class="section-number-2">4</span> Gerando documentação</h2>
+<div id="outline-container-orgb6ff790" class="outline-2">
+<h2 id="orgb6ff790"><span class="section-number-2">4</span> Gerando documentação</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#orgd1c8c05">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
+O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#orge9cc39a">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga304299" class="outline-2">
-<h2 id="orga304299"><span class="section-number-2">5</span> Palavras finais</h2>
+<div id="outline-container-orgeb83cba" class="outline-2">
+<h2 id="orgeb83cba"><span class="section-number-2">5</span> Palavras finais</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Agora é só escrever um texto utilizando .org como marcação e o artigo do blog está pronto. Para publicá-lo basta digitar <code>M-x org-publish</code> e escolher qual o item que deverá ser gerado e publicado. Se escolher artigos, serão gerados os arquivos .html de todos os arquivos .org novos ou alterados e enviados para a pasta <code>~/public_html</code> ou posso criar uma entrada <code>blog</code> com todos os componentes necessários para a geração do blog. É possível ainda ter um componentes para a geração de manuais que irão gerar .pdf, ou para livros, etc.. A configuração aqui está um pouco mais complexa do qua a apresentada mas já é possível ter uma ideia.
@@ -393,7 +394,16 @@ Alguns detalhes para a formatação da página ainda não estão como eu gostari
 </p>
 <p><span class="figure-number">Figura 1: </span>Editando esta entrada</p>
 </div>
+</div>
+</div>
 
+
+<div id="outline-container-org2fccbcb" class="outline-2">
+<h2 id="org2fccbcb"><span class="section-number-2">6</span> Atualização</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><b>2017-09-11</b> : Sistema de comentários alterado do Facebook para o Disqus. Só para sair das garras do Zuckerberg: Dica do <a href="http://www.eustaquiorangel.com/">Taq</a>.</li>
+</ul>
 
 <p>
 Até o próximo.
@@ -402,9 +412,9 @@ Até o próximo.
 </div>
 
 
-<div id="outline-container-org00235c5" class="outline-2">
-<h2 id="org00235c5"><span class="section-number-2">6</span> Referências<a id="orgd1c8c05"></a></h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org48fe1c7" class="outline-2">
+<h2 id="org48fe1c7"><span class="section-number-2">7</span> Referências<a id="orge9cc39a"></a></h2>
+<div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><a href="https://emacs-doctor.com/blogging-from-emacs.html">Blogging from GNU Emacs</a></li>
 <li><a href="https://ogbe.net/blog/blogging_with_org.html">Blogging using org-mode (and nothing else)</a></li>

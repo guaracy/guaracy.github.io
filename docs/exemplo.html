@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+<!-- 2017-09-14 qui 00:05 -->
+<meta charset="utf-8">
+<title>Exemplos em org-mode</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Guaracy Monteiro">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<!-- inicio docs-extra-head -->
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="res/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="res/css/readtheorg.css"/>
+<script type="text/javascript" src="res/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="res/js/readtheorg.js"></script>
+<!-- fim docs-extra-head -->
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Exemplos em org-mode</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org74c17e8">1. Básico</a></li>
+<li><a href="#org68060a8">2. Listas</a></li>
+<li><a href="#org6629dab">3. Cabeçalhos</a>
+<ul>
+<li><a href="#org2859be2">3.1. <span class="todo TODO">TODO</span> Nivel 2</a></li>
+<li><a href="#orge3b41c9">3.2. <span class="done DONE">DONE</span> Nivel 2</a>
+<ul>
+<li><a href="#orga4a1343">3.2.1. Nivel 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org0613d26">4. Footnote</a></li>
+<li><a href="#org51c707c">5. Blocos</a>
+<ul>
+<li><a href="#org7f7b821">5.1. Bloco Normal</a></li>
+<li><a href="#org8dd9470">5.2. Bloco de citação</a></li>
+<li><a href="#org0e8fec3">5.3. Blocos diversos</a></li>
+<li><a href="#org1423ff7">5.4. Blocos HTML</a></li>
+<li><a href="#org2c68f03">5.5. Blocos LaTeX</a></li>
+<li><a href="#org03e53ce">5.6. Blocos de código</a>
+<ul>
+<li><a href="#orgb62cb24">5.6.1. Inline</a></li>
+<li><a href="#org0dedba5">5.6.2. Bloco de código</a></li>
+<li><a href="#org6d048d0">5.6.3. Integração entre blocos</a></li>
+<li><a href="#orgf646e69">5.6.4. Gravação de blocos</a></li>
+<li><a href="#org20d3205">5.6.5. Referenciando linhas no bloco</a></li>
+<li><a href="#orgceb25f4">5.6.6. Blocos especiais</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org1026327">6. Inclusão de arquivos</a>
+<ul>
+<li><a href="#orgc40e74d">6.1. Texto</a></li>
+<li><a href="#org14f9739">6.2. Imagens</a></li>
+</ul>
+</li>
+<li><a href="#orga261d92">7. Macros</a></li>
+<li><a href="#org3a713bf">8. Tabelas</a></li>
+<li><a href="#org83ff78d">9. Etc.</a></li>
+</ul>
+</div>
+</div>
+<div class="PREVIEW">
+<p>
+Entrada que servirá de exemplo de uma parte das características do org-mode bem como verificar a formatação.
+</p>
+
+</div>
+
+<p>
+Era para ser apenas uma entrada no blog mas resolvi exportar como um <a href="../docs/exemplo.html">documento</a> para servir de referência.
+</p>
+
+<div id="outline-container-org74c17e8" class="outline-2">
+<h2 id="org74c17e8"><span class="section-number-2">1</span> Básico</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-bold">*bold*</span>, <span class="org-italic">/italic/</span>, <span class="org-underline">_underline_</span>, <span class="org-org-verbatim">=code=</span> <span class="org-org-code">~verbatim~</span>, <span class="custom">+strike-through+</span>.
+</pre>
+</div>
+<p>
+<b>bold</b>, <i>italic</i>, <span class="underline">underline</span>, <code>code</code> <code>verbatim</code>, <del>strike-through</del>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">Letras gregas: \alpha, \beta and \gamma.
+</pre>
+</div>
+<p>
+Letras gregas: &alpha;, &beta; and &gamma;.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org68060a8" class="outline-2">
+<h2 id="org68060a8"><span class="section-number-2">2</span> Listas</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a id="orga559430"></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-target">&lt;&lt;listas&gt;&gt;</span>
+- Item 0
+- Item 1
+  1. Item 1
+  2. Item 1
+  3. Item 1
+    1. Item 1
+  4. Item 1
+
+
+i item 1 :: descri&#231;&#227;o item 1
+i item 2 :: descri&#231;&#227;o item 2
+</pre>
+</div>
+<ul class="org-ul">
+<li>Item 0</li>
+<li>Item 1
+<ol class="org-ol">
+<li>Item 1</li>
+<li>Item 1</li>
+<li>Item 1
+<ol class="org-ol">
+<li>Item 1</li>
+</ol></li>
+<li>Item 1</li>
+</ol></li>
+</ul>
+
+
+<dl class="org-dl">
+<dt>item 1</dt><dd>descrição item 1</dd>
+<dt>item 2</dt><dd>descrição item 2</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org6629dab" class="outline-2">
+<h2 id="org6629dab"><span class="section-number-2">3</span> Cabeçalhos</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Iniciam com asterisco Linhas que iniciam com um ou mais asteriscos.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Nivel 2</span>
+texto
+<span class="org-org-level-2">** </span><span class="org-org-done">DONE</span><span class="org-org-level-2"> Nivel 2</span>
+texto
+<span class="org-org-level-3">*** Nivel 3</span>
+texto
+</pre>
+</div>
+</div>
+<div id="outline-container-org2859be2" class="outline-3">
+<h3 id="org2859be2"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Nivel 2</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+texto
+</p>
+</div>
+</div>
+<div id="outline-container-orge3b41c9" class="outline-3">
+<h3 id="orge3b41c9"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Nivel 2</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+texto
+</p>
+</div>
+<div id="outline-container-orga4a1343" class="outline-4">
+<h4 id="orga4a1343"><span class="section-number-4">3.2.1</span> Nivel 3</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+texto
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0613d26" class="outline-2">
+<h2 id="org0613d26"><span class="section-number-2">4</span> Footnote</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-org">Como disse Fulano de Tal <span class="org-org-footnote">[fn:a]</span> na revolta dos xianas <span class="org-org-footnote">[fn:b]</span> nem tudo &#233; nada.
+
+<span class="org-org-footnote">[fn:a]</span> Fulano de Tal era o pseud&#244;nimo utilizado por Beltrano de Tal
+
+<span class="org-org-footnote">[fn:b]</span> Xianas era uma ave mitol&#243;gica que vivia na Patag&#244;nia
+</pre>
+</div>
+<p>
+Como disse Fulano de Tal <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> na revolta dos xianas <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> nem tudo é nada.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org51c707c" class="outline-2">
+<h2 id="org51c707c"><span class="section-number-2">5</span> Blocos</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org7f7b821" class="outline-3">
+<h3 id="org7f7b821"><span class="section-number-3">5.1</span> Bloco Normal</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-code">: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</span>
+<span class="org-org-code">: eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+</pre>
+</div>
+
+<pre class="example">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8dd9470" class="outline-3">
+<h3 id="org8dd9470"><span class="section-number-3">5.2</span> Bloco de citação</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-block-begin-line">#+BEGIN_QUOTE</span>
+Programs must be written for people to read, and only incidentally
+for machines to execute.
+
+<span class="org-italic">/Abelson &amp; Sussman, SICP, preface to the first edition/</span>
+<span class="org-org-block-end-line">#+END_QUOTE</span>
+</pre>
+</div>
+
+<blockquote>
+<p>
+Programs must be written for people to read, and only incidentally
+for machines to execute.
+</p>
+
+<p>
+<i>Abelson &amp; Sussman, SICP, preface to the first edition</i>
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org0e8fec3" class="outline-3">
+<h3 id="org0e8fec3"><span class="section-number-3">5.3</span> Blocos diversos</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-block-begin-line">#+begin_tip </span>
+Esta &#233; uma dica
+<span class="org-org-block-end-line">#+end_tip</span>
+
+<span class="org-org-block-begin-line">#+begin_note </span>
+Esta &#233; uma nota
+<span class="org-org-block-end-line">#+end_note</span>
+
+<span class="org-org-block-begin-line">#+begin_warning </span>
+Esta &#233; um aviso
+<span class="org-org-block-end-line">#+end_warning</span>
+
+<span class="org-org-block-begin-line">#+begin_error</span>
+Esta &#233; um erro
+<span class="org-org-block-end-line">#+end_error</span>
+
+</pre>
+</div>
+
+<div class="tip">
+<p>
+Esta é uma dica
+</p>
+
+</div>
+
+<div class="note">
+<p>
+Esta é uma nota
+</p>
+
+</div>
+
+<div class="warning">
+<p>
+Esta é um aviso
+</p>
+
+</div>
+
+<div class="error">
+<p>
+Esta é um erro
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1423ff7" class="outline-3">
+<h3 id="org1423ff7"><span class="section-number-3">5.4</span> Blocos HTML</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Exporta o conteúdo do bloco como HTML, sem processamento.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-block-begin-line">#+BEGIN_EXPORT html</span>
+<span class="org-org-block">&lt;</span><span class="org-org-block"><span class="org-function-name">ol</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">  &lt;</span><span class="org-org-block"><span class="org-function-name">li</span></span><span class="org-org-block">&gt;&lt;</span><span class="org-org-block"><span class="org-function-name">b</span></span><span class="org-org-block">&gt;</span><span class="org-org-block"><span class="org-bold">item 1</span></span><span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">b</span></span><span class="org-org-block">&gt;&lt;/</span><span class="org-org-block"><span class="org-function-name">li</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">  &lt;</span><span class="org-org-block"><span class="org-function-name">li</span></span><span class="org-org-block">&gt;&lt;</span><span class="org-org-block"><span class="org-function-name">i</span></span><span class="org-org-block">&gt;</span><span class="org-org-block"><span class="org-italic">item 2</span></span><span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">i</span></span><span class="org-org-block">&gt;&lt;/</span><span class="org-org-block"><span class="org-function-name">li</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">  &lt;</span><span class="org-org-block"><span class="org-function-name">li</span></span><span class="org-org-block">&gt;&lt;</span><span class="org-org-block"><span class="org-function-name">u</span></span><span class="org-org-block">&gt;</span><span class="org-org-block"><span class="org-underline">item 3</span></span><span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">u</span></span><span class="org-org-block">&gt;&lt;/</span><span class="org-org-block"><span class="org-function-name">li</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">ol</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block-end-line">#+END_EXPORT</span>
+</pre>
+</div>
+
+<ol>
+  <li><b>item 1</b></li>
+  <li><i>item 2</i></li>
+  <li><u>item 3</u></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org2c68f03" class="outline-3">
+<h3 id="org2c68f03"><span class="section-number-3">5.5</span> Blocos LaTeX</h3>
+<div class="outline-text-3" id="text-5-5">
+<div class="org-src-container">
+<pre class="src src-org">\(\LaTeX\)
+</pre>
+</div>
+
+<p>
+\(\LaTeX\)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">Nossa melhor estimativa de F(\nu) ser&#225;:
+\[
+\hat{F}(\nu) = \frac{G(\nu)}{H(\nu)}.
+\]
+</pre>
+</div>
+
+<p>
+Nossa melhor estimativa de F(&nu;) será:
+\[
+\hat{F}(\nu) = \frac{G(\nu)}{H(\nu)}.
+\]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="linenr">1: </span>Alinhamento de sistema de equa&#231;&#245;es
+<span class="linenr">2: </span>
+<span class="linenr">3: </span>\begin{eqnarray*}
+<span class="linenr">4: </span>\hat{f}(x) &amp; \propto &amp; \sum_{\nu} \frac{|F(\nu)H(\nu)|^2}{|N(\nu)|^2}  
+<span class="linenr">5: </span>           \frac{G(\nu)}{H(\nu)} e^{\frac{2 \pi i \nu x}{N}}\\
+<span class="linenr">6: </span>           &amp; \propto &amp; \sum_{\nu} \frac{|F(\nu)|^2}{|N(\nu)|^2} H(\nu) H^*(\nu) 
+<span class="linenr">7: </span>           \frac{G(\nu)}{H(\nu)} e^{\frac{2 \pi i \nu x}{N}}\\
+<span class="linenr">8: </span>           &amp; \propto &amp; \sum_{\nu} H^*(\nu) G(\nu) e^{\frac{2 \pi i \nu x}{N}}
+<span class="linenr">9: </span>\end{eqnarray*}
+</pre>
+</div>
+
+<p>
+Alinhamento de sistema de equações
+</p>
+
+\begin{eqnarray*}
+\hat{f}(x) & \propto & \sum_{\nu} \frac{|F(\nu)H(\nu)|^2}{|N(\nu)|^2}  
+           \frac{G(\nu)}{H(\nu)} e^{\frac{2 \pi i \nu x}{N}}\\
+           & \propto & \sum_{\nu} \frac{|F(\nu)|^2}{|N(\nu)|^2} H(\nu) H^*(\nu) 
+           \frac{G(\nu)}{H(\nu)} e^{\frac{2 \pi i \nu x}{N}}\\
+           & \propto & \sum_{\nu} H^*(\nu) G(\nu) e^{\frac{2 \pi i \nu x}{N}}
+\end{eqnarray*}
+</div>
+</div>
+
+<div id="outline-container-org03e53ce" class="outline-3">
+<h3 id="org03e53ce"><span class="section-number-3">5.6</span> Blocos de código</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+Esta é a parte mais legal e mais complexa. Basicamente é um programa como você digitaria em um proccessador de textos qualquer, com sintaxe salientada e mais as facilidades que o modo oferece. Porém, existem argumentos específicos que podem ser incluídas nos blocos (também podem ser globais ao documento e/ou determinados blocos ou sequencias). O processo para interpretar os blocos das diferentes linguagens é efetuado pelo <a href="http://orgmode.org/worg/org-contrib/babel/intro.html">babel</a>. 
+</p>
+
+<ul class="org-ul">
+<li><b>lang</b> : informa a linguagem do bloco (Python, Ruby, Red, R, C, J, etc.)</li>
+<li><b>:exports</b> : <code>code</code> para exportar para o documento apenas o código (default), <code>results</code> para o resultado ou <code>both</code> para ambos</li>
+<li><b>+/-n</b> [v] : irá numerar as linhas do código; +n continua a numeração do bloco anterior e -n inicia nova; se um valor for especificado, inicia a numeração com o número informado</li>
+<li><b>-r</b> : remove as referências do código</li>
+<li><b>tangle</b> filename : informa que o bloco será gravado como um programa (necessário <code>C-v C-c t</code>)</li>
+<li><b>:cmdline</b> args : argumentos enviados para a linha de comando para a execução do bloco</li>
+<li><b>:var</b> x=v : assume variável <code>x</code> com valor <code>v</code> antes de executar o código</li>
+<li><b>:results</b> : <code>value</code> que é o valor da última expressão ou <code>output</code> que é o resultado do <i>stdout</i></li>
+<li><b>etc</b> : diversos outros <a href="http://orgmode.org/manual/Specific-header-arguments.html#Specific-header-arguments">argumentos</a> que podem ser utilizados.</li>
+</ul>
+
+<p>
+A execução do bloco de código pode ser automática ou manual, digitando <code>C-c C-c</code> com o cursor em alguma parte do bloco. A edição utilizando o modo de linguagem adequado se dá digitando <code>C-'</code>.
+</p>
+</div>
+
+<div id="outline-container-orgb62cb24" class="outline-4">
+<h4 id="orgb62cb24"><span class="section-number-4">5.6.1</span> Inline</h4>
+<div class="outline-text-4" id="text-5-6-1">
+<div class="org-src-container">
+<pre class="src src-org">  Um trecho de html src_html{&lt;i class="fa fa-home"&gt;&lt;/i&gt;} para 
+a inclus&#227;o de &#237;cones no texto.
+</pre>
+</div>
+
+<p>
+Um trecho de html para 
+a inclusão de ícones no texto.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">A vers&#227;o de Ruby dispon&#237;vel &#233;: src_ruby[:exports results]{RUBY_VERSION}
+</pre>
+</div>
+
+<p>
+A versão de Ruby disponível é: <code>2.4.1</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0dedba5" class="outline-4">
+<h4 id="org0dedba5"><span class="section-number-4">5.6.2</span> Bloco de código</h4>
+<div class="outline-text-4" id="text-5-6-2">
+<p>
+É um caso simples onde temos um bloco em uma determinada linguagem e desejamos que ele seja executado e mostre o resultado obtido.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-block-begin-line">#+BEGIN_SRC ruby :exports both :results output</span>
+<span class="org-org-block">  nome = </span><span class="org-org-block"><span class="org-string">"emacs"</span></span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-builtin">puts</span></span><span class="org-org-block"> nome.capitalize</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-builtin">puts</span></span><span class="org-org-block"> nome</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-builtin">puts</span></span><span class="org-org-block"> nome.capitalize!</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-builtin">puts</span></span><span class="org-org-block"> nome</span>
+<span class="org-org-block-end-line">#+END_SRC</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-ruby">nome = <span class="org-string">"emacs"</span>
+<span class="org-builtin">puts</span> nome.capitalize
+<span class="org-builtin">puts</span> nome
+<span class="org-builtin">puts</span> nome.capitalize!
+<span class="org-builtin">puts</span> nome
+</pre>
+</div>
+
+<pre class="example">
+Emacs
+emacs
+Emacs
+Emacs
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6d048d0" class="outline-4">
+<h4 id="org6d048d0"><span class="section-number-4">5.6.3</span> Integração entre blocos</h4>
+<div class="outline-text-4" id="text-5-6-3">
+<p>
+O script abaixo irá gerar uma tabela com o tamanho e nomes dos arquivos de um determinado diretório (no caso <code>~/.org-timestamps</code> que é onde o org-mode guarda informações sobre atualizações dos arquivos para serem publicados) e colocará o nome de <i>directories</i>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+name: directories</span>
+<span class="org-org-block-begin-line">#+begin_src sh :results replace</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-builtin">cd</span></span><span class="org-org-block"> ~/.org-timestamps &amp;&amp; du -bc blog* | grep -v total</span>
+<span class="org-org-block-end-line">#+end_src</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="org650967f"><span class="org-builtin">cd</span> ~/.org-timestamps &amp;&amp; du -bc blog* | grep -v total
+</pre>
+</div>
+
+<p>
+Agora podemos ter um programa em <b>R</b> que irá pegar as informações obtidas pelo código anterior e vai gerar um gráfico com elas. 
+</p>
+
+<pre class="example">
+#+name: directory-pie-chart(dirs = directories)
+#+begin_src :file ../img/dirs.png :var dirs=directories() :results graphics
+  pie(dirs[,1], labels = dirs[,2])
+#+end_src
+</pre>
+
+<div class="error">
+<p>
+Fui obrigado a colocar o bloco acima entre <code>#+BEGIN EXAMPLE</code>. Colocando entre <code>#+BEGIN_SOURCE org</code> gerava um erro (End of Buffer) na geração da publicação. 
+</p>
+
+</div>
+
+<div class="org-src-container">
+<pre class="src src-R" id="orge147da0">pie(dirs[,1], labels = dirs[,2])
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf646e69" class="outline-4">
+<h4 id="orgf646e69"><span class="section-number-4">5.6.4</span> Gravação de blocos<a id="orgfb3632a"></a></h4>
+<div class="outline-text-4" id="text-5-6-4">
+<p>
+No bloco abaixo, estou informando que ele não deve ser exportado para a publicação. Após pressionar <code>C-c C-v t</code>, o conteúdo do bloco será gravado no arquivo <code>../dl/teste.red</code>. Não tente entender o código abaixo, mas é apenas a implementação de uma DSL para incluir <i>loop</i> em Red. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-block-begin-line">#+BEGIN_SRC red :exports none :tangle ../dl/teste.red</span>
+<span class="org-org-block">  #macro </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">'</span><span class="org-org-block"><span class="org-function-name">loop</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">[</span></span><span class="org-org-block"><span class="org-type">integer!</span></span><span class="org-org-block"> | </span><span class="org-org-block"><span class="org-type">block!</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">]</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-type">block!</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">function</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">[</span></span><span class="org-org-block">manual</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">]</span></span><span class="org-org-block"> s e</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">][</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-function-name">set</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">[</span></span><span class="org-org-block">spec body</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">]</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">next</span></span><span class="org-org-block"> s</span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-function-name">if</span></span><span class="org-org-block"> integer? spec </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">[</span></span><span class="org-org-block"><span class="org-function-name">return</span></span><span class="org-org-block"> e</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">]</span></span><span class="org-org-block">    </span><span class="org-org-block"><span class="org-comment">;-- return position past the pattern</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-variable-name">low:</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-variable-name">high:</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">none</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-variable-name">step:</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-constant">1</span></span>
+
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">unless</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">parse</span></span><span class="org-org-block"> spec </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">[</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-type">word!</span></span><span class="org-org-block"> </span>
+<span class="org-org-block">      opt '= </span><span class="org-org-block"><span class="org-function-name">set</span></span><span class="org-org-block"> low </span><span class="org-org-block"><span class="org-type">integer!</span></span>
+<span class="org-org-block">      opt </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">opt '</span><span class="org-org-block"><span class="org-function-name">to</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">set</span></span><span class="org-org-block"> high </span><span class="org-org-block"><span class="org-type">integer!</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">      opt </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">opt 'step </span><span class="org-org-block"><span class="org-function-name">set</span></span><span class="org-org-block"> step </span><span class="org-org-block"><span class="org-type">integer!</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">][</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block"><span class="org-string">"*** LOOP syntax error:"</span></span><span class="org-org-block"> spec</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">]</span></span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-variable-name">new:</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">reduce</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">either</span></span><span class="org-org-block"> high </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">[</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-variable-name">set-var:</span></span><span class="org-org-block"> to-set-word </span><span class="org-org-block"><span class="org-variable-name">var:</span></span><span class="org-org-block"> spec/</span><span class="org-org-block"><span class="org-constant">1</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-variable-name">cond:</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">compose</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-org-block">var</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-org-block"> &lt;= </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-org-block">high</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-function-name">repend</span></span><span class="org-org-block"> body </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">set-var var '+ step</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">set-var low '</span><span class="org-org-block"><span class="org-function-name">while</span></span><span class="org-org-block"> cond body</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">][</span></span>
+<span class="org-org-block">      </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">'</span><span class="org-org-block"><span class="org-function-name">repeat</span></span><span class="org-org-block"> spec/</span><span class="org-org-block"><span class="org-constant">1</span></span><span class="org-org-block"> low body</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-2">]</span></span><span class="org-org-block">      </span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">change</span></span><span class="org-org-block">/part s new e</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">loop</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-constant">2</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"x"</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">loop</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">i </span><span class="org-org-block"><span class="org-constant">3</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">][</span></span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> i</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">loop</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">i </span><span class="org-org-block"><span class="org-constant">5</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-constant">8</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">][</span></span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> i</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">loop</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">[</span></span><span class="org-org-block">i = </span><span class="org-org-block"><span class="org-constant">5</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-function-name">to</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-constant">10</span></span><span class="org-org-block"> step </span><span class="org-org-block"><span class="org-constant">2</span></span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">][</span></span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> i</span><span class="org-org-block"><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="org-org-block-end-line">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org20d3205" class="outline-4">
+<h4 id="org20d3205"><span class="section-number-4">5.6.5</span> Referenciando linhas no bloco</h4>
+<div class="outline-text-4" id="text-5-6-5">
+<p>
+No bloco abaixo, exportamos o código e o resultado, iniciamos o número de linha em 22 e colocamos algumas referências no bloco do programa que não serão mostradas pois temos o -r como parâmetro do bloco. Basta passar o mouse sobre as referências no texto que a linha será salientada.
+</p>
+
+<div class="note">
+<p>
+O org-mode está se perdendo com a inclusão de um fonte do bloco abaixo em <code>#+BEGIN_EXAMPLE</code> ou <code>#+BEGIN_SRC org</code>. As referências estão apontando para o bloco de exemplo ou fonte e não para o bloco com o código fonte. Por enquanto, deixei apenas o bloco com o código fonte. Pode ser algum erro meu ou do org-mode. De qualquer forma, não vejo problema pois só seria usado com um documento de exemplo e não de trabalho.
+</p>
+
+</div>
+
+<ul class="org-ul">
+<li>Na linha <a href="#coderef-ruby-func" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ruby-func');" onmouseout="CodeHighlightOff(this, 'coderef-ruby-func');">1</a> é definido um método que possui dois argumentos nomeados e com valores padrões em caso de omissão.</li>
+<li>A <a href="#coderef-ruby-args1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ruby-args1');" onmouseout="CodeHighlightOff(this, 'coderef-ruby-args1');">linha 5</a> chama o método como argumentos diferentes que irão alterar os valores iniciais.</li>
+<li>Esta <a href="#coderef-ruby-args2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ruby-args2');" onmouseout="CodeHighlightOff(this, 'coderef-ruby-args2');">linha</a> irá alterar apenas o segundo argumento deixando o primeiro com o valor inicial.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><span id="coderef-ruby-func" class="coderef-off"><span class="linenr">1: </span><span class="org-keyword">def</span> <span class="org-function-name">foo</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">str:</span> <span class="org-string">"foo"</span>, <span class="org-constant">num:</span> 123<span class="org-rainbow-delimiters-depth-1">)</span></span>
+<span class="linenr">2: </span>  <span class="org-rainbow-delimiters-depth-1">[</span>str, num<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">3: </span><span class="org-keyword">end</span>
+<span class="linenr">4: </span>
+<span id="coderef-ruby-args1" class="coderef-off"><span class="linenr">5: </span><span class="org-builtin">p</span> foo<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">str:</span> <span class="org-string">'bar'</span>, <span class="org-constant">num:</span> 9<span class="org-rainbow-delimiters-depth-1">)</span></span>
+<span class="linenr">6: </span><span class="org-builtin">p</span> foo<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">str:</span> <span class="org-string">'Oi'</span><span class="org-rainbow-delimiters-depth-1">)</span> 
+<span id="coderef-ruby-args2" class="coderef-off"><span class="linenr">7: </span><span class="org-builtin">p</span> foo<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">num:</span> 879<span class="org-rainbow-delimiters-depth-1">)</span></span>
+<span class="linenr">8: </span><span class="org-builtin">p</span> foo 
+</pre>
+</div>
+
+<pre class="example">
+["bar", 9]
+["Oi", 123]
+["foo", 879]
+["foo", 123]
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgceb25f4" class="outline-4">
+<h4 id="orgceb25f4"><span class="section-number-4">5.6.6</span> Blocos especiais</h4>
+<div class="outline-text-4" id="text-5-6-6">
+<p>
+Com o <a href="http://orgmode.org/worg/org-contrib/babel/intro.html">babel</a>, não ficamos restritos a códigos de programas. Se você deseja algo, basta escrever as funções necessárias para executar os procedimentos e mostrar os resultados.
+</p>
+
+<p>
+Podemos criar gráficos com ditaa, plantuml, graphviz, etc..
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-block-begin-line">#+begin_src ditaa :file ../img/ditaa.png</span>
+<span class="org-org-block">  +------+   +-----+   +-----+   +-----+</span>
+<span class="org-org-block">  |{io}  |   |{d}  |   |{s}  |   |cBLU |</span>
+<span class="org-org-block">  | Foo  +---+ Bar +---+ Baz +---+ Moo |</span>
+<span class="org-org-block">  |      |   |     |   |     |   |     |</span>
+<span class="org-org-block">  +---+--+   +-----+   +-----+   +-----+</span>
+<span class="org-org-block">      |                    </span>
+<span class="org-org-block">      |      /-----\             +------+</span>
+<span class="org-org-block">      |      |     |             | c1AB |</span>
+<span class="org-org-block">      +--=---+ Goo +----------=--+ Shoo |</span>
+<span class="org-org-block">             |     |             |      |</span>
+<span class="org-org-block">             \-----/             +------+</span>
+<span class="org-org-block-end-line">#+end_src</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../img/ditaa.png" alt="ditaa.png">
+</p>
+</div>
+
+<p>
+Ou algum utilitário que receba um texto em um determinado idioma e traduza para outros.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-block-begin-line">#+BEGIN_SRC translate :src en :dest de,fr,ar,ja,pt,es :exports both </span>
+<span class="org-org-block">  Literate Programming</span>
+<span class="org-org-block-end-line">#+END_SRC</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-translate">Literate Programming
+</pre>
+</div>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">de</td>
+<td class="org-left">Literate Programmierung</td>
+</tr>
+
+<tr>
+<td class="org-left">fr</td>
+<td class="org-left">Programmation littéraire</td>
+</tr>
+
+<tr>
+<td class="org-left">ar</td>
+<td class="org-left">برمجة القراءة والكتابة</td>
+</tr>
+
+<tr>
+<td class="org-left">ja</td>
+<td class="org-left">文学プログラミング</td>
+</tr>
+
+<tr>
+<td class="org-left">pt</td>
+<td class="org-left">Programação Alfabetizada</td>
+</tr>
+
+<tr>
+<td class="org-left">es</td>
+<td class="org-left">Programación alfabetizada</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1026327" class="outline-2">
+<h2 id="org1026327"><span class="section-number-2">6</span> Inclusão de arquivos</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgc40e74d" class="outline-3">
+<h3 id="orgc40e74d"><span class="section-number-3">6.1</span> Texto</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+O comando para a inclusão de arquivos <code>#+INCLUDE: "arquivo"</code> aceita opções como <code>src lang</code> para definir a linguagem como se fosse um bloco normal, <code>:lines "i-f"</code> para incluir uma faixa de linhas do arquivo. A omissão indica inicio ou fim, isto é, <code>"-10"</code> indica as 9 primeiras linhas (não gosto disso), <code>"10-"</code> da linha 10 até o final. Colocando o cursor na linha e pressionando <code>C-'</code> o arquivo será aberto para edição (facilita bastante quando o nosso arquivo é grande e desejamos dividí-lo em outros menos).
+</p>
+
+<p>
+Para incluirmos o exemplo do código em Red gravado <a href="#orgfb3632a">anteriormente</a> utilizamos: 
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+INCLUDE: "../dl/teste.red" src red</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red">Red <span class="org-rainbow-delimiters-depth-1">[]</span>
+#macro <span class="org-rainbow-delimiters-depth-1">[</span>'<span class="org-function-name">loop</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-type">integer!</span> | <span class="org-type">block!</span><span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-type">block!</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-function-name">function</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">[</span>manual<span class="org-rainbow-delimiters-depth-2">]</span> s e<span class="org-rainbow-delimiters-depth-1">][</span>
+    <span class="org-function-name">set</span> <span class="org-rainbow-delimiters-depth-2">[</span>spec body<span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-function-name">next</span> s
+    <span class="org-function-name">if</span> integer? spec <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-function-name">return</span> e<span class="org-rainbow-delimiters-depth-2">]</span>    <span class="org-comment">;-- return position past the pattern</span>
+    <span class="org-variable-name">low:</span> <span class="org-variable-name">high:</span> <span class="org-function-name">none</span>
+    <span class="org-variable-name">step:</span> <span class="org-constant">1</span>
+
+<span class="org-function-name">unless</span> <span class="org-function-name">parse</span> spec <span class="org-rainbow-delimiters-depth-2">[</span>
+    <span class="org-type">word!</span> 
+    opt '= <span class="org-function-name">set</span> low <span class="org-type">integer!</span>
+    opt <span class="org-rainbow-delimiters-depth-1">[</span>opt '<span class="org-function-name">to</span> <span class="org-function-name">set</span> high <span class="org-type">integer!</span><span class="org-rainbow-delimiters-depth-1">]</span>
+    opt <span class="org-rainbow-delimiters-depth-1">[</span>opt 'step <span class="org-function-name">set</span> step <span class="org-type">integer!</span><span class="org-rainbow-delimiters-depth-1">]</span>
+    <span class="org-rainbow-delimiters-depth-2">][</span>
+    <span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"*** LOOP syntax error:"</span> spec<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="org-variable-name">new:</span> <span class="org-function-name">reduce</span> <span class="org-function-name">either</span> high <span class="org-rainbow-delimiters-depth-2">[</span>
+    <span class="org-variable-name">set-var:</span> to-set-word <span class="org-variable-name">var:</span> spec/<span class="org-constant">1</span>
+    <span class="org-variable-name">cond:</span> <span class="org-function-name">compose</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">(</span>var<span class="org-rainbow-delimiters-depth-2">)</span> &lt;= <span class="org-rainbow-delimiters-depth-2">(</span>high<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+    <span class="org-function-name">repend</span> body <span class="org-rainbow-delimiters-depth-1">[</span>set-var var '+ step<span class="org-rainbow-delimiters-depth-1">]</span>
+    <span class="org-rainbow-delimiters-depth-1">[</span>set-var low '<span class="org-function-name">while</span> cond body<span class="org-rainbow-delimiters-depth-1">]</span>
+    <span class="org-rainbow-delimiters-depth-2">][</span>
+    <span class="org-rainbow-delimiters-depth-1">[</span>'<span class="org-function-name">repeat</span> spec/<span class="org-constant">1</span> low body<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-rainbow-delimiters-depth-2">]</span>      
+<span class="org-function-name">change</span>/part s new e
+<span class="org-rainbow-delimiters-depth-1">]</span>
+
+<span class="org-function-name">loop</span> <span class="org-constant">2</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">print</span> <span class="org-string">"x"</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">loop</span> <span class="org-rainbow-delimiters-depth-1">[</span>i <span class="org-constant">3</span><span class="org-rainbow-delimiters-depth-1">][</span><span class="org-function-name">print</span> i<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">loop</span> <span class="org-rainbow-delimiters-depth-1">[</span>i <span class="org-constant">5</span> <span class="org-constant">8</span><span class="org-rainbow-delimiters-depth-1">][</span><span class="org-function-name">print</span> i<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">loop</span> <span class="org-rainbow-delimiters-depth-1">[</span>i = <span class="org-constant">5</span> <span class="org-function-name">to</span> <span class="org-constant">10</span> step <span class="org-constant">2</span><span class="org-rainbow-delimiters-depth-1">][</span><span class="org-function-name">print</span> i<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org14f9739" class="outline-3">
+<h3 id="org14f9739"><span class="section-number-3">6.2</span> Imagens</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+A inclusão de imagens é algo bem simples (para visualizar/esconder as imagens durante a edição de um documento, pressione <code>C-c C-x C-v</code>)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+CAPTION:</span> <span class="org-org-block">Inclus&#227;o de imagem</span>
+<span class="org-org-link"><a href="file:../img/exemplo.png">file:../img/exemplo.png</a></span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../img/exemplo.png" alt="exemplo.png">
+</p>
+<p><span class="figure-number">Figura 2: </span>Inclusão de imagem</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga261d92" class="outline-2">
+<h2 id="orga261d92"><span class="section-number-2">7</span> Macros</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+São definidas, geralmente, no início do documento.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+MACRO: tablestart @@html:&lt;div style="overflow-x:auto;"&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: tableend  @@html:&lt;/div&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: fa @@html:&lt;i class="fa fa-$1"&gt;&lt;/i&gt;@@</span>
+<span class="org-org-meta-line">#+MACRO: parc "Xerox Palo Alto Research Center"</span>
+</pre>
+</div>
+
+<p>
+No exemplo acima, as duas primeiras foram utilizadas para delimitar as tabelas para uma melhor apresentação em dispositivos com monitor pequeno (site responsivo) e a terceira para facilitar a entrada de ícones utilizando <a href="http://fontawesome.io/">Font Awesome</a>. Para utilizar uma macro, entramos com três {, a macro e os parâmetros necessários e encerramos com três }.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">Eu tenho <span class="org-org-macro">{{{fa(twitter-square)}}}</span> e <span class="org-org-macro">{{{fa(facebook-square)}}}</span>.
+
+<span class="org-org-macro"><a href="https://fontawesome.bootstrapcheatsheets.com/">{{{link}}}</a></span> Font Awesome
+
+S&#243; tinha g&#234;nio no <span class="org-org-macro">{{{parc}}}</span>
+</pre>
+</div>
+
+<p>
+Eu tenho <i class="fa fa-twitter-square"></i> e <i class="fa fa-facebook-square"></i>.
+</p>
+
+<p>
+<a href="https://fontawesome.bootstrapcheatsheets.com/"><i class="fa fa-link"></i></a> Font Awesome
+</p>
+
+<p>
+Só tinha gênio no PARC (Xerox Palo Alto Research Center)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3a713bf" class="outline-2">
+<h2 id="org3a713bf"><span class="section-number-2">8</span> Tabelas</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Para entrar com uma tabela manualmente, a linha deve iniciar com <code>|</code> (barra vertical) e suas colunas também serem separadas com <code>|</code>. Digitando <code>TAB</code>, entra-se no modo de edição de tabela. É só colocar os valores e ir pressionando <code>TAB</code> para a próxima coluna. Na última o editor cria uma nova linha. Se a digitação desalinha a tabela, o próximo <code>TAB</code> fará a correção (ou digite <code>C-c C-c</code>. Para criar uma linha horizontal divisória, basta iniciar a linha com <code>|-</code> e pressionar <code>TAB</code>.
+</p>
+
+<p>
+Podemos colocar um título na tabela, informar a largura das colunas, criar linhas/colunas calculadas, etc. É, na realidade, uma planilha eletrônica no formato texto.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+CAPTION:</span> <span class="org-org-block">Tabela de compras</span>
+<span class="org-org-table">| item   | qtd | valor | total |</span>
+<span class="org-org-table">|--------+-----+-------+-------|</span>
+<span class="org-org-table">| item 1 |   2 |    20 |       |</span>
+<span class="org-org-table">| item 2 |   3 |    11 |       |</span>
+<span class="org-org-table">| item 4 |  22 |     3 |       |</span>
+<span class="org-org-meta-line">#+TBLFM: $4=$2*$3</span>
+</pre>
+</div>
+
+<table>
+<caption class="t-above"><span class="table-number">Tabela 1</span> Tabela de compras</caption>
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">item</th>
+<th scope="col" class="org-right">qtd</th>
+<th scope="col" class="org-right">valor</th>
+<th scope="col" class="org-right">total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">item 1</td>
+<td class="org-right">2</td>
+<td class="org-right">20</td>
+<td class="org-right">40</td>
+</tr>
+
+<tr>
+<td class="org-left">item 2</td>
+<td class="org-right">3</td>
+<td class="org-right">11</td>
+<td class="org-right">33</td>
+</tr>
+
+<tr>
+<td class="org-left">item 4</td>
+<td class="org-right">22</td>
+<td class="org-right">3</td>
+<td class="org-right">66</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org83ff78d" class="outline-2">
+<h2 id="org83ff78d"><span class="section-number-2">9</span> Etc.</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Por enquanto ficamos por aqui. Você pode baixar o <a href="http://orgmode.org/org.pdf">manual</a> do org-mode da versão 9.1 com 300 páginas ou o <a href="http://orgmode.org/orgguide.pdf">guia compacto</a> que tem só 45 páginas. Mas, para começar, melhor este aqui mesmo. <i class="fa fa-smile-o"></i>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Notas de Rodap&eacute;: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Fulano de Tal era o pseudônimo utilizado por Beltrano de Tal
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Xianas era uma ave mitológica que vivia na Patagônia
+</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>
