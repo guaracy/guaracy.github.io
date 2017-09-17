@@ -14,8 +14,8 @@
   <link>https://guaracy.github.io/</link>
   <description><![CDATA[]]></description>
   <language>pt_BR</language>
-  <pubDate>Thu, 14 Sep 2017 00:06:15 -0300</pubDate>
-  <lastBuildDate>Thu, 14 Sep 2017 00:06:15 -0300</lastBuildDate>
+  <pubDate>Sat, 16 Sep 2017 23:19:02 -0300</pubDate>
+  <lastBuildDate>Sat, 16 Sep 2017 23:19:02 -0300</lastBuildDate>
   <generator>Emacs 25.2 Org-mode 9.0.10</generator>
   <webMaster>bofh@bofh-pc (Guaracy Monteiro)</webMaster>
   <image>
@@ -29,10 +29,10 @@
     <link>https://guaracy.github.io/blog/exemplo.html</link>
     <author>bofh@bofh-pc (Guaracy Monteiro)</author>
     <guid isPermaLink="false">https://guaracy.github.io/blog/exemplo.html</guid>
-    <pubDate>Thu, 14 Sep 2017 00:00:00 -0300</pubDate>
+    <pubDate>Sat, 16 Sep 2017 00:00:00 -0300</pubDate>
 
     <description><![CDATA[<p>
-    <span id='publish'>Publicado em: 2017/set/14 - qui</span>
+    <span id='publish'>Publicado em: 2017/set/16 - sáb</span>
     </p>
 
     <p>
@@ -43,14 +43,32 @@
     ]]></description>
   </item>
   <item>
+    <title>Red-Parse : Introdução rápida</title>
+    <link>https://guaracy.github.io/blog/red-parse.html</link>
+    <author>bofh@bofh-pc (Guaracy Monteiro)</author>
+    <guid isPermaLink="false">https://guaracy.github.io/blog/red-parse.html</guid>
+    <pubDate>Sat, 16 Sep 2017 00:00:00 -0300</pubDate>
+
+    <description><![CDATA[<p>
+    <span id='publish'>Publicado em: 2017/set/16 - sáb</span>
+    </p>
+
+    <p>
+    Parse é a resposta de <a href="https://github.com/red/red">Red</a> para <a href="https://pt.wikipedia.org/wiki/Express%C3%A3o_regular">ER</a>, mais verbosa mas totalmente integrada com a linguagem Red.
+    <a href="https://guaracy.github.io/blog/red-parse.html">Leia mais...</a>
+    </p>
+    <hr>
+    ]]></description>
+  </item>
+  <item>
     <title>Alô Mundo</title>
     <link>https://guaracy.github.io/blog/2017-09-05-helloworld.html</link>
     <author>bofh@bofh-pc (Guaracy Monteiro)</author>
     <guid isPermaLink="false">https://guaracy.github.io/blog/2017-09-05-helloworld.html</guid>
-    <pubDate>Mon, 11 Sep 2017 00:00:00 -0300</pubDate>
+    <pubDate>Fri, 15 Sep 2017 00:00:00 -0300</pubDate>
 
     <description><![CDATA[<p>
-    <span id='publish'>Publicado em: 2017/set/11 - seg</span>
+    <span id='publish'>Publicado em: 2017/set/15 - sex</span>
     </p>
 
     <p>

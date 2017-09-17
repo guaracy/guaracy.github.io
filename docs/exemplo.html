@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-14 qui 11:22 -->
+<!-- 2017-09-17 dom 01:54 -->
 <meta charset="utf-8">
 <title>Exemplos em org-mode</title>
 <meta name="generator" content="Org mode">
@@ -265,8 +265,8 @@ for the JavaScript code in this tag.
 <li><a href="#org68060a8">2. Listas</a></li>
 <li><a href="#org6629dab">3. Cabeçalhos</a>
 <ul>
-<li><a href="#orge3b41c9">3.1. <span class="todo TODO">TODO</span> Nivel 2</a></li>
-<li><a href="#orgd49419f">3.2. <span class="done DONE">DONE</span> Nivel 2</a>
+<li><a href="#orgd49419f">3.1. <span class="todo TODO">TODO</span> Nivel 2</a></li>
+<li><a href="#org55d6eb5">3.2. <span class="done DONE">DONE</span> Nivel 2</a>
 <ul>
 <li><a href="#orga4a1343">3.2.1. Nivel 3</a></li>
 </ul>
@@ -287,8 +287,9 @@ for the JavaScript code in this tag.
 <li><a href="#org0dedba5">5.6.2. Bloco de código</a></li>
 <li><a href="#org6d048d0">5.6.3. Integração entre blocos</a></li>
 <li><a href="#orgf646e69">5.6.4. Gravação de blocos</a></li>
-<li><a href="#org20d3205">5.6.5. Referenciando linhas no bloco</a></li>
-<li><a href="#orgceb25f4">5.6.6. Blocos especiais</a></li>
+<li><a href="#org1a67878">5.6.5. Continuação (noweb)</a></li>
+<li><a href="#org20d3205">5.6.6. Referenciando linhas no bloco</a></li>
+<li><a href="#orgceb25f4">5.6.7. Blocos especiais</a></li>
 </ul>
 </li>
 </ul>
@@ -397,16 +398,16 @@ texto
 </pre>
 </div>
 </div>
-<div id="outline-container-orge3b41c9" class="outline-3">
-<h3 id="orge3b41c9"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Nivel 2</h3>
+<div id="outline-container-orgd49419f" class="outline-3">
+<h3 id="orgd49419f"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Nivel 2</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 texto
 </p>
 </div>
 </div>
-<div id="outline-container-orgd49419f" class="outline-3">
-<h3 id="orgd49419f"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Nivel 2</h3>
+<div id="outline-container-org55d6eb5" class="outline-3">
+<h3 id="org55d6eb5"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Nivel 2</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 texto
@@ -794,9 +795,89 @@ No bloco abaixo, estou informando que ele não deve ser exportado para a publica
 </div>
 </div>
 
-<div id="outline-container-org20d3205" class="outline-4">
-<h4 id="org20d3205"><span class="section-number-4">5.6.5</span> Referenciando linhas no bloco</h4>
+<div id="outline-container-org1a67878" class="outline-4">
+<h4 id="org1a67878"><span class="section-number-4">5.6.5</span> Continuação (noweb)</h4>
 <div class="outline-text-4" id="text-5-6-5">
+<p>
+Permite que sejam informadas partes do programa durante o processo e, em uma próxima etapa, todas as partes sejam juntadas para a criação do programa principal. Nessa última etapa, ele poderá ser executado ou gravado como um todo. 
+</p>
+
+<p>
+Primeiro informamos as diversas partes com os devidos nomes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+name: red-inicio</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports sorces</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"inicio"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+
+<span class="org-org-meta-line">#+name: red-meio</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports sorces</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"meio"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+
+<span class="org-org-meta-line">#+name: red-fim</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports sorces</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"fim"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="org1697584"><span class="org-function-name">print</span> <span class="org-string">"inicio"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="org0435c1c"><span class="org-function-name">print</span> <span class="org-string">"meio"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="orgac9b787"><span class="org-function-name">print</span> <span class="org-string">"fim"</span>
+</pre>
+</div>
+
+<p>
+Finalmente, informamos o nomes dos blocos que desejamos juntar e não é necessário digitar tudo novamente. O <i>babel</i> aceita que o código seja executado completo e o resultado mostrado e o <i>tangle</i> grava todos os blocos (note que no <i>tangle</i> é possível exportar diversos blocos para um mesmo programa fonte, independente de qualquer coisa).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+name: red-completo</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports both :noweb yes :tangle ../dl/noweb.red</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"inicio do teste"</span></span>
+<span class="org-org-block">  &lt;&lt;red-inicio&gt;&gt;</span>
+<span class="org-org-block">  &lt;&lt;red-meio&gt;&gt;</span>
+<span class="org-org-block">  &lt;&lt;red-fim&gt;&gt;</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"fim do teste"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="org82eeca1"><span class="org-function-name">print</span> <span class="org-string">"inicio do teste"</span>
+<span class="org-function-name">print</span> <span class="org-string">"inicio"</span>
+<span class="org-function-name">print</span> <span class="org-string">"meio"</span>
+<span class="org-function-name">print</span> <span class="org-string">"fim"</span>
+<span class="org-function-name">print</span> <span class="org-string">"fim do teste"</span>
+</pre>
+</div>
+
+<pre class="example">
+inicio do teste
+inicio
+meio
+fim
+fim do teste
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org20d3205" class="outline-4">
+<h4 id="org20d3205"><span class="section-number-4">5.6.6</span> Referenciando linhas no bloco</h4>
+<div class="outline-text-4" id="text-5-6-6">
 <p>
 No bloco abaixo, exportamos o código e o resultado, iniciamos o número de linha em 22 e colocamos algumas referências no bloco do programa que não serão mostradas pois temos o -r como parâmetro do bloco. Basta passar o mouse sobre as referências no texto que a linha será salientada.
 </p>
@@ -837,8 +918,8 @@ O org-mode está se perdendo com a inclusão de um fonte do bloco abaixo em <cod
 </div>
 
 <div id="outline-container-orgceb25f4" class="outline-4">
-<h4 id="orgceb25f4"><span class="section-number-4">5.6.6</span> Blocos especiais</h4>
-<div class="outline-text-4" id="text-5-6-6">
+<h4 id="orgceb25f4"><span class="section-number-4">5.6.7</span> Blocos especiais</h4>
+<div class="outline-text-4" id="text-5-6-7">
 <p>
 Com o <a href="http://orgmode.org/worg/org-contrib/babel/intro.html">babel</a>, não ficamos restritos a códigos de programas. Se você deseja algo, basta escrever as funções necessárias para executar os procedimentos e mostrar os resultados.
 </p>

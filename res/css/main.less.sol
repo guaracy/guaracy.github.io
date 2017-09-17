@@ -8,28 +8,26 @@ html {
 
 
 body {
-    font-size: large;
-    /*
+    /*font-size: large;*/
     background-color: @backgroundcolor;
     color: @foregroundcolor;
-    */
     max-width: 100%;
     margin: 0;
 }
 
 
 blockquote {
-    border-bottom: 1px solid @text;
-    border-left: 4px solid @text;
+    border-bottom: 1px solid @foregroundcolor + 40;
+    border-left: 4px solid @foregroundcolor + 40;
     padding-left: 8pt;
     font-size: 90%;
     &:before {
-        color: @text;
+        color: @foregroundcolor + 40;
         font-family: FontAwesome;
         content:"\f10d";
     }
     &:after {
-        color: @text;
+        color: @foregroundcolor + 40;
         font-family: FontAwesome;
         content:"\f10e";
     }
@@ -48,19 +46,26 @@ table {
     font-size: 100%;
     border-collapse: collapse;
     margin: .5em 0;
-    border-top: 3px solid @text;
-    border-bottom: 3px solid @text;
+    border-top: 3px solid @foregroundcolor;
+    border-bottom: 3px solid @foregroundcolor;
     td, th {
         padding: .3em;
-        border: 1px solid @text;
+        border: 1px solid @foregroundcolor;
     }
 }
 
+/*
+th, td {
+    border-bottom: 1px solid @base1;
+    padding: .3em;
+    margin: 2px;
+}
+*/
 th {
-    background: @bg-l4;
+    background: @backgroundcolor - 20;
 }
 
-tr:hover {background-color: @bg-l5;}
+tr:hover {background-color: @backgroundcolor - 10;}
 
 .title  {
     text-align: center;
@@ -75,28 +80,27 @@ tr:hover {background-color: @bg-l5;}
 }
 #publish {
     font-size: 70%;
-    color: @bg-d5;
+    color: @base1 - 20;
 }
 h1 {
-    color: @h1-fg;
+    color: @orange;
 }
 
 h2, h3, h4 {
-    color: @h2-fg;
+    color: @cyan;
     &:before {
         content: "• "; /*&bull;*/
     }
 }
 
 a {
-    color: @bg-d2;
+    color: @yellow;
     text-decoration: none;
     &:hover {
         text-decoration: underline;
     }
 }
 
-/*
 #banner {
     background-color: @base02;
     color: @base3;
@@ -106,16 +110,10 @@ a {
         color: @base3;
     }
 }
-*/
-#myTop {
-    a {
-        color: @fg-light;
-    }
-}
 
 header {
     h1 {
-        color: @fg-light;
+        color: @backgroundcolor;
     }
 }
 
@@ -129,22 +127,20 @@ nav {
 }
 
 code {
-    background-color: @bg-l4;
+    background-color: @base3 - 20;
     padding: 0 5px;
 }
 
 .todo   {
     font-family: monospace;
-    font-size: 80%;
-    color: @fg-light;
+    color: @base3;
     padding: 0 5px;
     background-color: @red;
 }
 
 .done   {
     font-family: monospace;
-    font-size: 80%;
-    color: @fg-light;
+    color: @base3;
     padding: 0 5px;
     background-color: @green;
 }
@@ -191,8 +187,8 @@ p.verse {
 }
 
 .box {
-    border: 1px solid @text;
-    background-color: @bg-l5;
+    border: 1px solid @base2 - 30;
+    background-color: @base2;
     /*box-shadow: 3px 3px 3px #eee;*/
     padding: 8pt;
     font-family: monospace;
@@ -220,10 +216,10 @@ p.verse {
 }
 .warning {
     .box;
-    border-left: 4px solid @orange;
+    border-left: 4px solid @yellow;
     &:before {
         font-family: FontAwesome;
-        color: @orange;
+        color: @yellow;
         content:"\f071";
     }
 }
@@ -253,12 +249,12 @@ pre.src {
 pre.src:before {
     display: none;
     position: absolute;
-    background-color: @bg-d1;
-    color: @fg-light;
+    background-color: @yellow;
+    color: @base3;
     top: -5px;
     right: 10px;
     padding: 3px;
-    border: 1px solid @bg-d3;
+    border: 1px solid black;
 }
 
 pre.src:hover:before {
@@ -520,7 +516,7 @@ caption.t-above {
   position: fixed;
   right: 5px;
   top: 20px;
-  background: @bg-l5;
+  background: white;
   line-height: 12pt;
   text-align: right;
   z-index: 1000;
@@ -553,7 +549,7 @@ caption.t-above {
 
 
 #postamble {
-    border-top: 1px dashed @text;
+    border-top: 1px dashed @base1;
     font-size: smaller;
     color: #888;
 }
@@ -564,8 +560,8 @@ caption.t-above {
     &:before {
         /*color: @base2 - 30;*/
         /*margin-left: 2em;*/
-        background-color: @bg-l3;
-        border: 1px solid @bg-l2;
+        background-color: @base2;
+        border: 1px solid @base1 - 20;
         border-radius: 2px;
         padding: 2px 20px 2px 10px;
         font-family: FontAwesome;

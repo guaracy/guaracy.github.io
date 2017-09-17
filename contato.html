@@ -1,66 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-13 qua 14:38 -->
+<!-- 2017-09-15 sex 23:36 -->
 <meta charset="utf-8">
 <title>Contato</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="Guaracy Monteiro">
-<!-- inicio extra-head -->
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<!-- fonts -->
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
-<!-- css -->
-<!--link rel='stylesheet' href='../res/css/code.css' /-->
-<link rel='stylesheet' href='../res/css/htmlize.css' />
-<link rel='stylesheet' href='../res/css/main.css' /><!-- js -->
-<script src='../res/js/main.js'></script>
-<!-- fim extra-head -->
+    <!-- inicio extra-head -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- fonts -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
+    <!-- css -->
+    <!--link rel='stylesheet' href='../res/css/code.css' /-->
+    <link rel='stylesheet' href='../res/css/htmlize.css' />
+    <link rel='stylesheet' href='../res/css/w3.css' />
+    <link rel='stylesheet' href='../res/css/w3-theme.css' />
+    <link rel='stylesheet' href='../res/css/main.css'>
+    <!-- js -->
+    <script src='../res/js/main.js'></script>
+    <!-- fim extra-head -->
 </head>
 <body>
 <div id="preamble" class="status">
-<!-- início header.html -->
-<header id="banner">
-  <h1>Cadafalso</h1>
-  <p>Apenas mais um blog</p>
-</header>
-<nav>
-  <form method="get" id="searchform" action="http://www.google.com/search">
-    <a href="/"             title="Índice"> <i class="fa fa-home"></i></a>
-    <a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a>
-    <a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a>
-    <a href="https://twitter.com/guaracybm" title="Twitter"><i class="fa fa-twitter"></i></a>
-    <a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a>
-    <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
-    <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
-  </form>
-  <br/>
-</nav>
-  <!--    
-          <ul>
-            <li><a href="/" title="Índice"><i class="fa fa-home"></i></a></li>
-            <li><a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a></li>
-            <li><a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a></li>
-            <li><a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
-          </ul>
-          <center>
-            <form method="get" id="searchform" action="http://www.google.com/search">
-              <i class="fa fa-search"></i>
-              <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
-              <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
-            </form>
-          </center>
-          -->
+      <!-- início header.html -->
+    </div>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-4" style="z-index:3;width:250px;" id="mySidebar">
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/"><i class="fa fa-home"></i> Blog</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/index.xml"><i class="fa fa-rss"></i> RSS</a>
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/documentos.html"><i class="fa fa-book"></i> Documentos</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/changelog.html"><i class="fa fa-sliders"></i> Alterações</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/contato.html"><i class="fa fa-user-secret"></i> Contato</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://github.com/guaracy"><i class="fa fa-github"></i> GitHub</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://twitter.com/guaracybm"><i class="fa fa-twitter"></i> Twitter</a>
+      <form class="w3-bar-item" method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+        <input type="hidden" name="sites" value="{{site-domain}}">
+        <input type="hidden" name="k8" value="#444444">
+        <input type="hidden" name="k9" value="#D51920">
+        <input type="hidden" name="kt" value="h">
+        <input class="w3-input w3-border w3-border-theme" type="text" name="q" maxlength="200"
+               placeholder="Procurar&hellip;" class="span2" style="margin-top: 4px;">
+        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+      </form>
+    </nav>
+
+    <div class="w3-main" style="margin-left:250px;">
+      <div id="myTop" class="w3-container w3-top w3-theme w3-large" style="opacity: 0.95;">
+        <p>
+          <i class="fa fa-bars w3-button w3-theme w3-hide-large w3-xlarge" title="Menu" onclick="w3_open()"></i>
+          <span id="myIntro" class="w3-hide"><a href="#"><i class="fa fa-chevron-circle-up w3-xlarge w3-button" title="Top"></i></a> Cadafalso</span>
+        </p>
+      </div>
+
+      <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+      <header class="w3-theme w3-center" style="padding: 64px">
+        <h1><b>Cadafalso</b><br></h1>Apenas mais um blog
+      </header>
+      <div class="w3-container" style="padding:16px">
+        <div>
+
+    
 <!-- fim header.html -->
 </div>
 <div id="content">
 <h1 class="title">Contato</h1>
 
-<div id="outline-container-org04a1c60" class="outline-2">
-<h2 id="org04a1c60">Em construção</h2>
-<div class="outline-text-2" id="text-org04a1c60">
+<div id="outline-container-org7af6182" class="outline-2">
+<h2 id="org7af6182">Em construção</h2>
+<div class="outline-text-2" id="text-org7af6182">
 <p>
 Se você deseja entrar em contato, envie um <a href="mailto:guaracy.bm@gmail.com?subject=Cadafalso">email</a> ou escreva nos comentários.
 </p>

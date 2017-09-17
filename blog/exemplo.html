@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-14 qui 11:20 -->
+<!-- 2017-09-16 sáb 23:19 -->
 <meta charset="utf-8">
 <title>Exemplos em org-mode</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="Guaracy Monteiro">
-<!-- inicio extra-head -->
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<!-- fonts -->
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
-<!-- css -->
-<!--link rel='stylesheet' href='../res/css/code.css' /-->
-<link rel='stylesheet' href='../res/css/htmlize.css' />
-<link rel='stylesheet' href='../res/css/main.css' /><!-- js -->
-<script src='../res/js/main.js'></script>
-<!-- fim extra-head -->
+    <!-- inicio extra-head -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- fonts -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
+    <!-- css -->
+    <!--link rel='stylesheet' href='../res/css/code.css' /-->
+    <link rel='stylesheet' href='../res/css/htmlize.css' />
+    <link rel='stylesheet' href='../res/css/w3.css' />
+    <link rel='stylesheet' href='../res/css/w3-theme.css' />
+    <link rel='stylesheet' href='../res/css/main.css'>
+    <!-- js -->
+    <script src='../res/js/main.js'></script>
+    <!-- fim extra-head -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -43,42 +46,95 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<!-- início header.html -->
-<header id="banner">
-  <h1>Cadafalso</h1>
-  <p>Apenas mais um blog</p>
-</header>
-<nav>
-  <form method="get" id="searchform" action="http://www.google.com/search">
-    <a href="/"             title="Índice"> <i class="fa fa-home"></i></a>
-    <a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a>
-    <a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a>
-    <a href="https://twitter.com/guaracybm" title="Twitter"><i class="fa fa-twitter"></i></a>
-    <a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a>
-    <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
-    <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
-  </form>
-  <br/>
-</nav>
-  <!--    
-          <ul>
-            <li><a href="/" title="Índice"><i class="fa fa-home"></i></a></li>
-            <li><a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a></li>
-            <li><a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a></li>
-            <li><a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
-          </ul>
-          <center>
-            <form method="get" id="searchform" action="http://www.google.com/search">
-              <i class="fa fa-search"></i>
-              <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
-              <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
-            </form>
-          </center>
-          -->
+      <!-- início header.html -->
+    </div>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-4" style="z-index:3;width:250px;" id="mySidebar">
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/"><i class="fa fa-home"></i> Blog</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/index.xml"><i class="fa fa-rss"></i> RSS</a>
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/documentos.html"><i class="fa fa-book"></i> Documentos</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/changelog.html"><i class="fa fa-sliders"></i> Alterações</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/contato.html"><i class="fa fa-user-secret"></i> Contato</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://github.com/guaracy"><i class="fa fa-github"></i> GitHub</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://twitter.com/guaracybm"><i class="fa fa-twitter"></i> Twitter</a>
+      <form class="w3-bar-item" method="get" id="search" action="http://www.google.com/search" class="navbar-form pull-left">
+        <input class="w3-input w3-border w3-border-theme" type="text" name="q" 
+               placeholder="Procurar&hellip;" id="s" style="margin-top: 4px;">
+        <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io">
+      </form>
+    </nav>
+
+    <div class="w3-main" style="margin-left:250px;">
+      <div id="myTop" class="w3-container w3-top w3-theme w3-large" style="opacity: 0.95;">
+        <p>
+          <i class="fa fa-bars w3-button w3-theme w3-hide-large w3-xlarge" title="Menu" onclick="w3_open()"></i>
+          <span id="myIntro" class="w3-hide"><a href="#"><i class="fa fa-chevron-circle-up w3-xlarge w3-button" title="Top"></i></a> Cadafalso</span>
+        </p>
+      </div>
+
+      <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+      <header class="w3-theme w3-center" style="padding: 64px">
+        <h1><b>Cadafalso</b><br></h1>Apenas mais um blog
+      </header>
+      <div class="w3-container" style="padding:16px">
+        <div>
+
+    
 <!-- fim header.html -->
 </div>
 <div id="content">
 <h1 class="title">Exemplos em org-mode</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1e9d2e6">Básico</a></li>
+<li><a href="#org980750d">Listas</a></li>
+<li><a href="#orgf1cce0b">Cabeçalhos</a>
+<ul>
+<li><a href="#org2b793ac"><span class="todo TODO">TODO</span> Nivel 2</a></li>
+<li><a href="#org2dc80c8"><span class="done DONE">DONE</span> Nivel 2</a>
+<ul>
+<li><a href="#org8c7f649">Nivel 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org52f5524">Footnote</a></li>
+<li><a href="#orgb7ca4af">Blocos</a>
+<ul>
+<li><a href="#orgc5a491f">Bloco Normal</a></li>
+<li><a href="#org03adabc">Bloco de citação</a></li>
+<li><a href="#org5a5d34a">Blocos diversos</a></li>
+<li><a href="#org8ce8a0a">Blocos HTML</a></li>
+<li><a href="#orgfd2a446">Blocos LaTeX</a></li>
+<li><a href="#org41683d1">Blocos de código</a>
+<ul>
+<li><a href="#org8876862">Inline</a></li>
+<li><a href="#orgd163fbd">Bloco de código</a></li>
+<li><a href="#org9f0efa4">Integração entre blocos</a></li>
+<li><a href="#org84e1345">Gravação de blocos</a></li>
+<li><a href="#orgff9acf4">Continuação (noweb)</a></li>
+<li><a href="#org739af6f">Referenciando linhas no bloco</a></li>
+<li><a href="#org62aa317">Blocos especiais</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd1517c5">Inclusão de arquivos</a>
+<ul>
+<li><a href="#org529ed51">Texto</a></li>
+<li><a href="#orgf3500f8">Imagens</a></li>
+</ul>
+</li>
+<li><a href="#orga4a18c4">Macros</a></li>
+<li><a href="#orgd9f35f5">Tabelas</a></li>
+<li><a href="#org837e878">Etc.</a></li>
+</ul>
+</div>
+</div>
 <div class="PREVIEW">
 <p>
 Entrada que servirá de exemplo de uma parte das características do org-mode bem como verificar a formatação.
@@ -90,9 +146,9 @@ Entrada que servirá de exemplo de uma parte das características do org-mode be
 Era para ser apenas uma entrada no blog mas resolvi exportar como um <a href="../docs/exemplo.html">documento</a> para servir de referência.
 </p>
 
-<div id="outline-container-org7f2399f" class="outline-2">
-<h2 id="org7f2399f">Básico</h2>
-<div class="outline-text-2" id="text-org7f2399f">
+<div id="outline-container-org1e9d2e6" class="outline-2">
+<h2 id="org1e9d2e6">Básico</h2>
+<div class="outline-text-2" id="text-org1e9d2e6">
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-bold">*bold*</span>, <span class="org-italic">/italic/</span>, <span class="org-underline">_underline_</span>, <span class="org-org-verbatim">=code=</span> <span class="org-org-code">~verbatim~</span>, <span class="custom">+strike-through+</span>.
 </pre>
@@ -111,11 +167,11 @@ Letras gregas: &alpha;, &beta; and &gamma;.
 </div>
 </div>
 
-<div id="outline-container-org7133f70" class="outline-2">
-<h2 id="org7133f70">Listas</h2>
-<div class="outline-text-2" id="text-org7133f70">
+<div id="outline-container-org980750d" class="outline-2">
+<h2 id="org980750d">Listas</h2>
+<div class="outline-text-2" id="text-org980750d">
 <p>
-<a id="org26130d8"></a>
+<a id="org53555bd"></a>
 </p>
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-org-target">&lt;&lt;listas&gt;&gt;</span>
@@ -154,9 +210,9 @@ i item 2 :: descri&#231;&#227;o item 2
 </div>
 </div>
 
-<div id="outline-container-org0146605" class="outline-2">
-<h2 id="org0146605">Cabeçalhos</h2>
-<div class="outline-text-2" id="text-org0146605">
+<div id="outline-container-orgf1cce0b" class="outline-2">
+<h2 id="orgf1cce0b">Cabeçalhos</h2>
+<div class="outline-text-2" id="text-orgf1cce0b">
 <p>
 Iniciam com asterisco Linhas que iniciam com um ou mais asteriscos.
 </p>
@@ -171,24 +227,24 @@ texto
 </pre>
 </div>
 </div>
-<div id="outline-container-org5371487" class="outline-3">
-<h3 id="org5371487"><span class="todo TODO">TODO</span> Nivel 2</h3>
-<div class="outline-text-3" id="text-org5371487">
+<div id="outline-container-org2b793ac" class="outline-3">
+<h3 id="org2b793ac"><span class="todo TODO">TODO</span> Nivel 2</h3>
+<div class="outline-text-3" id="text-org2b793ac">
 <p>
 texto
 </p>
 </div>
 </div>
-<div id="outline-container-org313269a" class="outline-3">
-<h3 id="org313269a"><span class="done DONE">DONE</span> Nivel 2</h3>
-<div class="outline-text-3" id="text-org313269a">
+<div id="outline-container-org2dc80c8" class="outline-3">
+<h3 id="org2dc80c8"><span class="done DONE">DONE</span> Nivel 2</h3>
+<div class="outline-text-3" id="text-org2dc80c8">
 <p>
 texto
 </p>
 </div>
-<div id="outline-container-orgc33079a" class="outline-4">
-<h4 id="orgc33079a">Nivel 3</h4>
-<div class="outline-text-4" id="text-orgc33079a">
+<div id="outline-container-org8c7f649" class="outline-4">
+<h4 id="org8c7f649">Nivel 3</h4>
+<div class="outline-text-4" id="text-org8c7f649">
 <p>
 texto
 </p>
@@ -197,9 +253,9 @@ texto
 </div>
 </div>
 
-<div id="outline-container-org93dee6d" class="outline-2">
-<h2 id="org93dee6d">Footnote</h2>
-<div class="outline-text-2" id="text-org93dee6d">
+<div id="outline-container-org52f5524" class="outline-2">
+<h2 id="org52f5524">Footnote</h2>
+<div class="outline-text-2" id="text-org52f5524">
 <div class="org-src-container">
 <pre class="src src-org">Como disse Fulano de Tal <span class="org-org-footnote">[fn:a]</span> na revolta dos xianas <span class="org-org-footnote">[fn:b]</span> nem tudo &#233; nada.
 
@@ -214,12 +270,12 @@ Como disse Fulano de Tal <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></
 </div>
 </div>
 
-<div id="outline-container-org873016f" class="outline-2">
-<h2 id="org873016f">Blocos</h2>
-<div class="outline-text-2" id="text-org873016f">
-</div><div id="outline-container-org2fd59f6" class="outline-3">
-<h3 id="org2fd59f6">Bloco Normal</h3>
-<div class="outline-text-3" id="text-org2fd59f6">
+<div id="outline-container-orgb7ca4af" class="outline-2">
+<h2 id="orgb7ca4af">Blocos</h2>
+<div class="outline-text-2" id="text-orgb7ca4af">
+</div><div id="outline-container-orgc5a491f" class="outline-3">
+<h3 id="orgc5a491f">Bloco Normal</h3>
+<div class="outline-text-3" id="text-orgc5a491f">
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-org-code">: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</span>
 <span class="org-org-code">: eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
@@ -234,9 +290,9 @@ eiusmod tempor incididunt ut labore et dolore magna aliqua.
 </div>
 </div>
 
-<div id="outline-container-org9e6c474" class="outline-3">
-<h3 id="org9e6c474">Bloco de citação</h3>
-<div class="outline-text-3" id="text-org9e6c474">
+<div id="outline-container-org03adabc" class="outline-3">
+<h3 id="org03adabc">Bloco de citação</h3>
+<div class="outline-text-3" id="text-org03adabc">
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-org-block-begin-line">#+BEGIN_QUOTE</span>
 Programs must be written for people to read, and only incidentally
@@ -260,9 +316,9 @@ for machines to execute.
 </div>
 </div>
 
-<div id="outline-container-orgda6d110" class="outline-3">
-<h3 id="orgda6d110">Blocos diversos</h3>
-<div class="outline-text-3" id="text-orgda6d110">
+<div id="outline-container-org5a5d34a" class="outline-3">
+<h3 id="org5a5d34a">Blocos diversos</h3>
+<div class="outline-text-3" id="text-org5a5d34a">
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-org-block-begin-line">#+begin_tip </span>
 Esta &#233; uma dica
@@ -313,9 +369,9 @@ Este é um erro
 </div>
 </div>
 
-<div id="outline-container-org588c8c5" class="outline-3">
-<h3 id="org588c8c5">Blocos HTML</h3>
-<div class="outline-text-3" id="text-org588c8c5">
+<div id="outline-container-org8ce8a0a" class="outline-3">
+<h3 id="org8ce8a0a">Blocos HTML</h3>
+<div class="outline-text-3" id="text-org8ce8a0a">
 <p>
 Exporta o conteúdo do bloco como HTML, sem processamento.
 </p>
@@ -339,9 +395,9 @@ Exporta o conteúdo do bloco como HTML, sem processamento.
 </div>
 </div>
 
-<div id="outline-container-org541c3a5" class="outline-3">
-<h3 id="org541c3a5">Blocos LaTeX</h3>
-<div class="outline-text-3" id="text-org541c3a5">
+<div id="outline-container-orgfd2a446" class="outline-3">
+<h3 id="orgfd2a446">Blocos LaTeX</h3>
+<div class="outline-text-3" id="text-orgfd2a446">
 <div class="org-src-container">
 <pre class="src src-org">\(\LaTeX\)
 </pre>
@@ -393,9 +449,9 @@ Alinhamento de sistema de equações
 </div>
 </div>
 
-<div id="outline-container-orgdaa2472" class="outline-3">
-<h3 id="orgdaa2472">Blocos de código</h3>
-<div class="outline-text-3" id="text-orgdaa2472">
+<div id="outline-container-org41683d1" class="outline-3">
+<h3 id="org41683d1">Blocos de código</h3>
+<div class="outline-text-3" id="text-org41683d1">
 <p>
 Esta é a parte mais legal e mais complexa. Basicamente é um programa como você digitaria em um proccessador de textos qualquer, com sintaxe salientada e mais as facilidades que o modo oferece. Porém, existem argumentos específicos que podem ser incluídas nos blocos (também podem ser globais ao documento e/ou determinados blocos ou sequencias). O processo para interpretar os blocos das diferentes linguagens é efetuado pelo <a href="http://orgmode.org/worg/org-contrib/babel/intro.html">babel</a>. 
 </p>
@@ -417,9 +473,9 @@ A execução do bloco de código pode ser automática ou manual, digitando <code
 </p>
 </div>
 
-<div id="outline-container-org00f3ade" class="outline-4">
-<h4 id="org00f3ade">Inline</h4>
-<div class="outline-text-4" id="text-org00f3ade">
+<div id="outline-container-org8876862" class="outline-4">
+<h4 id="org8876862">Inline</h4>
+<div class="outline-text-4" id="text-org8876862">
 <div class="org-src-container">
 <pre class="src src-org">  Um trecho de html src_html{&lt;i class="fa fa-home"&gt;&lt;/i&gt;} para 
 a inclus&#227;o de &#237;cones no texto.
@@ -442,9 +498,9 @@ A versão de Ruby disponível é: <code>2.4.1</code>
 </div>
 </div>
 
-<div id="outline-container-orgf7bea9b" class="outline-4">
-<h4 id="orgf7bea9b">Bloco de código</h4>
-<div class="outline-text-4" id="text-orgf7bea9b">
+<div id="outline-container-orgd163fbd" class="outline-4">
+<h4 id="orgd163fbd">Bloco de código</h4>
+<div class="outline-text-4" id="text-orgd163fbd">
 <p>
 É um caso simples onde temos um bloco em uma determinada linguagem e desejamos que ele seja executado e mostre o resultado obtido.
 </p>
@@ -479,9 +535,9 @@ Emacs
 </div>
 </div>
 
-<div id="outline-container-orgf33108f" class="outline-4">
-<h4 id="orgf33108f">Integração entre blocos</h4>
-<div class="outline-text-4" id="text-orgf33108f">
+<div id="outline-container-org9f0efa4" class="outline-4">
+<h4 id="org9f0efa4">Integração entre blocos</h4>
+<div class="outline-text-4" id="text-org9f0efa4">
 <p>
 O script abaixo irá gerar uma tabela com o tamanho e nomes dos arquivos de um determinado diretório (no caso <code>~/.org-timestamps</code> que é onde o org-mode guarda informações sobre atualizações dos arquivos para serem publicados) e colocará o nome de <i>directories</i>.
 </p>
@@ -495,7 +551,7 @@ O script abaixo irá gerar uma tabela com o tamanho e nomes dos arquivos de um d
 </div>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org86c3bf9"><span class="org-builtin">cd</span> ~/.org-timestamps &amp;&amp; du -bc blog* | grep -v total
+<pre class="src src-sh" id="orgc86214c"><span class="org-builtin">cd</span> ~/.org-timestamps &amp;&amp; du -bc blog* | grep -v total
 </pre>
 </div>
 
@@ -518,15 +574,15 @@ Fui obrigado a colocar o bloco acima entre <code>#+BEGIN EXAMPLE</code>. Colocan
 </div>
 
 <div class="org-src-container">
-<pre class="src src-R" id="org16f07b3">pie(dirs[,1], labels = dirs[,2])
+<pre class="src src-R" id="org0ef568e">pie(dirs[,1], labels = dirs[,2])
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6d198c9" class="outline-4">
-<h4 id="org6d198c9">Gravação de blocos<a id="orgb39627e"></a></h4>
-<div class="outline-text-4" id="text-org6d198c9">
+<div id="outline-container-org84e1345" class="outline-4">
+<h4 id="org84e1345">Gravação de blocos<a id="org61c77b4"></a></h4>
+<div class="outline-text-4" id="text-org84e1345">
 <p>
 No bloco abaixo, estou informando que ele não deve ser exportado para a publicação. Após pressionar <code>C-c C-v t</code>, o conteúdo do bloco será gravado no arquivo <code>../dl/teste.red</code>. Não tente entender o código abaixo, mas é apenas a implementação de uma DSL para incluir <i>loop</i> em Red. 
 </p>
@@ -568,9 +624,89 @@ No bloco abaixo, estou informando que ele não deve ser exportado para a publica
 </div>
 </div>
 
-<div id="outline-container-org0563498" class="outline-4">
-<h4 id="org0563498">Referenciando linhas no bloco</h4>
-<div class="outline-text-4" id="text-org0563498">
+<div id="outline-container-orgff9acf4" class="outline-4">
+<h4 id="orgff9acf4">Continuação (noweb)</h4>
+<div class="outline-text-4" id="text-orgff9acf4">
+<p>
+Permite que sejam informadas partes do programa durante o processo e, em uma próxima etapa, todas as partes sejam juntadas para a criação do programa principal. Nessa última etapa, ele poderá ser executado ou gravado como um todo. 
+</p>
+
+<p>
+Primeiro informamos as diversas partes com os devidos nomes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+name: red-inicio</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports sorces</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"inicio"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+
+<span class="org-org-meta-line">#+name: red-meio</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports sorces</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"meio"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+
+<span class="org-org-meta-line">#+name: red-fim</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports sorces</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"fim"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="orgad499cd"><span class="org-function-name">print</span> <span class="org-string">"inicio"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="org2f61cdb"><span class="org-function-name">print</span> <span class="org-string">"meio"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="org80f3eda"><span class="org-function-name">print</span> <span class="org-string">"fim"</span>
+</pre>
+</div>
+
+<p>
+Finalmente, informamos o nomes dos blocos que desejamos juntar e não é necessário digitar tudo novamente. O <i>babel</i> aceita que o código seja executado completo e o resultado mostrado e o <i>tangle</i> grava todos os blocos (note que no <i>tangle</i> é possível exportar diversos blocos para um mesmo programa fonte, independente de qualquer coisa).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+name: red-completo</span>
+<span class="org-org-block-begin-line">#+begin_src red :exports both :noweb yes :tangle ../dl/noweb.red</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"inicio do teste"</span></span>
+<span class="org-org-block">  &lt;&lt;red-inicio&gt;&gt;</span>
+<span class="org-org-block">  &lt;&lt;red-meio&gt;&gt;</span>
+<span class="org-org-block">  &lt;&lt;red-fim&gt;&gt;</span>
+<span class="org-org-block">  </span><span class="org-org-block"><span class="org-function-name">print</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-string">"fim do teste"</span></span>
+<span class="org-org-block-end-line">#+end_src</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-red" id="org987607c"><span class="org-function-name">print</span> <span class="org-string">"inicio do teste"</span>
+<span class="org-function-name">print</span> <span class="org-string">"inicio"</span>
+<span class="org-function-name">print</span> <span class="org-string">"meio"</span>
+<span class="org-function-name">print</span> <span class="org-string">"fim"</span>
+<span class="org-function-name">print</span> <span class="org-string">"fim do teste"</span>
+</pre>
+</div>
+
+<pre class="example">
+inicio do teste
+inicio
+meio
+fim
+fim do teste
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org739af6f" class="outline-4">
+<h4 id="org739af6f">Referenciando linhas no bloco</h4>
+<div class="outline-text-4" id="text-org739af6f">
 <p>
 No bloco abaixo, exportamos o código e o resultado, iniciamos o número de linha em 22 e colocamos algumas referências no bloco do programa que não serão mostradas pois temos o -r como parâmetro do bloco. Basta passar o mouse sobre as referências no texto que a linha será salientada.
 </p>
@@ -610,9 +746,9 @@ O org-mode está se perdendo com a inclusão de um fonte do bloco abaixo em <cod
 </div>
 </div>
 
-<div id="outline-container-org4095f3f" class="outline-4">
-<h4 id="org4095f3f">Blocos especiais</h4>
-<div class="outline-text-4" id="text-org4095f3f">
+<div id="outline-container-org62aa317" class="outline-4">
+<h4 id="org62aa317">Blocos especiais</h4>
+<div class="outline-text-4" id="text-org62aa317">
 <p>
 Com o <a href="http://orgmode.org/worg/org-contrib/babel/intro.html">babel</a>, não ficamos restritos a códigos de programas. Se você deseja algo, basta escrever as funções necessárias para executar os procedimentos e mostrar os resultados.
 </p>
@@ -705,18 +841,18 @@ Ou algum utilitário que receba um texto em um determinado idioma e traduza para
 </div>
 </div>
 
-<div id="outline-container-org8bb79a1" class="outline-2">
-<h2 id="org8bb79a1">Inclusão de arquivos</h2>
-<div class="outline-text-2" id="text-org8bb79a1">
-</div><div id="outline-container-org4f3b695" class="outline-3">
-<h3 id="org4f3b695">Texto</h3>
-<div class="outline-text-3" id="text-org4f3b695">
+<div id="outline-container-orgd1517c5" class="outline-2">
+<h2 id="orgd1517c5">Inclusão de arquivos</h2>
+<div class="outline-text-2" id="text-orgd1517c5">
+</div><div id="outline-container-org529ed51" class="outline-3">
+<h3 id="org529ed51">Texto</h3>
+<div class="outline-text-3" id="text-org529ed51">
 <p>
 O comando para a inclusão de arquivos <code>#+INCLUDE: "arquivo"</code> aceita opções como <code>src lang</code> para definir a linguagem como se fosse um bloco normal, <code>:lines "i-f"</code> para incluir uma faixa de linhas do arquivo. A omissão indica inicio ou fim, isto é, <code>"-10"</code> indica as 9 primeiras linhas (não gosto disso), <code>"10-"</code> da linha 10 até o final. Colocando o cursor na linha e pressionando <code>C-'</code> o arquivo será aberto para edição (facilita bastante quando o nosso arquivo é grande e desejamos dividí-lo em outros menores).
 </p>
 
 <p>
-Para incluirmos o exemplo do código em Red gravado <a href="#orgb39627e">anteriormente</a> utilizamos: 
+Para incluirmos o exemplo do código em Red gravado <a href="#org61c77b4">anteriormente</a> utilizamos: 
 </p>
 
 
@@ -760,9 +896,9 @@ Para incluirmos o exemplo do código em Red gravado <a href="#orgb39627e">anteri
 </div>
 </div>
 </div>
-<div id="outline-container-orga8919bb" class="outline-3">
-<h3 id="orga8919bb">Imagens</h3>
-<div class="outline-text-3" id="text-orga8919bb">
+<div id="outline-container-orgf3500f8" class="outline-3">
+<h3 id="orgf3500f8">Imagens</h3>
+<div class="outline-text-3" id="text-orgf3500f8">
 <p>
 A inclusão de imagens é algo bem simples (para visualizar/esconder as imagens durante a edição de um documento, pressione <code>C-c C-x C-v</code>)
 </p>
@@ -783,9 +919,9 @@ A inclusão de imagens é algo bem simples (para visualizar/esconder as imagens 
 </div>
 </div>
 
-<div id="outline-container-org2e14a09" class="outline-2">
-<h2 id="org2e14a09">Macros</h2>
-<div class="outline-text-2" id="text-org2e14a09">
+<div id="outline-container-orga4a18c4" class="outline-2">
+<h2 id="orga4a18c4">Macros</h2>
+<div class="outline-text-2" id="text-orga4a18c4">
 <p>
 São definidas, geralmente, no início do documento.
 </p>
@@ -825,9 +961,9 @@ Só tinha gênio no PARC (Xerox Palo Alto Research Center)
 </div>
 </div>
 
-<div id="outline-container-org82a18c6" class="outline-2">
-<h2 id="org82a18c6">Tabelas</h2>
-<div class="outline-text-2" id="text-org82a18c6">
+<div id="outline-container-orgd9f35f5" class="outline-2">
+<h2 id="orgd9f35f5">Tabelas</h2>
+<div class="outline-text-2" id="text-orgd9f35f5">
 <p>
 Para entrar com uma tabela manualmente, a linha deve iniciar com <code>|</code> (barra vertical) e suas colunas também serem separadas com <code>|</code>. Digitando <code>TAB</code>, entra-se no modo de edição de tabela. É só colocar os valores e ir pressionando <code>TAB</code> para a próxima coluna. Na última o editor cria uma nova linha. Se a digitação desalinha a tabela, o próximo <code>TAB</code> fará a correção (ou digite <code>C-c C-c</code>. Para criar uma linha horizontal divisória, basta iniciar a linha com <code>|-</code> e pressionar <code>TAB</code>.
 </p>
@@ -893,9 +1029,9 @@ Podemos colocar um título na tabela, informar a largura das colunas, criar linh
 </div>
 </div>
 
-<div id="outline-container-org4ce40d7" class="outline-2">
-<h2 id="org4ce40d7">Etc.</h2>
-<div class="outline-text-2" id="text-org4ce40d7">
+<div id="outline-container-org837e878" class="outline-2">
+<h2 id="org837e878">Etc.</h2>
+<div class="outline-text-2" id="text-org837e878">
 <p>
 Por enquanto ficamos por aqui. Você pode baixar o <a href="http://orgmode.org/org.pdf">manual</a> do org-mode da versão 9.1 com 300 páginas ou o <a href="http://orgmode.org/orgguide.pdf">guia compacto</a> que tem só 45 páginas. Mas, para começar, melhor este aqui mesmo. <i class="fa fa-smile-o"></i>
 </p>
@@ -913,6 +1049,7 @@ Xianas era uma ave mitológica que vivia na Patagônia
 </div></div>
 <div id="postamble" class="status">
 <!-- inicio comentarios -->
+<h1>Comentários</h1>
     <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {

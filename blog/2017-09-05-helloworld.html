@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-13 qua 14:38 -->
+<!-- 2017-09-15 sex 23:36 -->
 <meta charset="utf-8">
 <title>Alô Mundo</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="Guaracy Monteiro">
-<!-- inicio extra-head -->
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<!-- fonts -->
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
-<!-- css -->
-<!--link rel='stylesheet' href='../res/css/code.css' /-->
-<link rel='stylesheet' href='../res/css/htmlize.css' />
-<link rel='stylesheet' href='../res/css/main.css' /><!-- js -->
-<script src='../res/js/main.js'></script>
-<!-- fim extra-head -->
+    <!-- inicio extra-head -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- fonts -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
+    <!-- css -->
+    <!--link rel='stylesheet' href='../res/css/code.css' /-->
+    <link rel='stylesheet' href='../res/css/htmlize.css' />
+    <link rel='stylesheet' href='../res/css/w3.css' />
+    <link rel='stylesheet' href='../res/css/w3-theme.css' />
+    <link rel='stylesheet' href='../res/css/main.css'>
+    <!-- js -->
+    <script src='../res/js/main.js'></script>
+    <!-- fim extra-head -->
 </head>
 <body>
 <div id="preamble" class="status">
-<!-- início header.html -->
-<header id="banner">
-  <h1>Cadafalso</h1>
-  <p>Apenas mais um blog</p>
-</header>
-<nav>
-  <form method="get" id="searchform" action="http://www.google.com/search">
-    <a href="/"             title="Índice"> <i class="fa fa-home"></i></a>
-    <a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a>
-    <a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a>
-    <a href="https://twitter.com/guaracybm" title="Twitter"><i class="fa fa-twitter"></i></a>
-    <a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a>
-    <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
-    <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
-  </form>
-  <br/>
-</nav>
-  <!--    
-          <ul>
-            <li><a href="/" title="Índice"><i class="fa fa-home"></i></a></li>
-            <li><a href="/contato.html" title="Contato"><i class="fa fa-user-secret"></i></a></li>
-            <li><a href="https://github.com/guaracy" title="GitHub" target="_blank"><i class="fa fa-github"></i></a></li>
-            <li><a href="/index.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
-          </ul>
-          <center>
-            <form method="get" id="searchform" action="http://www.google.com/search">
-              <i class="fa fa-search"></i>
-              <input type="text" class="field" name="q" id="s" placeholder="Procurar...">
-              <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io/">
-            </form>
-          </center>
-          -->
+      <!-- início header.html -->
+    </div>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-4" style="z-index:3;width:250px;" id="mySidebar">
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/"><i class="fa fa-home"></i> Blog</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/index.xml"><i class="fa fa-rss"></i> RSS</a>
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/documentos.html"><i class="fa fa-book"></i> Documentos</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/changelog.html"><i class="fa fa-sliders"></i> Alterações</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/contato.html"><i class="fa fa-user-secret"></i> Contato</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://github.com/guaracy"><i class="fa fa-github"></i> GitHub</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://twitter.com/guaracybm"><i class="fa fa-twitter"></i> Twitter</a>
+      <form class="w3-bar-item" method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+        <input type="hidden" name="sites" value="{{site-domain}}">
+        <input type="hidden" name="k8" value="#444444">
+        <input type="hidden" name="k9" value="#D51920">
+        <input type="hidden" name="kt" value="h">
+        <input class="w3-input w3-border w3-border-theme" type="text" name="q" maxlength="200"
+               placeholder="Procurar&hellip;" class="span2" style="margin-top: 4px;">
+        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+      </form>
+    </nav>
+
+    <div class="w3-main" style="margin-left:250px;">
+      <div id="myTop" class="w3-container w3-top w3-theme w3-large" style="opacity: 0.95;">
+        <p>
+          <i class="fa fa-bars w3-button w3-theme w3-hide-large w3-xlarge" title="Menu" onclick="w3_open()"></i>
+          <span id="myIntro" class="w3-hide"><a href="#"><i class="fa fa-chevron-circle-up w3-xlarge w3-button" title="Top"></i></a> Cadafalso</span>
+        </p>
+      </div>
+
+      <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+      <header class="w3-theme w3-center" style="padding: 64px">
+        <h1><b>Cadafalso</b><br></h1>Apenas mais um blog
+      </header>
+      <div class="w3-container" style="padding:16px">
+        <div>
+
+    
 <!-- fim header.html -->
 </div>
 <div id="content">
 <h1 class="title">Alô Mundo</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9ce43a1">Exemplo de código fonte</a></li>
+<li><a href="#org7ff1645">Exemplo de configuração do Emacs</a></li>
+<li><a href="#org31c177c">Problemas de um blog estático</a></li>
+<li><a href="#org3a0f017">Gerando documentação</a></li>
+<li><a href="#org199bc9b">Palavras finais</a></li>
+<li><a href="#org8d18975">Atualização</a></li>
+<li><a href="#orgb119cde">Referências</a></li>
+</ul>
+</div>
+</div>
 <div class="PREVIEW">
 <p>
 Apresentação de um novo blog (que não é novo) &#x2026;
@@ -75,9 +100,9 @@ A ideia principal é ter um blog estático para hospedar no GitHub ou em outro s
 É possível, com o org-mode, desde a criação de listas de tarefas até livros, passando por agenda, pesquisas reproduzíveis, <a href="https://en.wikipedia.org/wiki/Literate_programming">programação letrada</a> e mais um milhão de coisas. Pode-se dizer que é uma linguagem de marcação como Markdown, ReStruturedText, etc., mas turbinada. Assim como o Emacs é mais do que um editor de textos, o org-mode é mais do que uma linguagem de marcação. Vejamos um exemplo de código fonte utilizando a linguagem <a href="http://www.red-lang.org/">Red</a>:
 </p>
 
-<div id="outline-container-org6c748d4" class="outline-2">
-<h2 id="org6c748d4">Exemplo de código fonte</h2>
-<div class="outline-text-2" id="text-org6c748d4">
+<div id="outline-container-org9ce43a1" class="outline-2">
+<h2 id="org9ce43a1">Exemplo de código fonte</h2>
+<div class="outline-text-2" id="text-org9ce43a1">
 <p>
 Na linha <a href="#coderef-red-read" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-red-read');" onmouseout="CodeHighlightOff(this, 'coderef-red-read');">3</a> podemos ver como é feita a leitura de uma página em Red. 
 </p>
@@ -121,9 +146,9 @@ Mas, voltemos ao blog. Supondo-se que eu coloque os artigos do meu blog na pasta
 </div>
 </div>
 
-<div id="outline-container-orgc123714" class="outline-2">
-<h2 id="orgc123714">Exemplo de configuração do Emacs</h2>
-<div class="outline-text-2" id="text-orgc123714">
+<div id="outline-container-org7ff1645" class="outline-2">
+<h2 id="org7ff1645">Exemplo de configuração do Emacs</h2>
+<div class="outline-text-2" id="text-org7ff1645">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-publish-project-alist
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"blog"</span>
@@ -151,7 +176,7 @@ No exemplo acima, se for dado o comando para publicar os <code>artigos</code>, o
 </p>
 
 <p>
-Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#orgdcea4bb">referências</a>.
+Você pode ver informações completas para a publicação no <a href="http://orgmode.org/manual/Publishing.html#Publishing">site</a> do org-mode e nas <a href="#org16f9f81">referências</a>.
 </p>
 
 <div class="error">
@@ -163,9 +188,9 @@ Estava com a versão <code>9.0</code> do org-mode com <code>Emacs 25.2</code>. A
 </div>
 </div>
 
-<div id="outline-container-orge816dc3" class="outline-2">
-<h2 id="orge816dc3">Problemas de um blog estático</h2>
-<div class="outline-text-2" id="text-orge816dc3">
+<div id="outline-container-org31c177c" class="outline-2">
+<h2 id="org31c177c">Problemas de um blog estático</h2>
+<div class="outline-text-2" id="text-org31c177c">
 <p>
 Um dos "problemas" de um blog estático é o sistema de comentários. Nada que um e-mail não resolva mas a comunicação fica restrita quando poderia ser útil para outros usuários. Existem diversas opções para contornar este problema. Por enquanto escolhi o sistema de comentários disponibilizado pelo Facebook.
 </p>
@@ -176,18 +201,18 @@ Ainda não decidi se coloco um sistema de tags. Incluí a opção de busca pelo 
 </div>
 </div>
 
-<div id="outline-container-org9f7bb3f" class="outline-2">
-<h2 id="org9f7bb3f">Gerando documentação</h2>
-<div class="outline-text-2" id="text-org9f7bb3f">
+<div id="outline-container-org3a0f017" class="outline-2">
+<h2 id="org3a0f017">Gerando documentação</h2>
+<div class="outline-text-2" id="text-org3a0f017">
 <p>
-O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#orgdcea4bb">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
+O mesmo arquivo que gerou esta entrada para o blog também poderia gerar um arquivo de documentação (veja <a href="#org16f9f81">referẽncias</a>). Gerei um .html pois já possuo uma formatação adequada para ele e, em diversos casos, uma documentação em .html pode ser mais adequada que um .epub, .pdf ou outro. Em alguns formatos podemos perder algumas funcionalidades como no caso do .pdf que perdemos a indicação da linha do trecho quando passamos o mouse sobre a mesma.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb3427b4" class="outline-2">
-<h2 id="orgb3427b4">Palavras finais</h2>
-<div class="outline-text-2" id="text-orgb3427b4">
+<div id="outline-container-org199bc9b" class="outline-2">
+<h2 id="org199bc9b">Palavras finais</h2>
+<div class="outline-text-2" id="text-org199bc9b">
 <p>
 Agora é só escrever um texto utilizando .org como marcação e o artigo do blog está pronto. Para publicá-lo basta digitar <code>M-x org-publish</code> e escolher qual o item que deverá ser gerado e publicado. Se escolher artigos, serão gerados os arquivos .html de todos os arquivos .org novos ou alterados e enviados para a pasta <code>~/public_html</code> ou posso criar uma entrada <code>blog</code> com todos os componentes necessários para a geração do blog. É possível ainda ter um componentes para a geração de manuais que irão gerar .pdf, ou para livros, etc.. A configuração aqui está um pouco mais complexa do qua a apresentada mas já é possível ter uma ideia.
 </p>
@@ -206,9 +231,9 @@ Alguns detalhes para a formatação da página ainda não estão como eu gostari
 </div>
 
 
-<div id="outline-container-orgca0810b" class="outline-2">
-<h2 id="orgca0810b">Atualização</h2>
-<div class="outline-text-2" id="text-orgca0810b">
+<div id="outline-container-org8d18975" class="outline-2">
+<h2 id="org8d18975">Atualização</h2>
+<div class="outline-text-2" id="text-org8d18975">
 <ul class="org-ul">
 <li><b>2017-09-11</b> : Sistema de comentários alterado do Facebook para o Disqus. Só para sair das garras do Zuckerberg: Dica do <a href="http://www.eustaquiorangel.com/">Taq</a>.</li>
 </ul>
@@ -220,9 +245,9 @@ Até o próximo.
 </div>
 
 
-<div id="outline-container-org392fdfb" class="outline-2">
-<h2 id="org392fdfb">Referências<a id="orgdcea4bb"></a></h2>
-<div class="outline-text-2" id="text-org392fdfb">
+<div id="outline-container-orgb119cde" class="outline-2">
+<h2 id="orgb119cde">Referências<a id="org16f9f81"></a></h2>
+<div class="outline-text-2" id="text-orgb119cde">
 <ul class="org-ul">
 <li><a href="https://emacs-doctor.com/blogging-from-emacs.html">Blogging from GNU Emacs</a></li>
 <li><a href="https://ogbe.net/blog/blogging_with_org.html">Blogging using org-mode (and nothing else)</a></li>

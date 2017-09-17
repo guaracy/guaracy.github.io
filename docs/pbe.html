@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR" xml:lang="pt_BR">
+<head>
+<!-- 2017-09-02 sáb 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Red - Parse</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Guaracy Monteiro" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/readtheorg.css"/>
+<script type="text/javascript" src="assets/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="assets/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Red - Parse</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org92ac8f9">1. <span class="todo TODO">TODO</span> Introdução</a>
+<ul>
+<li><a href="#org612ae1b">1.1. TL;DR;</a></li>
+<li><a href="#orgd0c01f0">1.2. O que é, para que serve</a></li>
+<li><a href="#org463ae5b">1.3. Como funciona</a></li>
+<li><a href="#org476c3f3">1.4. <span class="todo TODO">TODO</span> Sintaxe</a></li>
+<li><a href="#org20fb265">1.5. Exemplos</a>
+<ul>
+<li><a href="#orgd935487">1.5.1. Verificar validade</a></li>
+<li><a href="#orgc485d80">1.5.2. Extrair dados</a></li>
+<li><a href="#org9b9c948">1.5.3. Alterar entrada</a></li>
+<li><a href="#org81c9063">1.5.4. Dialetos (DSL)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga3bd9e5">2. O Parse</a>
+<ul>
+<li><a href="#org0a3c53d">2.1. <span class="todo TODO">TODO</span> Casamento</a>
+<ul>
+<li><a href="#org0592c52">2.1.1. ahead</a></li>
+<li><a href="#orgaf1e853">2.1.2. end</a></li>
+<li><a href="#org328c91b">2.1.3. none</a></li>
+<li><a href="#org581b4df">2.1.4. not rule</a></li>
+<li><a href="#org28112d6">2.1.5. opt rule</a></li>
+<li><a href="#org8ffee7f">2.1.6. quote value</a></li>
+<li><a href="#orgcf74fe0">2.1.7. skip</a></li>
+<li><a href="#org6613fd7">2.1.8. thru rule</a></li>
+<li><a href="#org8c8758b">2.1.9. to rule</a></li>
+</ul>
+</li>
+<li><a href="#org8494666">2.2. <span class="todo TODO">TODO</span> Fluxo de controle</a>
+<ul>
+<li><a href="#orgb9fb0de">2.2.1. break</a></li>
+<li><a href="#orgbc23712">2.2.2. case</a></li>
+<li><a href="#org127a8eb">2.2.3. if (expr)</a></li>
+<li><a href="#org514d576">2.2.4. into rule</a></li>
+<li><a href="#orge99f9e9">2.2.5. fail</a></li>
+<li><a href="#org42fa07c">2.2.6. then</a></li>
+<li><a href="#org08c5eba">2.2.7. reject</a></li>
+</ul>
+</li>
+<li><a href="#org8aa1891">2.3. <span class="todo TODO">TODO</span> Interação</a>
+<ul>
+<li><a href="#org737372b">2.3.1. any rule</a></li>
+<li><a href="#org49119f6">2.3.2. some rule</a></li>
+<li><a href="#org0fe91a8">2.3.3. while rule</a></li>
+</ul>
+</li>
+<li><a href="#org246968e">2.4. <span class="todo TODO">TODO</span> Extração</a>
+<ul>
+<li><a href="#orga019f36">2.4.1. collect rule</a></li>
+<li><a href="#orgf041b2d">2.4.2. collect set word rule</a></li>
+<li><a href="#orgf1d0199">2.4.3. collect into word rule</a></li>
+<li><a href="#orgc316685">2.4.4. copy word rule</a></li>
+<li><a href="#org317ae14">2.4.5. keep rule</a></li>
+<li><a href="#org30f4042">2.4.6. keep (expr)</a></li>
+<li><a href="#orga1b2f98">2.4.7. set word rule</a></li>
+</ul>
+</li>
+<li><a href="#org49f4dbb">2.5. <span class="todo TODO">TODO</span> Modificação</a>
+<ul>
+<li><a href="#orgfe5163e">2.5.1. insert only value</a></li>
+<li><a href="#orge42f3f9">2.5.2. remove rule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org92ac8f9" class="outline-2">
+<h2 id="org92ac8f9"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> Introdução</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org612ae1b" class="outline-3">
+<h3 id="org612ae1b"><span class="section-number-3">1.1</span> TL;DR;</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Parse é a resposta de <a href="https://github.com/red/red">Red</a> para <a href="https://pt.wikipedia.org/wiki/Express%C3%A3o_regular">ER</a>, mais verbosa mas totalmente integrada com a linguagem Red.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd0c01f0" class="outline-3">
+<h3 id="orgd0c01f0"><span class="section-number-3">1.2</span> O que é, para que serve</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Apenas dizer que o parse é o substituto usado por Red para ER (Expressão Regular) é omitir parte do todo. Seria como dizer que o emacs é um editor de texto. O parse é um dialeto (termo utilizado em Red para <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>) para analisar uma entrada utilizando regras de gramática. O uso comum é para a validação de informações, extração e modificação de dados e até mesmo para a criação de um dialeto (DSL).
+</p>
+
+<p>
+O parse foi desenvolvido na própria linguagem (na realidade na versão de baixo nível de Red chamada de Red/System que equivaleria a linguagem C) e atualmente conta com aproximadamente 1800 <a href="https://github.com/red/red/blob/master/runtime/parse.reds">linhas de código</a>. O fato de ser desenvolvido na própria linguagem, além de mostrar uma sintaxe semelhante (diferente de uma ER) permite uma total integração com o programa e suas variáveis (variável não é o termo utilizado por Red).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org463ae5b" class="outline-3">
+<h3 id="org463ae5b"><span class="section-number-3">1.3</span> Como funciona</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Dada uma determinada entrada (como Red é uma linguagem <a href="https://en.wikipedia.org/wiki/Homoiconicity">homoicônica</a>, a entrada pode ser uma string ou um bloco de dados) ela será analizada utilizando as regras informadas e como resultado poderá alterar a entrada, apenas verificar a validade da entrada, extrair dados da entrada ou executar procedimentos baseando-se na entrada e nas regras (DSL).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org476c3f3" class="outline-3">
+<h3 id="org476c3f3"><span class="section-number-3">1.4</span> <span class="todo TODO">TODO</span> Sintaxe</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">help</span> <span class="org-function-name">parse</span>
+</pre>
+</div>
+
+<pre class="example">
+USAGE:
+     PARSE input rules
+
+DESCRIPTION: 
+     PARSE is a native! value.
+
+ARGUMENTS:
+     input        [binary! any-block! any-string!] 
+     rules        [block!] 
+
+REFINEMENTS:
+     /case        =&gt; 
+     /part        =&gt; 
+        length       [number! series!] 
+     /trace       =&gt; 
+        callback     [function! [event [word!] match? [logic!] rule [block!] input [series!] stack [block!] return: [logic!]]] 
+
+RETURNS:
+     [logic! block!]
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org20fb265" class="outline-3">
+<h3 id="org20fb265"><span class="section-number-3">1.5</span> Exemplos</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Caso não entenda os exemplos, não se preocupe. Após ler todo este documento você será um expert. Caso já conheça um pouco de ER, você poderá achar que tal trecho faz tal coisa e estará certo.
+</p>
+
+<p>
+<b>OBS</b>.: Como este documento está sendo produzido usando-se o Emacs com org-mode, aparecerá um quadro contendo o código fonte da linguagem seguido por um quadro com o resultado do processamento do código. O conteúdo do quadro de resultado e gerado automaticamente, não sendo necessário a execução externa mais o processo copia e cola. 
+</p>
+</div>
+
+<div id="outline-container-orgd935487" class="outline-4">
+<h4 id="orgd935487"><span class="section-number-4">1.5.1</span> Verificar validade</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+Validar uma equação matemática simples
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span id="coderef-ex-val1" class="coderef-off"><span class="linenr">1: </span><span class="org-variable-name">digit:</span>   <span class="org-function-name">charset</span> <span class="org-string">"0123456789"</span></span>
+<span class="linenr">2: </span><span class="org-variable-name">primary:</span> <span class="org-rainbow-delimiters-depth-1">[</span>some digit | <span class="org-string">"("</span> expr <span class="org-string">")"</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">3: </span><span class="org-variable-name">factor:</span>  <span class="org-rainbow-delimiters-depth-1">[</span>primary <span class="org-string">"**"</span> factor | primary<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">4: </span><span class="org-variable-name">term:</span>    <span class="org-rainbow-delimiters-depth-1">[</span>factor <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"*"</span> | <span class="org-string">"/"</span><span class="org-rainbow-delimiters-depth-2">]</span> term | factor<span class="org-rainbow-delimiters-depth-1">]</span>
+<span id="coderef-ex-val2" class="coderef-off"><span class="linenr">5: </span><span class="org-variable-name">expr:</span>    <span class="org-rainbow-delimiters-depth-1">[</span>term <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"+"</span> | <span class="org-string">"-"</span><span class="org-rainbow-delimiters-depth-2">]</span> expr | term<span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="linenr">6: </span>
+<span id="coderef-ex-val3" class="coderef-off"><span class="linenr">7: </span><span class="org-function-name">print</span> <span class="org-function-name">parse</span> <span class="org-string">"1+2*(3-2)/4"</span> expr</span>
+<span id="coderef-ex-val4" class="coderef-off"><span class="linenr">8: </span><span class="org-function-name">print</span> <span class="org-function-name">parse</span> <span class="org-string">"1-(3/)+2"</span> expr</span>
+</pre>
+</div>
+
+<pre class="example">
+true
+false
+
+</pre>
+
+<ul class="org-ul">
+<li>Da linha <a href="#coderef-ex-val1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-val1');" onmouseout="CodeHighlightOff(this, 'coderef-ex-val1');">1</a> até a linha <a href="#coderef-ex-val2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-val2');" onmouseout="CodeHighlightOff(this, 'coderef-ex-val2');">5</a> foram definidas as regras em um formato meio <a href="https://pt.wikipedia.org/wiki/Formalismo_de_Backus-Naur">BNF</a>.</li>
+<li>A linha <a href="#coderef-ex-val3" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-val3');" onmouseout="CodeHighlightOff(this, 'coderef-ex-val3');">7</a> verifica a validade da expressão e retorna <code>true</code> pois ela está corretamente formatada conforme as regras e é válida.</li>
+<li>A linha <a href="#coderef-ex-val4" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-val4');" onmouseout="CodeHighlightOff(this, 'coderef-ex-val4');">8</a>, o retorno é <code>false</code> pois foi informada uma expressão inválida que no caso é <code>(3/)</code> e falta um fator após a divisão.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc485d80" class="outline-4">
+<h4 id="orgc485d80"><span class="section-number-4">1.5.2</span> Extrair dados</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+Vamos ver quais os endereços de ip (ipv4) de um determinado domínio. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span id="coderef-ex-ip1" class="coderef-off"><span class="linenr"> 9: </span><span class="org-variable-name">four:</span>     <span class="org-function-name">charset</span> <span class="org-string">"01234"</span></span>
+<span class="linenr">10: </span><span class="org-variable-name">half:</span>     <span class="org-function-name">charset</span> <span class="org-string">"012345"</span>
+<span class="linenr">11: </span><span class="org-variable-name">non-zero:</span> <span class="org-function-name">charset</span> <span class="org-string">"123456789"</span>
+<span class="linenr">12: </span><span class="org-variable-name">digit:</span>    <span class="org-function-name">union</span> non-zero <span class="org-function-name">charset</span> <span class="org-string">"0"</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span class="org-variable-name">byte:</span> <span class="org-rainbow-delimiters-depth-1">[</span>
+<span class="linenr">15: </span>    <span class="org-string">"25"</span> half
+<span class="linenr">16: </span>    | <span class="org-string">"2"</span> four digit
+<span class="linenr">17: </span>    | <span class="org-string">"1"</span> digit digit
+<span class="linenr">18: </span>    | non-zero digit
+<span class="linenr">19: </span>    | digit
+<span class="linenr">20: </span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span id="coderef-ex-ip2" class="coderef-off"><span class="linenr">21: </span><span class="org-variable-name">ipv4:</span> <span class="org-rainbow-delimiters-depth-1">[</span>byte <span class="org-function-name">dot</span> byte <span class="org-function-name">dot</span> byte <span class="org-function-name">dot</span> byte<span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="linenr">22: </span>
+<span id="coderef-ex-ip3" class="coderef-off"><span class="linenr">23: </span><span class="org-variable-name">dominio:</span> <span class="org-variable-name">https:</span>//who.<span class="org-function-name">is</span>/whois/google.com</span>
+<span class="linenr">24: </span>
+<span id="coderef-ex-ip4" class="coderef-off"><span class="linenr">25: </span><span class="org-variable-name">data:</span> <span class="org-function-name">read</span> dominio</span>
+<span class="linenr">26: </span>
+<span id="coderef-ex-ip5" class="coderef-off"><span class="linenr">27: </span><span class="org-variable-name">ipes:</span> <span class="org-function-name">unique</span> <span class="org-function-name">parse</span> data <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">collect</span> some <span class="org-rainbow-delimiters-depth-2">[</span>keep ipv4 | <span class="org-function-name">skip</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span></span>
+<span class="linenr">28: </span>
+<span id="coderef-ex-ip6" class="coderef-off"><span class="linenr">29: </span><span class="org-function-name">foreach</span> ip ipes <span class="org-rainbow-delimiters-depth-1">[</span></span>
+<span class="linenr">30: </span>    <span class="org-function-name">print</span> ip
+<span class="linenr">31: </span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+216.239.32.10
+216.239.34.10
+216.239.36.10
+216.239.38.10
+
+</pre>
+
+<ul class="org-ul">
+<li>Da linha <a href="#coderef-ex-ip1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-ip1');" onmouseout="CodeHighlightOff(this, 'coderef-ex-ip1');">9</a> até a linha <a href="#coderef-ex-ip2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-ip2');" onmouseout="CodeHighlightOff(this, 'coderef-ex-ip2');">21</a> definimos as regras para casar com o formato <a href="https://en.wikipedia.org/wiki/IPv4">ipv4</a></li>
+<li>Na linha <a href="#coderef-ex-ip3" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-ip3');" onmouseout="CodeHighlightOff(this, 'coderef-ex-ip3');">23</a> definimos o domínio a ser pesquisado.</li>
+<li>A linha <a href="#coderef-ex-ip4" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-ip4');" onmouseout="CodeHighlightOff(this, 'coderef-ex-ip4');">25</a> irá ler o resultado das informações retornadas pelo site no formato html.</li>
+<li>Na linha <a href="#coderef-ex-ip5" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-ip5');" onmouseout="CodeHighlightOff(this, 'coderef-ex-ip5');">27</a> iremos analizar o conteúdo da página coletando todas as informações que casem com a nossa definição de ipv4. Como no conteúdo da página teremos texto como <code class="src src-html">&lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"/whois-ip/ip-address/216.239.38.10"</span>&gt;216.239.38.10&lt;/<span class="org-function-name">a</span>&gt;</code> que retornará dois IPs iguais, usamos <code class="src src-red"><span class="org-function-name">unique</span></code> para eliminar as informações duplicadas.</li>
+<li>Finalmente, na linha <a href="#coderef-ex-ip6" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-ip6');" onmouseout="CodeHighlightOff(this, 'coderef-ex-ip6');">29</a>, iremos mostrar todos os IPs coletados e refenciados po <code>ipes</code>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9b9c948" class="outline-4">
+<h4 id="org9b9c948"><span class="section-number-4">1.5.3</span> Alterar entrada</h4>
+</div>
+
+
+<div id="outline-container-org81c9063" class="outline-4">
+<h4 id="org81c9063"><span class="section-number-4">1.5.4</span> Dialetos (DSL)</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+Bem, Red ainda está em desenvolvimento (neste documento está sendo usada a versão: <code class="src src-red"><span class="org-function-name">about</span></code> <code>Red for Linux version 0.6.3 built 1-Sep-2017/19:41:28-03:00</code>. Para a versão 2, o autor promete meta-DSL para facilitar e permitir a criação de DSLs mais complexas. Outro recurso que pode ser utilizado são as <a href="http://www.red-lang.org/search/label/macros">#macros</a> mas foge do escopo deste documento. Vejamos o exemplo de um interpretador para <a href="https://pt.wikipedia.org/wiki/Brainfuck">Brainfuck</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span id="coderef-ex-dsl1" class="coderef-off"><span class="linenr">32: </span><span class="org-variable-name">bf:</span> <span class="org-function-name">function</span> <span class="org-rainbow-delimiters-depth-1">[</span>prog <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-type">string!</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">][</span></span>
+<span class="linenr">33: </span>    <span class="org-variable-name">size:</span> <span class="org-constant">30000</span>
+<span class="linenr">34: </span>    <span class="org-variable-name">cells:</span> <span class="org-function-name">make</span> <span class="org-type">string!</span> size
+<span class="linenr">35: </span>    <span class="org-function-name">append</span>/dup cells <span class="org-function-name">null</span> size
+<span class="linenr">36: </span>
+<span id="coderef-ex-dsl2" class="coderef-off"><span class="linenr">37: </span>    <span class="org-function-name">parse</span> prog <span class="org-rainbow-delimiters-depth-2">[</span></span>
+<span class="linenr">38: </span>        some <span class="org-rainbow-delimiters-depth-1">[</span>
+<span class="linenr">39: </span>              <span class="org-string">"&gt;"</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">cells:</span> <span class="org-function-name">next</span> cells<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="linenr">40: </span>            | <span class="org-string">"&lt;"</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">cells:</span> <span class="org-function-name">back</span> cells<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="linenr">41: </span>            | <span class="org-string">"+"</span> <span class="org-rainbow-delimiters-depth-2">(</span>cells/<span class="org-constant">1</span>: cells/<span class="org-constant">1</span> + <span class="org-constant">1</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="linenr">42: </span>            | <span class="org-string">"-"</span> <span class="org-rainbow-delimiters-depth-2">(</span>cells/<span class="org-constant">1</span>: cells/<span class="org-constant">1</span> <span class="org-function-name">-</span> <span class="org-constant">1</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="linenr">43: </span>            | <span class="org-string">"."</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">prin</span> cells/<span class="org-constant">1</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="linenr">44: </span>            | <span class="org-string">","</span> <span class="org-rainbow-delimiters-depth-2">(</span>cells/<span class="org-constant">1</span>: <span class="org-function-name">first</span> <span class="org-function-name">input</span> <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="linenr">45: </span>            | <span class="org-string">"["</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-function-name">if</span> <span class="org-rainbow-delimiters-depth-1">(</span>cells/<span class="org-constant">1</span> = <span class="org-function-name">null</span><span class="org-rainbow-delimiters-depth-1">)</span> thru <span class="org-string">"]"</span> | <span class="org-function-name">none</span><span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="linenr">46: </span>            | <span class="org-string">"]"</span> <span class="org-rainbow-delimiters-depth-2">[</span>
+<span class="linenr">47: </span>               <span class="org-variable-name">pos:</span> <span class="org-function-name">if</span> <span class="org-rainbow-delimiters-depth-1">(</span>cells/<span class="org-constant">1</span> &lt;&gt; <span class="org-function-name">null</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="linenr">48: </span>               <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">pos:</span> <span class="org-function-name">find</span>/<span class="org-function-name">reverse</span> pos #<span class="org-string">"["</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-variable-name">:pos</span>
+<span class="linenr">49: </span>               | <span class="org-function-name">none</span>
+<span class="linenr">50: </span>              <span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="linenr">51: </span>            | <span class="org-function-name">skip</span>
+<span class="linenr">52: </span>        <span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">53: </span>    <span class="org-rainbow-delimiters-depth-2">]</span>
+<span class="linenr">54: </span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">55: </span>
+<span id="coderef-ex-dsl3" class="coderef-off"><span class="linenr">56: </span>bf <span class="org-string">{</span></span>
+<span class="linenr">57: </span><span class="org-string">    ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.</span>
+<span class="linenr">58: </span><span class="org-string">    &gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.}</span>
+</pre>
+</div>
+
+<pre class="example">
+Hello World!
+
+</pre>
+
+<ul class="org-ul">
+<li>Na linha <a href="#coderef-ex-dsl1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-dsl1');" onmouseout="CodeHighlightOff(this, 'coderef-ex-dsl1');">32</a> definimos uma função já que teremos que utilizar outros valores para a interpretação. Receberá uma string como entrada.</li>
+<li>Na linha <a href="#coderef-ex-dsl2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-dsl2');" onmouseout="CodeHighlightOff(this, 'coderef-ex-dsl2');">37</a> iniciamos a análise da entrada e realizamos diversas procedimentos dependendo do conteúdo da entrada. Note que existe uma interação da analise diretamente com valores do programa em Red como incrementar ou decrementar o conteúdo de uma determinada célula, avançar, retroceder, imprimir, etc..</li>
+<li>A linha <a href="#coderef-ex-dsl3" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-ex-dsl3');" onmouseout="CodeHighlightOff(this, 'coderef-ex-dsl3');">56</a> é a execução do programa em BF. Chamamos a função <code>bf</code> com a string que será executada (note que em Red, <b>{</b> e <b>}</b> são os delimitadores para uma string com multiplas linhas).</li>
+</ul>
+
+
+<p>
+Com a facilidade de criar dialetos com a linguagem, a forma de resolver problemas pode ser repensada visando um melhor resultado final. Podemos esconder uma lógica complexa em um dialeto. Um exemplo simples e mais palpável que o anterior, poderia ser algo como comprar ou vender produtos por um determinado preço mostrando cada operação e o total após as transações. Poderia ser:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">regra-compra-e-venda:</span> <span class="org-rainbow-delimiters-depth-1">[</span>
+    <span class="org-function-name">set</span> a&#231;&#227;o <span class="org-rainbow-delimiters-depth-2">[</span>'comprar | 'vender<span class="org-rainbow-delimiters-depth-2">]</span>
+    <span class="org-function-name">set</span> quantidade <span class="org-type">integer!</span>
+    'por 
+    <span class="org-function-name">set</span> pre&#231;o <span class="org-type">float!</span>
+    <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">either</span> a&#231;&#227;o = 'vender <span class="org-rainbow-delimiters-depth-1">[</span>
+            <span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"receita"</span> pre&#231;o * quantidade<span class="org-rainbow-delimiters-depth-2">]</span>
+            <span class="org-variable-name">total:</span> total + <span class="org-rainbow-delimiters-depth-2">(</span>pre&#231;o * quantidade<span class="org-rainbow-delimiters-depth-2">)</span>
+        <span class="org-rainbow-delimiters-depth-1">][</span>
+            <span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"custo"</span> pre&#231;o * quantidade<span class="org-rainbow-delimiters-depth-2">]</span>
+            <span class="org-variable-name">total:</span> total <span class="org-function-name">-</span> <span class="org-rainbow-delimiters-depth-2">(</span>pre&#231;o * quantidade<span class="org-rainbow-delimiters-depth-2">)</span>
+        <span class="org-rainbow-delimiters-depth-1">]</span>
+    <span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-rainbow-delimiters-depth-1">]</span>
+
+<span class="org-variable-name">total:</span> <span class="org-constant">0</span>
+
+<span class="org-function-name">print</span> <span class="org-string">"Primeira transa&#231;&#227;o"</span>
+<span class="org-function-name">parse</span> <span class="org-rainbow-delimiters-depth-1">[</span>vender <span class="org-constant">10</span> por <span class="org-constant">20.0</span><span class="org-rainbow-delimiters-depth-1">]</span> regra-compra-e-venda
+<span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Total:"</span> total <span class="org-function-name">lf</span><span class="org-rainbow-delimiters-depth-1">]</span>
+
+<span class="org-function-name">print</span> <span class="org-string">"Segunda transa&#231;&#227;o"</span>
+<span class="org-function-name">parse</span> <span class="org-rainbow-delimiters-depth-1">[</span>
+    comprar <span class="org-constant">12</span> por <span class="org-constant">7.5</span>
+    vender  <span class="org-constant">10</span> por <span class="org-constant">20.0</span>
+    comprar  <span class="org-constant">5</span> por <span class="org-constant">15.0</span>
+    comprar  <span class="org-constant">8</span> por <span class="org-constant">12.5</span>
+    vender   <span class="org-constant">9</span> por <span class="org-constant">21.5</span>
+    <span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">[</span>some regra-compra-e-venda<span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"Total:"</span> total<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+Primeira transação
+receita 200.0
+Total: 200.0 
+
+Segunda transação
+custo 84.0
+receita 200.0
+custo 75.0
+custo 96.0
+receita 189.0
+Total: 334.0
+</pre>
+
+<p>
+O exemplo foi simples mas já é possível ter uma ideia. O limite fica por conta da sua imaginação e conhecimento. 
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga3bd9e5" class="outline-2">
+<h2 id="orga3bd9e5"><span class="section-number-2">2</span> O Parse</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Os princípios centrais do <b>parse</b> são:
+</p>
+
+<ul class="org-ul">
+<li>Avança o ponteiro da série de entrada, combinando as regras de gramática até a falha da regra de nível superior (retornando <code>false</code>) ou exaustão de entrada (retornando <code>true</code>)<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>.</li>
+<li>Opções ordenadas (por exemplo, na regra <code>["a" | "ab"]</code>, a segunda nunca terá sucesso).</li>
+<li>Composição das regras (ilimitado)</li>
+<li>Retrocesso limitado: apenas as posições de entrada e de regras são retrocedidas, outras alterações permanecem.</li>
+</ul>
+
+<p>
+As regras do <code>parse</code> podem ser compostas por.
+</p>
+
+<ul class="org-ul">
+<li><code>keyword</code> : uma palavra reservada do dialeto (veja <a href="#org14186cf">tabela</a> abaixo).</li>
+</ul>
+
+<pre class="example">
+break, to, skip, collect, etc.
+</pre>
+
+<ul class="org-ul">
+<li><code>word</code>  :  <code>word</code> será avaliada e seu valor usado como regra.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">tok1:</span> <span class="org-string">":"</span>
+<span class="org-variable-name">tok2:</span> <span class="org-string">"."</span>
+<span class="org-function-name">parse</span> <span class="org-string">"12:BC.56789"</span> <span class="org-rainbow-delimiters-depth-1">[</span>thru tok1 <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> tok2 <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+BC
+
+</pre>
+
+<ul class="org-ul">
+<li><code>word:</code> : ajusta <code>word</code> para a posição atual na entrada.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">parse</span> <span class="org-string">"12:BC.56789"</span> <span class="org-rainbow-delimiters-depth-1">[</span>thru <span class="org-string">":"</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> <span class="org-string">"."</span> <span class="org-variable-name">p:</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">print</span> p
+</pre>
+</div>
+
+<pre class="example">
+BC
+.56789
+
+</pre>
+
+<ul class="org-ul">
+<li><code>:word</code> : retoma a entrada na posição referenciada pela <code>word</code>.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">parse</span> <span class="org-string">"24 * (2 + 4) / 5"</span> <span class="org-rainbow-delimiters-depth-1">[</span>
+    <span class="org-function-name">to</span> <span class="org-string">"("</span> <span class="org-variable-name">p:</span> <span class="org-function-name">skip</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> <span class="org-string">")"</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> v<span class="org-rainbow-delimiters-depth-2">)</span>
+    <span class="org-variable-name">:p</span> <span class="org-function-name">copy</span> v thru <span class="org-string">")"</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> v<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+2 + 4
+(2 + 4)
+
+</pre>
+
+<ul class="org-ul">
+<li><code>integer value</code> : especifica o número de vezes que a regra será executada.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">s:</span> <span class="org-string">"123456789"</span> 
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">copy</span> v <span class="org-function-name">to</span> end <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">skip</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> end <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-constant">4</span> <span class="org-function-name">skip</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> end <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> v<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+123456789
+23456789
+56789
+
+</pre>
+
+<ul class="org-ul">
+<li><code>value</code> : casa a entrada com o valor.</li>
+
+<li><code>|</code> : volta a posição na entrada e tenta casar com outra regra se a anterior falhou.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="linenr">1: </span><span class="org-function-name">parse</span> <span class="org-string">"123456"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"1"</span> | <span class="org-string">"3"</span> | <span class="org-string">"5"</span> <span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"inicia com 1, 3 ou 5"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="linenr">2: </span><span class="org-function-name">parse</span> <span class="org-string">"523456"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"1"</span> | <span class="org-string">"3"</span> | <span class="org-string">"5"</span> <span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"inicia com 1, 3 ou 5"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span id="coderef-or" class="coderef-off"><span class="linenr">3: </span><span class="org-function-name">parse</span> <span class="org-string">"253456"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">"1"</span> | <span class="org-string">"3"</span> | <span class="org-string">"5"</span> <span class="org-rainbow-delimiters-depth-2">]</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"inicia com 1, 3 ou 5"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span></span>
+</pre>
+</div>
+
+<pre class="example">
+inicia com 1, 3 ou 5
+inicia com 1, 3 ou 5
+
+</pre>
+
+<p>
+A linha <a href="#coderef-or" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-or');" onmouseout="CodeHighlightOff(this, 'coderef-or');">3</a> não retornou nada pois não inicia com os valores da regra.
+</p>
+
+<ul class="org-ul">
+<li><code>[rules]</code> : um bloco de sub-regras.</li>
+
+<li><code>(expression)</code> : interrompe o dialeto, avalia uma expressão em Red e retorna para o parse.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">s:</span> <span class="org-string">"12:ABC:99-iii"</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span>
+   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"&gt;&gt; In&#237;cio"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> <span class="org-function-name">now</span>/time/precise<span class="org-rainbow-delimiters-depth-2">)</span>
+   thru <span class="org-string">":"</span> <span class="org-function-name">copy</span> v <span class="org-function-name">to</span> <span class="org-string">"-"</span>
+   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-string">"&gt;&gt; Valor de v ="</span> v<span class="org-rainbow-delimiters-depth-1">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">probe</span> <span class="org-function-name">now</span>/time/precise<span class="org-rainbow-delimiters-depth-2">)</span>
+   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-string">"&gt;&gt; Fim"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+&gt;&gt; Início
+23:40:54,408337
+&gt;&gt; Valor de v = ABC:99
+23:40:54,408404
+&gt;&gt; Fim
+
+</pre>
+
+<p>
+<a id="org14186cf"></a>As seguintes palavras-chave estão atualmente disponíveis na implementação do Parse do Red. Elas podem ser compostas livremente.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Tipo</th>
+<th scope="col" class="org-left">Palavra-chave</th>
+<th scope="col" class="org-left">Observações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Casamento</b></td>
+<td class="org-left"><a href="#org46fe88d">ahead</a> rule</td>
+<td class="org-left">casa a regra mas não avança a posição de entrada</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgd777a28">end</a></td>
+<td class="org-left">retorna sucesso se a posição na entrada chegou ao fim</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgdd42104">none</a></td>
+<td class="org-left">sempre retorna sucesso</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org71d6514">not</a> rule</td>
+<td class="org-left">inverte o resultado da regra</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org1e0280d">opt</a> rule</td>
+<td class="org-left">olha para frente, opcionalmente casando a regra</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org1f785f3">quote</a> value</td>
+<td class="org-left">casa o próximo valor literalmente (se for necessário sair do dialeto)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgc4c89b7">skip</a></td>
+<td class="org-left">avança a entrada um elemento (caractere ou valor)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgba8faf7">thru</a> rule</td>
+<td class="org-left">avança entrada até que a regra case posicionando a entrada após o casamento</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orge8bc18d">to</a> rule</td>
+<td class="org-left">avança entrada até que a regra case posicionando a entrada no início do casamento</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Controle de fluxo</b></td>
+<td class="org-left"><a href="#org2843caa">break</a></td>
+<td class="org-left">interrompe o laço retornando sucesso</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orge8ae564">case</a> &lt;mode&gt; &lt;rule&gt;</td>
+<td class="org-left">muda o modo de casamento para a próxima regra</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org55a88cb">if</a> (expr)</td>
+<td class="org-left">avalia uma expressão em Red. Se <code>false</code> ou <code>none</code>, falha e retorna</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org5c80b8f">into</a> rule</td>
+<td class="org-left">muda a entrada para a série casada (<code>string</code> ou <code>block</code>) e analisa com a regra</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org5a888c0">fail</a></td>
+<td class="org-left">força a regra corrente a falhar e retorna</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org757337c">then</a></td>
+<td class="org-left">independente de sucesso ou falha do que segue, pula para a próxima regra alternada</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgb179107">reject</a></td>
+<td class="org-left">interrompe um loop e retorna falha</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Iteração</b></td>
+<td class="org-left"><a href="#org4057738">any</a> rule</td>
+<td class="org-left">repete a regra zero ou mais vezes até falhar ou a entrada não avançar</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org8754e43">some</a> rule</td>
+<td class="org-left">repete a regra uma ou mais vezes até falhar ou a entrada não avançar</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orga931bb6">while</a> rule</td>
+<td class="org-left">repete a regra zero ou mais vezes até falhar independente do avanço da entrada</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Extração</b></td>
+<td class="org-left"><a href="#org29385c0">collect</a> [rule]</td>
+<td class="org-left">retorna um bloco com os valores coletados que casaram com a regra _keep</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orgfe7f9df">collect</a> set word [rule]</td>
+<td class="org-left">coleta valores que casaram com a regra em um bloco e coloca em <code>word</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org1871a3e">collect</a> into word [rule]</td>
+<td class="org-left">coleta valores que casaram com a regra inserindo no bloco referenciado por <code>word</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org636369b">copy</a> word rule</td>
+<td class="org-left">coloca em <code>word</code> da posição atual até o casamento da regra</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orga10e9e2">keep</a> rule</td>
+<td class="org-left">adiciona a cópia do casamento na entrada no bloco <code>collect</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#orga7242b7">keep</a> (expr)</td>
+<td class="org-left">adiciona o último valor da expressão em Red no bloco <code>collect</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org6e6462d">set</a> word rule</td>
+<td class="org-left">coloca em <code>word</code> o primeiro valor que casar com a entrada</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Modificação</b></td>
+<td class="org-left"><a href="#org0c9109a">insert</a> only value</td>
+<td class="org-left">insere[=/only=] o valor na posição atual da entrada e avança para depois do valor</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#org26a564c">remove</a> rule</td>
+<td class="org-left">remove a entrada casada</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-org0a3c53d" class="outline-3">
+<h3 id="org0a3c53d"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Casamento</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-org0592c52" class="outline-4">
+<h4 id="org0592c52"><span class="section-number-4">2.1.1</span> <a id="org46fe88d"></a>ahead</h4>
+</div>
+<div id="outline-container-orgaf1e853" class="outline-4">
+<h4 id="orgaf1e853"><span class="section-number-4">2.1.2</span> <a id="orgd777a28"></a>end</h4>
+</div>
+<div id="outline-container-org328c91b" class="outline-4">
+<h4 id="org328c91b"><span class="section-number-4">2.1.3</span> <a id="orgdd42104"></a>none</h4>
+</div>
+<div id="outline-container-org581b4df" class="outline-4">
+<h4 id="org581b4df"><span class="section-number-4">2.1.4</span> <a id="org71d6514"></a>not rule</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+Nega a regra, isto é, o que não casa com a regra retorna <code>true</code> e o que casa retorna <code>false</code>
+parse collect hangs on keep not rule. Veja também <a href="#org29385c0">2.4.1</a> <a href="#org4057738">2.3.1</a> <a href="#orgc4c89b7">2.1.7</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-comment">;; *aguardando corre&#231;&#227;o de erro em collect keep not rule* </span>
+<span class="org-variable-name">digit:</span> <span class="org-function-name">charset</span> <span class="org-string">"0123456798"</span>
+<span class="org-variable-name">s:</span> <span class="org-string">"123asd456qwe"</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">collect</span> <span class="org-function-name">any</span><span class="org-rainbow-delimiters-depth-2">[</span> keep digit | <span class="org-function-name">skip</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-comment">;; ok</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">collect</span> <span class="org-function-name">any</span><span class="org-rainbow-delimiters-depth-2">[</span> keep <span class="org-function-name">not</span> digit | <span class="org-function-name">skip</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-comment">;; hang</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">digit:</span> <span class="org-function-name">charset</span> <span class="org-string">"0123456798"</span>
+<span class="org-variable-name">s:</span> <span class="org-string">"123asd456qwe"</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">any</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-variable-name">p:</span> digit <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-function-name">print</span> <span class="org-variable-name">:p</span><span class="org-rainbow-delimiters-depth-1">)</span> | <span class="org-function-name">skip</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">any</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-variable-name">p:</span> <span class="org-function-name">not</span> digit <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-function-name">print</span> <span class="org-variable-name">:p</span><span class="org-rainbow-delimiters-depth-1">)</span> | <span class="org-function-name">skip</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org28112d6" class="outline-4">
+<h4 id="org28112d6"><span class="section-number-4">2.1.5</span> <a id="org1e0280d"></a>opt rule</h4>
+</div>
+<div id="outline-container-org8ffee7f" class="outline-4">
+<h4 id="org8ffee7f"><span class="section-number-4">2.1.6</span> <a id="org1f785f3"></a>quote value</h4>
+</div>
+<div id="outline-container-orgcf74fe0" class="outline-4">
+<h4 id="orgcf74fe0"><span class="section-number-4">2.1.7</span> <a id="orgc4c89b7"></a>skip</h4>
+<div class="outline-text-4" id="text-2-1-7">
+<p>
+Avança o cursor uma ou mais posições. Veja também <a href="#orge8bc18d">2.1.9</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">parse</span> <span class="org-string">"123-&gt;456-&gt;789"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">to</span> <span class="org-string">"-&gt;"</span> <span class="org-constant">2</span> <span class="org-function-name">skip</span> <span class="org-variable-name">p:</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-variable-name">:p</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+456-&gt;789
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6613fd7" class="outline-4">
+<h4 id="org6613fd7"><span class="section-number-4">2.1.8</span> <a id="orgba8faf7"></a>thru rule</h4>
+<div class="outline-text-4" id="text-2-1-8">
+<p>
+Posiciona o cursor logo após o casamento da expressão. No exemplo abaixo, casa com o primeiro <code>-&gt;</code> e posiciona logo após, no <code>4</code>. Veja também <a href="#orge8bc18d">2.1.9</a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">parse</span> <span class="org-string">"123-&gt;456-&gt;789"</span> <span class="org-rainbow-delimiters-depth-1">[</span>thru <span class="org-string">"-&gt;"</span> <span class="org-variable-name">p:</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-variable-name">:p</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+456-&gt;789
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8c8758b" class="outline-4">
+<h4 id="org8c8758b"><span class="section-number-4">2.1.9</span> <a id="orge8bc18d"></a>to rule</h4>
+<div class="outline-text-4" id="text-2-1-9">
+<p>
+Posiciona o cursor logo antes do início do casamento da expressão. No exemplo abaixo, casa com o primeiro <code>-&gt;</code> e posiciona o ponteiro no início do casamento, no <code>-</code>. Veja também <a href="#orgba8faf7">2.1.8</a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-function-name">parse</span> <span class="org-string">"123-&gt;456-&gt;789"</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">to</span> <span class="org-string">"-&gt;"</span> <span class="org-variable-name">p:</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">print</span> <span class="org-variable-name">:p</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">]</span>
+</pre>
+</div>
+
+<pre class="example">
+-&gt;456-&gt;789
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8494666" class="outline-3">
+<h3 id="org8494666"><span class="section-number-3">2.2</span> <span class="todo TODO">TODO</span> Fluxo de controle</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-orgb9fb0de" class="outline-4">
+<h4 id="orgb9fb0de"><span class="section-number-4">2.2.1</span> <a id="org2843caa"></a>break</h4>
+</div>
+<div id="outline-container-orgbc23712" class="outline-4">
+<h4 id="orgbc23712"><span class="section-number-4">2.2.2</span> <a id="orge8ae564"></a>case</h4>
+</div>
+<div id="outline-container-org127a8eb" class="outline-4">
+<h4 id="org127a8eb"><span class="section-number-4">2.2.3</span> <a id="org55a88cb"></a>if (expr)</h4>
+</div>
+<div id="outline-container-org514d576" class="outline-4">
+<h4 id="org514d576"><span class="section-number-4">2.2.4</span> <a id="org5c80b8f"></a>into rule</h4>
+</div>
+<div id="outline-container-orge99f9e9" class="outline-4">
+<h4 id="orge99f9e9"><span class="section-number-4">2.2.5</span> <a id="org5a888c0"></a>fail</h4>
+</div>
+<div id="outline-container-org42fa07c" class="outline-4">
+<h4 id="org42fa07c"><span class="section-number-4">2.2.6</span> <a id="org757337c"></a>then</h4>
+</div>
+<div id="outline-container-org08c5eba" class="outline-4">
+<h4 id="org08c5eba"><span class="section-number-4">2.2.7</span> <a id="orgb179107"></a>reject</h4>
+</div>
+</div>
+<div id="outline-container-org8aa1891" class="outline-3">
+<h3 id="org8aa1891"><span class="section-number-3">2.3</span> <span class="todo TODO">TODO</span> Interação</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-org737372b" class="outline-4">
+<h4 id="org737372b"><span class="section-number-4">2.3.1</span> <a id="org4057738"></a>any rule</h4>
+</div>
+<div id="outline-container-org49119f6" class="outline-4">
+<h4 id="org49119f6"><span class="section-number-4">2.3.2</span> <a id="org8754e43"></a>some rule</h4>
+</div>
+<div id="outline-container-org0fe91a8" class="outline-4">
+<h4 id="org0fe91a8"><span class="section-number-4">2.3.3</span> <a id="orga931bb6"></a>while rule</h4>
+</div>
+</div>
+<div id="outline-container-org246968e" class="outline-3">
+<h3 id="org246968e"><span class="section-number-3">2.4</span> <span class="todo TODO">TODO</span> Extração</h3>
+<div class="outline-text-3" id="text-2-4">
+</div><div id="outline-container-orga019f36" class="outline-4">
+<h4 id="orga019f36"><span class="section-number-4">2.4.1</span> <a id="org29385c0"></a>collect rule</h4>
+</div>
+<div id="outline-container-orgf041b2d" class="outline-4">
+<h4 id="orgf041b2d"><span class="section-number-4">2.4.2</span> <a id="orgfe7f9df"></a>collect set word rule</h4>
+</div>
+<div id="outline-container-orgf1d0199" class="outline-4">
+<h4 id="orgf1d0199"><span class="section-number-4">2.4.3</span> <a id="org1871a3e"></a>collect into word rule</h4>
+</div>
+<div id="outline-container-orgc316685" class="outline-4">
+<h4 id="orgc316685"><span class="section-number-4">2.4.4</span> <a id="org636369b"></a>copy word rule</h4>
+</div>
+<div id="outline-container-org317ae14" class="outline-4">
+<h4 id="org317ae14"><span class="section-number-4">2.4.5</span> <a id="orga10e9e2"></a>keep rule</h4>
+</div>
+<div id="outline-container-org30f4042" class="outline-4">
+<h4 id="org30f4042"><span class="section-number-4">2.4.6</span> <a id="orga7242b7"></a>keep (expr)</h4>
+</div>
+<div id="outline-container-orga1b2f98" class="outline-4">
+<h4 id="orga1b2f98"><span class="section-number-4">2.4.7</span> <a id="org6e6462d"></a>set word rule</h4>
+</div>
+</div>
+<div id="outline-container-org49f4dbb" class="outline-3">
+<h3 id="org49f4dbb"><span class="section-number-3">2.5</span> <span class="todo TODO">TODO</span> Modificação</h3>
+<div class="outline-text-3" id="text-2-5">
+</div><div id="outline-container-orgfe5163e" class="outline-4">
+<h4 id="orgfe5163e"><span class="section-number-4">2.5.1</span> <a id="org0c9109a"></a>insert only value</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+Insere valores na cadeia entrada na posição do cursor. No caso de bloco, <code>only</code> insere todo o bloco e não os valores individualmente. Veja <a href="#orge8bc18d">2.1.9</a> <a href="#orgba8faf7">2.1.8</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">s:</span> <span class="org-string">"ab-123/x"</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">to</span> <span class="org-string">"-"</span> <span class="org-function-name">insert</span> <span class="org-string">".cd"</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">print</span> s
+<span class="org-variable-name">v:</span> <span class="org-constant">2.5</span>
+<span class="org-variable-name">s:</span> <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-constant">1</span> <span class="org-constant">2</span> <span class="org-constant">3</span> <span class="org-constant">5%</span> <span class="org-constant">4</span> <span class="org-constant">5</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">to</span> <span class="org-type">percent!</span> <span class="org-function-name">insert</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-constant">3x4</span> v<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">probe</span> s
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span>thru <span class="org-type">pair!</span> <span class="org-function-name">insert</span> only <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-constant">5.7</span> v<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">probe</span> s
+</pre>
+</div>
+
+<pre class="example">
+ab.cd-123/x
+[1 2 3 3x4 v 5% 4 5]
+[1 2 3 3x4 [5.7 v] v 5% 4 5]
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge42f3f9" class="outline-4">
+<h4 id="orge42f3f9"><span class="section-number-4">2.5.2</span> <a id="org26a564c"></a>remove rule</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<p>
+Remove valores da cadeia de entrada na posição do cursor. Veja: <a href="#org4057738">2.3.1</a> <a href="#orge8bc18d">2.1.9</a> <a href="#orgc4c89b7">2.1.7</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-red"><span class="org-variable-name">s:</span> <span class="org-string">"ab-123/001"</span>
+<span class="org-function-name">print</span> s
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span><span class="org-function-name">to</span> <span class="org-string">"-"</span> <span class="org-function-name">remove</span> <span class="org-function-name">to</span> <span class="org-string">"/"</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-variable-name">digit:</span> <span class="org-function-name">charset</span> <span class="org-string">"0123456789"</span>
+<span class="org-variable-name">s:</span> <span class="org-string">"abc123def456"</span>
+<span class="org-function-name">parse</span> s <span class="org-rainbow-delimiters-depth-1">[</span> <span class="org-function-name">any</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-function-name">remove</span> digit | <span class="org-function-name">skip</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-function-name">print</span> s
+</pre>
+</div>
+
+<pre class="example">
+ab-123/001
+abcdef
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Notas de Rodap&eacute;: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Se a palavra-chave <code>collect</code> é usada em qualquer regra em sua forma mais simples, um bloco será retornado pelo <code>parse</code> não importa 
+se a regra raiz teve êxito ou não.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Autor: Guaracy Monteiro</p>
+<p class="date">Created: 2017-09-02 sáb 11:39</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
