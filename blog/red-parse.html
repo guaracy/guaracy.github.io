@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
-<!-- 2017-09-17 dom 10:53 -->
+<!-- 2017-09-17 dom 11:33 -->
 <meta charset="utf-8">
 <title>Red-Parse : Introdução rápida</title>
 <meta name="generator" content="Org mode">
@@ -406,7 +406,7 @@ Outra forma interessante de criar uma DSL, seria utilizando macros. Existe mais 
 </p>
 
 <p>
-Supondo-se que desejamos uma construção do tipo <code>for i = 1 to 10 step 3; print i; next</code> que não existe em Red. Podemos utilizar um macro para a tarefa. Primeiro veremos a macro e depois a explicação do funcionamento. 
+Supondo-se que desejamos uma construção do tipo <code>for i = 1 to 10 step 3; print i; next</code> que não existe em Red. Podemos utilizar um macro para a tarefa. Primeiro veremos o funcionamento da macro por partes (jack?) e depois ela completa e o resultado.
 </p>
 </div>
 
@@ -643,19 +643,25 @@ ARGUMENTS:
      body         [block!] 
 
 </pre>
-<p>
-:exports results
-</p>
 </div>
 </div>
 
 <div id="outline-container-org264bd42" class="outline-4">
 <h4 id="org264bd42">while <a id="orgb7f7691"></a></h4>
 <div class="outline-text-4" id="text-org264bd42">
-<div class="org-src-container">
-<pre class="src src-red"><span class="org-function-name">help</span> <span class="org-function-name">while</span>
+<pre class="example">
+USAGE:
+     WHILE cond body
+
+DESCRIPTION: 
+     Evaluates body as long as condition block returns TRUE. 
+     WHILE is a native! value.
+
+ARGUMENTS:
+     cond         [block!] "Condition block to evaluate on each iteration".
+     body         [block!] "Block to evaluate on each iteration".
+
 </pre>
-</div>
 </div>
 </div>
 
