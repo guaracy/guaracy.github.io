@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+<!-- 2017-10-04 qua 23:42 -->
+<meta charset="utf-8">
+<title>Livro sobre a linguagem Red</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Guaracy Monteiro">
+    <!-- inicio extra-head -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- fonts -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'/>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'/>
+    <!-- css -->
+    <!--link rel='stylesheet' href='../res/css/code.css' /-->
+    <link rel='stylesheet' href='../res/css/htmlize.css' />
+    <link rel='stylesheet' href='../res/css/w3.css' />
+    <link rel='stylesheet' href='../res/css/w3-theme.css' />
+    <link rel='stylesheet' href='../res/css/main.css'>
+    <!-- js -->
+    <script src='../res/js/main.js'></script>
+    <!-- fim extra-head -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+      <!-- início header.html -->
+    </div>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-4" style="z-index:3;width:250px;" id="mySidebar">
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/"><i class="fa fa-home"></i> Blog</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/index.xml"><i class="fa fa-rss"></i> RSS</a>
+      <br/>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/documentos.html"><i class="fa fa-book"></i> Documentos</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/changelog.html"><i class="fa fa-sliders"></i> Alterações</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="/contato.html"><i class="fa fa-user-secret"></i> Contato</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://github.com/guaracy"><i class="fa fa-github"></i> GitHub</a>
+      <a class="w3-bar-item w3-button w3-hover-theme" href="https://twitter.com/guaracybm"><i class="fa fa-twitter"></i> Twitter</a>
+      <form class="w3-bar-item" method="get" id="search" action="https://www.google.com/search" class="navbar-form pull-left">
+        <input class="w3-input w3-border w3-border-theme" type="text" name="q" 
+               placeholder="Procurar&hellip;" id="s" style="margin-top: 4px;">
+        <input type="hidden" name="as_sitesearch" value="https://guaracy.github.io">
+      </form>
+    </nav>
+
+    <div class="w3-main" style="margin-left:250px;">
+      <div id="myTop" class="w3-container w3-top w3-theme w3-large" style="opacity: 0.95;">
+        <p>
+          <i class="fa fa-bars w3-button w3-theme w3-hide-large w3-xlarge" title="Menu" onclick="w3_open()"></i>
+          <span id="myIntro" class="w3-hide"><a href="#"><i class="fa fa-chevron-circle-up w3-xlarge w3-button" title="Top"></i></a> Cadafalso</span>
+        </p>
+      </div>
+
+      <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+      <header class="w3-theme w3-center" style="padding: 64px">
+        <h1><b>Cadafalso</b><br></h1>Apenas mais um blog
+      </header>
+      <div class="w3-container" style="padding:16px">
+        <div>
+
+    
+<!-- fim header.html -->
+</div>
+<div id="content">
+<h1 class="title">Livro sobre a linguagem Red</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb6484bf">Geração do livro</a></li>
+<li><a href="#org792812d">Preâmbulo</a></li>
+<li><a href="#orgbc3e80d">Capa</a></li>
+<li><a href="#org34bb2bf">Fontes dos programas</a></li>
+<li><a href="#orgc9117e6">Resultados</a></li>
+<li><a href="#orgcdbbf41">Diversos</a></li>
+<li><a href="#orgd80ca01">O livro</a></li>
+<li><a href="#org378305f">Referências</a></li>
+</ul>
+</div>
+</div>
+<div class="PREVIEW">
+<p>
+Apenas aproveitando o aprendizado para deixar registrado.
+</p>
+
+</div>
+
+<p>
+Resolvi ir colocando no papel (?) o que estou aprendendo sobre Red. Fica registrado para minha consulta posterior e serve como base para outros que desejem algum material acessível.
+</p>
+
+<p>
+Já escrevi <a href="file:///blog/2017-09-05-helloworld.html">antes</a> que o org-mode é uma boa linguagem de marcação pois permite gerar diretamente outros formatos desde o html para este blog passando por programação letrada e outros. Mas era tudo html e não tinha dados detalhes sobre a geração de PDF via \(\LaTeX\).
+</p>
+
+<p>
+Bem, resolvi escrever o livro com o org-mode e esta entrada para algumas dicas e dificuldades encontradas. Ok, poderia escrever em \(\LaTeX\) e gerar o PDF (uma linguagem extremamente flexível mas mais complexa) ou utilizar qualquer linguagem de marcação e o pandoc para as conversões necessárias.
+</p>
+
+<p>
+<b>Obs</b>.: O que segue foi o que eu utilizei, não que seja a forma mais correta ou fácil.
+</p>
+
+
+<div id="outline-container-orgb6484bf" class="outline-2">
+<h2 id="orgb6484bf">Geração do livro</h2>
+<div class="outline-text-2" id="text-orgb6484bf">
+<p>
+Para gerar um livro basta incluir no início do arquivo <code>#+LATEX_CLASS: book</code> e continuar normalmente com o org-mode. Ao final ou durante a escrita, basta a sequência <code>C-c C-e l p</code> para gerar o arquivo PDF. Infelizmente, eu não queria que fosse exportado <code>\part{Parte}</code> para o preâmbulo. Para resolver a situação, incluí no meu <i>init.el</i> o seguinte trecho e o livro já saiu com a cara que eu queria.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'org-latex-classes
+             '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"book-gbm"</span> <span class="org-string">"\\documentclass[12pt,a4paper]{book}"</span>
+               <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"\\chapter{%s}"</span> . <span class="org-string">"\\chapter*{%s}"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+               <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"\\section{%s}"</span> . <span class="org-string">"\\section*{%s}"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+               <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"\\subsection{%s}"</span> . <span class="org-string">"\\subsection*{%s}"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+               <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"\\subsubsection{%s}"</span> . <span class="org-string">"\\subsubsection*{%s}"</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org792812d" class="outline-2">
+<h2 id="org792812d">Preâmbulo</h2>
+<div class="outline-text-2" id="text-org792812d">
+<p>
+É possível incluir no documento <code>#+LATEX_HEADER: \input{arquivo}</code> que irá incluir no preâmbulo, antes do <code>\author</code> todo o conteúdo do arquivo especificado (extensão <b>tex</b>). Também é possível incluir diretamente no arquivo .org mas acho que fica muito poluído.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbc3e80d" class="outline-2">
+<h2 id="orgbc3e80d">Capa</h2>
+<div class="outline-text-2" id="text-orgbc3e80d">
+<p>
+Detalhe do preâmbulo para a inclusão de imagem na capa.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-latex"><span class="org-comment-delimiter">%% </span><span class="org-comment">-- imagem na capa</span>
+<span class="org-comment-delimiter">%%</span>
+<span class="org-font-latex-sedate"><span class="org-keyword">\usepackage</span></span>{<span class="org-function-name">graphicx</span>}
+<span class="org-font-latex-sedate"><span class="org-keyword">\usepackage</span></span>{<span class="org-function-name">titling</span>}
+<span class="org-font-latex-sedate">\pretitle</span>{<span class="org-comment">%</span>
+  <span class="org-font-latex-sedate"><span class="org-keyword">\begin</span></span>{<span class="org-function-name">center</span>}
+    <span class="org-font-latex-sedate"><span class="org-type">\LARGE</span></span>
+    <span class="org-font-latex-sedate">\includegraphics</span>[width=6cm,height=6cm]{logo.png}<span class="org-font-latex-warning">\\</span>[<span class="org-font-latex-sedate">\bigskipamount</span>]
+  }
+  <span class="org-font-latex-sedate">\posttitle</span>{<span class="org-font-latex-sedate"><span class="org-keyword">\end</span></span>{<span class="org-function-name">center</span>}}
+</pre>
+</div>
+
+<p>
+O arquivo contém diversos comandos no preâmbulo para a configuração desejada como linguagem, set de caracteres e outros comuns.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org34bb2bf" class="outline-2">
+<h2 id="org34bb2bf">Fontes dos programas</h2>
+<div class="outline-text-2" id="text-org34bb2bf">
+<p>
+Inicialmente saem como <code>verbatim</code> e eu queria que fossem mostrados com a sintaxe salientada. O org-mode é configurado para aceitar listings e minted. O primeiro é fraco, sem contar que não salienta Red e tem problemas com UTF-8. O minted utiliza o Pygments, escrita em Python e que faz um bom trabalho. Não ótimo pois, para salientar um trecho em Red necessita que no início contenha <code>Red []</code> que só é utilizado para um script. Seria o mesmo que necessitar do <i>shebang</i> <code>#!/bin/sh</code> para salientar um trecho de um script em shell. Nada que uma alteração no <code>/usr/lib/python3.6/site-packages/pygments/lexers/rebol.py</code> não resolva (é utilizado o mesmo lexer para Rebol e Red).
+</p>
+
+<p>
+Depois foi só adicional no init.el <code>(setq org-latex-listings 'minted)</code>. O resto, na hora de exportar o próprio org-mode se encarrega de colocar número de linhas, linha inicial se a opção estiver indicada. Outras configurações ficam diretamente no arquivo de inclusão.
+</p>
+
+<p>
+Incluir os fontes com as facilidades do <i>tcolorbox</i> fica mais complicado e eu deixei para um futuro incerto.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc9117e6" class="outline-2">
+<h2 id="orgc9117e6">Resultados</h2>
+<div class="outline-text-2" id="text-orgc9117e6">
+<p>
+Uma das facilidades do org-mode é utilização do babel para a execução do trecho e captura automática do resultado obtido, facilitando a digitação e evitando erros. Quando é exportado para o \(\LaTeX\), o resultado é enviado em <i>verbatim</i>. Eu gostaria que fosse mais realçado. Na digitação, basta eu colocar <code>:wrap resultado</code> que o trecho será exportado entre <code>\begin{resposta} ... \end{resposta}</code> e o meu caso está parcialmente resolvido. Preciso indicar como o trecho deverá ser interpretado. No caso utilizei:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-latex"><span class="org-comment-delimiter">%% </span><span class="org-comment">-- resposta -&gt; verbatim com fundo e borda</span>
+<span class="org-comment-delimiter">%%</span>
+<span class="org-font-latex-sedate">\definecolor</span>{resborder}{HTML}{B3B300}
+<span class="org-font-latex-sedate">\definecolor</span>{resbk}{HTML}{FFFFE6}
+<span class="org-font-latex-sedate"><span class="org-keyword">\newenvironment</span></span>{<span class="org-function-name">resultado</span>}<span class="org-comment">%</span>
+{<span class="org-font-latex-sedate"><span class="org-function-name">\VerbatimEnvironment</span></span>
+<span class="org-function-name">  </span><span class="org-font-latex-sedate"><span class="org-type"><span class="org-function-name">\footnotesize</span></span></span>
+<span class="org-function-name">  </span><span class="org-font-latex-sedate"><span class="org-function-name">\begin</span></span><span class="org-function-name">{mdframed}[backgroundcolor=resbk, linecolor=resborder]</span>
+<span class="org-function-name">    </span><span class="org-font-latex-sedate"><span class="org-function-name">\begin</span></span><span class="org-function-name">{Verbatim}</span>}
+    {<span class="org-font-latex-sedate"><span class="org-function-name">\end</span></span><span class="org-function-name">{Verbatim}</span><span class="org-function-name"><span class="org-comment">%</span></span>
+<span class="org-function-name">  </span><span class="org-font-latex-sedate"><span class="org-function-name">\end</span></span><span class="org-function-name">{mdframed}</span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcdbbf41" class="outline-2">
+<h2 id="orgcdbbf41">Diversos</h2>
+<div class="outline-text-2" id="text-orgcdbbf41">
+<p>
+Fora o problema de quem está escrevendo entrar com algo incorreto, também existe a possibilidade do conversor efetuar alguma besteira. Por enquanto, basicamente alguns caracteres que deveriam e não foram ou foram e não deveria ser escapados tipo <code>\</code> e <code>%</code>. Outro problema encontrado foi que a execução de um trecho em Red deveria dar erro que são precedidos de <code>***</code>. O babel não reconheceu e retornou os três asteriscos. Na conversão foi considerado como <code>\section{</code> e o documento não pode ser gerado.
+</p>
+
+<p>
+No geral foi possível corrigir diretamente no documento. Se, no decorrer do livro, algum não puder ser resolvido indiretamente, é só informar ao org-mode o trecho diretamente em \(\LaTeX\) e pronto.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd80ca01" class="outline-2">
+<h2 id="orgd80ca01">O livro</h2>
+<div class="outline-text-2" id="text-orgd80ca01">
+<p>
+Ainda não está pronto (tem muita coisa) e poderá mudar o formato. Mas, para ter uma ideia, você pode baixar o <a href="../docs/red.pdf">pdf</a>. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org378305f" class="outline-2">
+<h2 id="org378305f">Referências</h2>
+<div class="outline-text-2" id="text-org378305f">
+<ul class="org-ul">
+<li>\(\LaTeX\) : <a href="https://en.wikibooks.org/wiki/LaTeX">Wikobook</a> e <a href="https://www.sharelatex.com/learn/Main_Page">ShareLaTeX</a> entre tantos outros.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<!-- inicio comentarios -->
+<h1>Comentários</h1>
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://guaracy.github.io/blog/2017-10-04-livro.html';
+        this.page.identifier = '2017-10-04-livro.html';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');   
+        s.src = 'https://cadafalso-gbm.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<!-- fim comentarios -->
+<center><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 9.0.10)</center><!-- início footer -->
+<center>
+Licença: <a href= 'https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR'>CC BY-SA 4.0</a></center></p>
+</center>
+<!-- fim footer -->
+<!-- início google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-92986383-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- fim google analytics -->
+</div>
+</body>
+</html>
