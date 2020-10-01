@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>vslice</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<style>
+/*  this disables the annoying double click highlighting of DIV blocks  */
+div { outline-style:none;}
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<script type="module">
+import * as std from '../../runtime/beads_std.js';
+import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
+import * as str from '../../runtime/beads_str.js';
+import * as k   from '../../runtime/beads_k.js';
+export const CODE_HASH= 0xaac69293;
+const _M = "vslice";
+std.rtl_init();
+std.aaaa.main_init = main_init;
+std.aaaa.main_module = "vslice";
+std.aaaa.main_drawer = new std.a_function("vslice", "main_draw", main_draw);
+//------- enums
+//[reflAAA]
+std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "big_block", std.F_vv_funck, VAL, std.FK_DRAW, POP, "do_body", std.F_vv_funck, VAL, std.FK_DRAW, POP, "do_footer", std.F_vv_funck
+, VAL, std.FK_DRAW, POP, "do_footerl", std.F_vv_funck, VAL, std.FK_DRAW, POP, "do_footerr", std.F_vv_funck, VAL, std.FK_DRAW, POP, "do_header", std.F_vv_funck, VAL, std.FK_DRAW
+, POP, "do_tick", std.F_vv_funck, VAL, std.FK_CALC, POP, "footer_block", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init"
+, std.F_vv_funck, VAL, std.FK_CALC, POP, POP, std.F_mod_vars, "g", std.F_vv_rec, VAL, "a_date", std.F_vv_typek, VAL, std.TYPE_RECORD);
+//[reflZZZ]
+//-------  func const
+const do_footerr_F = new std.a_function("vslice", "do_footerr", do_footerr);
+std.FUNCS[do_footerr_F.hash]=do_footerr_F;
+const do_footer_F = new std.a_function("vslice", "do_footer", do_footer);
+std.FUNCS[do_footer_F.hash]=do_footer_F;
+const do_header_F = new std.a_function("vslice", "do_header", do_header);
+std.FUNCS[do_header_F.hash]=do_header_F;
+const do_tick_F = new std.a_function("vslice", "do_tick", do_tick);
+std.FUNCS[do_tick_F.hash]=do_tick_F;
+const footer_block_F = new std.a_function("vslice", "footer_block", footer_block);
+std.FUNCS[footer_block_F.hash]=footer_block_F;
+const do_body_F = new std.a_function("vslice", "do_body", do_body);
+std.FUNCS[do_body_F.hash]=do_body_F;
+const big_block_F = new std.a_function("vslice", "big_block", big_block);
+std.FUNCS[big_block_F.hash]=big_block_F;
+const do_footerl_F = new std.a_function("vslice", "do_footerl", do_footerl);
+std.FUNCS[do_footerl_F.hash]=do_footerl_F;
+//-------  top nodes
+let g = new std.a_tree("vslice","g", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+
+//====================
+//   big_block
+//====================
+function big_block(b) {
+k.k_enter(b);
+k.div_begin(b, null, false, false, false);
+  k.div_add(b, U, 1, 10, std.al, do_header_F, 0);
+  k.div_spa(b, 1, 2, std.pt);
+  k.div_add(b, U, 1, 80, std.al, do_body_F, 0);
+  k.div_spa(b, 1, 2, std.pt);
+  k.div_add(b, U, 1, 20, std.pt, do_footer_F, 0);
+  k.div_end(b);
+  k.draw_slices(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   do_body
+//====================
+function do_body(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.BEIGE });
+  std.draw_str(b, "BODY", {});
+k.k_leave(b);
+}
+
+
+//====================
+//   do_footer
+//====================
+function do_footer(b) {
+k.k_enter(b);
+  footer_block(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   do_footerl
+//====================
+function do_footerl(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.LIGHT_SKY_BLUE });
+  std.draw_str(b, std.cat("", str.to_str(b.bounds.width, {show_u:Y, digits:0}), " x ", str.to_str(b.bounds.height, {show_u:Y, digits:0})), { size:std.pt_to_dots(b, 24), bold
+  :Y, color:std.BLUE });
+k.k_leave(b);
+}
+
+
+//====================
+//   do_footerr
+//====================
+function do_footerr(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.LIGHT_PINK });
+  std.draw_str(b, std.cat("", str.to_str(getn(g, std.F_date_hour), {show_u:Y, digits:0}), ":", str.to_str(getn(g, std.F_date_minute), {show_u:Y, digits:0}), ":", str.to_str(
+  getn(g, std.F_date_second), {show_u:Y, digits:0}), " "), { size:std.pt_to_dots(b, 48), color:std.RED, bold:Y });
+k.k_leave(b);
+}
+
+
+//====================
+//   do_header
+//====================
+function do_header(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.TOMATO });
+  std.draw_str(b, "HEADER", { size:std.pt_to_dots(b, 24) });
+k.k_leave(b);
+}
+
+
+//====================
+//   footer_block
+//====================
+function footer_block(b) {
+k.k_enter(b);
+k.div_begin(b, null, false, false, false);
+  k.div_add(b, U, 0, 50, std.al, do_footerl_F, 0);
+  k.div_spa(b, 0, 2, std.pt);
+  k.div_add(b, U, 0, 50, std.al, do_footerr_F, 0);
+  k.div_end(b);
+  k.draw_slices(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   main_draw
+//====================
+export function main_draw(b) {
+k.k_root2(b);
+k.k_enter(b);
+  big_block(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   do_tick
+//====================
+function do_tick() {
+  std.merge_tree(_M, 10, std.seconds_to_date({}), std.addr(g));
+}
+
+
+//====================
+//   main_init
+//====================
+export function main_init() {
+  std.loom_timer(do_tick_F, { delay:std.meas(0, std.N_sec, std.Y_Time), interval:std.meas(1, std.N_sec, std.Y_Time), reps:std.INFINITY });
+}
+
+main_init();
+k.rebuild_all();
+
+</script>
+</body>
+</html>
