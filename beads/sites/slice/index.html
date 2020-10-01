@@ -16,7 +16,7 @@ import * as std from '../../runtime/beads_std.js';
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
 import * as str from '../../runtime/beads_str.js';
 import * as k   from '../../runtime/beads_k.js';
-export const CODE_HASH= 0xaac69293;
+export const CODE_HASH= 0xf4241e4e;
 const _M = "vslice";
 std.rtl_init();
 std.aaaa.main_init = main_init;
@@ -30,22 +30,22 @@ std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "big_block", std.F_vv_funck, VA
 , std.F_vv_funck, VAL, std.FK_CALC, POP, POP, std.F_mod_vars, "g", std.F_vv_rec, VAL, "a_date", std.F_vv_typek, VAL, std.TYPE_RECORD);
 //[reflZZZ]
 //-------  func const
-const do_footerr_F = new std.a_function("vslice", "do_footerr", do_footerr);
-std.FUNCS[do_footerr_F.hash]=do_footerr_F;
-const do_footer_F = new std.a_function("vslice", "do_footer", do_footer);
-std.FUNCS[do_footer_F.hash]=do_footer_F;
-const do_header_F = new std.a_function("vslice", "do_header", do_header);
-std.FUNCS[do_header_F.hash]=do_header_F;
-const do_tick_F = new std.a_function("vslice", "do_tick", do_tick);
-std.FUNCS[do_tick_F.hash]=do_tick_F;
-const footer_block_F = new std.a_function("vslice", "footer_block", footer_block);
-std.FUNCS[footer_block_F.hash]=footer_block_F;
-const do_body_F = new std.a_function("vslice", "do_body", do_body);
-std.FUNCS[do_body_F.hash]=do_body_F;
-const big_block_F = new std.a_function("vslice", "big_block", big_block);
-std.FUNCS[big_block_F.hash]=big_block_F;
 const do_footerl_F = new std.a_function("vslice", "do_footerl", do_footerl);
 std.FUNCS[do_footerl_F.hash]=do_footerl_F;
+const do_tick_F = new std.a_function("vslice", "do_tick", do_tick);
+std.FUNCS[do_tick_F.hash]=do_tick_F;
+const do_body_F = new std.a_function("vslice", "do_body", do_body);
+std.FUNCS[do_body_F.hash]=do_body_F;
+const do_header_F = new std.a_function("vslice", "do_header", do_header);
+std.FUNCS[do_header_F.hash]=do_header_F;
+const footer_block_F = new std.a_function("vslice", "footer_block", footer_block);
+std.FUNCS[footer_block_F.hash]=footer_block_F;
+const do_footerr_F = new std.a_function("vslice", "do_footerr", do_footerr);
+std.FUNCS[do_footerr_F.hash]=do_footerr_F;
+const big_block_F = new std.a_function("vslice", "big_block", big_block);
+std.FUNCS[big_block_F.hash]=big_block_F;
+const do_footer_F = new std.a_function("vslice", "do_footer", do_footer);
+std.FUNCS[do_footer_F.hash]=do_footer_F;
 //-------  top nodes
 let g = new std.a_tree("vslice","g", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
 
@@ -72,7 +72,8 @@ k.k_leave(b);
 function do_body(b) {
 k.k_enter(b);
   std.draw_rect(b, { fill:std.BEIGE });
-  std.draw_str(b, "BODY", {});
+  std.draw_str(b, std.cat("", str.to_str(b.bounds.width, {show_u:Y, digits:0}), " x ", str.to_str(b.bounds.height, {show_u:Y, digits:0})), { size:std.pt_to_dots(b, 24), bold
+  :Y, color:std.BLUE });
 k.k_leave(b);
 }
 
@@ -93,8 +94,6 @@ k.k_leave(b);
 function do_footerl(b) {
 k.k_enter(b);
   std.draw_rect(b, { fill:std.LIGHT_SKY_BLUE });
-  std.draw_str(b, std.cat("", str.to_str(b.bounds.width, {show_u:Y, digits:0}), " x ", str.to_str(b.bounds.height, {show_u:Y, digits:0})), { size:std.pt_to_dots(b, 24), bold
-  :Y, color:std.BLUE });
 k.k_leave(b);
 }
 
@@ -152,7 +151,7 @@ k.k_leave(b);
 //   do_tick
 //====================
 function do_tick() {
-  std.merge_tree(_M, 10, std.seconds_to_date({}), std.addr(g));
+  std.merge_tree(_M, 9, std.seconds_to_date({}), std.addr(g));
 }
 
 
