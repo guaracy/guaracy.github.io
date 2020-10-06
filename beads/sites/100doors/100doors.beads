@@ -1,0 +1,32 @@
+beads 1 program "100 doors"
+
+var
+	doors : array of yesno
+	color : color
+
+calc main_init
+	loop from:1 to:100 index:i
+		doors[i] = N
+	loop from:1 to:100 index:i
+		loop from:i to:100 by:i index:j
+			doors[j] = not doors[j]
+
+grid d_doors
+	horz slice
+		skip 2 al
+		loop reps:10
+			add 20 al
+			skip 2 al
+	vert slice
+		skip 2 al
+		loop reps:10
+			add 20 al
+			skip 2 al
+	cell
+		color = if doors[b.cell_seq] then PALE_GREEN else ORANGE  
+		draw_rect(fill:color, corner:6 pt)
+		draw_str(to_str(b.cell_seq), size:b.box.height / 2)
+		log to_str(b.cell_seq)
+
+draw main_draw
+	d_doors

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>100 doors</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<style>
+/*  this disables the annoying double click highlighting of DIV blocks  */
+div { outline-style:none;}
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<script type="module">
+import * as std from '../../runtime/beads_std.js';
+import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
+import * as str from '../../runtime/beads_str.js';
+import * as k   from '../../runtime/beads_k.js';
+export const CODE_HASH= 0x60e877b9;
+const _M = "100 doors";
+std.rtl_init();
+std.aaaa.main_init = main_init;
+std.aaaa.main_module = "100 doors";
+std.aaaa.main_drawer = new std.a_function("100 doors", "main_draw", main_draw);
+//------- enums
+//[reflAAA]
+std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "d_doors", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck
+, VAL, std.FK_CALC, POP, POP, std.F_mod_vars, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "doors", std.F_vv_typek, VAL, std.TYPE_ARRAY);
+//[reflZZZ]
+//-------  func const
+const d_doors_F = new std.a_function("100 doors", "d_doors", d_doors);
+std.FUNCS[d_doors_F.hash]=d_doors_F;
+//-------  top nodes
+let doors = new std.a_tree("100 doors","doors", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+let color = U;
+
+//====================
+//   d_doors
+//====================
+function d_doors(b) {
+k.k_enter(b);
+k.div_begin(b, new std.a_function(_M, "d_doors_cell", d_doors_cell, null), false, false, false);
+  k.div_spa(b, 0, 2, std.al);
+  var loop142 = new std.a_loop({ limit:10 });
+  while (loop142.next()) {
+    k.div_add(b, U, 0, 20, std.al, null, 0);
+    k.div_spa(b, 0, 2, std.al);
+  }
+  k.div_spa(b, 1, 2, std.al);
+  var loop143 = new std.a_loop({ limit:10 });
+  while (loop143.next()) {
+    k.div_add(b, U, 1, 20, std.al, null, 0);
+    k.div_spa(b, 1, 2, std.al);
+  }
+  k.div_end(b);
+  k.draw_grid(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   d_doors_cell
+//====================
+function d_doors_cell(b) {
+  k.k_enter(b);
+  color = getn(doors, getn(b.extra, std.F_cell_seq)) === Y ? std.PALE_GREEN : std.ORANGE;
+  std.draw_rect(b, { fill:color, corner:std.pt_to_dots(b, 6) });
+  std.draw_str(b, str.to_str(getn(b.extra, std.F_cell_seq), {}), { size:std.div(b.bounds.height, 2) });
+  std.log(str.to_str(getn(b.extra, std.F_cell_seq), {}));
+  k.k_leave(b);
+}
+
+//====================
+//   main_draw
+//====================
+export function main_draw(b) {
+k.k_root2(b);
+k.k_enter(b);
+  d_doors(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   main_init
+//====================
+export function main_init() {
+  var loop144 = new std.a_loop({ from:1, to_:100 });
+  while (loop144.next()) {
+  var i = loop144.index;
+    std.path_setv(_M, 9, std.addr(doors, i), N);
+  }
+  var loop145 = new std.a_loop({ from:1, to_:100 });
+  while (loop145.next()) {
+  var i = loop145.index;
+    var loop146 = new std.a_loop({ from:i, to_:100, by:i });
+    while (loop146.next()) {
+    var j = loop146.index;
+      std.path_setv(_M, 12, std.addr(doors, j), std.not4(getn(doors, j)));
+    }
+  }
+}
+
+main_init();
+k.rebuild_all();
+
+</script>
+</body>
+</html>
