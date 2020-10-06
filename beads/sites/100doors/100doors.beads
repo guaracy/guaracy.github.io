@@ -24,7 +24,7 @@ grid d_doors
 			skip 2 al
 	cell
 		color = if doors[b.cell_seq] then PALE_GREEN else ORANGE  
-		draw_rect(fill:color, corner:6 pt)
+		draw_rect(fill:color, corner:2 pt)
 		draw_str(to_str(b.cell_seq), size:b.box.height / 2)
 		log to_str(b.cell_seq)
 
