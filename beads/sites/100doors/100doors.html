@@ -16,7 +16,7 @@ import * as std from '../../runtime/beads_std.js';
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
 import * as str from '../../runtime/beads_str.js';
 import * as k   from '../../runtime/beads_k.js';
-export const CODE_HASH= 0x878ca8ca;
+export const CODE_HASH= 0x7a4d3425;
 const _M = "100 doors";
 std.rtl_init();
 std.aaaa.main_init = main_init;
@@ -41,15 +41,15 @@ function d_doors(b) {
 k.k_enter(b);
 k.div_begin(b, new std.a_function(_M, "d_doors_cell", d_doors_cell, null), false, false, false);
   k.div_spa(b, 0, 2, std.al);
-  var loop72 = new std.a_loop({ limit:10 });
-  while (loop72.next()) {
+  var loop90 = new std.a_loop({ limit:10 });
+  while (loop90.next()) {
     k.div_add(b, U, 0, 20, std.al, null, 0);
     k.div_spa(b, 0, 2, std.al);
     k.div_spa(b, 0, 1, std.al);
   }
   k.div_spa(b, 1, 2, std.al);
-  var loop73 = new std.a_loop({ limit:10 });
-  while (loop73.next()) {
+  var loop91 = new std.a_loop({ limit:10 });
+  while (loop91.next()) {
     k.div_add(b, U, 1, 20, std.al, null, 0);
     k.div_spa(b, 1, 2, std.al);
   }
@@ -64,10 +64,9 @@ k.k_leave(b);
 //====================
 function d_doors_cell(b) {
   k.k_enter(b);
-  color = getn(doors, getn(b.extra, std.F_cell_seq)) === Y ? std.LEMON_CHIFFON : std.LIGHT_CORAL;
+  color = getn(doors, getn(b.extra, std.F_cell_seq)) === Y ? std.LIGHT_GREEN : std.LIGHT_CORAL;
   std.draw_rect(b, { fill:color, thick:1 });
   std.draw_str(b, str.to_str(getn(b.extra, std.F_cell_seq), {}), { size:std.div(b.bounds.height, 2) });
-  std.log(str.to_str(getn(b.extra, std.F_cell_seq), {}));
   k.k_leave(b);
 }
 
@@ -86,18 +85,18 @@ k.k_leave(b);
 //   main_init
 //====================
 export function main_init() {
-  var loop74 = new std.a_loop({ from:1, to_:100 });
-  while (loop74.next()) {
-  var ix = loop74.index;
+  var loop92 = new std.a_loop({ from:1, to_:100 });
+  while (loop92.next()) {
+  var ix = loop92.index;
     std.path_setv(_M, 9, std.addr(doors, ix), N);
   }
-  var loop75 = new std.a_loop({ from:1, to_:100 });
-  while (loop75.next()) {
-  var i = loop75.index;
-    var loop76 = new std.a_loop({ from:i, to_:100, by:i });
-    while (loop76.next()) {
-    var ij = loop76.index;
-      std.path_setv(_M, 12, std.addr(doors, ij), std.not4(getn(doors, ij)));
+  var loop93 = new std.a_loop({ from:1, to_:100 });
+  while (loop93.next()) {
+  var i = loop93.index;
+    var loop94 = new std.a_loop({ from:i, to_:100, by:i });
+    while (loop94.next()) {
+    var ix = loop94.index;
+      std.path_setv(_M, 12, std.addr(doors, ix), std.not4(getn(doors, ix)));
     }
   }
 }

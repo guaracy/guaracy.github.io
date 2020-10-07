@@ -8,8 +8,8 @@ calc main_init
 	loop from:1 to:100 index:ix
 		doors[ix] = N
 	loop from:1 to:100 index:i
-		loop from:i to:100 by:i index:ij
-			doors[ij] = not doors[ij]
+		loop from:i to:100 by:i index:ix
+			doors[ix] = not doors[ix]
 
 grid d_doors
 	horz slice
@@ -24,10 +24,9 @@ grid d_doors
 			add 20 al
 			skip 2 al
 	cell
-		color = if doors[b.cell_seq] then LEMON_CHIFFON else LIGHT_CORAL
+		color = if doors[b.cell_seq] then LIGHT_GREEN else LIGHT_CORAL
 		draw_rect(fill:color, thick:1)
 		draw_str(to_str(b.cell_seq), size:b.box.height / 2)
-		log to_str(b.cell_seq)
 
 draw main_draw
 	d_doors
