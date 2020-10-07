@@ -6,12 +6,36 @@
     <style type="text/css">
     <!--
       body {
-        color: #2e3436;
-        background-color: #eeeeec;
+        color: #cccccc;
+        background-color: #181a26;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #a2cd5a;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #daa520;
+      }
+      .highlight-indent-guides-even {
+        /* highlight-indent-guides-even-face */
+        background-color: #2bd12f784561;
+      }
+      .highlight-indent-guides-odd {
+        /* highlight-indent-guides-odd-face */
+        background-color: #21e824bc35b0;
       }
       .string {
         /* font-lock-string-face */
-        color: #5c3566;
+        color: #deb887;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #98f5ff;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #4eee94;
       }
 
       a {
@@ -28,38 +52,39 @@
   </head>
   <body>
     <pre>
-beads 1 program <span class="string">"100 doors"</span>
+beads <span class="constant">1</span> program <span class="string">"100 doors"</span>
 
-var
-    doors : array of yesno
-    color : color
+<span class="function-name">var</span>
+<span class="highlight-indent-guides-even">    </span>doors : array of yesno
+<span class="highlight-indent-guides-even">    </span>color : color
 
 calc main_init
-    loop from:1 to:100 index:i
-        doors[i] = N
-    loop from:1 to:100 index:i
-        loop from:i to:100 by:i index:j
-            doors[j] = not doors[j]
+<span class="highlight-indent-guides-even">    </span>loop <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">index:</span>ix
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>doors[ix] = N
+<span class="highlight-indent-guides-even">    </span>loop <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">index:</span>i
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>loop <span class="variable-name">from:</span>i <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">by:</span>i <span class="variable-name">index:</span>ij
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>doors[ij] = not doors[ij]
 
-grid d_doors
-    horz slice
-        skip 2 al
-        loop reps:10
-            add 20 al
-            skip 2 al
-    vert slice
-        skip 2 al
-        loop reps:10
-            add 20 al
-            skip 2 al
-    cell
-        color = if doors[b.cell_seq] then PALE_GREEN else ORANGE  
-        draw_rect(fill:color, corner:2 pt)
-        draw_str(to_str(b.cell_seq), size:b.box.height / 2)
-        log to_str(b.cell_seq)
+<span class="function-name">grid</span> d_doors
+<span class="highlight-indent-guides-even">    </span><span class="function-name">horz</span> slice
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>skip <span class="constant">2</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>loop <span class="variable-name">reps:</span><span class="constant">10</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>add <span class="constant">20</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">2</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">1</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">vert</span> slice
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>skip <span class="constant">2</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>loop <span class="variable-name">reps:</span><span class="constant">10</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>add <span class="constant">20</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">2</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">cell</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>color = if doors[<span class="type">b.</span>cell_seq] then LEMON_CHIFFON <span class="function-name">else</span> LIGHT_CORAL
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">1</span>)
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(to_str(<span class="type">b.</span>cell_seq), <span class="variable-name">size:</span><span class="type">b.box.</span>height / <span class="constant">2</span>)
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">log</span> to_str(<span class="type">b.</span>cell_seq)
 
-draw main_draw
-    d_doors
+<span class="function-name">draw</span> main_draw
+<span class="highlight-indent-guides-even">    </span>d_doors
 </pre>
   </body>
 </html>
