@@ -11,7 +11,7 @@ calc main_init
 		loop from:i to:100 by:i index:ix
 			doors[ix] = not doors[ix]
 
-grid d_doors
+grid main_draw
 	horz slice
 		skip 2 al
 		loop reps:10
@@ -29,9 +29,6 @@ grid d_doors
 
 track EV_TAP
 	if doors[b.cell_seq]
-		alert("Aberta")
+		log("Aberta")
 	else
-		alert("Fechada")
-
-draw main_draw
-	d_doors
+		log("Fechada")

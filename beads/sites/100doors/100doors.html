@@ -16,39 +16,40 @@ import * as std from '../../runtime/beads_std.js';
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
 import * as str from '../../runtime/beads_str.js';
 import * as k   from '../../runtime/beads_k.js';
-export const CODE_HASH= 0xf406dfdf;
+export const CODE_HASH= 0x37ef0b29;
 const _M = "100 doors";
 std.rtl_init();
 std.aaaa.main_init = main_init;
 std.aaaa.main_module = "100 doors";
-std.aaaa.main_drawer = new std.a_function("100 doors", "main_draw", main_draw);
+std.aaaa.main_drawer = new std.a_function("100 doors", "main_draw", main_draw, track_main_draw);
 //------- enums
 //[reflAAA]
-std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "d_doors", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck
-, VAL, std.FK_CALC, POP, POP, std.F_mod_vars, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "doors", std.F_vv_typek, VAL, std.TYPE_ARRAY);
+std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, POP, std.F_mod_vars
+, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "doors", std.F_vv_typek, VAL, std.TYPE_ARRAY);
 //[reflZZZ]
 //-------  func const
-const d_doors_F = new std.a_function("100 doors", "d_doors", d_doors, track_d_doors);
-std.FUNCS[d_doors_F.hash]=d_doors_F;
+const main_draw_F = new std.a_function("100 doors", "main_draw", main_draw, track_main_draw);
+std.FUNCS[main_draw_F.hash]=main_draw_F;
 //-------  top nodes
 let doors = new std.a_tree("100 doors","doors", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
 let color = U;
 
 //====================
-//   d_doors
+//   main_draw
 //====================
-function d_doors(b) {
+export function main_draw(b) {
+k.k_root2(b);
 k.k_enter(b);
-k.div_begin(b, new std.a_function(_M, "d_doors_cell", d_doors_cell, null), false, false, false);
+k.div_begin(b, new std.a_function(_M, "main_draw_cell", main_draw_cell, null), false, false, false);
   k.div_spa(b, 0, 2, std.al);
-  var loop7 = new std.a_loop({ limit:10 });
-  while (loop7.next()) {
+  var loop2 = new std.a_loop({ limit:10 });
+  while (loop2.next()) {
     k.div_add(b, U, 0, 20, std.al, null, 0);
     k.div_spa(b, 0, 2, std.al);
   }
   k.div_spa(b, 1, 2, std.al);
-  var loop8 = new std.a_loop({ limit:10 });
-  while (loop8.next()) {
+  var loop3 = new std.a_loop({ limit:10 });
+  while (loop3.next()) {
     k.div_add(b, U, 1, 20, std.al, null, 0);
     k.div_spa(b, 1, 2, std.al);
   }
@@ -59,9 +60,9 @@ k.k_leave(b);
 
 
 //====================
-//   d_doors_cell
+//   main_draw_cell
 //====================
-function d_doors_cell(b) {
+function main_draw_cell(b) {
   k.k_enter(b);
   color = getn(doors, getn(b.extra, std.F_cell_seq)) === Y ? std.LIGHT_GREEN : std.LIGHT_CORAL;
   std.draw_rect(b, { fill:color, thick:1 });
@@ -70,17 +71,17 @@ function d_doors_cell(b) {
 }
 
 //====================
-//   track_d_doors
+//   track_main_draw
 //====================
-function track_d_doors(b, e) {
+export function track_main_draw(b, e) {
   //---------------
   //   on EV_TAP
   //---------------
   if (std.getn(e, std.F_evkind) == std.EV_TAP) {
     if (getn(doors, getn(b.extra, std.F_cell_seq)) === Y) {
-      std.alert("Aberta");
+      std.log("Aberta");
     } else {
-      std.alert("Fechada");
+      std.log("Fechada");
     }
   return Y;
   }
@@ -88,31 +89,20 @@ function track_d_doors(b, e) {
 }
 
 //====================
-//   main_draw
-//====================
-export function main_draw(b) {
-k.k_root2(b);
-k.k_enter(b);
-  k.k_isolate(b, b.bounds, "d_doors", d_doors_F);
-k.k_leave(b);
-}
-
-
-//====================
 //   main_init
 //====================
 export function main_init() {
-  var loop9 = new std.a_loop({ from:1, to_:100 });
-  while (loop9.next()) {
-  var ix = loop9.index;
+  var loop4 = new std.a_loop({ from:1, to_:100 });
+  while (loop4.next()) {
+  var ix = loop4.index;
     std.path_setv(_M, 9, std.addr(doors, ix), N);
   }
-  var loop10 = new std.a_loop({ from:1, to_:100 });
-  while (loop10.next()) {
-  var i = loop10.index;
-    var loop11 = new std.a_loop({ from:i, to_:100, by:i });
-    while (loop11.next()) {
-    var ix = loop11.index;
+  var loop5 = new std.a_loop({ from:1, to_:100 });
+  while (loop5.next()) {
+  var i = loop5.index;
+    var loop6 = new std.a_loop({ from:i, to_:100, by:i });
+    while (loop6.next()) {
+    var ix = loop6.index;
       std.path_setv(_M, 12, std.addr(doors, ix), std.not4(getn(doors, ix)));
     }
   }
