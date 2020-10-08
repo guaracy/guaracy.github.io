@@ -78,7 +78,7 @@ beads <span class="constant">1</span> program <span class="string">"100 doors"</
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">2</span> al
 <span class="highlight-indent-guides-even">    </span><span class="function-name">cell</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>color = <span class="function-name">if</span> doors[<span class="type">b.</span>cell_seq] <span class="function-name">then</span> LIGHT_GREEN <span class="function-name">else</span> LIGHT_CORAL
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">1</span>)
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">1</span> pt)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(to_str(<span class="type">b.</span>cell_seq), <span class="variable-name">size:</span><span class="type">b.box.</span>height / <span class="constant">2</span>)
 
 <span class="function-name">track</span> EV_TAP
