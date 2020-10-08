@@ -24,7 +24,7 @@ grid main_draw
 			skip 2 al
 	cell
 		color = if doors[b.cell_seq] then LIGHT_GREEN else LIGHT_CORAL
-		draw_rect(fill:color, thick:1)
+		draw_rect(fill:color, thick:1 pt)
 		draw_str(to_str(b.cell_seq), size:b.box.height / 2)
 
 track EV_TAP
