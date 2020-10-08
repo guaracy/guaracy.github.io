@@ -17,7 +17,6 @@ grid d_doors
 		loop reps:10
 			add 20 al
 			skip 2 al
-			skip 1 al
 	vert slice
 		skip 2 al
 		loop reps:10
@@ -27,6 +26,12 @@ grid d_doors
 		color = if doors[b.cell_seq] then LIGHT_GREEN else LIGHT_CORAL
 		draw_rect(fill:color, thick:1)
 		draw_str(to_str(b.cell_seq), size:b.box.height / 2)
+
+track EV_TAP
+	if doors[b.cell_seq]
+		alert("Aberta")
+	else
+		alert("Fechada")
 
 draw main_draw
 	d_doors

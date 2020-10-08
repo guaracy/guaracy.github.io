@@ -6,36 +6,28 @@
     <style type="text/css">
     <!--
       body {
-        color: #cccccc;
-        background-color: #181a26;
+        color: #bdbdb3;
+        background-color: #212121;
       }
       .constant {
         /* font-lock-constant-face */
-        color: #a2cd5a;
+        color: #ab75c3;
       }
       .function-name {
         /* font-lock-function-name-face */
-        color: #daa520;
-      }
-      .highlight-indent-guides-even {
-        /* highlight-indent-guides-even-face */
-        background-color: #2bd12f784561;
-      }
-      .highlight-indent-guides-odd {
-        /* highlight-indent-guides-odd-face */
-        background-color: #21e824bc35b0;
+        color: #6aaf50;
       }
       .string {
         /* font-lock-string-face */
-        color: #deb887;
+        color: #bdbc61;
       }
       .type {
         /* font-lock-type-face */
-        color: #98f5ff;
+        color: #cd5542;
       }
       .variable-name {
         /* font-lock-variable-name-face */
-        color: #4eee94;
+        color: #baba36;
       }
 
       a {
@@ -55,35 +47,40 @@
 beads <span class="constant">1</span> program <span class="string">"100 doors"</span>
 
 <span class="function-name">var</span>
-<span class="highlight-indent-guides-even">    </span>doors : array of yesno
-<span class="highlight-indent-guides-even">    </span>color : color
+    doors : array of yesno
+    color : color
 
 <span class="function-name">calc</span> main_init
-<span class="highlight-indent-guides-even">    </span>loop <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">index:</span>ix
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>doors[ix] = N
-<span class="highlight-indent-guides-even">    </span>loop <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">index:</span>i
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>loop <span class="variable-name">from:</span>i <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">by:</span>i <span class="variable-name">index:</span>ix
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>doors[ix] = not doors[ix]
+    <span class="function-name">loop</span> <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">index:</span>ix
+        doors[ix] = N
+    <span class="function-name">loop</span> <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">index:</span>i
+        <span class="function-name">loop</span> <span class="variable-name">from:</span>i <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">by:</span>i <span class="variable-name">index:</span>ix
+            doors[ix] = not doors[ix]
 
 <span class="function-name">grid</span> d_doors
-<span class="highlight-indent-guides-even">    </span><span class="function-name">horz</span> slice
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>skip <span class="constant">2</span> al
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>loop <span class="variable-name">reps:</span><span class="constant">10</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>add <span class="constant">20</span> al
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">2</span> al
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">1</span> al
-<span class="highlight-indent-guides-even">    </span><span class="function-name">vert</span> slice
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>skip <span class="constant">2</span> al
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>loop <span class="variable-name">reps:</span><span class="constant">10</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>add <span class="constant">20</span> al
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">2</span> al
-<span class="highlight-indent-guides-even">    </span><span class="function-name">cell</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>color = <span class="function-name">if</span> doors[<span class="type">b.</span>cell_seq] <span class="function-name">then</span> LEMON_CHIFFON <span class="function-name">else</span> LIGHT_CORAL
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">1</span>)
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(to_str(<span class="type">b.</span>cell_seq), <span class="variable-name">size:</span><span class="type">b.box.</span>height / <span class="constant">2</span>)
+    <span class="function-name">horz</span> slice
+        skip <span class="constant">2</span> al
+        <span class="function-name">loop</span> <span class="variable-name">reps:</span><span class="constant">10</span>
+            add <span class="constant">20</span> al
+            skip <span class="constant">2</span> al
+    <span class="function-name">vert</span> slice
+        skip <span class="constant">2</span> al
+        <span class="function-name">loop</span> <span class="variable-name">reps:</span><span class="constant">10</span>
+            add <span class="constant">20</span> al
+            skip <span class="constant">2</span> al
+    <span class="function-name">cell</span>
+        color = <span class="function-name">if</span> doors[<span class="type">b.</span>cell_seq] <span class="function-name">then</span> LIGHT_GREEN <span class="function-name">else</span> LIGHT_CORAL
+        draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">1</span>)
+        draw_str(to_str(<span class="type">b.</span>cell_seq), <span class="variable-name">size:</span><span class="type">b.box.</span>height / <span class="constant">2</span>)
+
+<span class="function-name">track</span> EV_TAP
+    <span class="function-name">if</span> doors[<span class="type">b.</span>cell_seq]
+        alert(<span class="string">"Aberta"</span>)
+    <span class="function-name">else</span>
+        alert(<span class="string">"Fechada"</span>)
 
 <span class="function-name">draw</span> main_draw
-<span class="highlight-indent-guides-even">    </span>d_doors
+    d_doors
 </pre>
   </body>
 </html>
