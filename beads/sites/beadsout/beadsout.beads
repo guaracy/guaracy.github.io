@@ -1,0 +1,89 @@
+beads 1 program beadsout
+
+const
+	n = 5
+	ci = WHITE
+	ce = GRAY7
+	sz = 80 pt
+	GRAD : a_gradient = { grad_shape:RADIAL_GRADIENT, grad_centerx:0.5, grad_centery:0.5, 
+		grad_stops:[{ stop_pos:0, stop_color:ci },
+					{ stop_pos:200, stop_color:ce }] }
+
+var
+	board : array^2 of yesno
+	moves : array of num
+	level : num
+	color : color
+
+calc shuffle 
+	var
+		j : num
+		temp : any
+	loop across:moves index:i
+		j = random_int(1,n)
+		temp = moves[i]
+		moves[i] = moves[j]
+		moves[j] = temp
+
+calc check_all_off : yesno
+	loop from:1 to:n index:row
+		loop from:1 to:n index:col
+			if board[row,col]
+				return N
+	return Y
+
+calc switch_on (
+	row : num
+	col : num
+	)
+	board[row,col] = not board[row,col]
+	if row > 1
+		board[row-1,col] = not board[row-1,col]		
+	if row < n
+		board[row+1,col] = not board[row+1,col]		
+	if col > 1
+		board[row,col-1] = not board[row,col-1]		
+	if col < n
+		board[row,col+1] = not board[row,col+1]		
+	
+calc init_board
+	loop from:1 to:n index:row
+		loop from:1 to:n index:col
+			board[row,col] = N
+	loop from:1 to:level index:ix
+		switch_on(idiv(moves[ix],n)+1,rem(moves[ix],n)+1)
+
+
+calc main_init
+	level = 1
+	loop from:1 to:n*n index:ix
+		moves[ix] = ix
+	shuffle
+	init_board()
+	
+grid beads_out
+	horz slice
+		//skip 2 al
+		loop reps:n
+			add sz pt
+			//skip 2 al
+	vert slice
+		//skip 2 al
+		loop reps:n
+			add sz pt
+			//skip 2 al
+	cell
+		if board[b.cell.y,b.cell.x]
+			draw_rect(grad:GRAD, thick:1 pt)
+		else
+			draw_rect(fill:ce, thick:1 pt)
+
+draw main_draw
+	beads_out()
+
+track EV_TAP
+	switch_on(b.cell.y,b.cell.x)
+	if check_all_off()
+		shuffle
+		level = level + 1
+		init_board()

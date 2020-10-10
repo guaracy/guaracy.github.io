@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>beadsout</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<style>
+/*  this disables the annoying double click highlighting of DIV blocks  */
+div { outline-style:none;}
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<script type="module">
+import * as std from '../../runtime/beads_std.js';
+import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
+import * as str from '../../runtime/beads_str.js';
+import * as k   from '../../runtime/beads_k.js';
+export const CODE_HASH= 0x54439e88;
+const _M = "beadsout";
+std.rtl_init();
+std.aaaa.main_init = main_init;
+std.aaaa.main_module = "beadsout";
+std.aaaa.main_drawer = new std.a_function("beadsout", "main_draw", main_draw, track_main_draw);
+//------- enums
+//[reflAAA]
+std.merge_lit(_M,0,std.META,_M, std.F_mod_const, "GRAD", std.F_vv_rec, VAL, "a_gradient", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "ce", std.F_vv_typek, VAL, std.TYPE_COLOR
+, POP, "ci", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "n", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "sz", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, std.F_mod_funcs, "beads_out"
+, std.F_vv_funck, VAL, std.FK_DRAW, POP, "check_all_off", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "init_board", std.F_vv_funck, VAL, std.FK_CALC
+, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, "shuffle", std.F_vv_funck, VAL, std.FK_CALC, POP, "switch_on"
+, std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "row", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 2, std.F_vv_parmk
+, VAL, std.PK_POS, std.F_vv_parmn, VAL, "col", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, POP, std.F_mod_vars, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY2, POP, "color"
+, std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "level", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "moves", std.F_vv_typek, VAL, std.TYPE_ARRAY);
+//[reflZZZ]
+//-------  func const
+const shuffle_F = new std.a_function("beadsout", "shuffle", shuffle);
+std.FUNCS[shuffle_F.hash]=shuffle_F;
+const main_draw_F = new std.a_function("beadsout", "main_draw", main_draw, track_main_draw);
+std.FUNCS[main_draw_F.hash]=main_draw_F;
+//-------  top nodes
+const n = 5;
+const ci = std.WHITE;
+const ce = std.GRAY7;
+const sz = std.pt_to_dots(b, 80);
+const GRAD = new std.a_tree("beadsout","GRAD", std.NF_TOPLEVEL|std.NF_LOGGED, std.tree_lit(_M, 8, std.F_grad_shape, VAL, std.RADIAL_GRADIENT, std.F_grad_centerx, VAL, 0.5, 
+std.F_grad_centery, VAL, 0.5, std.F_grad_stops, 1, std.F_stop_pos, VAL, 0, std.F_stop_color, VAL, ci, POP, 2, std.F_stop_pos, VAL, 200, std.F_stop_color, VAL, ce, POP, POP
+));
+let board = new std.a_tree("beadsout","board", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+let moves = new std.a_tree("beadsout","moves", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+let level = U;
+let color = U;
+
+//====================
+//   beads_out
+//====================
+function beads_out(b) {
+k.k_enter(b);
+k.div_begin(b, new std.a_function(_M, "beads_out_cell", beads_out_cell, null), false, false, false);
+  var loop178 = new std.a_loop({ limit:n });
+  while (loop178.next()) {
+    k.div_add(b, U, 0, sz, std.pt, null, 0);
+  }
+  var loop179 = new std.a_loop({ limit:n });
+  while (loop179.next()) {
+    k.div_add(b, U, 1, sz, std.pt, null, 0);
+  }
+  k.div_end(b);
+  k.draw_grid(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   beads_out_cell
+//====================
+function beads_out_cell(b) {
+  k.k_enter(b);
+  if (getn(board, getn(b.extra, std.F_cell, std.F_y), getn(b.extra, std.F_cell, std.F_x)) === Y) {
+    std.draw_rect(b, { grad:std.addr(GRAD), thick:std.pt_to_dots(b, 1) });
+  } else {
+    std.draw_rect(b, { fill:ce, thick:std.pt_to_dots(b, 1) });
+  }
+  k.k_leave(b);
+}
+
+//====================
+//   main_draw
+//====================
+export function main_draw(b) {
+k.k_root2(b);
+k.k_enter(b);
+  beads_out(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   track_main_draw
+//====================
+export function track_main_draw(b, e) {
+  //---------------
+  //   on EV_TAP
+  //---------------
+  if (std.getn(e, std.F_evkind) == std.EV_TAP) {
+    switch_on(getn(b.extra, std.F_cell, std.F_y), getn(b.extra, std.F_cell, std.F_x));
+    if (check_all_off() === Y) {
+      shuffle();
+      level = std.add(level, 1);
+      init_board();
+    }
+  return Y;
+  }
+  return N;
+}
+
+//====================
+//   check_all_off
+//====================
+function check_all_off() {
+  var loop180 = new std.a_loop({ from:1, to_:n });
+  while (loop180.next()) {
+  var row = loop180.index;
+    var loop181 = new std.a_loop({ from:1, to_:n });
+    while (loop181.next()) {
+    var col = loop181.index;
+      if (getn(board, row, col) === Y) {
+        return N;
+      }
+    }
+  }
+  return Y;
+}
+
+
+//====================
+//   init_board
+//====================
+function init_board() {
+  var loop182 = new std.a_loop({ from:1, to_:n });
+  while (loop182.next()) {
+  var row = loop182.index;
+    var loop183 = new std.a_loop({ from:1, to_:n });
+    while (loop183.next()) {
+    var col = loop183.index;
+      std.path_setv(_M, 52, std.addr(board, row, col), N);
+    }
+  }
+  var loop184 = new std.a_loop({ from:1, to_:level });
+  while (loop184.next()) {
+  var ix = loop184.index;
+    switch_on(std.add(std.idiv(getn(moves, ix), n, {}), 1), std.add(std.rem(getn(moves, ix), n, {}), 1));
+  }
+}
+
+
+//====================
+//   main_init
+//====================
+export function main_init() {
+  level = 1;
+  var loop185 = new std.a_loop({ from:1, to_:std.mul(n, n) });
+  while (loop185.next()) {
+  var ix = loop185.index;
+    std.path_setv(_M, 60, std.addr(moves, ix), ix);
+  }
+  shuffle();
+  init_board();
+}
+
+
+//====================
+//   shuffle
+//====================
+function shuffle() {
+  let j = U;
+  let temp = null;
+  var loop186 = new std.a_loop({ across:std.addr(moves) });
+  while (loop186.next()) {
+  var i = loop186.index;
+    j = std.random_int(1, n);
+    temp = getn(moves, i);
+    std.path_setv(_M, 25, std.addr(moves, i), getn(moves, j));
+    std.path_setv(_M, 26, std.addr(moves, j), temp);
+  }
+}
+
+
+//====================
+//   switch_on
+//====================
+function switch_on(row, col) {
+  std.path_setv(_M, 39, std.addr(board, row, col), std.not4(getn(board, row, col)));
+  if (std.gt2(row, 1)) {
+    std.path_setv(_M, 41, std.addr(board, std.sub(row, 1), col), std.not4(getn(board, std.sub(row, 1), col)));
+  }
+  if (std.lt2(row, n)) {
+    std.path_setv(_M, 43, std.addr(board, std.add(row, 1), col), std.not4(getn(board, std.add(row, 1), col)));
+  }
+  if (std.gt2(col, 1)) {
+    std.path_setv(_M, 45, std.addr(board, row, std.sub(col, 1)), std.not4(getn(board, row, std.sub(col, 1))));
+  }
+  if (std.lt2(col, n)) {
+    std.path_setv(_M, 47, std.addr(board, row, std.add(col, 1)), std.not4(getn(board, row, std.add(col, 1))));
+  }
+}
+
+main_init();
+k.rebuild_all();
+
+</script>
+</body>
+</html>
