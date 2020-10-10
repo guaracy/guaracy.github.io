@@ -16,7 +16,7 @@ import * as std from '../../runtime/beads_std.js';
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
 import * as str from '../../runtime/beads_str.js';
 import * as k   from '../../runtime/beads_k.js';
-export const CODE_HASH= 0x257a0adc;
+export const CODE_HASH= 0xfdc2e3c2;
 const _M = "beadsout";
 std.rtl_init();
 std.aaaa.main_init = main_init;
@@ -41,7 +41,7 @@ std.FUNCS[main_draw_F.hash]=main_draw_F;
 const n = 5;
 const ci = std.WHITE;
 const ce = std.GRAY7;
-const sz = 80;
+const sz = 20;
 const GRAD = new std.a_tree("beadsout","GRAD", std.NF_TOPLEVEL|std.NF_LOGGED, std.tree_lit(_M, 8, std.F_grad_shape, VAL, std.RADIAL_GRADIENT, std.F_grad_centerx, VAL, 0.5, 
 std.F_grad_centery, VAL, 0.5, std.F_grad_stops, 1, std.F_stop_pos, VAL, 0, std.F_stop_color, VAL, ci, POP, 2, std.F_stop_pos, VAL, 200, std.F_stop_color, VAL, ce, POP, POP
 ));
@@ -56,12 +56,12 @@ let color = U;
 function beads_out(b) {
 k.k_enter(b);
 k.div_begin(b, new std.a_function(_M, "beads_out_cell", beads_out_cell, null), false, false, false);
-  var loop196 = new std.a_loop({ limit:n });
-  while (loop196.next()) {
+  var loop205 = new std.a_loop({ limit:n });
+  while (loop205.next()) {
     k.div_add(b, U, 0, sz, std.pt, null, 0);
   }
-  var loop197 = new std.a_loop({ limit:n });
-  while (loop197.next()) {
+  var loop206 = new std.a_loop({ limit:n });
+  while (loop206.next()) {
     k.div_add(b, U, 1, sz, std.pt, null, 0);
   }
   k.div_end(b);
@@ -117,12 +117,12 @@ export function track_main_draw(b, e) {
 //   check_all_off
 //====================
 function check_all_off() {
-  var loop198 = new std.a_loop({ from:1, to_:n });
-  while (loop198.next()) {
-  var row = loop198.index;
-    var loop199 = new std.a_loop({ from:1, to_:n });
-    while (loop199.next()) {
-    var col = loop199.index;
+  var loop207 = new std.a_loop({ from:1, to_:n });
+  while (loop207.next()) {
+  var row = loop207.index;
+    var loop208 = new std.a_loop({ from:1, to_:n });
+    while (loop208.next()) {
+    var col = loop208.index;
       if (getn(board, row, col) === Y) {
         return N;
       }
@@ -136,18 +136,18 @@ function check_all_off() {
 //   init_board
 //====================
 function init_board() {
-  var loop200 = new std.a_loop({ from:1, to_:n });
-  while (loop200.next()) {
-  var row = loop200.index;
-    var loop201 = new std.a_loop({ from:1, to_:n });
-    while (loop201.next()) {
-    var col = loop201.index;
+  var loop209 = new std.a_loop({ from:1, to_:n });
+  while (loop209.next()) {
+  var row = loop209.index;
+    var loop210 = new std.a_loop({ from:1, to_:n });
+    while (loop210.next()) {
+    var col = loop210.index;
       std.path_setv(_M, 52, std.addr(board, row, col), N);
     }
   }
-  var loop202 = new std.a_loop({ from:1, to_:level });
-  while (loop202.next()) {
-  var ix = loop202.index;
+  var loop211 = new std.a_loop({ from:1, to_:level });
+  while (loop211.next()) {
+  var ix = loop211.index;
     switch_on(std.add(std.idiv(getn(moves, ix), n, {}), 1), std.add(std.rem(getn(moves, ix), n, {}), 1));
   }
 }
@@ -158,9 +158,9 @@ function init_board() {
 //====================
 export function main_init() {
   level = 1;
-  var loop203 = new std.a_loop({ from:1, to_:std.mul(n, n) });
-  while (loop203.next()) {
-  var ix = loop203.index;
+  var loop212 = new std.a_loop({ from:1, to_:std.mul(n, n) });
+  while (loop212.next()) {
+  var ix = loop212.index;
     std.path_setv(_M, 60, std.addr(moves, ix), ix);
   }
   shuffle();
@@ -174,9 +174,9 @@ export function main_init() {
 function shuffle() {
   let j = U;
   let temp = null;
-  var loop204 = new std.a_loop({ across:std.addr(moves) });
-  while (loop204.next()) {
-  var i = loop204.index;
+  var loop213 = new std.a_loop({ across:std.addr(moves) });
+  while (loop213.next()) {
+  var i = loop213.index;
     j = std.random_int(1, n);
     temp = getn(moves, i);
     std.path_setv(_M, 25, std.addr(moves, i), getn(moves, j));
