@@ -4,7 +4,7 @@ const
 	n = 5
 	ci = WHITE
 	ce = GRAY7
-	sz = 80 pt
+	sz = 80
 	GRAD : a_gradient = { grad_shape:RADIAL_GRADIENT, grad_centerx:0.5, grad_centery:0.5, 
 		grad_stops:[{ stop_pos:0, stop_color:ci },
 					{ stop_pos:200, stop_color:ce }] }
