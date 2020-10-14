@@ -1,34 +1,42 @@
+// https://en.wikipedia.org/wiki/Lights_Out_(game)
+// https://github.com/HaikuArchives/LightsOff
 beads 1 program beadsout
+
+record game_status
+	level
+	moves
+	board : array^2 of yesno
+	phase  : ( PHASE_GAME, PHASE_WON )
 
 const
 	n = 5
-	ci = WHITE
-	ce = GRAY7
-	sz = 20
+	ci = #ff0000
+	ce = #550000
+	bg = #880000
 	GRAD : a_gradient = { grad_shape:RADIAL_GRADIENT, grad_centerx:0.5, grad_centery:0.5, 
-		grad_stops:[{ stop_pos:0, stop_color:ci },
-					{ stop_pos:200, stop_color:ce }] }
+		grad_stops:[{ stop_pos:30, stop_color:ci },
+					{ stop_pos:100, stop_color:ce }] }
+
+	packs : array of num = [@+
+		0x00005400 0x015a82b5 0x00adef6a 0x01b88360 0x01bc5eef,
+		0x00ead400 0x00f8c62f 0x00aaa880 0x007d3bea 0x000039ce,
+		0x00ead6b5 0x00a76d5f 0x0022aa88 0x00210800 0x00010040,
+		0x01f08421 0x01f71000 0x00455544 0x01505415 0x00004400,
+		0x0021385e 0x00e8c62e 0x00467000 0x012fc400 0x01e79c61,
+		0x0118fe31 0x004211c4 0x01ce7000 0x00000040 0x00001000,
+		0x011cd671 0x01f1111f 0x0198d508 0x01eb4634 0x000ac558,
+		0x011fc544 0x000739c0 0x01555555 0x00a60c2a 0x00002800,
+		0x00421151 0x00749d27 0x00e11d71 0x00e27f60 0x0157f0ae,
+		0x00477dc4 0x010917e4 0x00089220 0x01151151 0x01ffffff]@-
 
 var
-	board : array^2 of yesno
-	moves : array of num
-	level : num
+	g : game_status
 	color : color
-
-calc shuffle 
-	var
-		j : num
-		temp : any
-	loop across:moves index:i
-		j = random_int(1,n)
-		temp = moves[i]
-		moves[i] = moves[j]
-		moves[j] = temp
 
 calc check_all_off : yesno
 	loop from:1 to:n index:row
 		loop from:1 to:n index:col
-			if board[row,col]
+			if g.board[row,col]
 				return N
 	return Y
 
@@ -36,54 +44,132 @@ calc switch_on (
 	row : num
 	col : num
 	)
-	board[row,col] = not board[row,col]
+	inc g.moves
+	toggle g.board[row,col]
 	if row > 1
-		board[row-1,col] = not board[row-1,col]		
+		toggle g.board[row-1,col]
 	if row < n
-		board[row+1,col] = not board[row+1,col]		
+		toggle g.board[row+1,col]
 	if col > 1
-		board[row,col-1] = not board[row,col-1]		
+		toggle g.board[row,col-1]
 	if col < n
-		board[row,col+1] = not board[row,col+1]		
-	
-calc init_board
-	loop from:1 to:n index:row
-		loop from:1 to:n index:col
-			board[row,col] = N
-	loop from:1 to:level index:ix
-		switch_on(idiv(moves[ix],n)+1,rem(moves[ix],n)+1)
+		toggle g.board[row,col+1]
 
+// Bit string not yet implemented in the compiler - workaround
+calc init_board
+	var
+		b = packs[g.level]
+		s = pad_left(to_str(b,base:2),25,pad:'0')
+		s1 : str
+	loop from:1 to:5 index:row
+		s1 = ""
+		loop from:1 to:5 index:col
+			g.board[row,col] = subset(s,from:(row - 1) * 5 + col,len:1) == "1"
+	g.moves = 0
 
 calc main_init
-	level = 1
-	loop from:1 to:n*n index:ix
-		moves[ix] = ix
-	shuffle
+	g.level = 1
+	g.moves = 0
+	g.phase ⇐ PHASE_GAME
+	init_board()
+
+draw main_draw  --  main draw function
+	//  if portrait mode, put history below
+	case g.phase
+	| PHASE_GAME
+		log "PHASE_GAME"
+		if bb.width / bb.height > 1.25
+			landscape_layout
+		elif bb.height / bb.width > 1.25
+			portrait_layout
+	| PHASE_WON
+		log "FASE_WON"
+		d_congrats
+
+horz slice landscape_layout
+	add 10 al title_and_buttons
+	add bb.height px beads_out
+
+vert slice portrait_layout
+	add 10 al title_and_buttons
+	add bb.width px beads_out		
+
+vert slice title_and_buttons
+	under
+		draw_rect(fill:bg)
+	add 5 al
+		draw_rect(fill:WHITE)
+		draw_str("Lights Off",bold:Y,color:bg,size:0.5)
+	skip 10 al
+	add 5 al
+		draw_str("Level: {g.level}",color:WHITE,size:0.5)
+	add 5 al
+		draw_str("Moves: {g.moves}",color:WHITE,size:0.5)
+	add 2 al buttons
+	skip 1 al
+
+horz slice buttons
+	add 30 al
+		draw_rect(fill:GRAY,thick:1 pt)
+		draw_str("Next",color:WHITE,size:0.8)
+	add 30 al
+		draw_rect(fill:GRAY,thick:1 pt)
+		draw_str("Prev",color:WHITE,size:0.8)
+	add 30 al
+		draw_rect(fill:GRAY,thick:1 pt)
+		draw_str("Rest",color:WHITE,size:0.8)
+track EV_TAP
+	var
+		seg = bb.width / 3
+	if e.x < seg
+		if g.level < tree_count(packs)
+			inc g.level
+	elif e.x < (bb.width - seg)
+		if g.level > 1
+			dec g.level
 	init_board()
 	
 grid beads_out
 	horz slice
-		//skip 2 al
+		skip 1 al
 		loop reps:n
-			add sz pt
-			//skip 2 al
+			add 50 al
+			skip 1 al
 	vert slice
-		//skip 2 al
+		skip 1 al
 		loop reps:n
-			add sz pt
-			//skip 2 al
+			add 50 al
+			skip 1 al
+	under
+		draw_rect(fill:bg)
 	cell
-		if board[b.cell.y,b.cell.x]
-			draw_rect(grad:GRAD, thick:1 pt)
+		if g.board[b.cell.y,b.cell.x]
+			draw_rect(grad:GRAD) //,color:WHITE,thick:1 pt)
 		else
-			draw_rect(fill:ce, thick:1 pt)
-
-draw main_draw
-	beads_out()
-
+			draw_rect(fill:ce) //,color:WHITE,thick:1 pt)
 track EV_TAP
 	switch_on(b.cell.y,b.cell.x)
 	if check_all_off()
-		shuffle
-		level = level + 1
-		init_board()
+		g.phase ⇐ PHASE_WON
+		//inc g.level
+		//init_board()
+
+
+draw d_congrats  // overlay of main screen, used to notify winning
+	//  b.box is same size as entire screen
+	draw_rect(fill:WHITE, opacity:0.8)  // dim the whole screen
+	var boxw ⇐ min(b.box.width*0.8, 280 pt)
+
+	//  draw text
+	var r <=== solve_rect(basis:b.box, pin:MID_CENTER, width:boxw, height:boxw*0.6)
+	draw_rect(box:r, fill:WHITE, color:GRAY, thick:2 pt, corner:2 pt)
+	draw_str("Congratulations\n\nYou've completed level {g.level} in just {g.moves} Moves", box:r, indent:10 pt, vert:0.2, size:r.height/9)
+
+	//  draw an okay button
+	var r2 <=== solve_rect(basis:r, pin:BOT_CENTER, dy:-r.height*0.15, width:r.width/4, height:r.height/6)
+	draw_rect(box:r2, color:CRIMSON, thick:2 pt)
+	draw_str("OK", box:r2, size:r2.height*0.5, color:CRIMSON)
+track EV_TAP
+	inc g.level
+	init_board()
+	g.phase = PHASE_GAME
