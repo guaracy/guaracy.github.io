@@ -1,0 +1,45 @@
+beads 1 program grids
+
+grid d_grid
+	horz slice
+		loop reps:5 count:cx
+			add 20 al
+			if cx < 5
+				skip 1 al
+	vert slice
+		loop reps:3 count:cx
+			add 20 al
+			if cx < 3
+				skip 1 al
+	cell
+		draw_rect(fill:POWDER_BLUE)
+		if b.cell_seq == 8
+			draw_str("MID",color:RED,size:0.5)		
+		else
+			draw_str("{b.cell.x}x{b.cell.y}")
+
+vert slice d_vertical
+	skip 1 al
+	loop reps:3 count:cx
+		if cx <>2
+			add 10 al
+				draw_rect(fill:GRAY1)
+				draw_str("V")
+		else
+			add 10 al d_grid
+		skip 1 al
+
+horz slice main_draw
+	add 20 al
+		draw_rect(fill:PEACH_PUFF)
+		draw_str("LEFT")
+	skip 2 pt
+	add 20 al
+		draw_rect(fill:DARK_ORANGE)
+		draw_str("CENTER")
+	skip 1 al
+	add 20 al  d_vertical
+	skip 1 al
+	
+
+

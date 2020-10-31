@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>grids</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<style>
+/*  this disables the annoying double click highlighting of DIV blocks  */
+div { outline-style:none;}
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<script type="module">
+import * as std from '../../runtime/beads_std.js';
+import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
+import * as str from '../../runtime/beads_str.js';
+import * as k   from '../../runtime/beads_k.js';
+export const CODE_HASH= 0x5ecce4e9;
+const _M = "grids";
+std.rtl_init();
+std.aaaa.main_drawer = new std.a_function("grids", "main_draw", main_draw);
+//------- enums
+//[reflAAA]
+std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "d_grid", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_vertical", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_vertical_26", std.F_vv_funck
+, VAL, std.FK_DRAW, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_draw_34", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_draw_38", std.F_vv_funck, VAL, std.FK_DRAW
+);
+//[reflZZZ]
+//-------  func const
+const main_draw_34_F = new std.a_function("grids", "main_draw_34", main_draw_34);
+std.FUNCS[main_draw_34_F.hash]=main_draw_34_F;
+const d_vertical_F = new std.a_function("grids", "d_vertical", d_vertical);
+std.FUNCS[d_vertical_F.hash]=d_vertical_F;
+const d_vertical_26_F = new std.a_function("grids", "d_vertical_26", d_vertical_26);
+std.FUNCS[d_vertical_26_F.hash]=d_vertical_26_F;
+const main_draw_38_F = new std.a_function("grids", "main_draw_38", main_draw_38);
+std.FUNCS[main_draw_38_F.hash]=main_draw_38_F;
+const d_grid_F = new std.a_function("grids", "d_grid", d_grid);
+std.FUNCS[d_grid_F.hash]=d_grid_F;
+//-------  top nodes
+
+//====================
+//   d_grid
+//====================
+function d_grid(b) {
+k.k_enter(b);
+k.div_begin(b, new std.a_function(_M, "d_grid_cell", d_grid_cell, null), false, false, false);
+  var loop32 = new std.a_loop({ limit:5 });
+  while (loop32.next()) {
+  var cx = loop32.count;
+    k.div_add(b, U, 0, 20, std.al, null, 0);
+    if (std.lt2(cx, 5)) {
+      k.div_spa(b, 0, 1, std.al);
+    }
+  }
+  var loop33 = new std.a_loop({ limit:3 });
+  while (loop33.next()) {
+  var cx = loop33.count;
+    k.div_add(b, U, 1, 20, std.al, null, 0);
+    if (std.lt2(cx, 3)) {
+      k.div_spa(b, 1, 1, std.al);
+    }
+  }
+  k.div_end(b);
+  k.draw_grid(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   d_grid_cell
+//====================
+function d_grid_cell(b) {
+  k.k_enter(b);
+  std.draw_rect(b, { fill:std.POWDER_BLUE });
+  if (std.eq2(getn(b.extra, std.F_cell_seq), 8)) {
+    std.draw_str(b, "MID", { color:std.RED, size:0.5 });
+  } else {
+    std.draw_str(b, std.cat("", str.to_str(getn(b.extra, std.F_cell, std.F_x), {show_u:Y, digits:0}), "x", str.to_str(getn(b.extra, std.F_cell, std.F_y), {show_u:Y, digits:0})
+    ), {});
+  }
+  k.k_leave(b);
+}
+
+//====================
+//   d_vertical
+//====================
+function d_vertical(b) {
+k.k_enter(b);
+k.div_begin(b, null, false, false, false);
+  k.div_spa(b, 1, 1, std.al);
+  var loop34 = new std.a_loop({ limit:3 });
+  while (loop34.next()) {
+  var cx = loop34.count;
+    if (std.ne2(cx, 2)) {
+      k.div_add(b, U, 1, 10, std.al, d_vertical_26_F, 0);
+    } else {
+      k.div_add(b, U, 1, 10, std.al, d_grid_F, 0);
+    }
+    k.div_spa(b, 1, 1, std.al);
+  }
+  k.div_end(b);
+  k.draw_slices(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   main_draw
+//====================
+export function main_draw(b) {
+k.k_root2(b);
+k.k_enter(b);
+k.div_begin(b, null, false, false, false);
+  k.div_add(b, U, 0, 20, std.al, main_draw_34_F, 0);
+  k.div_spa(b, 0, 2, std.pt);
+  k.div_add(b, U, 0, 20, std.al, main_draw_38_F, 0);
+  k.div_spa(b, 0, 1, std.al);
+  k.div_add(b, U, 0, 20, std.al, d_vertical_F, 0);
+  k.div_spa(b, 0, 1, std.al);
+  k.div_end(b);
+  k.draw_slices(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   d_vertical_26
+//====================
+function d_vertical_26(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.GRAY1 });
+  std.draw_str(b, "V", {});
+k.k_leave(b);
+}
+
+
+//====================
+//   main_draw_34
+//====================
+export function main_draw_34(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.PEACH_PUFF });
+  std.draw_str(b, "LEFT", {});
+k.k_leave(b);
+}
+
+
+//====================
+//   main_draw_38
+//====================
+export function main_draw_38(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.DARK_ORANGE });
+  std.draw_str(b, "CENTER", {});
+k.k_leave(b);
+}
+
+k.rebuild_all();
+
+</script>
+</body>
+</html>
