@@ -66,7 +66,6 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span><span class="variable-name">file:</span> <span class="string">"switch.ogg"</span> <span class="function-name">label</span>:SWITCH
 <span class="highlight-indent-guides-even">    </span><span class="variable-name">file:</span> <span class="string">"won.wav"</span> <span class="function-name">label</span>:YOUWON
 
-
 <span class="function-name">record</span> game_status
 <span class="highlight-indent-guides-even">    </span>level
 <span class="highlight-indent-guides-even">    </span>moves
@@ -120,7 +119,7 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span><span class="function-name">if</span> col &lt; n
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>toggle <span class="type">g.</span>board[row,col+<span class="constant">1</span>]
 
-<span class="comment">// Bit string not yet implemented in the compiler - workaround</span>
+<span class="comment">// Bit string not yet implemented in the compiler - workaround :)</span>
 <span class="function-name">calc</span> init_board
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>b = packs[<span class="type">g.</span>level]
@@ -139,18 +138,13 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span>init_board()
 
 <span class="function-name">draw</span> main_draw  <span class="comment">--  main draw function</span>
-<span class="highlight-indent-guides-even">    </span><span class="comment">//  if portrait mode, put history below</span>
-<span class="highlight-indent-guides-even">    </span><span class="function-name">case</span> <span class="type">g.</span>phase
-<span class="highlight-indent-guides-even">    </span>| PHASE_GAME
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">log</span> <span class="string">"PHASE_GAME"</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">if</span> <span class="type">bb.</span>width / <span class="type">bb.</span>height &gt; <span class="constant">1.25</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>landscape_layout
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">elif</span> <span class="type">bb.</span>height / <span class="type">bb.</span>width &gt; <span class="constant">1.25</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>portrait_layout
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">else</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>square_layout
-            
-<span class="highlight-indent-guides-even">    </span>| PHASE_WON
+<span class="highlight-indent-guides-even">    </span><span class="function-name">if</span> <span class="type">bb.</span>width / <span class="type">bb.</span>height &gt; <span class="constant">1.25</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>landscape_layout
+<span class="highlight-indent-guides-even">    </span><span class="function-name">elif</span> <span class="type">bb.</span>height / <span class="type">bb.</span>width &gt; <span class="constant">1.25</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>portrait_layout
+<span class="highlight-indent-guides-even">    </span><span class="function-name">else</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>square_layout
+<span class="highlight-indent-guides-even">    </span><span class="function-name">if</span> <span class="type">g.</span>phase == PHASE_WON
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">log</span> <span class="string">"FASE_WON"</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>d_congrats
 
@@ -218,9 +212,9 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>bg)
 <span class="highlight-indent-guides-even">    </span><span class="function-name">cell</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">if</span> <span class="type">g.</span>board[<span class="type">b.</span><span class="function-name">cell</span>.y,<span class="type">b.</span><span class="function-name">cell</span>.x]
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">grad:</span>GRAD) <span class="comment">//,color:WHITE,thick:1 pt)</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">grad:</span>GRAD)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">else</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">fill:</span>ce) <span class="comment">//,color:WHITE,thick:1 pt)</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">fill:</span>ce)
 <span class="function-name">track</span> EV_TAP
 <span class="highlight-indent-guides-even">    </span>sound_play(SWITCH)
 <span class="highlight-indent-guides-even">    </span>toggle_light(<span class="type">b.</span><span class="function-name">cell</span>.y,<span class="type">b.</span><span class="function-name">cell</span>.x)
@@ -229,13 +223,11 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="type">g.</span>phase &#8656; PHASE_WON
 
 <span class="function-name">draw</span> d_congrats  
-<span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">fill:</span>BLACK, <span class="variable-name">opacity:</span><span class="constant">0.3</span>)  <span class="comment">// dim the whole screen</span>
+<span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">fill:</span>WHITE, <span class="variable-name">opacity:</span><span class="constant">0.8</span>)  <span class="comment">// dim the whole screen</span>
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span> boxw &#8656; min(<span class="type">b.box.</span>width*<span class="constant">0.8</span>, <span class="constant">280</span> pt)
-
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span> r &lt;=== solve_rect(<span class="variable-name">basis:</span><span class="type">b.</span>box, <span class="variable-name">pin:</span>MID_CENTER, <span class="variable-name">width:</span>boxw, <span class="variable-name">height:</span>boxw*<span class="constant">0.6</span>)
 <span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">box:</span>r, <span class="variable-name">fill:</span>WHITE, <span class="variable-name">color:</span>GRAY, <span class="variable-name">thick:</span><span class="constant">2</span> pt, <span class="variable-name">corner:</span><span class="constant">2</span> pt)
-<span class="highlight-indent-guides-even">    </span>draw_str(<span class="string">"Congratulations\n\nYou've completed level {g.level} in just {g.moves} Moves"</span>, <span class="variable-name">box:</span>r, <span class="variable-name">indent:</span><span class="constant">10</span> pt, <span class="function-name">vert</span>:<span class="constant">0.2</span>, <span class="variable-name">size:</span><span class="type">r.</span>height/<span class="constant">9</span>)
-
+<span class="highlight-indent-guides-even">    </span>draw_str(<span class="string">"Congratulations!!\n\nYou've completed level {g.level} in just {g.moves} Moves"</span>, <span class="variable-name">box:</span>r, <span class="variable-name">indent:</span><span class="constant">10</span> pt, <span class="function-name">vert</span>:<span class="constant">0.2</span>, <span class="variable-name">size:</span><span class="type">r.</span>height/<span class="constant">9</span>)
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span> r2 &lt;=== solve_rect(<span class="variable-name">basis:</span>r, <span class="variable-name">pin:</span>BOT_CENTER, <span class="variable-name">dy:</span><span class="type">-r.</span>height*<span class="constant">0.15</span>, <span class="variable-name">width:</span><span class="type">r.</span>width/<span class="constant">4</span>, <span class="variable-name">height:</span><span class="type">r.</span>height/<span class="constant">6</span>)
 <span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">box:</span>r2, <span class="variable-name">color:</span>CRIMSON, <span class="variable-name">thick:</span><span class="constant">1</span> pt)
 <span class="highlight-indent-guides-even">    </span>draw_str(<span class="string">"OK"</span>, <span class="variable-name">box:</span>r2, <span class="variable-name">size:</span><span class="type">r2.</span>height*<span class="constant">0.5</span>, <span class="variable-name">color:</span>CRIMSON)
