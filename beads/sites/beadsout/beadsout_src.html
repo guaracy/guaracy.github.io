@@ -97,7 +97,7 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="function-name">var</span>
 <span class="highlight-indent-guides-even">    </span>g : game_status
 <span class="highlight-indent-guides-even">    </span>color : color
-
+    
 <span class="function-name">calc</span> check_all_off : yesno
 <span class="highlight-indent-guides-even">    </span><span class="function-name">loop</span> <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span>n <span class="variable-name">index:</span>row
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">loop</span> <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span>n <span class="variable-name">index:</span>col
@@ -105,7 +105,7 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">return</span> N
 <span class="highlight-indent-guides-even">    </span><span class="function-name">return</span> Y
 
-<span class="function-name">calc</span> switch_on (
+<span class="function-name">calc</span> toggle_light (
 <span class="highlight-indent-guides-even">    </span>row : num
 <span class="highlight-indent-guides-even">    </span>col : num
 <span class="highlight-indent-guides-even">    </span>)
@@ -147,42 +147,50 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>landscape_layout
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">elif</span> <span class="type">bb.</span>height / <span class="type">bb.</span>width &gt; <span class="constant">1.25</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>portrait_layout
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">else</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>square_layout
+            
 <span class="highlight-indent-guides-even">    </span>| PHASE_WON
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">log</span> <span class="string">"FASE_WON"</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>d_congrats
 
 <span class="function-name">horz</span> slice landscape_layout
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">10</span> al title_and_buttons
-<span class="highlight-indent-guides-even">    </span>add <span class="type">bb.</span>height px beads_out
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">10</span> al title_and_buttons
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="type">bb.</span>height px beads_out
 
 <span class="function-name">vert</span> slice portrait_layout
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">10</span> al title_and_buttons
-<span class="highlight-indent-guides-even">    </span>add <span class="type">bb.</span>width px beads_out       
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">10</span> al title_and_buttons
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="type">bb.</span>width px beads_out
+
+<span class="function-name">horz</span> slice square_layout
+<span class="highlight-indent-guides-even">    </span><span class="function-name">skip</span> <span class="constant">20</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">80</span> al landscape_layout
+<span class="highlight-indent-guides-even">    </span><span class="function-name">skip</span> <span class="constant">20</span> al
 
 <span class="function-name">vert</span> slice title_and_buttons
 <span class="highlight-indent-guides-even">    </span><span class="function-name">under</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>bg)
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">5</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">5</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>WHITE)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Lights Off"</span>,<span class="variable-name">bold:</span>Y,<span class="variable-name">color:</span>bg,<span class="variable-name">size:</span><span class="constant">0.5</span>)
-<span class="highlight-indent-guides-even">    </span>skip <span class="constant">10</span> al
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">5</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">skip</span> <span class="constant">10</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">5</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Level: {g.level}"</span>,<span class="variable-name">color:</span>WHITE,<span class="variable-name">size:</span><span class="constant">0.5</span>)
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">5</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">5</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Moves: {g.moves}"</span>,<span class="variable-name">color:</span>WHITE,<span class="variable-name">size:</span><span class="constant">0.5</span>)
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">5</span> al buttons
-<span class="highlight-indent-guides-even">    </span>skip <span class="constant">1</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">5</span> al buttons
+<span class="highlight-indent-guides-even">    </span><span class="function-name">skip</span> <span class="constant">1</span> al
 
 <span class="function-name">horz</span> slice buttons
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">30</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">30</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>GRAY,<span class="variable-name">thick:</span><span class="constant">1</span> pt)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Next"</span>,<span class="variable-name">color:</span>WHITE,<span class="variable-name">size:</span><span class="constant">0.5</span>)
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">30</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">30</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>GRAY,<span class="variable-name">thick:</span><span class="constant">1</span> pt)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Prev"</span>,<span class="variable-name">color:</span>WHITE,<span class="variable-name">size:</span><span class="constant">0.5</span>)
-<span class="highlight-indent-guides-even">    </span>add <span class="constant">30</span> al
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">30</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>GRAY,<span class="variable-name">thick:</span><span class="constant">1</span> pt)
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Rest"</span>,<span class="variable-name">color:</span>WHITE,<span class="variable-name">size:</span><span class="constant">0.5</span>)
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Reset"</span>,<span class="variable-name">color:</span>WHITE,<span class="variable-name">size:</span><span class="constant">0.5</span>)
 <span class="function-name">track</span> EV_TAP
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>seg = <span class="type">bb.</span>width / <span class="constant">3</span>
@@ -197,15 +205,15 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
     
 <span class="function-name">grid</span> beads_out
 <span class="highlight-indent-guides-even">    </span><span class="function-name">horz</span> slice
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>skip <span class="constant">1</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">skip</span> <span class="constant">1</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">loop</span> <span class="variable-name">reps:</span>n
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>add <span class="constant">50</span> al
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">1</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">50</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="function-name">skip</span> <span class="constant">1</span> al
 <span class="highlight-indent-guides-even">    </span><span class="function-name">vert</span> slice
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>skip <span class="constant">1</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">skip</span> <span class="constant">1</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">loop</span> <span class="variable-name">reps:</span>n
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>add <span class="constant">50</span> al
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>skip <span class="constant">1</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">50</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="function-name">skip</span> <span class="constant">1</span> al
 <span class="highlight-indent-guides-even">    </span><span class="function-name">under</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>bg)
 <span class="highlight-indent-guides-even">    </span><span class="function-name">cell</span>
@@ -215,13 +223,13 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">fill:</span>ce) <span class="comment">//,color:WHITE,thick:1 pt)</span>
 <span class="function-name">track</span> EV_TAP
 <span class="highlight-indent-guides-even">    </span>sound_play(SWITCH)
-<span class="highlight-indent-guides-even">    </span>switch_on(<span class="type">b.</span><span class="function-name">cell</span>.y,<span class="type">b.</span><span class="function-name">cell</span>.x)
+<span class="highlight-indent-guides-even">    </span>toggle_light(<span class="type">b.</span><span class="function-name">cell</span>.y,<span class="type">b.</span><span class="function-name">cell</span>.x)
 <span class="highlight-indent-guides-even">    </span><span class="function-name">if</span> check_all_off()
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>sound_play(YOUWON)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="type">g.</span>phase &#8656; PHASE_WON
 
 <span class="function-name">draw</span> d_congrats  
-<span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">fill:</span>WHITE, <span class="variable-name">opacity:</span><span class="constant">0.8</span>)  <span class="comment">// dim the whole screen</span>
+<span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">fill:</span>BLACK, <span class="variable-name">opacity:</span><span class="constant">0.3</span>)  <span class="comment">// dim the whole screen</span>
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span> boxw &#8656; min(<span class="type">b.box.</span>width*<span class="constant">0.8</span>, <span class="constant">280</span> pt)
 
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span> r &lt;=== solve_rect(<span class="variable-name">basis:</span><span class="type">b.</span>box, <span class="variable-name">pin:</span>MID_CENTER, <span class="variable-name">width:</span>boxw, <span class="variable-name">height:</span>boxw*<span class="constant">0.6</span>)
@@ -232,6 +240,7 @@ assets <span class="variable-name">local:</span><span class="string">"assets/"</
 <span class="highlight-indent-guides-even">    </span>draw_rect(<span class="variable-name">box:</span>r2, <span class="variable-name">color:</span>CRIMSON, <span class="variable-name">thick:</span><span class="constant">1</span> pt)
 <span class="highlight-indent-guides-even">    </span>draw_str(<span class="string">"OK"</span>, <span class="variable-name">box:</span>r2, <span class="variable-name">size:</span><span class="type">r2.</span>height*<span class="constant">0.5</span>, <span class="variable-name">color:</span>CRIMSON)
 <span class="function-name">track</span> EV_TAP
+<span class="highlight-indent-guides-even">    </span>sound_play(CLICK)
 <span class="highlight-indent-guides-even">    </span>inc <span class="type">g.</span>level
 <span class="highlight-indent-guides-even">    </span>init_board()
 <span class="highlight-indent-guides-even">    </span><span class="type">g.</span>phase = PHASE_GAME
