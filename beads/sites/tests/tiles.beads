@@ -13,20 +13,20 @@ var
 	
 grid d_board
 	horz slice
-		skip 1 pt
+		skip 5 pt
 		loop reps:4
 			add 50 pt
-			skip 1 pt
+			skip 5 pt
 	vert slice
-		skip 1 pt
+		skip 5 pt
 		loop reps:4
 			add 50 pt
-			skip 1 pt
+			skip 5 pt
 	under
 		draw_rect(fill:GRAY1)
 	cell
 		//draw_rect(fill:HONEYDEW, thick:1 pt)
-		draw_rect(fill:GOLD,thick:1 pt,opacity:0.5)
+		draw_rect(fill:WHITE,thick:1 pt,opacity:0.5)
 		if tn.board[b.cell_seq] <> 0
 			draw_str("{tn.board[b.cell_seq]}",size:0.5,bold:Y,opacity:0.3)
 	over
@@ -38,18 +38,18 @@ grid d_board
 track
 	case e.evkind
 	| EV_DRAG_BEGIN
-		log "drag begin"
-		tn.dg = Y
-		ti = b.cell_seq
-		tv = tn.board[b.cell_seq]
-		adjust_drag_cell(b.box,e.global_x,e.global_y,50 pt,50 pt)
-//		log "begin x={b.cell.x} {tn.r}"
+		log "begin drag"
+		if is_numeric(b.cell_seq)
+			tn.dg = Y
+			ti = b.cell_seq
+			tv = tn.board[b.cell_seq]
+			adjust_drag_cell(b.box,e.global_x,e.global_y,50 pt,50 pt)
 	| EV_DRAG_MOVE
 		adjust_drag_cell(b.box,e.global_x,e.global_y,50 pt,50 pt)
-//		log "move x={b.cell.x} {tn.gx}"
 	| EV_DRAG_END
-		log "drag end"
-		swap tn.board[ti] <=> tn.board[b.cell_seq]
+		log "end drag"
+		if is_numeric(b.cell_seq)
+			swap tn.board[ti] <=> tn.board[b.cell_seq]
 		tn.dg = N
 	
 calc adjust_drag_cell(
