@@ -16,14 +16,14 @@ import * as std from '../../runtime/beads_std.js';
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
 import * as str from '../../runtime/beads_str.js';
 import * as k   from '../../runtime/beads_k.js';
-export const CODE_HASH= 0x4ebc7664;
+export const CODE_HASH= 0xca326aa4;
 const _M = "tiles";
 std.rtl_init();
 std.aaaa.main_drawer = new std.a_function("tiles", "main_draw", main_draw);
 //------- enums
-const R_tile_move=9007193763092332; std.g_enum_ss[9007193763092332]="tile_move";
 const F_board=9007192136647888; std.g_enum_ss[9007192136647888]="board";
 std.FIELDS[F_board] = true;
+const R_tile_move=9007193763092332; std.g_enum_ss[9007193763092332]="tile_move";
 const F_dg=9007194003648065; std.g_enum_ss[9007194003648065]="dg";
 std.FIELDS[F_dg] = true;
 const F_r=9007191057649894; std.g_enum_ss[9007191057649894]="r";
@@ -33,13 +33,16 @@ std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "adjust_drag_cell", std.F_vv_fu
 "r", std.F_vv_rec, VAL, "a_rect", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, 2, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "x", std.F_vv_typek, VAL, std.TYPE_NUM
 , POP, 3, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "y", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 4, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "w", 
 std.F_vv_typek, VAL, std.TYPE_NUM, POP, 5, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "h", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, "d_board", std.F_vv_funck
-, VAL, std.FK_DRAW, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, POP, std.F_mod_recs, "tile_move", std.F_vv_fields, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY
-, POP, "dg", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "r", std.F_vv_rec, VAL, "a_rect", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, POP, POP, POP, std.F_mod_vars, "ti", std.F_vv_typek
-, VAL, std.TYPE_NUM, POP, "tn", std.F_vv_rec, VAL, "tile_move", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "tv", std.F_vv_typek, VAL, std.TYPE_NUM);
+, VAL, std.FK_DRAW, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_draw_71", std.F_vv_funck, VAL, std.FK_DRAW, POP, POP, std.F_mod_recs, "tile_move", std.F_vv_fields
+, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "dg", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "r", std.F_vv_rec, VAL, "a_rect", std.F_vv_typek, VAL, std.TYPE_RECORD
+, POP, POP, POP, POP, std.F_mod_vars, "ti", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "tn", std.F_vv_rec, VAL, "tile_move", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "tv", 
+std.F_vv_typek, VAL, std.TYPE_NUM);
 //[reflZZZ]
 //-------  func const
 const d_board_F = new std.a_function("tiles", "d_board", d_board, track_d_board);
 std.FUNCS[d_board_F.hash]=d_board_F;
+const main_draw_71_F = new std.a_function("tiles", "main_draw_71", main_draw_71);
+std.FUNCS[main_draw_71_F.hash]=main_draw_71_F;
 //-------  top nodes
 let tn = new std.a_tree("tiles","tn", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
 let ti = U;
@@ -52,14 +55,14 @@ function d_board(b) {
 k.k_enter(b);
 k.div_begin(b, new std.a_function(_M, "d_board_cell", d_board_cell, null), false, false, false);
   k.div_spa(b, 0, 5, std.pt);
-  var loop152 = new std.a_loop({ limit:4 });
-  while (loop152.next()) {
+  var loop156 = new std.a_loop({ limit:4 });
+  while (loop156.next()) {
     k.div_add(b, U, 0, 50, std.pt, null, 0);
     k.div_spa(b, 0, 5, std.pt);
   }
   k.div_spa(b, 1, 5, std.pt);
-  var loop153 = new std.a_loop({ limit:4 });
-  while (loop153.next()) {
+  var loop157 = new std.a_loop({ limit:4 });
+  while (loop157.next()) {
     k.div_add(b, U, 1, 50, std.pt, null, 0);
     k.div_spa(b, 1, 5, std.pt);
   }
@@ -94,8 +97,8 @@ function d_board_cell(b) {
 //   track_d_board
 //====================
 function track_d_board(b, e) {
-  var case154 = getn(e, std.F_evkind);
-  if (case154 === std.EV_DRAG_BEGIN) {
+  var case158 = getn(e, std.F_evkind);
+  if (case158 === std.EV_DRAG_BEGIN) {
     std.log("begin drag");
     if (std.is_numeric(getn(b.extra, std.F_cell_seq)) === Y) {
       std.path_setv(_M, 43, std.addr(tn, F_dg), Y);
@@ -103,14 +106,14 @@ function track_d_board(b, e) {
       tv = getn(tn, F_board, getn(b.extra, std.F_cell_seq));
       adjust_drag_cell(addr(b.extra, std.F_box), getn(e, std.F_global_x), getn(e, std.F_global_y), std.pt_to_dots(b, 50), std.pt_to_dots(b, 50));
     }
-  } else if (case154 === std.EV_DRAG_MOVE) {
+  } else if (case158 === std.EV_DRAG_MOVE) {
     adjust_drag_cell(addr(b.extra, std.F_box), getn(e, std.F_global_x), getn(e, std.F_global_y), std.pt_to_dots(b, 50), std.pt_to_dots(b, 50));
-  } else if (case154 === std.EV_DRAG_END) {
+  } else if (case158 === std.EV_DRAG_END) {
     std.log("end drag");
     if (std.is_numeric(getn(b.extra, std.F_cell_seq)) === Y) {
-      var temp_155 = getn(tn, F_board, ti);
+      var temp_159 = getn(tn, F_board, ti);
       setv(_M, 52, std.addr(tn, F_board, ti), getn(tn, F_board, getn(b.extra, std.F_cell_seq)));
-      setv(_M, 52, std.addr(tn, F_board, getn(b.extra, std.F_cell_seq)), temp_155);
+      setv(_M, 52, std.addr(tn, F_board, getn(b.extra, std.F_cell_seq)), temp_159);
     }
     std.path_setv(_M, 53, std.addr(tn, F_dg), N);
   }
@@ -123,10 +126,14 @@ function track_d_board(b, e) {
 export function main_draw(b) {
 k.k_root2(b);
 k.k_enter(b);
+k.div_begin(b, null, false, false, false);
   std.path_setv(_M, 67, std.addr(tn, F_dg), N);
   std.copy_tree(_M, 68, std.tree_lit(_M, 68, 1, VAL, 1, 2, VAL, 2, 3, VAL, 3, 4, VAL, 4, 5, VAL, 5, 6, VAL, 6, 7, VAL, 7, 8, VAL, 8, 9, VAL, 9, 10, VAL, 10, 11, VAL, 11, 12, VAL, 
   12, 13, VAL, 13, 14, VAL, 14, 15, VAL, 15, 16, VAL, 0), std.addr(tn, F_board));
-  k.k_isolate(b, b.bounds, "d_board", d_board_F);
+  k.div_add(b, U, 1, 50, std.al, d_board_F, 0);
+  k.div_add(b, U, 1, 50, std.al, main_draw_71_F, 0);
+  k.div_end(b);
+  k.draw_slices(b);
 k.k_leave(b);
 }
 
@@ -138,6 +145,16 @@ function adjust_drag_cell(r, x, y, w, h) {
   std.path_setv(_M, 62, std.addr(r, std.F_left), std.sub(x, std.idiv(w, 2)));
   std.path_setv(_M, 63, std.addr(r, std.F_top), std.sub(y, std.idiv(h, 2)));
   std.copy_tree(_M, 64, std.solve_rect({ basis:r, width:w, height:h }), std.addr(tn, F_r));
+}
+
+
+//====================
+//   main_draw_71
+//====================
+export function main_draw_71(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:std.GOLD });
+k.k_leave(b);
 }
 
 k.rebuild_all();

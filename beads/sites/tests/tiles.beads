@@ -63,8 +63,10 @@ calc adjust_drag_cell(
 	r.top = y - h /. 2
 	tn.r <=== solve_rect(basis:r,width:w, height:h)
 
-draw main_draw
+vert slice main_draw
 	tn.dg = N
 	tn.board <=== [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0]
-	d_board()
+	add 50 al d_board
+	add 50 al
+		draw_rect(fill:GOLD)
 	
