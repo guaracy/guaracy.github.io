@@ -1,0 +1,70 @@
+beads 1 program tiles
+
+record tile_move
+	dg : yesno
+	r : a_rect
+	board : array of num
+
+var
+	tn : tile_move
+	ti // tile index
+	tv // tile value
+	
+	
+grid d_board
+	horz slice
+		skip 1 pt
+		loop reps:4
+			add 50 pt
+			skip 1 pt
+	vert slice
+		skip 1 pt
+		loop reps:4
+			add 50 pt
+			skip 1 pt
+	under
+		draw_rect(fill:GRAY1)
+	cell
+		//draw_rect(fill:HONEYDEW, thick:1 pt)
+		draw_rect(fill:GOLD,thick:1 pt,opacity:0.5)
+		if tn.board[b.cell_seq] <> 0
+			draw_str("{tn.board[b.cell_seq]}",size:0.5,bold:Y,opacity:0.3)
+	over
+		if tn.dg
+			draw_rect(box:tn.r,fill:RED,thick:1 pt)
+			if tv <> 0
+				draw_str("{tv}",color:WHITE,box:tn.r,size:0.5,bold:Y) //,opacity:0.8)
+
+track
+	case e.evkind
+	| EV_DRAG_BEGIN
+		log "drag begin"
+		tn.dg = Y
+		ti = b.cell_seq
+		tv = tn.board[b.cell_seq]
+		adjust_drag_cell(b.box,e.global_x,e.global_y,50 pt,50 pt)
+//		log "begin x={b.cell.x} {tn.r}"
+	| EV_DRAG_MOVE
+		adjust_drag_cell(b.box,e.global_x,e.global_y,50 pt,50 pt)
+//		log "move x={b.cell.x} {tn.gx}"
+	| EV_DRAG_END
+		log "drag end"
+		swap tn.board[ti] <=> tn.board[b.cell_seq]
+		tn.dg = N
+	
+calc adjust_drag_cell(
+	r : a_rect
+	x
+	y
+	w
+	h
+	)
+	r.left = x - w /. 2
+	r.top = y - h /. 2
+	tn.r <=== solve_rect(basis:r,width:w, height:h)
+
+draw main_draw
+	tn.dg = N
+	tn.board <=== [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0]
+	d_board()
+	

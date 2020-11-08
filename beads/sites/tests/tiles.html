@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>tiles</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<style>
+/*  this disables the annoying double click highlighting of DIV blocks  */
+div { outline-style:none;}
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<script type="module">
+import * as std from '../../runtime/beads_std.js';
+import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
+import * as str from '../../runtime/beads_str.js';
+import * as k   from '../../runtime/beads_k.js';
+export const CODE_HASH= 0xd58257cf;
+const _M = "tiles";
+std.rtl_init();
+std.aaaa.main_drawer = new std.a_function("tiles", "main_draw", main_draw);
+//------- enums
+const R_tile_move=9007193763092332; std.g_enum_ss[9007193763092332]="tile_move";
+const F_board=9007192136647888; std.g_enum_ss[9007192136647888]="board";
+std.FIELDS[F_board] = true;
+const F_dg=9007194003648065; std.g_enum_ss[9007194003648065]="dg";
+std.FIELDS[F_dg] = true;
+const F_r=9007191057649894; std.g_enum_ss[9007191057649894]="r";
+std.FIELDS[F_r] = true;
+//[reflAAA]
+std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "adjust_drag_cell", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, 
+"r", std.F_vv_rec, VAL, "a_rect", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, 2, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "x", std.F_vv_typek, VAL, std.TYPE_NUM
+, POP, 3, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "y", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 4, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "w", 
+std.F_vv_typek, VAL, std.TYPE_NUM, POP, 5, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "h", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, "d_board", std.F_vv_funck
+, VAL, std.FK_DRAW, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, POP, std.F_mod_recs, "tile_move", std.F_vv_fields, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY
+, POP, "dg", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "r", std.F_vv_rec, VAL, "a_rect", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, POP, POP, POP, std.F_mod_vars, "ti", std.F_vv_typek
+, VAL, std.TYPE_NUM, POP, "tn", std.F_vv_rec, VAL, "tile_move", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "tv", std.F_vv_typek, VAL, std.TYPE_NUM);
+//[reflZZZ]
+//-------  func const
+const d_board_F = new std.a_function("tiles", "d_board", d_board, track_d_board);
+std.FUNCS[d_board_F.hash]=d_board_F;
+//-------  top nodes
+let tn = new std.a_tree("tiles","tn", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+let ti = U;
+let tv = U;
+
+//====================
+//   d_board
+//====================
+function d_board(b) {
+k.k_enter(b);
+k.div_begin(b, new std.a_function(_M, "d_board_cell", d_board_cell, null), false, false, false);
+  k.div_spa(b, 0, 1, std.pt);
+  var loop120 = new std.a_loop({ limit:4 });
+  while (loop120.next()) {
+    k.div_add(b, U, 0, 50, std.pt, null, 0);
+    k.div_spa(b, 0, 1, std.pt);
+  }
+  k.div_spa(b, 1, 1, std.pt);
+  var loop121 = new std.a_loop({ limit:4 });
+  while (loop121.next()) {
+    k.div_add(b, U, 1, 50, std.pt, null, 0);
+    k.div_spa(b, 1, 1, std.pt);
+  }
+  k.div_end(b);
+  //--under
+  std.draw_rect(b, { fill:std.GRAY1 });
+  k.draw_grid(b);
+  //--over
+  if (getn(tn, F_dg) === Y) {
+    std.draw_rect(b, { box:std.addr(tn, F_r), fill:std.RED, thick:std.pt_to_dots(b, 1) });
+    if (std.ne2(tv, 0)) {
+      std.draw_str(b, str.to_str(tv, {show_u:Y, digits:0}), { color:std.WHITE, box:std.addr(tn, F_r), size:0.5, bold:Y });
+    }
+  }
+k.k_leave(b);
+}
+
+
+//====================
+//   d_board_cell
+//====================
+function d_board_cell(b) {
+  k.k_enter(b);
+  std.draw_rect(b, { fill:std.GOLD, thick:std.pt_to_dots(b, 1), opacity:0.5 });
+  if (std.ne2(getn(tn, F_board, getn(b.extra, std.F_cell_seq)), 0)) {
+    std.draw_str(b, str.to_str(getn(tn, F_board, getn(b.extra, std.F_cell_seq)), {show_u:Y, digits:0}), { size:0.5, bold:Y, opacity:0.3 });
+  }
+  k.k_leave(b);
+}
+
+//====================
+//   track_d_board
+//====================
+function track_d_board(b, e) {
+  var case122 = getn(e, std.F_evkind);
+  if (case122 === std.EV_DRAG_BEGIN) {
+    std.log("drag begin");
+    std.path_setv(_M, 42, std.addr(tn, F_dg), Y);
+    ti = getn(b.extra, std.F_cell_seq);
+    tv = getn(tn, F_board, getn(b.extra, std.F_cell_seq));
+    adjust_drag_cell(addr(b.extra, std.F_box), getn(e, std.F_global_x), getn(e, std.F_global_y), std.pt_to_dots(b, 50), std.pt_to_dots(b, 50));
+  } else if (case122 === std.EV_DRAG_MOVE) {
+    adjust_drag_cell(addr(b.extra, std.F_box), getn(e, std.F_global_x), getn(e, std.F_global_y), std.pt_to_dots(b, 50), std.pt_to_dots(b, 50));
+  } else if (case122 === std.EV_DRAG_END) {
+    std.log("drag end");
+    var temp_123 = getn(tn, F_board, ti);
+    setv(_M, 52, std.addr(tn, F_board, ti), getn(tn, F_board, getn(b.extra, std.F_cell_seq)));
+    setv(_M, 52, std.addr(tn, F_board, getn(b.extra, std.F_cell_seq)), temp_123);
+    std.path_setv(_M, 53, std.addr(tn, F_dg), N);
+  }
+  return N;
+}
+
+//====================
+//   main_draw
+//====================
+export function main_draw(b) {
+k.k_root2(b);
+k.k_enter(b);
+  std.path_setv(_M, 67, std.addr(tn, F_dg), N);
+  std.copy_tree(_M, 68, std.tree_lit(_M, 68, 1, VAL, 1, 2, VAL, 2, 3, VAL, 3, 4, VAL, 4, 5, VAL, 5, 6, VAL, 6, 7, VAL, 7, 8, VAL, 8, 9, VAL, 9, 10, VAL, 10, 11, VAL, 11, 12, VAL, 
+  12, 13, VAL, 13, 14, VAL, 14, 15, VAL, 15, 16, VAL, 0), std.addr(tn, F_board));
+  k.k_isolate(b, b.bounds, "d_board", d_board_F);
+k.k_leave(b);
+}
+
+
+//====================
+//   adjust_drag_cell
+//====================
+function adjust_drag_cell(r, x, y, w, h) {
+  std.path_setv(_M, 62, std.addr(r, std.F_left), std.sub(x, std.idiv(w, 2)));
+  std.path_setv(_M, 63, std.addr(r, std.F_top), std.sub(y, std.idiv(h, 2)));
+  std.copy_tree(_M, 64, std.solve_rect({ basis:r, width:w, height:h }), std.addr(tn, F_r));
+}
+
+k.rebuild_all();
+
+</script>
+</body>
+</html>
