@@ -61,7 +61,7 @@ calc adjust_drag_cell(
 	w
 	h
 	)
-	r.left = x - w /. 2
+	r.left = x - w /. 8
 	r.top = y - h /. 8
 	tn.r <=== solve_rect(basis:r,width:w, height:h)
 

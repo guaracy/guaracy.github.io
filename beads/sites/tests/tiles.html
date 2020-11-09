@@ -16,7 +16,7 @@ import * as std from '../../runtime/beads_std.js';
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
 import * as str from '../../runtime/beads_str.js';
 import * as k   from '../../runtime/beads_k.js';
-export const CODE_HASH= 0x484c1266;
+export const CODE_HASH= 0x316e4bfc;
 const _M = "tiles";
 std.rtl_init();
 std.aaaa.main_drawer = new std.a_function("tiles", "main_draw", main_draw);
@@ -54,14 +54,14 @@ function d_board(b) {
 k.k_enter(b);
 k.div_begin(b, new std.a_function(_M, "d_board_cell", d_board_cell, null), false, false, false);
   k.div_spa(b, 0, 5, std.pt);
-  var loop260 = new std.a_loop({ limit:4 });
-  while (loop260.next()) {
+  var loop264 = new std.a_loop({ limit:4 });
+  while (loop264.next()) {
     k.div_add(b, U, 0, 50, std.pt, null, 0);
     k.div_spa(b, 0, 5, std.pt);
   }
   k.div_spa(b, 1, 5, std.pt);
-  var loop261 = new std.a_loop({ limit:4 });
-  while (loop261.next()) {
+  var loop265 = new std.a_loop({ limit:4 });
+  while (loop265.next()) {
     k.div_add(b, U, 1, 50, std.pt, null, 0);
     k.div_spa(b, 1, 5, std.pt);
   }
@@ -96,8 +96,8 @@ function d_board_cell(b) {
 //   track_d_board
 //====================
 function track_d_board(b, e) {
-  var case262 = getn(e, std.F_evkind);
-  if (case262 === std.EV_DRAG_BEGIN) {
+  var case266 = getn(e, std.F_evkind);
+  if (case266 === std.EV_DRAG_BEGIN) {
     std.log("begin drag");
     if (std.is_numeric(getn(b.extra, std.F_cell_seq)) === Y) {
       std.path_setv(_M, 45, std.addr(tn, F_dg), Y);
@@ -105,14 +105,14 @@ function track_d_board(b, e) {
       tv = getn(tn, F_board, getn(b.extra, std.F_cell_seq));
       adjust_drag_cell(addr(b.extra, std.F_box), getn(e, std.F_global_x), getn(e, std.F_global_y), std.pt_to_dots(b, 50), std.pt_to_dots(b, 50));
     }
-  } else if (case262 === std.EV_DRAG_MOVE) {
+  } else if (case266 === std.EV_DRAG_MOVE) {
     adjust_drag_cell(addr(b.extra, std.F_box), getn(e, std.F_global_x), getn(e, std.F_global_y), std.pt_to_dots(b, 50), std.pt_to_dots(b, 50));
-  } else if (case262 === std.EV_DRAG_END) {
+  } else if (case266 === std.EV_DRAG_END) {
     std.log("end drag");
     if (std.is_numeric(getn(b.extra, std.F_cell_seq)) === Y) {
-      var temp_263 = getn(tn, F_board, ti);
+      var temp_267 = getn(tn, F_board, ti);
       setv(_M, 54, std.addr(tn, F_board, ti), getn(tn, F_board, getn(b.extra, std.F_cell_seq)));
-      setv(_M, 54, std.addr(tn, F_board, getn(b.extra, std.F_cell_seq)), temp_263);
+      setv(_M, 54, std.addr(tn, F_board, getn(b.extra, std.F_cell_seq)), temp_267);
     }
     std.path_setv(_M, 55, std.addr(tn, F_dg), N);
   }
@@ -140,7 +140,7 @@ k.k_leave(b);
 //   adjust_drag_cell
 //====================
 function adjust_drag_cell(r, x, y, w, h) {
-  std.path_setv(_M, 64, std.addr(r, std.F_left), std.sub(x, std.idiv(w, 2)));
+  std.path_setv(_M, 64, std.addr(r, std.F_left), std.sub(x, std.idiv(w, 8)));
   std.path_setv(_M, 65, std.addr(r, std.F_top), std.sub(y, std.idiv(h, 8)));
   std.copy_tree(_M, 66, std.solve_rect({ basis:r, width:w, height:h }), std.addr(tn, F_r));
 }
