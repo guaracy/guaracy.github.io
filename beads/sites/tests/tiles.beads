@@ -5,6 +5,9 @@ record tile_move
 	r : a_rect
 	board : array of num
 
+const
+	op = 0.5
+	
 var
 	tn : tile_move
 	ti // tile index
@@ -23,17 +26,16 @@ grid d_board
 			add 50 pt
 			skip 5 pt
 	under
-		draw_rect(fill:GRAY1)
+		draw_rect(fill:WHITE)
 	cell
-		//draw_rect(fill:HONEYDEW, thick:1 pt)
-		draw_rect(fill:WHITE,thick:1 pt,opacity:0.5)
+		draw_rect(fill:GRAY2,thick:1 pt,opacity:op)
 		if tn.board[b.cell_seq] <> 0
-			draw_str("{tn.board[b.cell_seq]}",size:0.5,bold:Y,opacity:0.3)
+			draw_str("{tn.board[b.cell_seq]}",size:0.5,bold:Y,opacity:op)
 	over
 		if tn.dg
 			draw_rect(box:tn.r,fill:RED,thick:1 pt)
 			if tv <> 0
-				draw_str("{tv}",color:WHITE,box:tn.r,size:0.5,bold:Y) //,opacity:0.8)
+				draw_str("{tv}",color:WHITE,box:tn.r,size:0.5,bold:Y)
 
 track
 	case e.evkind
@@ -60,13 +62,14 @@ calc adjust_drag_cell(
 	h
 	)
 	r.left = x - w /. 2
-	r.top = y - h /. 2
+	r.top = y - h /. 8
 	tn.r <=== solve_rect(basis:r,width:w, height:h)
 
 vert slice main_draw
 	tn.dg = N
 	tn.board <=== [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0]
-	add 50 al d_board
-	add 50 al
-		draw_rect(fill:GOLD)
+	d_board()
+//	add 50 al d_board
+//	add 50 al
+//		draw_rect(fill:GOLD)
 	
