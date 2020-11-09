@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>rc_15_puzzle</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<style>
+/*  this disables the annoying double click highlighting of DIV blocks  */
+div { outline-style:none;}
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<script type="module">
+import * as std from '../../runtime/beads_std.js';
+import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime/beads_std.js';
+import * as str from '../../runtime/beads_str.js';
+import * as k   from '../../runtime/beads_k.js';
+export const CODE_HASH= 0x4993c9d1;
+const _M = "rc_15_puzzle";
+std.rtl_init();
+std.aaaa.main_init = main_init;
+std.aaaa.main_module = "rc_15_puzzle";
+std.aaaa.main_drawer = new std.a_function("rc_15_puzzle", "main_draw", main_draw, track_main_draw);
+//------- enums
+const UP=9007190023421382; std.g_enum_ss[9007190023421382]="UP";
+const DOWN=9007194005097487; std.g_enum_ss[9007194005097487]="DOWN";
+const F_msg=9007193545378433; std.g_enum_ss[9007193545378433]="msg";
+std.FIELDS[F_msg] = true;
+const F_state=9007193054594181; std.g_enum_ss[9007193054594181]="state";
+std.FIELDS[F_state] = true;
+const F_nw_color=9007192468283279; std.g_enum_ss[9007192468283279]="nw_color";
+std.FIELDS[F_nw_color] = true;
+const F_color=9007193200940231; std.g_enum_ss[9007193200940231]="color";
+std.FIELDS[F_color] = true;
+const LEFT=9007190711321898; std.g_enum_ss[9007190711321898]="LEFT";
+const EDIT=9007192913073999; std.g_enum_ss[9007192913073999]="EDIT";
+const F_bt_text=9007192397889772; std.g_enum_ss[9007192397889772]="bt_text";
+std.FIELDS[F_bt_text] = true;
+const F_sl_color=9007193089943431; std.g_enum_ss[9007193089943431]="sl_color";
+std.FIELDS[F_sl_color] = true;
+const F_w_color=9007193783740241; std.g_enum_ss[9007193783740241]="w_color";
+std.FIELDS[F_w_color] = true;
+const RUN=9007194175515636; std.g_enum_ss[9007194175515636]="RUN";
+const R_r_game=9007193658407597; std.g_enum_ss[9007193658407597]="r_game";
+const RIGHT=9007193840331351; std.g_enum_ss[9007193840331351]="RIGHT";
+const F_ed_color=9007192489032125; std.g_enum_ss[9007192489032125]="ed_color";
+std.FIELDS[F_ed_color] = true;
+const F_moves=9007193725797866; std.g_enum_ss[9007193725797866]="moves";
+std.FIELDS[F_moves] = true;
+//[reflAAA]
+std.merge_lit(_M,0,std.META,_M, std.F_mod_const, "DSCOLOR", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "EDCOLOR", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "NWCOLOR", std.F_vv_typek
+, VAL, std.TYPE_COLOR, POP, "RUNMSG", std.F_vv_typek, VAL, std.TYPE_STR, POP, "SLCOLOR", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "bc", std.F_vv_typek, VAL, std.TYPE_ARRAY2
+, POP, "directions", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "level", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, std.F_mod_enums, "DOWN", VAL, DOWN, "EDIT", VAL, EDIT, 
+"LEFT", VAL, LEFT, "RIGHT", VAL, RIGHT, "RUN", VAL, RUN, "UP", VAL, UP, POP, std.F_mod_funcs, "check_complete", std.F_vv_funck, VAL, std.FK_CALC, POP, "d_board", std.F_vv_funck
+, VAL, std.FK_DRAW, POP, "d_buttons", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_buttons_158", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_buttons_162", std.F_vv_funck, VAL, 
+std.FK_DRAW, POP, "d_buttons_166", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_game", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_game_178", std.F_vv_funck, VAL, std.FK_DRAW, POP
+, "d_game_183", std.F_vv_funck, VAL, std.FK_DRAW, POP, "exec_move", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, 
+"dir", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, POP, std.F_mod_recs
+, "r_game", std.F_vv_fields, "bt_text", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "ed_color", std.F_vv_typek, VAL, std.TYPE_COLOR
+, POP, "left", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "moves", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "msg", std.F_vv_typek, VAL, std.TYPE_STR, POP, "nw_color", std.F_vv_typek
+, VAL, std.TYPE_COLOR, POP, "sl_color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "state", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "w_color", std.F_vv_typek, VAL, std.TYPE_COLOR
+, POP, POP, POP, POP, std.F_mod_vars, "b_width", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "ec", std.F_vv_typek, VAL, std.TYPE_NUM
+, POP, "er", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "g", std.F_vv_rec, VAL, "r_game", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "n", std.F_vv_typek, VAL, std.TYPE_NUM);
+//[reflZZZ]
+//-------  func const
+const d_board_F = new std.a_function("rc_15_puzzle", "d_board", d_board, track_d_board);
+std.FUNCS[d_board_F.hash]=d_board_F;
+const d_buttons_166_F = new std.a_function("rc_15_puzzle", "d_buttons_166", d_buttons_166);
+std.FUNCS[d_buttons_166_F.hash]=d_buttons_166_F;
+const d_game_F = new std.a_function("rc_15_puzzle", "d_game", d_game);
+std.FUNCS[d_game_F.hash]=d_game_F;
+const d_buttons_162_F = new std.a_function("rc_15_puzzle", "d_buttons_162", d_buttons_162);
+std.FUNCS[d_buttons_162_F.hash]=d_buttons_162_F;
+const d_game_178_F = new std.a_function("rc_15_puzzle", "d_game_178", d_game_178);
+std.FUNCS[d_game_178_F.hash]=d_game_178_F;
+const d_buttons_158_F = new std.a_function("rc_15_puzzle", "d_buttons_158", d_buttons_158);
+std.FUNCS[d_buttons_158_F.hash]=d_buttons_158_F;
+const d_game_183_F = new std.a_function("rc_15_puzzle", "d_game_183", d_game_183);
+std.FUNCS[d_game_183_F.hash]=d_game_183_F;
+const main_draw_F = new std.a_function("rc_15_puzzle", "main_draw", main_draw, track_main_draw);
+std.FUNCS[main_draw_F.hash]=main_draw_F;
+const d_buttons_F = new std.a_function("rc_15_puzzle", "d_buttons", d_buttons, track_d_buttons);
+std.FUNCS[d_buttons_F.hash]=d_buttons_F;
+//-------  top nodes
+const bc = new std.a_tree("rc_15_puzzle","bc", std.NF_TOPLEVEL|std.NF_LOGGED, std.tree_lit(_M, 24, 1, 1, VAL, 1, 2, VAL, 2, 3, VAL, 3, 4, VAL, 4, POP, 2, 1, VAL, 5, 2, VAL, 
+6, 3, VAL, 7, 4, VAL, 8, POP, 3, 1, VAL, 9, 2, VAL, 10, 3, VAL, 11, 4, VAL, 12, POP, 4, 1, VAL, 13, 2, VAL, 14, 3, VAL, 15, 4, VAL, U));
+const level = 4;
+const NWCOLOR = std.DODGER_BLUE;
+const EDCOLOR = std.DODGER_BLUE;
+const SLCOLOR = std.DODGER_BLUE;
+const DSCOLOR = std.LIGHT_BLUE;
+const directions = new std.a_tree("rc_15_puzzle","directions", std.NF_TOPLEVEL|std.NF_LOGGED, std.tree_lit(_M, 30, 1, VAL, RIGHT, 2, VAL, RIGHT, 3, VAL, DOWN, 4, VAL, DOWN
+));
+const RUNMSG = "Moves: 0";
+let board = new std.a_tree("rc_15_puzzle","board", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+let er = U;
+let ec = U;
+let n = U;
+let g = new std.a_tree("rc_15_puzzle","g", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+let b_width = 205;
+
+//====================
+//   d_board
+//====================
+function d_board(b) {
+k.k_enter(b);
+k.div_begin(b, new std.a_function(_M, "d_board_cell", d_board_cell, null), false, false, false);
+  k.div_spa(b, 0, 1, std.pt);
+  var loop60 = new std.a_loop({ limit:4 });
+  while (loop60.next()) {
+    k.div_add(b, U, 0, 50, std.pt, null, 0);
+    k.div_spa(b, 0, 1, std.pt);
+  }
+  k.div_spa(b, 1, 1, std.pt);
+  var loop61 = new std.a_loop({ limit:4 });
+  while (loop61.next()) {
+    k.div_add(b, U, 1, 50, std.pt, null, 0);
+    k.div_spa(b, 1, 1, std.pt);
+  }
+  k.div_end(b);
+  k.draw_grid(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   d_board_cell
+//====================
+function d_board_cell(b) {
+  k.k_enter(b);
+  let v = std.get_generic(board, getn(b.extra, std.F_cell, std.F_y), getn(b.extra, std.F_cell, std.F_x));
+  std.draw_rect(b, { fill:getn(g, F_color), thick:std.pt_to_dots(b, 1) });
+  if (std.is_numeric(v) === Y) {
+    std.draw_str(b, str.to_str(v, {show_u:Y, digits:0}), { size:0.5 });
+  }
+  k.k_leave(b);
+}
+
+//====================
+//   track_d_board
+//====================
+function track_d_board(b, e) {
+  //---------------
+  //   on EV_TAP
+  //---------------
+  if (std.getn(e, std.F_evkind) == std.EV_TAP) {
+    let delta = U;
+    if (std.eq2(getn(g, F_state), EDIT)) {
+      std.log("EDIT");
+      std.path_setv(_M, 120, std.addr(board, getn(b.extra, std.F_cell, std.F_y), getn(b.extra, std.F_cell, std.F_x)), getn(g, std.F_left));
+      std.tree_add(_M, 121, 1, std.addr(g, std.F_left));
+      std.path_setv(_M, 122, std.addr(g, F_msg), std.cat("Editing mode. Left: ", str.to_str(std.sub(16, getn(g, std.F_left)), {show_u:Y, digits:0})));
+      if (std.eq2(getn(g, std.F_left), 16)) {
+        std.path_setv(_M, 124, std.addr(g, F_moves), 0);
+        std.path_setv(_M, 125, std.addr(g, F_state), RUN);
+        std.path_setv(_M, 126, std.addr(g, F_msg), RUNMSG);
+        var loop62 = new std.a_loop({ limit:4 });
+        outer: while (loop62.next()) {
+        var r = loop62.count;
+          var loop63 = new std.a_loop({ limit:4 });
+          while (loop63.next()) {
+          var c = loop63.count;
+            std.log(std.cat("", str.to_str(r, {show_u:Y, digits:0}), "x", str.to_str(c, {show_u:Y, digits:0}), " = ", str.to_str(std.get_generic(board, r, c), {show_u:Y, digits:0})));
+            if (std.is_numeric(std.get_generic(board, r, c)) === N) {
+              er = r;
+              ec = c;
+              std.log("DEVERIA SAIR");
+              break outer;
+            }
+          }
+        }
+        std.log(std.cat("END EDIT R:", str.to_str(er, {show_u:Y, digits:0}), " C:", str.to_str(ec, {show_u:Y, digits:0})));
+      }
+      return Y;
+    }
+    if (std.eq2(getn(b.extra, std.F_cell, std.F_y), er)) {
+      std.log("same ROW");
+      delta = std.sub(ec, getn(b.extra, std.F_cell, std.F_x));
+      var case64 = delta;
+      if (case64 === 1) {
+        exec_move(RIGHT);
+      } else if (case64 === -1) {
+        exec_move(LEFT);
+      }
+    } else if (std.eq2(getn(b.extra, std.F_cell, std.F_x), ec)) {
+      std.log("same COL");
+      delta = std.sub(er, getn(b.extra, std.F_cell, std.F_y));
+      var case65 = delta;
+      if (case65 === -1) {
+        exec_move(UP);
+      } else if (case65 === 1) {
+        exec_move(DOWN);
+      }
+    } else {
+      std.log("WTF");
+    }
+  return Y;
+  }
+  return N;
+}
+
+//====================
+//   d_buttons
+//====================
+function d_buttons(b) {
+k.k_enter(b);
+k.div_begin(b, null, false, false, false);
+  k.div_add(b, U, 0, 66, std.pt, d_buttons_158_F, 0);
+  k.div_spa(b, 0, 3, std.pt);
+  k.div_add(b, U, 0, 66, std.pt, d_buttons_162_F, 0);
+  k.div_spa(b, 0, 3, std.pt);
+  k.div_add(b, U, 0, 66, std.pt, d_buttons_166_F, 0);
+  k.div_end(b);
+  k.draw_slices(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   track_d_buttons
+//====================
+function track_d_buttons(b, e) {
+  //---------------
+  //   on EV_TAP
+  //---------------
+  if (std.getn(e, std.F_evkind) == std.EV_TAP) {
+    std.path_setv(_M, 169, std.addr(g, std.F_left), 1);
+    std.path_setv(_M, 170, std.addr(g, F_state), EDIT);
+    std.path_setv(_M, 171, std.addr(g, F_sl_color), SLCOLOR);
+    std.path_setv(_M, 172, std.addr(g, F_msg), std.cat("Editing mode. Left: ", str.to_str(std.sub(16, getn(g, std.F_left)), {show_u:Y, digits:0})));
+    std.copy_tree(_M, 173, std.tree_lit(_M, 173, 1, 1, VAL, U, 2, VAL, U, 3, VAL, U, 4, VAL, U, POP, 2, 1, VAL, U, 2, VAL, U, 3, VAL, U, 4, VAL, U, POP, 3, 1, VAL, U, 2, VAL, 
+    U, 3, VAL, U, 4, VAL, U, POP, 4, 1, VAL, U, 2, VAL, U, 3, VAL, U, 4, VAL, U), std.addr(board));
+  return Y;
+  }
+  return N;
+}
+
+//====================
+//   d_game
+//====================
+function d_game(b) {
+k.k_enter(b);
+k.div_begin(b, null, false, false, false);
+  k.div_add(b, U, 1, 50, std.pt, d_game_178_F, 0);
+  k.div_add(b, U, 1, 25, std.pt, d_buttons_F, 0);
+  k.div_spa(b, 1, 5, std.pt);
+  k.div_add(b, U, 1, b_width, std.pt, d_board_F, 0);
+  k.div_add(b, U, 1, 25, std.pt, d_game_183_F, 0);
+  k.div_end(b);
+  k.draw_slices(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   main_draw
+//====================
+export function main_draw(b) {
+k.k_root2(b);
+k.k_enter(b);
+k.div_begin(b, null, false, false, false);
+  k.div_spa(b, 0, 50, std.al);
+  k.div_add(b, U, 0, b_width, std.pt, d_game_F, 0);
+  k.div_spa(b, 0, 50, std.al);
+  k.div_end(b);
+  //--under
+  std.draw_rect(b, { fill:std.GRAY1 });
+  k.draw_slices(b);
+k.k_leave(b);
+}
+
+
+//====================
+//   track_main_draw
+//====================
+export function track_main_draw(b, e) {
+  //---------------
+  //   on EV_KEYBOARD
+  //---------------
+  if (std.getn(e, std.F_evkind) == std.EV_KEYBOARD) {
+    var case66 = getn(e, std.F_keycode);
+    if (case66 === std.KEYCODE_UP) {
+      exec_move(UP);
+    } else if (case66 === std.KEYCODE_LEFT) {
+      exec_move(LEFT);
+    } else if (case66 === std.KEYCODE_DOWN) {
+      exec_move(DOWN);
+    } else if (case66 === std.KEYCODE_RIGHT) {
+      exec_move(RIGHT);
+    }
+  return Y;
+  }
+  return N;
+}
+
+//====================
+//   check_complete
+//====================
+function check_complete() {
+  let ok = Y;
+  var loop67 = new std.a_loop({ limit:4 });
+  outer: while (loop67.next()) {
+  var r = loop67.count;
+    var loop68 = new std.a_loop({ limit:4 });
+    while (loop68.next()) {
+    var c = loop68.count;
+      if (std.ne2(std.get_generic(board, r, c), std.get_generic(bc, r, c))) {
+        ok = N;
+        break outer;
+      }
+    }
+  }
+  if (ok === Y) {
+    std.path_setv(_M, 70, std.addr(g, F_color), getn(g, F_w_color));
+    std.log("FINISH");
+  } else {
+    std.log("INCOMPLETO");
+  }
+}
+
+
+//====================
+//   exec_move
+//====================
+function exec_move(dir) {
+  var case69 = dir;
+  if (case69 === UP) {
+    if (std.lt2(er, 4)) {
+      var temp_70 = std.get_generic(board, std.add(er, 1), ec);
+      setv(_M, 81, std.addr(board, std.add(er, 1), ec), std.get_generic(board, er, ec));
+      setv(_M, 81, std.addr(board, er, ec), temp_70);
+      er = std.add(er, 1);
+    }
+  } else if (case69 === LEFT) {
+    if (std.lt2(ec, 4)) {
+      var temp_71 = std.get_generic(board, er, std.add(ec, 1));
+      setv(_M, 85, std.addr(board, er, std.add(ec, 1)), std.get_generic(board, er, ec));
+      setv(_M, 85, std.addr(board, er, ec), temp_71);
+      ec = std.add(ec, 1);
+    }
+  } else if (case69 === DOWN) {
+    if (std.gt2(er, 1)) {
+      var temp_72 = std.get_generic(board, std.sub(er, 1), ec);
+      setv(_M, 89, std.addr(board, std.sub(er, 1), ec), std.get_generic(board, er, ec));
+      setv(_M, 89, std.addr(board, er, ec), temp_72);
+      er = std.sub(er, 1);
+    }
+  } else if (case69 === RIGHT) {
+    if (std.gt2(ec, 1)) {
+      var temp_73 = std.get_generic(board, er, std.sub(ec, 1));
+      setv(_M, 93, std.addr(board, er, std.sub(ec, 1)), std.get_generic(board, er, ec));
+      setv(_M, 93, std.addr(board, er, ec), temp_73);
+      ec = std.sub(ec, 1);
+    }
+  }
+  std.tree_add(_M, 95, 1, std.addr(g, F_moves));
+  std.path_setv(_M, 96, std.addr(g, F_msg), std.cat("Moves: ", str.to_str(getn(g, F_moves), {show_u:Y, digits:0})));
+  check_complete();
+}
+
+
+//====================
+//   main_init
+//====================
+export function main_init() {
+  std.copy_tree(_M, 44, std.tree_lit(_M, 44, 1, 1, VAL, 1, 2, VAL, 2, 3, VAL, 3, 4, VAL, 4, POP, 2, 1, VAL, 5, 2, VAL, 6, 3, VAL, 7, 4, VAL, 8, POP, 3, 1, VAL, 9, 2, VAL, 10
+  , 3, VAL, 11, 4, VAL, 12, POP, 4, 1, VAL, 13, 2, VAL, 14, 3, VAL, 15, 4, VAL, U), std.addr(board));
+  std.path_setv(_M, 45, std.addr(g, F_color), std.LIGHT_YELLOW);
+  std.path_setv(_M, 46, std.addr(g, F_w_color), std.LIME);
+  std.path_setv(_M, 47, std.addr(g, F_nw_color), NWCOLOR);
+  std.path_setv(_M, 48, std.addr(g, F_ed_color), EDCOLOR);
+  std.path_setv(_M, 49, std.addr(g, F_sl_color), SLCOLOR);
+  std.path_setv(_M, 51, std.addr(g, F_bt_text), std.WHITE);
+  std.path_setv(_M, 52, std.addr(g, F_moves), 0);
+  std.path_setv(_M, 53, std.addr(g, F_state), RUN);
+  er = 4;
+  ec = 4;
+  std.path_setv(_M, 56, std.addr(g, F_msg), RUNMSG);
+}
+
+
+//====================
+//   d_buttons_158
+//====================
+function d_buttons_158(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:getn(g, F_nw_color), thick:std.pt_to_dots(b, 1), corner:std.pt_to_dots(b, 2) });
+  std.draw_str(b, "New", { size:0.5, color:getn(g, F_bt_text) });
+k.k_leave(b);
+}
+
+
+//====================
+//   d_buttons_162
+//====================
+function d_buttons_162(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:getn(g, F_ed_color), thick:std.pt_to_dots(b, 1), corner:std.pt_to_dots(b, 2) });
+  std.draw_str(b, "Edit", { size:0.5, color:getn(g, F_bt_text) });
+k.k_leave(b);
+}
+
+
+//====================
+//   d_buttons_166
+//====================
+function d_buttons_166(b) {
+k.k_enter(b);
+  std.draw_rect(b, { fill:getn(g, F_sl_color), thick:std.pt_to_dots(b, 1), corner:std.pt_to_dots(b, 2) });
+  std.draw_str(b, "Solve", { size:0.5, color:getn(g, F_bt_text) });
+k.k_leave(b);
+}
+
+
+//====================
+//   d_game_178
+//====================
+function d_game_178(b) {
+k.k_enter(b);
+  std.draw_str(b, "15 Puzzle", { size:0.5 });
+k.k_leave(b);
+}
+
+
+//====================
+//   d_game_183
+//====================
+function d_game_183(b) {
+k.k_enter(b);
+  std.draw_rect(b, { thick:std.pt_to_dots(b, 1), corner:std.pt_to_dots(b, 2) });
+  std.draw_str(b, gets(g, F_msg), { size:0.5 });
+k.k_leave(b);
+}
+
+main_init();
+k.rebuild_all();
+
+</script>
+</body>
+</html>
