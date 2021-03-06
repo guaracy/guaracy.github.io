@@ -10,7 +10,7 @@ export const TRACE_INIT = !1;
 
 export const TRACE_TIME = !1;
 
-const TRACE_ANIMATION = !0, TRACE_BITMAP = !1, TRACE_BLACKBOX = !0, TRACE_BOOT = !1, TRACE_DEBUG = !0, TRACE_CACHE = !1, TRACE_CHAN = !0, TRACE_CHUNK = !1, TRACE_CLICK = !1, TRACE_CLIENT = !0, TRACE_COLLATE = !1, TRACE_CURVE = !1, TRACE_DECODE = !1, TRACE_DINPUT = !1, TRACE_ENCODE = !1, TRACE_ENCOD_LOW = !1, TRACE_FILE = !1, TRACE_IMG = !1, TRACE_INPATH = !1, TRACE_INPUT = !1, TRACE_INSERT = !1, TRACE_JUMP = !0, TRACE_KEYS = !1, TRACE_LOG = !1, TRACE_LOGG = !1, TRACE_LOGW = !1, TRACE_LOW = !1, TRACE_LOOM = !1, TRACE_MAJOR = !1, TRACE_MICRO = !1, TRACE_MOVE = !1, TRACE_PICKER = !1, TRACE_SEARCH = !1, TRACE_SEQ = !1, TRACE_SETVAL = !1, TRACE_SOUND = !1, TRACE_SPRITE = !1, TRACE_TEXT = !1, TRACE_TOUCH = !1, TRACE_TO_VAL_PTR = !1, TRACE_UNITX = !1, TRACE_XY = !1, TRACE_WRITE = !1, USES_VIDEO = !1, TRAP_BAD_SUBSCRIPTS = !0, TRAP_ERR = !0, TRAP_TYPE_MISMATCH = !0, TRAP_U = !0, SKIP_ANIMATION = !1, FIELD_EMPTY_SYMBOL = "✽", FIELD_EMPTY_COLOR = 14423100, FIELD_BAD_SYMBOL = "⚠️";
+const TRACE_ANIMATION = !0, TRACE_BITMAP = !1, TRACE_BLACKBOX = !0, TRACE_BOOT = !1, TRACE_DEBUG = !0, TRACE_CACHE = !1, TRACE_CHAN = !1, TRACE_CHUNK = !1, TRACE_CLICK = !1, TRACE_CLIENT = !0, TRACE_COLLATE = !1, TRACE_CURVE = !1, TRACE_DECODE = !1, TRACE_DINPUT = !1, TRACE_ENCODE = !1, TRACE_ENCOD_LOW = !1, TRACE_FILE = !1, TRACE_IMG = !1, TRACE_INPATH = !1, TRACE_INPUT = !1, TRACE_INSERT = !1, TRACE_JUMP = !0, TRACE_KEYS = !1, TRACE_LOG = !1, TRACE_LOGG = !1, TRACE_LOGW = !1, TRACE_LOW = !1, TRACE_LOOM = !1, TRACE_MAJOR = !1, TRACE_MICRO = !1, TRACE_MOVE = !1, TRACE_PICKER = !1, TRACE_SEARCH = !1, TRACE_SEQ = !1, TRACE_SETVAL = !1, TRACE_SOUND = !1, TRACE_SPRITE = !1, TRACE_TEXT = !1, TRACE_TOUCH = !1, TRACE_TO_VAL_PTR = !1, TRACE_UNITX = !1, TRACE_XY = !1, TRACE_WRITE = !1, USES_VIDEO = !1, TRAP_BAD_SUBSCRIPTS = !0, TRAP_ERR = !0, TRAP_TYPE_MISMATCH = !0, TRAP_U = !0, SKIP_ANIMATION = !1, FIELD_EMPTY_SYMBOL = "✽", FIELD_EMPTY_COLOR = 14423100, FIELD_BAD_SYMBOL = "⚠️";
 
 TRACE_INIT && logg("--- INIT A of std");
 
@@ -31,6 +31,7 @@ export var FUNCS = {};
 export var TREES = {};
 
 export var runtime;
+//console.log("A >> runtime defined"); // zzz
 
 export var debug_runtime;
 
@@ -92,19 +93,19 @@ export const INFINITY = 1 / 0;
 
 export const NEG_INFINITY = -1 / 0;
 
-export const U_STR = void 0;
+export const U_STR = null;
 
-export const U_PATH = void 0;
+export const U_PATH = null;
 
-export const U_PHOTO = void 0;
+export const U_PHOTO = null;
 
-export const U_MEAS = void 0;
+export const U_MEAS = null;
 
-export const U_FUNC = void 0;
+export const U_FUNC = null;
 
-export const U_SOUND = void 0;
+export const U_SOUND = null;
 
-export const U_TREE = void 0;
+export const U_TREE = null;
 
 export const U_COLOR = 3758096384;
 
@@ -570,30 +571,6 @@ export const YELLOW = 16776960;
 
 export const YELLOW_GREEN = 10145074;
 
-export const SOP_NOP = 0;
-
-export const SOP_FIRST = 1;
-
-export const SOP_UPDATE = 2;
-
-export const SOP_DELTA = 3;
-
-export const SOP_CALL = 4;
-
-export const SOP_QUIT = 5;
-
-export const SOP_END_DELTAS = 6;
-
-export const SOP_CHUNK_START = 7;
-
-export const SOP_CHUNK_END = 8;
-
-export const SOP_LOG = 9;
-
-export const SOP_BAD_REQ = 18;
-
-export const SOP_BAD_AUTH = 19;
-
 export const GIANT_WIDTH = 2e4;
 
 export const EF_VAL_IS_U = 1;
@@ -821,6 +798,14 @@ export const CSTATUS_CONNECTED = 9007191710958010;
 
 g_enum_ss[9007191710958010] = "CSTATUS_CONNECTED";
 
+export const CSTATUS_CONNECTING = 9007191283946301;
+
+g_enum_ss[9007191283946301] = "CSTATUS_CONNECTING";
+
+export const CSTATUS_DISCONNECTING = 9007191823452739;
+
+g_enum_ss[9007191823452739] = "CSTATUS_DISCONNECTING";
+
 export const CSTATUS_NO_ANSWER = 9007194263818523;
 
 g_enum_ss[9007194263818523] = "CSTATUS_NO_ANSWER";
@@ -828,10 +813,6 @@ g_enum_ss[9007194263818523] = "CSTATUS_NO_ANSWER";
 export const CSTATUS_NO_AUTH = 9007190790542995;
 
 g_enum_ss[9007190790542995] = "CSTATUS_NO_AUTH";
-
-export const CSTATUS_WAITING = 9007191192687714;
-
-g_enum_ss[9007191192687714] = "CSTATUS_WAITING";
 
 export const CURRENCY_AUD = 9007192475718373;
 
@@ -3669,6 +3650,217 @@ export var families = new a_tree("std", "$families", 0);
 
 export var unit_to_family = new a_tree("std", "$unit_to_family", 0);
 
+export const SOP_NOP = 6;
+
+export const SOP_LOG = 7;
+
+export const SOP_CHUNK_START = 8;
+
+export const SOP_CHUNK_END = 9;
+
+export const SOP_TREE_BSON = 10;
+
+export const SOP_TREE_BIN = 11;
+
+export const SOP_CALL = 12;
+
+export const SOP_END = 13;
+
+export const SOP_EOT = 14;
+
+export const SOP_PARM_POS = 16;
+
+export const SOP_PARM_NAMED = 17;
+
+export const SOP_PARM_REST = 18;
+
+export const NOV_0 = 21;
+
+export const NOV_INT32 = 22;
+
+export const NOV_ERR = 24;
+
+export const NOV_FUNC = 25;
+
+export const NOV_IMAGE = 26;
+
+export const NOV_MEAS = 27;
+
+export const NOV_N = 28;
+
+export const NOV_NUM = 29;
+
+export const NOV_OBJECT = 30;
+
+export const NOV_PATH = 31;
+
+export const NOV_SOUND = 32;
+
+export const NOV_STR = 33;
+
+export const NOV_U = 34;
+
+export const NOV_RELPATH = 35;
+
+export const NOV_VIDEO = 36;
+
+export const NOV_Y = 37;
+
+export const SUB_NUM = 38;
+
+export const SUB_STR = 39;
+
+export const SUB_1 = 40;
+
+export const SUB_INT32 = 41;
+
+export const SUB_ENUM = 42;
+
+export const SUB_POP = 43;
+
+export const SUB_POPALL = 44;
+
+export const NOPOP = 64;
+
+export const NOPOP_MASK = 63;
+
+function opcode_ss(opcode) {
+    let ss;
+    switch (opcode & NOPOP_MASK) {
+      case SOP_NOP:
+        ss = "SOP_NOP";
+        break;
+
+      case SOP_LOG:
+        ss = "SOP_LOG";
+        break;
+
+      case SOP_CHUNK_START:
+        ss = "SOP_CHUNK_START";
+        break;
+
+      case SOP_CHUNK_END:
+        ss = "SOP_CHUNK_END";
+        break;
+
+      case SOP_TREE_BSON:
+        ss = "SOP_TREE_BSON";
+        break;
+
+      case SOP_TREE_BIN:
+        ss = "SOP_TREE_BIN";
+        break;
+
+      case SOP_CALL:
+        ss = "SOP_CALL";
+        break;
+
+      case SOP_END:
+        ss = "SOP_END";
+        break;
+
+      case SOP_EOT:
+        ss = "SOP_EOT";
+        break;
+
+      case NOV_0:
+        ss = "NOV_0";
+        break;
+
+      case NOV_INT32:
+        ss = "NOV_INT32";
+        break;
+
+      case NOV_ERR:
+        ss = "NOV_ERR";
+        break;
+
+      case NOV_FUNC:
+        ss = "NOV_FUNC";
+        break;
+
+      case NOV_IMAGE:
+        ss = "NOV_IMAGE";
+        break;
+
+      case NOV_MEAS:
+        ss = "NOV_MEAS";
+        break;
+
+      case NOV_N:
+        ss = "NOV_N";
+        break;
+
+      case NOV_NUM:
+        ss = "NOV_NUM";
+        break;
+
+      case NOV_OBJECT:
+        ss = "NOV_OBJECT";
+        break;
+
+      case NOV_PATH:
+        ss = "NOV_PATH";
+        break;
+
+      case NOV_SOUND:
+        ss = "NOV_SOUND";
+        break;
+
+      case NOV_STR:
+        ss = "NOV_STR";
+        break;
+
+      case NOV_U:
+        ss = "NOV_U";
+        break;
+
+      case NOV_RELPATH:
+        ss = "NOV_RELPATH";
+        break;
+
+      case NOV_VIDEO:
+        ss = "NOV_VIDEO";
+        break;
+
+      case NOV_Y:
+        ss = "NOV_Y";
+        break;
+
+      case SUB_NUM:
+        ss = "SUB_NUM";
+        break;
+
+      case SUB_STR:
+        ss = "SUB_STR";
+        break;
+
+      case SUB_1:
+        ss = "SUB_1";
+        break;
+
+      case SUB_INT32:
+        ss = "SUB_INT32";
+        break;
+
+      case SUB_ENUM:
+        ss = "SUB_ENUM";
+        break;
+
+      case SUB_POP:
+        ss = "SUB_POP";
+        break;
+
+      case SUB_POPALL:
+        ss = "SUB_POPALL";
+        break;
+
+      default:
+        ss = "???";
+    }
+    return opcode & NOPOP && (ss += " NOPOP"), ss;
+}
+
 export var META = new a_tree(_M, "META", 0);
 
 export var LOCALIZED = new a_tree(_M, "LOCALIZED");
@@ -3775,13 +3967,17 @@ function js_set_screen_size() {
 }
 
 export function js_svg_wrapper(container, opacity) {
-    if (void 0 != container.last_svg_ptr) return container.last_svg_ptr;
+    if (container.has_transform) return container.firstChild.firstChild;
+    if (container.childNodes.length > 0) {
+        var top_elem = container.lastChild;
+        if ("svg" == top_elem.tagName) return top_elem;
+    }
     if (CHECKS && (container.bounds.width < 0 || container.bounds.height < 0)) debugger;
     var wrapper = document.createElementNS(SVG_NS, "svg");
     wrapper.style.position = "absolute";
     let content_h = container.bounds.width, content_v = container.bounds.height;
     return null != container.div && (content_h = container.div.content_h, content_v = container.div.content_v), wrapper.setAttribute("width", content_h.toFixed(0)), wrapper.setAttribute("height", content_v.toFixed(0)), 
-    1 != opacity && wrapper.setAttribute("opacity", opacity.toFixed(3)), container.appendChild(wrapper), container.last_svg_ptr = wrapper, wrapper;
+    1 != opacity && wrapper.setAttribute("opacity", opacity.toFixed(3)), container.appendChild(wrapper), wrapper;
 };
 
 export function input_set_value(mod, loc, field, newval) {
@@ -3821,14 +4017,14 @@ export function canvb(arg_addr) {
 export function remote_call(connection, func_name, func_hash, parms) {
     let pos_len, pos_eof, i, nparms, parmval, parmpos;
     var socket = get_object(connection, F_client_channel);
-    for (null == gg_buf ? gg_buf = new_bytes(1e5) : gg_buf.position = 0, bytes_put_byte(gg_buf, SOP_CHUNK_START), bytes_put_byte(gg_buf, 0), pos_len = gg_buf.position, bytes_put_card32(gg_buf, 0), bytes_put_byte(gg_buf, SOP_CALL), 
-    bytes_put_card32(gg_buf, func_hash), TRACE_ENCODE && logg(str.conv("=> remote call to {}, hash={}", func_name, str.to_str(func_hash, {
+    for (null == gg_buf ? gg_buf = new_bytes(1e5, LITTLE_ENDIAN) : gg_buf.position = 0, bytes_put_byte(gg_buf, SOP_CHUNK_START), bytes_put_byte(gg_buf, 0), pos_len = gg_buf.position, bytes_put_card32(gg_buf, 0), 
+    bytes_put_byte(gg_buf, SOP_CALL), bytes_put_card32(gg_buf, func_hash), nparms = parms.length, bytes_put_byte(gg_buf, nparms), TRACE_ENCODE && logg(str.conv("=> remote call to {}, hash={}, nparms={}", func_name, str.to_str(func_hash, {
         base: 16
-    }))), nparms = parms.length, bytes_put_byte(gg_buf, nparms), i = 0; i < nparms; i++) parmval = parms[i], parmpos = gg_buf.position, parmval instanceof a_path ? bytes_put_relpath(gg_buf, parmval, socket.client_dest) : bytes_put_val(gg_buf, parmval, 0), 
+    }), nparms)), i = 0; i < nparms; i++) parmval = parms[i], parmpos = gg_buf.position, parmval instanceof a_path ? bytes_put_relpath(gg_buf, parmval, socket.my_client_dest) : bytes_put_val(gg_buf, parmval, 0), 
     logg(`  at offset ${parmpos}: parm[${i}]=${str.to_str(parmval)}`);
     bytes_put_byte(gg_buf, SOP_CHUNK_END), pos_eof = gg_buf.position, gg_buf.position = pos_len, bytes_put_card32(gg_buf, pos_eof - pos_len - 4);
     var ncum = getn(connection, F_client_bytes_out) + pos_eof;
-    setv(_M, 0, connection, F_client_bytes_out, ncum), TRACE_CHAN && logg(str.conv("--sending {} bytes ({} cumulative) of remote call to func {}", pos_eof, ncum, func_name)), websocket_send(socket, gg_buf, pos_eof);
+    setv(_M, 0, connection, F_client_bytes_out, ncum), TRACE_CHAN && logg(str.conv("--sending {} bytes ({} cumulative) of remote call to func {}", pos_eof, ncum, func_name)), websocket_send(socket, Y, gg_buf, pos_eof);
 };
 
 export const WEBSOCKET_CLOSED = 1111;
@@ -3854,11 +4050,12 @@ export function websocket_close(sock) {
     sock.close();
 };
 
-export function websocket_send(sock, data, len = U) {
-    if ("string" == typeof instance) TRACE_CHAN && logg("websocket_send, sending as string"), sock.send(data); else if (len != U && len != data.arraybuf.byteLength) {
-        var subset = new Uint8Array(data.arraybuf, 0, len);
-        TRACE_CHAN && logg(`websocket_send, sending subset ${len} bytes, type=${typeof subset}`), sock.send(subset);
-    } else TRACE_CHAN && logg(`websocket_send, sending entire ${data.arraybuf.byteLength} bytes`), sock.send(data.arraybuf);
+export function websocket_send(sock, to_server, data, len = U) {
+    if (data instanceof ByteArray) {
+        len == U && (len = data.position);
+        var exactbuf = data.arraybuf.slice(0, len);
+        TRACE_CHAN && logg(str.conv("--sock.send binary len={}", len)), sock.send(exactbuf);
+    } else "string" == typeof data ? (TRACE_CHAN && logg(str.conv("--sock.send string={}", data.substr(0, 20))), sock.send(data)) : console.log(`### unknown type of data being sent: ${typeof data}`);
 };
 
 const CURSOR_ID = "$cursor";
@@ -4007,130 +4204,22 @@ export function cursor_custom(arg_image, arg_hotspot, arg_xy) {
 };
 
 function numeric_arg(val) {
-    if ("number" == typeof val && is_numeric(val)) return val;
-    CHECKS && argument_err("bad numeric parameter");
+    return void 0 != val && "number" == typeof val && is_numeric(val) == Y ? val : (CHECKS && argument_err("bad numeric parameter"), 0);
 }
 
-let gbuf, gbuf_endian, g_fixup_offset;
+function str_to_uint8(ss) {
+    return new TextEncoder("utf-8").encode(ss);
+}
 
-export function bytes_init(startsize, endian) {
-    gbuf = new_bytes(startsize, endian), gbuf_endian = endian;
-};
+function uint8_to_str(uint8array) {
+    return new TextDecoder("utf-8").decode(uint8array);
+}
 
 export function new_bytes(len, order = BIG_ENDIAN) {
     return new ByteArray(len, order);
 };
 
-export const NOV_POP = 20;
-
-export const NOV_0 = 21;
-
-export const NOV_EOF = 23;
-
-export const NOV_ERR = 24;
-
-export const NOV_FUNC = 25;
-
-export const NOV_IMAGE = 26;
-
-export const NOV_MEAS = 27;
-
-export const NOV_N = 28;
-
-export const NOV_NUM = 29;
-
-export const NOV_OBJECT = 30;
-
-export const NOV_PATH = 31;
-
-export const NOV_SOUND = 32;
-
-export const NOV_STR = 33;
-
-export const NOV_U = 34;
-
-export const NOV_RELPATH = 35;
-
-export const NOV_VIDEO = 36;
-
-export const NOV_Y = 37;
-
-export const SUB_NUM = 38;
-
-export const SUB_STR = 39;
-
-export const SUB_1 = 40;
-
-export const NOPOP = 64;
-
-export const NOPOP_MASK = 63;
-
-function opcode_ss(opcode) {
-    switch (opcode) {
-      case NOV_POP:
-        return "NOV_POP";
-
-      case NOV_0:
-        return "NOV_0";
-
-      case NOV_EOF:
-        return "NOV_EOF";
-
-      case NOV_ERR:
-        return "NOV_ERR";
-
-      case NOV_FUNC:
-        return "NOV_FUNC";
-
-      case NOV_IMAGE:
-        return "NOV_IMAGE";
-
-      case NOV_MEAS:
-        return "NOV_MEAS";
-
-      case NOV_N:
-        return "NOV_N";
-
-      case NOV_NUM:
-        return "NOV_NUM";
-
-      case NOV_OBJECT:
-        return "NOV_OBJECT";
-
-      case NOV_PATH:
-        return "NOV_PATH";
-
-      case NOV_SOUND:
-        return "NOV_SOUND";
-
-      case NOV_STR:
-        return "NOV_STR";
-
-      case NOV_U:
-        return "NOV_U";
-
-      case NOV_RELPATH:
-        return "NOV_RELPATH";
-
-      case NOV_VIDEO:
-        return "NOV_VIDEO";
-
-      case NOV_Y:
-        return "NOV_Y";
-
-      case SUB_NUM:
-        return "SUB_NUM";
-
-      case SUB_STR:
-        return "SUB_STR";
-
-      case SUB_1:
-        return "SUB_1";
-
-      default:
-        return "???";
-    }
-}
+let g_fixup_offset;
 
 function bytes_put_relpath(buf, argpath, basis) {
     var i, basisn = basis.key.length, nlevels = argpath.key.length - basis.key.length;
@@ -4213,17 +4302,22 @@ export function bytes_get_path(buf) {
 };
 
 export function bytes_put_tree(buf, subtree) {
-    bytes_put_subtree(buf, path_to_node(subtree)), bytes_put_byte(buf, NOV_EOF);
+    let node = path_to_node(subtree);
+    bytes_put_byte(buf, SOP_TREE_BIN), bytes_put_subtree(buf, node), bytes_put_byte(buf, SOP_EOT);
+};
+
+export function bytes_put_subscript(buf, sub) {
+    "string" == typeof sub ? (bytes_put_byte(buf, SUB_STR), TRACE_ENCODE && logg(str.conv("  put_sub at {} opcode=SUB_STR, sub={}", buf.position, sub)), bytes_put_str(buf, sub)) : 1 == sub ? (bytes_put_byte(buf, SUB_1), 
+    TRACE_ENCODE && logg(str.conv("  put_sub at {} opcode=SUB_1", buf.position))) : sub >= -2147483648 && sub <= 2147483647 ? (bytes_put_byte(buf, SUB_INT32), TRACE_ENCODE && logg(str.conv("  put_sub at {} opcode=SUB_INT32, sub={}", buf.position, sub)), 
+    bytes_put_int32(buf, sub)) : is_enum_b(sub) ? (bytes_put_byte(buf, SUB_ENUM), TRACE_ENCODE && logg(str.conv("  put_sub at {} opcode=SUB_ENUM, sub={}", buf.position, sub)), bytes_put_card32(buf, sub - FIRST_ENUM)) : (bytes_put_byte(buf, SUB_NUM), 
+    TRACE_ENCODE && logg(str.conv("  put_sub at {} opcode=SUB_NUM, sub={}", buf.position, sub)), bytes_put_num(buf, sub));
 };
 
 function bytes_put_subtree(buf, node) {
     let flag = 0;
     if (0 == (node.eflags & EF_VAL_IS_U) && (null != node.children && (flag = NOPOP), TRACE_ENCODE && console.log(str.conv("bytes_put_subtree, val={}", node.val)), bytes_put_val(buf, node.val, flag)), null != node.children) {
-        let last_sub = -9999999;
-        for (let child of node.children) "string" == typeof child.sub ? (bytes_put_byte(buf, SUB_STR), TRACE_DEBUG && logg(str.conv("put_node at {} opcode=SUB_STR, sub={}", buf.position, child.sub)), bytes_put_str(buf, child.sub)) : 1 == child.sub ? (bytes_put_byte(buf, SUB_1), 
-        TRACE_DEBUG && logg(str.conv("put_node at {} opcode=SUB_1", buf.position)), last_sub = 1) : (bytes_put_byte(buf, SUB_NUM), TRACE_DEBUG && logg(str.conv("put_node at {} opcode=SUB_NUM, sub={}", buf.position, child.sub)), 
-        bytes_put_num(buf, child.sub), last_sub = child.sub), bytes_put_subtree(buf, child);
-        TRACE_ENCODE && logg(str.conv(" end of children at {} opcode=POP", buf.position)), bytes_put_byte(buf, NOV_POP);
+        for (let child of node.children) bytes_put_subscript(buf, child.sub), bytes_put_subtree(buf, child);
+        TRACE_ENCODE && logg(str.conv(" end of children at {} opcode=POP", buf.position)), bytes_put_byte(buf, SUB_POP);
     }
 }
 
@@ -4259,6 +4353,9 @@ function bytes_get_val2(buf, valkind) {
       case NOV_0:
         return 0;
 
+      case NOV_INT32:
+        return bytes_get_int32(buf);
+
       case NOV_N:
         return N;
 
@@ -4287,11 +4384,11 @@ function bytes_get_val2(buf, valkind) {
         return ERR;
 
       default:
-        throw new Error("bad valkind");
+        throw new Error(`bad valkind ${valkind}`);
     }
 }
 
-export function bytes_get_tree(mod, line, buf, destp) {
+export function decode_tree_bin(buf, destp) {
     let opcode, sub_num, sub_str, skip_pop, val, dest = destp.clone();
     outer: for (;;) switch (skip_pop = 0 != ((opcode = bytes_get_byte(buf)) & NOPOP), opcode &= NOPOP_MASK, TRACE_DECODE && logg(str.conv("get_tree at {} opcode={} skip={}", buf.position, opcode_ss(opcode), skip_pop)), 
     opcode) {
@@ -4307,15 +4404,27 @@ export function bytes_get_tree(mod, line, buf, destp) {
         dest.key.push(1), sub_num = 1, TRACE_DECODE && logg("  push subscript 1");
         break;
 
-      case NOV_POP:
+      case SUB_INT32:
+        sub_num = bytes_get_int32(buf), dest.key.push(sub_num), TRACE_DECODE && logg(`  push subscript:INT32 ${sub_num}`);
+        break;
+
+      case SUB_ENUM:
+        sub_num = (val = bytes_get_card32(buf)) + FIRST_ENUM, dest.key.push(sub_num), TRACE_DECODE && logg(`  push subscript:ENUM ${str.enum_to_str(sub_num)}`);
+        break;
+
+      case SUB_POP:
         dest.key.pop();
         break;
 
-      case NOV_EOF:
+      case SOP_EOT:
+        break outer;
+
+      case SOP_CHUNK_END:
+        TRACE_DECODE && logg("  ERROR in stream, forgot to send SOP_EOT"), buf.position -= 1;
         break outer;
 
       default:
-        val = bytes_get_val2(buf, opcode), TRACE_DECODE && logg(str.conv("  storing value {}, dest={}", val, dest)), setv(mod, line, dest, val), skip_pop || dest.key.pop();
+        val = bytes_get_val2(buf, opcode), TRACE_DECODE && logg(str.conv("  storing value {}, dest={}", val, dest)), setv(_M, 0, dest, val), skip_pop || dest.key.pop();
     }
     TRACE_DECODE && logg(str.conv("..end get_tree at {}", buf.position));
 };
@@ -4444,7 +4553,7 @@ export function resolve_filepath(mypath) {
 };
 
 export function debug_write_blackbox(kind, note, mypath) {
-    let micro, buf = new_bytes(1e5, BIG_ENDIAN);
+    let micro, buf = new_bytes(1e5, LITTLE_ENDIAN);
     for (micro of (bytes_put_chunk(buf, "bbox"), bytes_put_card32(buf, 1), bytes_put_str(buf, gets(runtime, F_app_version)), bytes_put_num(buf, getn(runtime, F_os_kind)), bytes_put_num(buf, getn(runtime, F_os_language)), 
     bytes_put_str(buf, gets(runtime, F_os_version)), bytes_put_num(buf, getn(runtime, F_screen_dpi)), bytes_put_num(buf, getn(runtime, F_window_horz)), bytes_put_num(buf, getn(runtime, F_window_vert)), bytes_put_str(buf, str.time_to_str("[iso_date]")), 
     bytes_put_str(buf, kind), bytes_put_str(buf, note), bytes_fixup_chunk(buf), TRACE_DEBUG && logg(str.conv("  write of {} major steps", tree_count(addr(runtime, F_major_steps)))), bytes_put_chunk(buf, "majr"), 
@@ -4452,8 +4561,17 @@ export function debug_write_blackbox(kind, note, mypath) {
     return bytes_fixup_chunk(buf), TRACE_BLACKBOX && logg(str.conv("-- writing blackbox file to {}", mypath)), os_write_bytes(mypath, buf), buf.position;
 };
 
+function arraybuffer_to_str(arraybuffer) {
+    return String.fromCharCode.apply(null, new Uint8Array(arraybuffer));
+}
+
+function arraybuf_begins(ss, arraybuf) {
+    for (var myarray = new Uint8Array(arraybuf), len = ss.length, i = 0; i < len; i++) if (ss.charCodeAt(i) != myarray[i]) return !1;
+    return !0;
+}
+
 export function subscribe_start(mod, loc, arg_id, arg_url, arg_port, arg_rate, arg_dest, connection, _options) {
-    setv(mod, loc, connection, F_client_status, CSTATUS_WAITING);
+    setv(mod, loc, connection, F_client_status, CSTATUS_CONNECTING);
     var echo = !1;
     for (var property in _options) switch (property) {
       case "echo":
@@ -4469,7 +4587,7 @@ export function subscribe_start(mod, loc, arg_id, arg_url, arg_port, arg_rate, a
     var net = arg_url + ":" + arg_port + "/BE01" + flags + "/" + str.num_to_hex(arg_id);
     TRACE_CHAN && logg(`>> subscribing to ${net}`);
     var sock = new WebSocket(net);
-    sock.binaryType = "arraybuffer", sock.last_pos = 0, sock.client_dest = arg_dest, sock.id = arg_id, g_id_to_websocket[arg_id] = sock, setv(mod, 0, connection, F_client_channel, sock), setv(mod, loc, connection, F_client_bytes_in, 0), 
+    sock.binaryType = "arraybuffer", sock.my_client_dest = arg_dest, sock.my_id = arg_id, sock.my_first = !0, g_id_to_websocket[arg_id] = sock, setv(mod, 0, connection, F_client_channel, sock), setv(mod, loc, connection, F_client_bytes_in, 0), 
     setv(mod, loc, connection, F_client_bytes_out, 0), sock.onopen = function(evt) {
         TRACE_CHAN && logg(str.conv(">> on_open, id={}", arg_id));
     }, sock.onclose = function(evt) {
@@ -4477,62 +4595,58 @@ export function subscribe_start(mod, loc, arg_id, arg_url, arg_port, arg_rate, a
     }, sock.onerror = function(evt) {
         TRACE_CHAN && logg(str.conv(">> on_error, id={}", arg_id)), setv(mod, loc, connection, F_client_status, CSTATUS_NO_ANSWER);
     }, sock.onmessage = function(evt) {
-        TRACE_CHAN && logg(str.conv(">> on_message, id={}", arg_id));
-        var mybuf = ArrayBuffer_to_ByteArray(evt.data, BIG_ENDIAN);
-        setv(mod, loc, connection, F_client_status, CSTATUS_CONNECTED), process_client_chunks(mybuf, arg_dest);
+        TRACE_CHAN && logg(str.conv(">> on_message, id={}, len={}", arg_id, evt.data.byteLength)), 129 == evt.data.byteLength && console.log("BUF>>" + arraybuffer_to_str(evt.data)), setv(mod, loc, connection, F_client_status, CSTATUS_CONNECTED);
+        var ignore = !1;
+        (sock.my_first && (sock.my_first = !1, ignore = arraybuf_begins("HTTP/1.1 101 ", evt.data)), ignore) || process_client_chunks(ArrayBuffer_to_ByteArray(evt.data, LITTLE_ENDIAN), arg_dest);
     };
+};
+
+export function subscribe_stop(connection) {
+    var sock = get_object(connection, F_client_channel);
+    setv(_M, 0, connection, F_client_status, CSTATUS_DISCONNECTING), TRACE_CHAN && logg(str.conv(">> subscribe_stop, id={}", sock.my_id)), sock.close(1e3, "subscribe_stop");
 };
 
 function process_client_chunks(mybuf, dest) {
     var opcode;
     if ((opcode = bytes_get_byte(mybuf)) == SOP_CHUNK_START) {
         bytes_get_byte(mybuf);
-        var len = bytes_get_card32(mybuf), chunk_start = mybuf.position;
-        TRACE_CLIENT && logg(`process_client_chunks, chunk_len=${len}`);
-        bigloop: for (;;) switch (opcode = bytes_get_byte(mybuf)) {
-          case SOP_NOP:
-            TRACE_CLIENT && logg("-- opcode SOP_NOP");
-            break;
-
-          case SOP_FIRST:
-            TRACE_CLIENT && logg("-- opcode SOP_FIRST"), bytes_get_tree(_M, 0, mybuf, dest);
-            break;
-
-          case SOP_UPDATE:
-            TRACE_CLIENT && logg("-- opcode SOP_UPDATE"), decode_deltas(mybuf, dest);
-            break;
-
-          case SOP_CALL:
-            TRACE_CLIENT && logg("-- opcode SOP_CALL");
+        var pos, len = bytes_get_card32(mybuf), chunk_start = mybuf.position;
+        if (TRACE_CLIENT && logg(`process_client_chunks, chunk_len=${len}`), len > mybuf.arraybuf.byteLength) {
+            console.log("Crazy chunk length");
             debugger;
-            break;
+        } else {
+            bigloop: for (;;) switch (pos = mybuf.position, opcode = bytes_get_byte(mybuf), TRACE_DECODE && logg(`at ${pos}: ${opcode_ss(opcode)}`), opcode) {
+              case SOP_NOP:
+                break;
 
-          case SOP_CHUNK_END:
-            break bigloop;
+              case SOP_LOG:
+                logg(">> SERVER: " + bytes_get_str(mybuf));
+                break;
 
-          case SOP_LOG:
-            logg(bytes_get_str(mybuf));
-            break;
+              case SOP_TREE_BSON:
+                break;
 
-          default:
-            TRACE_CLIENT && logg(`-- bad opcode: ${opcode}`);
-            debugger;
-            break bigloop;
+              case SOP_TREE_BIN:
+                decode_tree_bin(mybuf, dest);
+                break;
+
+              case SOP_CALL:
+                bytes_get_card32(mybuf);
+                for (var val, nparms = bytes_get_byte(mybuf), parmvals = [], i = 0; i < nparms; i++) val = bytes_get_val(mybuf), parmvals.push(val);
+                break;
+
+              case SOP_CHUNK_END:
+                break bigloop;
+
+              default:
+                logg(`-- bad opcode: ${opcode}`);
+                debugger;
+                break bigloop;
+            }
+            TRACE_CHAN && logg(`SUB: after parsing chunk, pos=${mybuf.position}, expect=${chunk_start + len}`);
         }
-        TRACE_CHAN && logg(`SUB: after parsing chunk, pos=${mybuf.position}, expect=${chunk_start + len}`);
     } else logg(`Expected SOP_CHUNK_START, got 0x${opcode.toString(16)}`);
 }
-
-export function decode_deltas(buf, dest) {
-    for (var opcode, keylen, netpath, i, keyx, val; TRACE_CLIENT && logg(`top delta loop, pos=${buf.position}`), (opcode = bytes_get_byte(buf)) != SOP_END_DELTAS; ) {
-        if (opcode != SOP_DELTA) {
-            debugger;
-            break;
-        }
-        for (keylen = bytes_get_byte(buf), netpath = dest.clone(), i = 0; i < keylen; i++) keyx = bytes_get_val(buf), netpath.key.push(keyx);
-        val = bytes_get_val(buf), TRACE_CLIENT && logg(str.conv("delta, pos={}, net.key={key}, val={}", buf.position, netpath.key, val)), path_setv(_M, 0, netpath, val);
-    }
-};
 
 export function http_encodeURIComponent(ss, _options) {
     var plusflag = !1;
@@ -5240,6 +5354,29 @@ export function interpolate(a_cur, a_min, a_max, b_min, b_max, _options = null) 
     return rounded ? Math.round(b_min + (b_max - b_min) * (a_cur - a_min) / (a_max - a_min)) : b_min + (b_max - b_min) * (a_cur - a_min) / (a_max - a_min);
 };
 
+export function local_to_global(block, options) {
+    let gxy, lx = U, ly = U;
+    for (let property in options) switch (property) {
+      case "x":
+        lx = options.x;
+        break;
+
+      case "y":
+        ly = options.y;
+        break;
+
+      case "xy":
+        lx = getn(options.xy, F_x), ly = getn(options.xy, F_y);
+        break;
+
+      default:
+        argument_err("bad option: " + property);
+    }
+    gxy = k.local_to_global_p(block, new Point(lx, ly));
+    let result = new a_tree(_M, "local_to_global");
+    return setv(_M, 0, result, F_x, gxy.x), setv(_M, 0, result, F_y, gxy.y), result;
+};
+
 export function solve_point(options) {
     let basis, basis_l, basis_t, basis_w, basis_h, x, y, pin = 5, dx = 0, dy = 0, round = !1;
     for (let property in options) switch (property) {
@@ -5480,59 +5617,55 @@ export function solve_grid_rect(b, col1, row1, col2, row2, _options = null) {
 };
 
 export function round(n, _options = null) {
-    let mult, digits = 0;
+    let mult = 1;
     if (is_err_enum_b(n)) return ERR;
     if (0 === n) return 0;
     if (n === U) return U;
     for (let property in _options) switch (property) {
-      case "digits":
-        digits = _options.digits;
+      case "multiple":
+        if (is_err_enum_b(mult = _options.multiple) || 0 == mult) return ERR;
         break;
 
       default:
         argument_err("bad option: " + property);
     }
-    return 0 === digits ? Math.round(n) : digits > 0 ? (mult = Math.pow(10, digits), Math.round(n / mult) * mult) : (mult = Math.pow(10, -digits), Math.round(n * mult) / mult);
+    return 1 == mult ? Math.round(n) : Math.round(n * mult) / mult;
 };
 
 export function round_up(n, _options = null) {
-    let mult, property, digits = 0;
-    if (is_err_enum_b(n)) return ERR;
-    if (0 === n) return 0;
-    if (n === U) return U;
-    if (null !== _options) for (property in _options) switch (property) {
-      case "digits":
-        digits = _options.digits;
-        break;
-
-      default:
-        argument_err("bad option: " + property);
-    }
-    return 0 === digits ? Math.ceil(n) : digits > 0 ? (mult = Math.pow(10, digits), Math.ceil(n / mult) * mult) : (mult = Math.pow(10, -digits), Math.ceil(n * mult) / mult);
-};
-
-export function round_down(n, _options = null) {
-    let mult, digits = 0;
+    let mult = 1;
     if (is_err_enum_b(n)) return ERR;
     if (0 === n) return 0;
     if (n === U) return U;
     for (let property in _options) switch (property) {
-      case "digits":
-        digits = _options.digits;
+      case "multiple":
+        if (is_err_enum_b(mult = _options.multiple) || 0 == mult) return ERR;
         break;
 
       default:
         argument_err("bad option: " + property);
     }
-    return 0 === digits ? Math.floor(n) : digits > 0 ? (mult = Math.pow(10, digits), Math.floor(n / mult) * mult) : (mult = Math.pow(10, -digits), Math.floor(n * mult) / mult);
+    return 1 == mult ? Math.ceil(n) : Math.ceil(n / mult) * mult;
+};
+
+export function round_down(n, _options = null) {
+    let mult = 1;
+    if (is_err_enum_b(n)) return ERR;
+    if (0 === n) return 0;
+    if (n === U) return U;
+    for (let property in _options) switch (property) {
+      case "multiple":
+        if (is_err_enum_b(mult = _options.multiple) || 0 == mult) return ERR;
+        break;
+
+      default:
+        argument_err("bad option: " + property);
+    }
+    return 1 == mult ? Math.floor(n) : Math.floor(n / mult) * mult;
 };
 
 export function round_zero(number, _options = null) {
     return number >= 0 ? round_down(number, _options) : round_up(number, _options);
-};
-
-export function round_multiple(a, mult) {
-    return is_err_enum_b(a) || is_err_enum_b(mult) ? ERR : 0 === a ? 0 : a === U || mult === U ? U : 0 === mult ? 0 : 1 === (mult = Math.abs(mult)) ? Math.round(a) : Math.round(a / mult) * mult;
 };
 
 export function rem(input, divisor, options = null) {
@@ -5644,6 +5777,32 @@ const WORDS = [ "abac", "abas", "abba", "abbe", "abbs", "abed", "abet", "abid", 
 
 export function random_word4() {
     return WORDS[random_int(0, WORDS.length - 1)];
+};
+
+const PERLIN_YWRAPB = 4, PERLIN_YWRAP = 1 << PERLIN_YWRAPB, PERLIN_ZWRAPB = 8, PERLIN_ZWRAP = 1 << PERLIN_ZWRAPB, PERLIN_SIZE = 4095;
+
+let perlin, perlin_octaves = 4, perlin_attenuation = .5;
+
+function scaled_cosine(i) {
+    return .5 * (1 - Math.cos(i * Math.PI));
+}
+
+export function perlin_noise(x) {
+    var y = 0, z = 0;
+    if (null == perlin) {
+        perlin = new Array(PERLIN_SIZE + 1);
+        for (let i = 0; i < PERLIN_SIZE + 1; i++) perlin[i] = Math.random();
+    }
+    x < 0 && (x = -x), y < 0 && (y = -y), z < 0 && (z = -z);
+    let rxf, ryf, n1, n2, n3, xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z), xf = x - xi, yf = y - yi, zf = z - zi, r = 0, ampl = 1;
+    for (let o = 0; o < perlin_octaves; o++) {
+        let of = xi + (yi << PERLIN_YWRAPB) + (zi << PERLIN_ZWRAPB);
+        rxf = scaled_cosine(xf), ryf = scaled_cosine(yf), n1 = perlin[of & PERLIN_SIZE], n1 += rxf * (perlin[of + 1 & PERLIN_SIZE] - n1), n2 = perlin[of + PERLIN_YWRAP & PERLIN_SIZE], n1 += ryf * ((n2 += rxf * (perlin[of + PERLIN_YWRAP + 1 & PERLIN_SIZE] - n2)) - n1), 
+        n2 = perlin[(of += PERLIN_ZWRAP) & PERLIN_SIZE], n2 += rxf * (perlin[of + 1 & PERLIN_SIZE] - n2), n3 = perlin[of + PERLIN_YWRAP & PERLIN_SIZE], n2 += ryf * ((n3 += rxf * (perlin[of + PERLIN_YWRAP + 1 & PERLIN_SIZE] - n3)) - n2), 
+        r += (n1 += scaled_cosine(zf) * (n2 - n1)) * ampl, ampl *= perlin_attenuation, xi <<= 1, yi <<= 1, yf *= 2, zi <<= 1, zf *= 2, (xf *= 2) >= 1 && (xi++, xf--), yf >= 1 && (yi++, yf--), zf >= 1 && (zi++, 
+        zf--);
+    }
+    return r;
 };
 
 export function set_clock(targ_sec) {
@@ -5776,12 +5935,10 @@ export function os_clipboard_paste() {
     return "ERROR";
 };
 
-export function loom_timer(func, options, ...args) {
-    let nargs, argx, elem = alloc_loom_elem(options);
-    if (elem.nreps < 1) return U;
-    for (elem.func = func, elem.evkind = EV_TIMER, nargs = args.length, argx = 0; argx < nargs; argx++) elem.parm_array.push(args[argx]);
-    return now >= elem.time && elem.prereq == U && (TRACE_LOOM && logg("-- loom_timer, firing immediate"), elem.countx = 1, call_deferred_func(elem), elem.last_seen = now, elem.time = elem.interval, elem.is_relative = !0, 
-    1 == elem.nreps) ? U : (g_loom.push(elem), elem.id);
+export function loom_timer(func, options) {
+    let elem = alloc_loom_elem(options);
+    return elem.nreps < 1 ? U : (elem.func = func, elem.evkind = EV_TIMER, TRACE_LOOM && logg("-- loom_timer, id=" + String(elem.id)), now >= elem.time && elem.prereq == U && (TRACE_LOOM && logg("-- loom_timer, firing immediate"), 
+    elem.countx = 1, call_deferred_func(elem), elem.last_seen = now, elem.time = elem.interval, elem.is_relative = !0, 1 == elem.nreps) ? U : (g_loom.push(elem), elem.id));
 };
 
 export function loom_animate_curve(container, p1, c1, p2, options) {
@@ -6106,6 +6263,7 @@ export function draw_str(container, ss, options) {
         var final_ss;
         html ? (wrap || (mytxt.style.whiteSpace = "nowrap"), final_ss = myss) : (mytxt.style.whiteSpace = wrap ? "pre-wrap" : "pre", final_ss = escape_plain_for_html(myss)), mytxt.innerHTML = final_ss;
     }
+    "string" != typeof ss && (ss = str.to_str(ss));
     for (let property in options) switch (property) {
       case "backcolor":
         backcolor = options.backcolor;
@@ -7397,7 +7555,7 @@ export function draw_polycurve(container, data, options) {
     }
     function P(val) {
         return str.to_str(val, {
-            digits: 3
+            dig: 3
         });
     }
     null != container.can ? (ctx.closePath(), did_fill && ctx.fill(), 0 != width && ctx.stroke()) : (shape.setAttribute("d", pathss), wrapper.appendChild(shape));
@@ -7869,7 +8027,7 @@ export function a_sys_gradient() {
 };
 
 export function a_loom_element() {
-    this.func = null, this.nreps = 1, this.countx = 0, this.last_seen = 0, this.field_vec = [], this.parm_array = [];
+    this.func = null, this.nreps = 1, this.countx = 0, this.last_seen = 0, this.field_vec = [];
 };
 
 export function Point(x, y) {
@@ -8021,7 +8179,7 @@ export function a_loop(options) {
         break;
 
       case "limit":
-        if (this.limit = options.limit, options.limit == U || is_numeric(this.limit) != Y) debugger;
+        this.limit = numeric_arg(options.limit);
         break;
 
       case "rev":
@@ -8724,17 +8882,16 @@ export function sub(a, b) {
 
 export function mul(a, b) {
     let a_is_num = "number" == typeof a, b_is_num = "number" == typeof b;
-    if (a_is_num && b_is_num) return 0 === a || 0 === b ? 0 : (a === Y ? a = 1 : a === N && (a = 0), b === Y ? b = 1 : b === N && (b = 0), is_err_enum_b(a) || is_err_enum_b(b) ? (TRAP_ERR && internal_err("bad arg"), 
-    ERR) : a === U || b === U ? U : a * b);
+    if (a_is_num && b_is_num) return Number.isNaN(a) || Number.isNaN(b) ? (TRAP_ERR && internal_err("bad arg"), ERR) : (a === Y ? a = 1 : a === N && (a = 0), b === Y ? b = 1 : b === N && (b = 0), 0 === a || 0 === b ? 0 : a === U || b === U ? U : a * b);
     let cm, a_is_mea = a instanceof a_meas, b_is_mea = b instanceof a_meas;
     if (a_is_mea && b_is_mea) {
         (cm = new a_meas()).family = U, cm.mag = a.mag * b.mag, cm.unit = U;
-        let term, ax = str_to_unitxx(a.unitss), bx = str_to_unitxx(b.unitss);
+        let term, ax = a_unitxx.str_to_unitxx(a.unitss), bx = a_unitxx.str_to_unitxx(b.unitss);
         for (term of bx) ax.add_unit_term(term, 1);
         return cm.unitss = ax.unitxx_to_str(), cm;
     }
-    return a_is_num && b_is_mea ? is_err_enum_b(a) ? (TRAP_ERR && internal_err("bad arg"), ERR_MEAS) : a === U ? U : ((cm = b.clone()).mag = b.mag * a, cm) : a_is_mea && b_is_num ? is_err_enum_b(b) ? (TRAP_ERR && internal_err("bad arg"), 
-    ERR) : b === U ? U : is_enum_b(b) ? (TRAP_ERR && internal_err("bad arg"), ERR_MEAS) : ((cm = a.clone()).mag = a.mag * b, cm) : (TRAP_ERR && internal_err("bad arg"), ERR);
+    return a_is_num && b_is_mea ? is_err_enum_b(a) ? (TRAP_ERR && internal_err("bad arg"), ERR_MEAS) : (cm = b.clone(), a == Y || (cm.mag = a == N || 0 == a ? 0 : a === U ? U : b.mag * a), cm) : a_is_mea && b_is_num ? is_err_enum_b(b) ? (TRAP_ERR && internal_err("bad arg"), 
+    ERR_MEAS) : (cm = a.clone(), b == Y || (cm.mag = b == N || 0 == b ? 0 : b === U ? U : a.mag * b), cm) : (TRAP_ERR && internal_err("bad arg"), ERR);
 };
 
 export function div(a, b) {
@@ -9692,7 +9849,7 @@ export function alloc_loom_elem(options) {
         break;
 
       case "reps":
-        nreps = options.reps;
+        nreps = numeric_arg(options.reps);
         break;
 
       case "speed":
@@ -9700,7 +9857,7 @@ export function alloc_loom_elem(options) {
         break;
 
       case "time":
-        is_numeric(options.time) === Y ? time = options.time : CHECKS && argument_err("a specified time must be numeric");
+        time = numeric_arg(options.time);
         break;
 
       case "color":
@@ -9722,8 +9879,8 @@ export function alloc_loom_elem(options) {
 function loom_dump1(loomx) {
     let fx, msg, elem;
     if (msg = str.conv("  loom[{int}]: ", loomx), elem = g_loom[loomx], msg += str.conv("pre={n}, id={n}, time={n}, kind={n}, rel={bool}", elem.prereq, elem.id, elem.time, elem.evkind, elem.is_relative), 
-    elem.evkind === EV_TIMER) {
-        for (msg += ", parms=[", fx = 0; fx < elem.parm_array.length; fx++) 0 !== fx && (msg += ", "), msg += str.conv("{}", elem.parm_array[fx]);
+    elem.evkind === EV_TIMER && null != elem.func.parms) {
+        for (msg += ", parms=[", fx = 0; fx < elem.func.parms.length; fx++) 0 !== fx && (msg += ", "), msg += str.conv("{}", elem.func.parms[fx]);
         msg += "]";
     }
     logg(msg);
@@ -9740,7 +9897,7 @@ export function loom_clearx(loomx) {
 };
 
 export function call_deferred_func(elem) {
-    elem.group != IDE_GROUP && add_major_callback(elem), elem.func.code.apply(null, elem.parm_array);
+    elem.group != IDE_GROUP && add_major_callback(elem), unfreeze_calc(elem.func);
 };
 
 export function block_animation_enter() {
@@ -9946,7 +10103,9 @@ export function rtl_init() {
     add_unit(Y_Time, N_picosec, 1e-12), add_unit(Y_Time, N_week, 604800), add_unit(Y_Time, N_year, 2678400), add_unit(Y_Volume, N_l, 1);
     add_unit(Y_Volume, N_cu_ft, 28.316579357213648), add_unit(Y_Volume, N_cu_yd, 764.5552200007645), add_unit(Y_Volume, N_cup, .23658823637296003), add_unit(Y_Volume, N_gal, 3.785411789132032), add_unit(Y_Volume, N_ml, .001), 
     add_unit(Y_Volume, N_oz, .029573529564111873), add_unit(Y_Volume, N_pint, .47317647274592006), add_unit(Y_Volume, N_quart, .94635294549184), add_unit(Y_Volume, N_tbsp, .014786764780962696), add_unit(Y_Volume, N_tsp, .004928921598877499), 
-    ERR_TREE = new a_tree("std", "ERR_TREE", 0), str.str_add_meta(), loom_history = new a_tree("std", "$loom_history", NF_STATEFUL), runtime = new a_tree("std", "$runtime", NF_STATEFUL), debug_runtime = new a_tree(_M, "$debug_runtime", 0), 
+    ERR_TREE = new a_tree("std", "ERR_TREE", 0), str.str_add_meta(), loom_history = new a_tree("std", "$loom_history", NF_STATEFUL), runtime = new a_tree("std", "$runtime", NF_STATEFUL), 
+	//console.log("B >> alloc runtime"), // zzzz
+debug_runtime = new a_tree(_M, "$debug_runtime", 0), 
     js_set_screen_size(), setv(_M, 0, runtime, F_app_version, "1");
     var verss = navigator.userAgent;
     IS_NODE || (verss += " ratio:" + window.devicePixelRatio.toFixed(1)), setv(_M, 0, runtime, F_env_version, verss);
@@ -9957,9 +10116,7 @@ export function rtl_init() {
     let kind = CPU_INTEL;
     if (-1 != navigator.userAgent.indexOf("ARM") && (kind = CPU_ARM), setv(_M, 0, runtime, F_cpu_kind, kind), setv(_M, 0, runtime, F_full_screen, N), setv(_M, 0, runtime, F_hardware_id, g_hardware_id), setv(_M, 0, runtime, F_touch_kind, TOUCH_NONE), 
     setv(_M, 0, runtime, F_os_modal, 0), TRACE_MAJOR && logg("emitting major[1] EV_INIT"), setv(_M, 0, runtime, F_major_steps, 1, F_evkind, EV_INIT), setv(_M, 0, runtime, F_major_steps, 1, F_hist_rawx, 0), 
-    setv(_M, 0, runtime, F_major_stepx, 2), IS_NODE) {
-        setInterval(node_tick, 1e3 / 10);
-    } else {
+    setv(_M, 0, runtime, F_major_stepx, 2), !IS_NODE) {
         k.k_init(), window.addEventListener("keydown", js_keydown), window.addEventListener("mousedown", js_mousedown), window.addEventListener("mouseup", js_mouseup), window.addEventListener("mousemove", js_mousemove), 
         window.addEventListener("touchstart", js_touchstart), window.addEventListener("touchmove", js_touchmove), window.addEventListener("touchend", js_touchend), window.addEventListener("touchcancel", js_touchcancel), 
         window.oncontextmenu = (e => (e.preventDefault(), !1)), window.addEventListener("resize", js_resize);

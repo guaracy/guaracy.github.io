@@ -4,7 +4,7 @@ import * as std from "./beads_std.js";
 
 import * as str from "./beads_str.js";
 
-const TRACE_AUTO = !1, TRACE_BLOCKS = !1, TRACE_CAPTURE = !1, TRACE_DPI = !1, TRACE_ENTER = !1, TRACE_EXPLODE = !1, TRACE_EXTRA = !1, TRACE_EVENTS = !1, TRACE_FIND = !1, TRACE_FINDBX = !1, TRACE_GRID = !1, TRACE_K = !1, TRACE_LOGGING = !1, TRACE_OBSOLETE = !1, TRACE_TRICKLE = !1, TRACE_SCROLL = !1, TRACE_TBL = !1, TRACE_VISIT = !1, TRACE_XFORM = !1, TRACE_XTRA = !1, TRACE_XY = !1, TRACE_GTOL = !1, OBBLOCK = "$root", M = "std", MARK_OVERFLOW = !1;
+const TRACE_AUTO = !1, TRACE_BLOCKS = !1, TRACE_CAPTURE = !1, TRACE_DPI = !1, TRACE_ENTER = !1, TRACE_EVENTS = !1, TRACE_EXPLODE = !1, TRACE_EXTRA = !1, TRACE_FIND = !1, TRACE_FINDBX = !1, TRACE_GRID = !1, TRACE_K = !1, TRACE_LOGGING = !1, TRACE_OBSOLETE = !1, TRACE_TRICKLE = !1, TRACE_SCROLL = !1, TRACE_TBL = !1, TRACE_VISIT = !1, TRACE_XFORM = !1, TRACE_XTRA = !1, TRACE_XY = !1, TRACE_GTOL = !1, OBBLOCK = "$root", M = "std", MARK_OVERFLOW = !1;
 
 export const SKIPBG = !1;
 
@@ -189,7 +189,7 @@ export function k_layer(parent, drawf, options) {
     } else if ((newb = std.new_block(parent, new std.Rectangle(left, top, width, height), BKIND_SUBSET, drawf.name, drawf, null, parent.dest)).style.opacity = opacity, dpi != std.U && (newb.dpi = dpi), 5 == pin) {
         tx = width / 2, ty = height / 2;
         var old_svg = std.js_svg_wrapper(newb, opacity), group = document.createElementNS(std.SVG_NS, "g");
-        group.setAttribute("transform", `translate(${tx} ${ty})`), old_svg.appendChild(group), newb.last_svg_ptr = group, newb.bkind = BKIND_SUBSET;
+        group.setAttribute("transform", `translate(${tx} ${ty})`), old_svg.appendChild(group), newb.has_transform = !0, newb.bkind = BKIND_SUBSET;
     }
     return newb;
 };
@@ -554,46 +554,47 @@ export function callback_find_any(b, data) {
 };
 
 export function find_xy_in_grid(b, event, localx, localy) {
-    let absorbval, colx, rowx, cumx, logcol, logrow, idx, idy, div = b.div, in_dead_space = !1;
-    TRACE_XY && std.logg(str.conv("  find_xy_in_grid, local=[{num}, {num}]", localx, localy));
-    let tracker = b.drawer.tracker;
-    if (null == tracker) return !1;
+    let absorbval, colx, rowx, cumx, logcol, logrow, idx, idy, boxt, boxl, boxw, boxh, div = b.div, in_dead_space = !1;
+    if (TRACE_XY && std.logg(str.conv("  find_xy_in_grid, local=[{num}, {num}]", localx, localy)), null == b.drawer.tracker) return !1;
     for (logcol = 1, colx = 0; colx < div.horz_slices.length; colx++) {
-        if (idx = div.horz_slices[colx].id, localx >= div.horz_slices[colx].box.left && localx < div.horz_slices[colx].box.right) {
+        if (idx = div.horz_slices[colx].id, boxl = div.horz_slices[colx].box.left, boxw = div.horz_slices[colx].box.width, localx >= boxl && localx < boxl + boxw) {
             in_dead_space = in_dead_space || idx == SKIP_SLICE;
             break;
         }
         idx != SKIP_SLICE && logcol++;
     }
     for (logrow = 1, rowx = 0; rowx < div.vert_slices.length; rowx++) {
-        if (idy = div.vert_slices[rowx].id, localy >= div.vert_slices[rowx].box.top && localy < div.vert_slices[rowx].box.bottom) {
+        if (idy = div.vert_slices[rowx].id, boxt = div.vert_slices[rowx].box.top, boxh = div.vert_slices[rowx].box.height, localy >= boxt && localy < boxt + boxh) {
             in_dead_space = in_dead_space || idy == SKIP_SLICE;
             break;
         }
         idy != SKIP_SLICE && logrow++;
     }
-    return (logcol > div.ncols || logrow > div.nrows) && (in_dead_space = !0), !in_dead_space && (cumx = div.grid_tblr ? (logcol - 1) * div.nrows + logrow : (logrow - 1) * div.ncols + logcol, std.setv(M, 0, b.extra, std.F_cell_seq, cumx), 
-    std.setv(M, 0, b.extra, std.F_cell, std.F_x, logcol), std.setv(M, 0, b.extra, std.F_cell, std.F_y, logrow), std.setv(M, 0, b.extra, std.F_cell_id, std.F_x, idx), std.setv(M, 0, b.extra, std.F_cell_id, std.F_y, idy), 
-    (absorbval = null != b.drawer.parms ? tracker.apply(null, [ b, event ].concat(b.drawer.parms)) : tracker(b, event)) == std.Y && (g_last_majorx > 0 && (std.setv(M, 0, std.runtime, std.F_major_steps, g_last_majorx, std.F_hist_cell_cum, cumx), 
+    if ((logcol > div.ncols || logrow > div.nrows) && (in_dead_space = !0), in_dead_space) {
+        if (0 == g_capture_bid) return !1;
+        logcol = std.U, logrow = std.U, cumx = std.U, idx = std.U, idy = std.U;
+    } else cumx = div.grid_tblr ? (logcol - 1) * div.nrows + logrow : (logrow - 1) * div.ncols + logcol;
+    return std.setv(M, 0, b.extra, std.F_cell_seq, cumx), std.setv(M, 0, b.extra, std.F_cell, std.F_x, logcol), std.setv(M, 0, b.extra, std.F_cell, std.F_y, logrow), std.setv(M, 0, b.extra, std.F_cell_id, std.F_x, idx), 
+    std.setv(M, 0, b.extra, std.F_cell_id, std.F_y, idy), (absorbval = std.unfreeze_track(b, event, b.drawer)) == std.Y && (g_last_majorx > 0 && (std.setv(M, 0, std.runtime, std.F_major_steps, g_last_majorx, std.F_hist_cell_cum, cumx), 
     std.setv(M, 0, std.runtime, std.F_major_steps, g_last_majorx, std.F_hist_cell, std.F_x, logcol), std.setv(M, 0, std.runtime, std.F_major_steps, g_last_majorx, std.F_hist_cell, std.F_y, logrow), std.setv(M, 0, std.runtime, std.F_major_steps, g_last_majorx, std.F_hist_cell_id, std.F_x, idx), 
     std.setv(M, 0, std.runtime, std.F_major_steps, g_last_majorx, std.F_hist_cell_id, std.F_y, idy), std.setv(M, 0, std.runtime, std.F_major_steps, g_last_majorx, std.F_hist_absorber, b.blabel), TRACE_LOGGING && std.logg(str.conv(" -- updating absorber to {}", b.blabel))), 
-    !0));
+    !0);
 };
 
 export function do_pointer_event(evkind, evtime, wherex, wherey, touch) {
-    std.TRACE_EVENTS && evkind != std.EV_HOVER && std.logg(str.conv("do_pointer_event, xy=[{},{}], kind={}", wherex, wherey, evkind));
+    TRACE_EVENTS && evkind != std.EV_HOVER && std.logg(str.conv("do_pointer_event, xy=[{},{}], kind={}, capture={}", wherex, wherey, evkind, g_capture_bid));
     let event = new a_tree(M, "$do_pointer_event", std.NF_UNSORTED);
     if (std.setv(M, std.WHERE_LOOM, event, std.F_evkind, evkind), std.setv(M, std.WHERE_LOOM, event, std.F_when, evtime), std.setv(M, std.WHERE_LOOM, event, std.F_global_x, wherex), std.setv(M, std.WHERE_LOOM, event, std.F_global_y, wherey), 
     touch.mod_shf && std.setv(M, std.WHERE_LOOM, event, std.F_is_shift, std.Y), touch.mod_alt && std.setv(M, std.WHERE_LOOM, event, std.F_is_alt, std.Y), touch.mod_cmd && std.setv(M, std.WHERE_LOOM, event, std.F_is_cmd, std.Y), 
-    touch.mod_ctl && std.setv(M, std.WHERE_LOOM, event, std.F_is_ctrl, std.Y), g_last_majorx = -1, 0 != g_capture_bid) return is_not_ide(g_capture_block) && (TRACE_LOGGING && std.logg(str.conv(" -- adding major event captured ptr evt, first={}", g_capture_block.blabel)), 
-    g_last_majorx = std.add_major_event(event, null)), try_in_block(g_capture_block, event), void (std.getn(event, std.F_evkind) == std.EV_DRAG_END && release_mouse());
+    touch.mod_ctl && std.setv(M, std.WHERE_LOOM, event, std.F_is_ctrl, std.Y), g_last_majorx = -1, 0 != g_capture_bid) return is_not_ide(g_capture_block) && (TRACE_XY && std.logg(str.conv(" -- adding major event captured ptr evt, first={}", g_capture_block.blabel)), 
+    g_last_majorx = std.add_major_event(event, null)), TRACE_XY && std.logg("sending captured event to try_in_block"), try_in_block(g_capture_block, event), void (std.getn(event, std.F_evkind) == std.EV_DRAG_END && release_mouse());
     TRACE_XY && std.logg(str.conv("about to call visit_all, mouse=({n},{n})", wherex, wherey)), evkind == std.EV_HOVER && std.setv(M, 0, std.runtime, std.F_cursor_changed, std.N), visit_all_containing(g_root_block, wherex, wherey, evkind, event), 
     evkind == std.EV_HOVER && std.getn(std.runtime, std.F_cursor_changed) != std.Y && std.cursor_set(std.CURS_ARROW);
 };
 
 export function do_key_event(when, unistr, keycode, is_shift = !1, is_alt = !1, is_cmd = !1, is_ctrl = !1) {
     let b;
-    if (g_interface_locked == std.Y) return std.TRACE_EVENTS && std.logg(str.conv("interface locked / suppressing key event, keycode=", keycode)), !1;
+    if (g_interface_locked == std.Y) return TRACE_EVENTS && std.logg(str.conv("interface locked / suppressing key event, keycode=", keycode)), !1;
     let event = new a_tree(M, "$do_key_event", std.NF_UNSORTED);
     std.setv(M, std.WHERE_LOOM, event, std.F_evkind, std.EV_KEYBOARD), std.setv(M, std.WHERE_LOOM, event, std.F_when, when), std.setv(M, std.WHERE_LOOM, event, std.F_keycode, keycode), "" != unistr && std.setv(M, std.WHERE_LOOM, event, std.F_unicode, unistr), 
     is_shift && std.setv(M, std.WHERE_LOOM, event, std.F_is_shift, std.Y), is_alt && std.setv(M, std.WHERE_LOOM, event, std.F_is_alt, std.Y), is_cmd && std.setv(M, std.WHERE_LOOM, event, std.F_is_cmd, std.Y), 
@@ -709,7 +710,8 @@ function visit_all_containing(b, globalx, globaly, evkind, event) {
         for (i = 1; i <= n; i++) if ((child = children[bx = n - i]).hasOwnProperty("bid")) {
             if (TRACE_XY && std.logg(str.conv("  recursive to child {}: {str}", i, child.blabel)), visit_all_containing(child, globalx, globaly, evkind, event)) return !0;
         } else TRACE_XY && std.logg("child " + String(i) + " is not a block: " + String(child));
-        return (absorbed = try_in_block(b, event)) && (TRACE_XY && std.logg("    ...absorbed event"), evkind == std.EV_DRAG_BEGIN && 0 == g_capture_bid && capture_mouse(b)), absorbed;
+        return absorbed = try_in_block(b, event), TRACE_EVENTS && evkind == std.EV_DRAG_BEGIN && std.logg(`>> DRAG_BEGIN, absorbed=${absorbed}`), absorbed && (TRACE_XY && std.logg("    ...absorbed event"), evkind == std.EV_DRAG_BEGIN && 0 == g_capture_bid && capture_mouse(b)), 
+        absorbed;
     }
     return !1;
 }
@@ -730,13 +732,9 @@ export function dump_display_list() {
 };
 
 export function k_del_all_children(b) {
-    if (null == b) return;
-    TRACE_OBSOLETE && std.logg("  k_del_all_children, starting at " + b.blabel);
-    let child, bx, children = b.childNodes;
-    for (bx = children.length - 1; bx >= 0; bx--) {
-        "svg" != (child = children[bx]).nodeName && (TRACE_OBSOLETE && std.logg(`  -removing node ${child.nodeName}`), b.removeChild(child));
-        let base = b.last_svg_ptr;
-        if (void 0 != base) for (;base.firstChild; ) base.removeChild(base.firstChild);
+    if (null != b) {
+        if (TRACE_OBSOLETE && std.logg("  k_del_all_children, starting at " + b.blabel), b.has_transform) b = b.firstChild.firstChild;
+        for (;b.firstChild; ) b.removeChild(b.lastChild);
     }
 };
 

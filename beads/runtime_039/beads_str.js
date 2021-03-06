@@ -777,34 +777,34 @@ export function is_enumb(n) {
 
 export function angle_to_str(val) {
     return to_str(std.to_unit(val, std.N_deg), {
-        digits: 1
+        dig: 1
     });
 };
 
 export function xy_to_str(val) {
     var x = std.getn(val, std.F_x), y = std.getn(val, std.F_y);
     return "[" + to_str(x, {
-        digits: 1
+        dig: 1
     }) + ", " + to_str(y, {
-        digits: 1
+        dig: 1
     }) + "]";
 };
 
 export function rect_to_str(val) {
     var left = std.getn(val, std.F_left), top = std.getn(val, std.F_top), width = std.getn(val, std.F_width), height = std.getn(val, std.F_height);
     return "[" + to_str(left, {
-        digits: 1
+        dig: 1
     }) + ", " + to_str(top, {
-        digits: 1
+        dig: 1
     }) + " " + to_str(width, {
-        digits: 1
+        dig: 1
     }) + " x " + to_str(height, {
-        digits: 1
+        dig: 1
     }) + "]";
 };
 
 export function to_str(val, options = null) {
-    let nshort, old_digits, ss, base = 10, currency_cc = "$ ", decimal_cc = ".", digits = std.U, is_autodec = !1, is_autoinc = !1, is_currency = !1, is_human = !1, is_kflag = !1, is_negparen = !1, is_percent = !1, is_posplus = !1, is_showu = !0, is_thou = !1, is_zerodrop = !0, is_zeropad = !1, language = "ENG", maxlen = 999, minlen = 0, suffix = null, thou_cc = ",", units = std.U;
+    let nshort, old_digits, ss, base = 10, currency_cc = "$ ", decimal_cc = ".", digits = std.U, is_autodec = !1, is_autoinc = !1, is_currency = !1, is_human = !1, is_kflag = !1, is_negparen = !1, is_percent = !1, is_posplus = !1, is_thou = !1, is_zerodrop = !0, is_zeropad = !1, language = "ENG", maxlen = 999, minlen = 0, suffix = null, u_cc = "?", thou_cc = ",", units = std.U;
     !std.CHECKS || null === options || options instanceof Object || std.argument_err("bad syntax, 2nd parm must be object");
     for (let property in options) switch (property) {
       case "increase":
@@ -863,12 +863,12 @@ export function to_str(val, options = null) {
         is_percent = options.percent == std.Y;
         break;
 
-      case "digits":
-        digits = options.digits;
+      case "dig":
+        digits = options.dig;
         break;
 
-      case "show_u":
-        is_showu = options.show_u == std.Y;
+      case "u_cc":
+        u_cc = options.u_cc;
         break;
 
       case "thou":
@@ -895,7 +895,7 @@ export function to_str(val, options = null) {
         std.argument_err("bad option: " + property);
     }
     if (std.CHECKS && (is_autoinc || is_autodec) && digits === std.U && std.argument_err("conflicting parms, increase/decrease must have digits specified"), is_currency && (minlen -= currency_cc.length), 
-    val === std.U || null == val) ss = is_showu ? "U" : "", is_zeropad = !1; else if ("string" == typeof val) ss = '"' + val + '"'; else if (val instanceof std.a_meas) {
+    val === std.U || null == val) ss = u_cc, is_zeropad = !1; else if ("string" == typeof val) ss = '"' + val + '"'; else if (val instanceof std.a_meas) {
         let usuffix, mymeas = val;
         units === std.U ? (usuffix = mymeas.family === std.U ? " " + mymeas.unitss.split(",").join("⋅") : " " + enum_to_str(units = std.getn(std.families, mymeas.family, std.F_fam_base)), ss = to_str(mymeas.mag, options) + usuffix) : ss = to_str(std.to_unit(mymeas, units), options) + " " + enum_to_str(units);
     } else if (val instanceof std.a_path) ss = conv_path(val); else if (val instanceof std.a_image) {
@@ -1188,7 +1188,7 @@ export function str_find(module, loc, haystack, needle, list, options) {
             break;
 
           case "reps":
-            reps = options.reps;
+            reps = std.numeric_arg(options.reps);
             break;
 
           case "wrap":
@@ -1517,16 +1517,14 @@ export function conv(pat, ...parms) {
             switch (token += "}") {
               case "{}":
                 if (null === (parm = parms[parmx]) || void 0 == parm) token = "U"; else if ("number" == typeof parm || "number" == typeof parm) token = to_str(parm, {
-                    digits: 3,
-                    decrease: std.Y,
-                    show_u: std.Y
+                    dig: 3,
+                    decrease: std.Y
                 }); else if ("string" == typeof parm) token = parm; else if ("boolean" == typeof parm) token = conv_bool(parm); else if (parm instanceof std.Rectangle) token = conv_rect(parm); else if (parm instanceof std.a_tree) {
                     token = parm.sub;
                 } else if (parm instanceof std.a_path) token = conv_path(parm); else if (parm instanceof std.a_pathh) token = conv_pathh(parm); else if (parm instanceof std.a_pathx) token = conv_pathx(parm); else if (parm instanceof std.a_meas) {
                     token = to_str(parm.mag, {
-                        digits: 3,
-                        decrease: std.Y,
-                        show_u: std.Y
+                        dig: 3,
+                        decrease: std.Y
                     });
                 } else if (parm instanceof std.a_image) token = "image:" + parm.alt; else if (parm instanceof std.Bitmap) {
                     let bits = parm;
@@ -1555,7 +1553,7 @@ export function conv(pat, ...parms) {
 
               case "{e}":
                 token = to_str(std.elapsed, {
-                    digits: 3
+                    dig: 3
                 }), parmx -= 1;
                 break;
 
@@ -1573,9 +1571,8 @@ export function conv(pat, ...parms) {
 
               case "{meas}":
                 parms[parmx] instanceof std.a_meas ? token = to_str(parms[parmx], {
-                    digits: 3,
-                    decrease: std.Y,
-                    show_u: std.Y
+                    dig: 3,
+                    decrease: std.Y
                 }) : std.argument_err("expecting a meas type");
                 break;
 
@@ -1599,7 +1596,7 @@ export function conv(pat, ...parms) {
               case "{n8}":
               case "{n9}":
                 "number" == typeof parms[parmx] ? (digits = parseInt(token.charAt(2), 10), token = to_str(parms[parmx], {
-                    digits: digits
+                    dig: digits
                 })) : std.argument_err("expecting a num type");
                 break;
 
@@ -1613,7 +1610,7 @@ export function conv(pat, ...parms) {
               case "{n,8}":
               case "{n,9}":
                 "number" == typeof parms[parmx] ? (digits = parseInt(token.charAt(3), 10), token = to_str(parms[parmx], {
-                    digits: digits
+                    dig: digits
                 })) : std.argument_err("expecting a num type");
                 break;
 
@@ -1669,7 +1666,7 @@ function conv_pathx(px) {
         i > 1 && (ss += ", ");
         let sub = px.lev[i].sub;
         ss += "string" == typeof sub ? sub : to_str(sub, {
-            show_u: std.Y
+            u_cc: "U"
         });
     }
     return ss += "]";
@@ -1679,7 +1676,7 @@ export function conv_path(path) {
     let ss, sub, first = !0;
     if (null === path) return "[null path]";
     for (sub of (ss = path.base instanceof std.a_tree ? path.base.label : "Ⓢ" + std.TREES[path.base].label, ss += "[", path.key)) first ? first = !1 : ss += ", ", ss += "string" == typeof sub ? sub : to_str(sub, {
-        show_u: std.Y
+        u_cc: "U"
     });
     return ss += "]";
 };
