@@ -28,7 +28,7 @@ import { U, Y, N, POP, VAL, VNP, setv, gets, getn, addr } from '../../runtime_03
 import * as std from '../../runtime_039/beads_std.js';
 import * as str from '../../runtime_039/beads_str.js';
 import * as k   from '../../runtime_039/beads_k.js';
-export const CODE_HASH= 0x6ee10689;
+export const CODE_HASH= 0x30a37d88;
 const _M = "Game2048";
 std.rtl_init();
 std.aaaa.main_init = main_init;
@@ -42,13 +42,14 @@ const F_won=9007191862969040; std.g_enum_ss[9007191862969040]="won";
 std.FIELDS[F_won] = true;
 //[reflAAA]
 std.merge_lit(_M,0,std.META,_M, std.F_mod_const, "colors", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "gap", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, std.F_mod_funcs, "addTile"
-, std.F_vv_funck, VAL, std.FK_CALC, POP, "canMove", std.F_vv_funck, VAL, std.FK_CALC, POP, "d_board", std.F_vv_funck, VAL, std.FK_DRAW, POP, "init_board", std.F_vv_funck, VAL, 
-std.FK_CALC, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, "trymove", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms
-, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "p1", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 2, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "ix", std.F_vv_typek
-, VAL, std.TYPE_NUM, POP, 3, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "iy", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, POP, std.F_mod_recs, "game", std.F_vv_fields
-, "noMoreMoves", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "won", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, POP, POP, POP, std.F_mod_vars, "blanks", std.F_vv_typek, VAL, std.TYPE_NUM
-, POP, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "g", std.F_vv_rec, VAL, "game", std.F_vv_typek, VAL, std.TYPE_RECORD
-, POP, "moved", std.F_vv_typek, VAL, std.TYPE_YESNO);
+, std.F_vv_funck, VAL, std.FK_CALC, POP, "canMove", std.F_vv_funck, VAL, std.FK_CALC, POP, "d_board", std.F_vv_funck, VAL, std.FK_DRAW, POP, "execMove", std.F_vv_funck, VAL, 
+std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "dir", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, "init_board", std.F_vv_funck
+, VAL, std.FK_CALC, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, "trymove", std.F_vv_funck, VAL, std.FK_CALC
+, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "p1", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 2, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn
+, VAL, "ix", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 3, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "iy", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, POP, 
+std.F_mod_recs, "game", std.F_vv_fields, "noMoreMoves", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "won", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, POP, POP, POP, std.F_mod_vars
+, "blanks", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "g", std.F_vv_rec
+, VAL, "game", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "moved", std.F_vv_typek, VAL, std.TYPE_YESNO);
 //[reflZZZ]
 //-------  func const
 const init_board_F = new std.a_function("_M", "init_board", init_board);
@@ -76,14 +77,14 @@ function d_board(b) {
 k.k_enter(b);
 k.div_begin(b, new std.a_function(_M, "d_board_cell", d_board_cell, null), false, false, false);
   k.div_spa(b, 0, gap, std.al);
-  var loop314 = new std.a_loop({ limit:4 });
-  while (loop314.next()) {
+  var loop355 = new std.a_loop({ limit:4 });
+  while (loop355.next()) {
     k.div_add(b, U, 0, 40, std.al, null, 0);
     k.div_spa(b, 0, gap, std.al);
   }
   k.div_spa(b, 1, gap, std.al);
-  var loop315 = new std.a_loop({ limit:4 });
-  while (loop315.next()) {
+  var loop356 = new std.a_loop({ limit:4 });
+  while (loop356.next()) {
     k.div_add(b, U, 1, 40, std.al, null, 0);
     k.div_spa(b, 1, gap, std.al);
   }
@@ -130,33 +131,28 @@ function d_board_cell(b) {
 //====================
 function track_d_board(b, e) {
   //---------------
+  //   on EV_TAP
+  //---------------
+  if (std.getn(e, std.F_evkind) == std.EV_TAP) {
+    var case357 = getn(b.extra, std.F_cell_seq);
+    if (case357 === 2 || case357 === 3) {
+      execMove(std.KEYCODE_UP);
+    } else if (case357 === 5 || case357 === 9) {
+      execMove(std.KEYCODE_LEFT);
+    } else if (case357 === 8 || case357 === 12) {
+      execMove(std.KEYCODE_RIGHT);
+    } else if (case357 === 14 || case357 === 15) {
+      execMove(std.KEYCODE_DOWN);
+    }
+    return Y;
+  return Y;
+  } else 
+  //---------------
   //   on EV_KEYBOARD
   //---------------
   if (std.getn(e, std.F_evkind) == std.EV_KEYBOARD) {
-    if (getn(g, F_won) === Y) {
-      std.path_setv(_M, 134, std.addr(g, F_won), N);
-      return Y;
-    }
-    if (getn(g, F_noMoreMoves) === Y) {
-      init_board();
-      return Y;
-    }
-    moved = N;
-    var case316 = getn(e, std.F_keycode);
-    if (case316 === std.KEYCODE_UP) {
-      trymove(1, 4, 1);
-    } else if (case316 === std.KEYCODE_LEFT) {
-      trymove(1, 1, 4);
-    } else if (case316 === std.KEYCODE_DOWN) {
-      trymove(13, -4, 1);
-    } else if (case316 === std.KEYCODE_RIGHT) {
-      trymove(4, -1, 4);
-    }
-    if (moved === Y) {
-      moved = N;
-      addTile();
-    }
-    canMove();
+    execMove(getn(e, std.F_keycode));
+    return Y;
   return Y;
   }
   return N;
@@ -168,8 +164,8 @@ function track_d_board(b, e) {
 export function main_draw(b) {
 k.k_root2(b);
 k.k_enter(b);
-  var b45=k.k_layer(b, d_board_F, { area:std.solve_rect({ basis:addr(b.extra, std.F_box), pin:std.MID_CENTER, aspect:1 }) });
-  d_board(b45);
+  var b50=k.k_layer(b, d_board_F, { area:std.solve_rect({ basis:addr(b.extra, std.F_box), pin:std.MID_CENTER, aspect:1 }) });
+  d_board(b50);
 k.k_leave(b);
 }
 
@@ -181,9 +177,9 @@ function addTile() {
   let v = std.gt2(std.random(), 0.9) ? 4 : 2;
   let p = std.random_int(1, blanks);
   blanks = std.sub(blanks, 1);
-  var loop317 = new std.a_loop({ limit:16 });
-  while (loop317.next()) {
-  var ix = loop317.count;
+  var loop358 = new std.a_loop({ limit:16 });
+  while (loop358.next()) {
+  var ix = loop358.count;
     if (std.is_numeric(getn(board, ix)) === Y) {
       continue;
     }
@@ -205,10 +201,10 @@ function canMove() {
   if (std.gt2(blanks, 0)) {
     return;
   }
-  var loop318 = new std.a_loop({ limit:4 });
-  while (loop318.next()) {
-    var loop319 = new std.a_loop({ limit:3 });
-    while (loop319.next()) {
+  var loop359 = new std.a_loop({ limit:4 });
+  while (loop359.next()) {
+    var loop360 = new std.a_loop({ limit:3 });
+    while (loop360.next()) {
       if ((std.eq2(getn(board, p), getn(board, std.add(p, 1))) || std.eq2(getn(board, p), getn(board, std.add(p, 4))))) {
         return;
       }
@@ -221,15 +217,46 @@ function canMove() {
 
 
 //====================
+//   execMove
+//====================
+function execMove(dir) {
+  if (getn(g, F_won) === Y) {
+    std.path_setv(_M, 53, std.addr(g, F_won), N);
+    return;
+  }
+  if (getn(g, F_noMoreMoves) === Y) {
+    init_board();
+    return;
+  }
+  moved = N;
+  var case361 = dir;
+  if (case361 === std.KEYCODE_UP) {
+    trymove(1, 4, 1);
+  } else if (case361 === std.KEYCODE_LEFT) {
+    trymove(1, 1, 4);
+  } else if (case361 === std.KEYCODE_DOWN) {
+    trymove(13, -4, 1);
+  } else if (case361 === std.KEYCODE_RIGHT) {
+    trymove(4, -1, 4);
+  }
+  if (moved === Y) {
+    moved = N;
+    addTile();
+  }
+  canMove();
+}
+
+
+//====================
 //   init_board
 //====================
 function init_board() {
-  std.copy_tree(_M, 50, std.tree_lit(_M, 50), std.addr(board));
+  std.copy_tree(_M, 76, std.tree_lit(_M, 76), std.addr(board));
   blanks = 16;
   addTile();
   addTile();
-  std.path_setv(_M, 54, std.addr(g, F_won), N);
-  std.path_setv(_M, 55, std.addr(g, F_noMoreMoves), N);
+  std.path_setv(_M, 80, std.addr(g, F_won), N);
+  std.path_setv(_M, 81, std.addr(g, F_noMoreMoves), N);
 }
 
 
@@ -247,35 +274,35 @@ export function main_init() {
 function trymove(p1, ix, iy) {
   let x1 = U;
   let x2 = U;
-  var loop320 = new std.a_loop({ limit:4 });
-  while (loop320.next()) {
+  var loop362 = new std.a_loop({ limit:4 });
+  while (loop362.next()) {
     x1 = p1;
     x2 = std.add(p1, ix);
     p1 = std.add(p1, iy);
-    var loop321 = new std.a_loop({ limit:3 });
-    while (loop321.next()) {
+    var loop363 = new std.a_loop({ limit:3 });
+    while (loop363.next()) {
       if (getn(board, x2) === U) {
         x2 = std.add(x2, ix);
       } else if (getn(board, x1) === U) {
-        std.path_setv(_M, 74, std.addr(board, x1), getn(board, x2));
-        std.path_setv(_M, 75, std.addr(board, x2), U);
+        std.path_setv(_M, 100, std.addr(board, x1), getn(board, x2));
+        std.path_setv(_M, 101, std.addr(board, x2), U);
         x2 = std.add(x2, ix);
         moved = Y;
       } else if (std.eq2(getn(board, x1), getn(board, x2))) {
-        std.path_setv(_M, 79, std.addr(board, x1), std.mul(getn(board, x1), 2));
+        std.path_setv(_M, 105, std.addr(board, x1), std.mul(getn(board, x1), 2));
         if (std.eq2(getn(board, x1), 2048)) {
-          std.path_setv(_M, 81, std.addr(g, F_won), Y);
+          std.path_setv(_M, 107, std.addr(g, F_won), Y);
         }
         blanks = std.add(blanks, 1);
         moved = Y;
-        std.path_setv(_M, 84, std.addr(board, x2), U);
+        std.path_setv(_M, 110, std.addr(board, x2), U);
         x1 = std.add(x1, ix);
         x2 = std.add(x2, ix);
       } else {
         x1 = std.add(x1, ix);
         if (getn(board, x1) === U) {
-          std.path_setv(_M, 90, std.addr(board, x1), getn(board, x2));
-          std.path_setv(_M, 91, std.addr(board, x2), U);
+          std.path_setv(_M, 116, std.addr(board, x1), getn(board, x2));
+          std.path_setv(_M, 117, std.addr(board, x2), U);
           moved = Y;
         }
         x2 = std.add(x2, ix);
