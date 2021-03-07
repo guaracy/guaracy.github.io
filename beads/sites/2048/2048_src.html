@@ -138,7 +138,7 @@ beads <span class="constant">1</span> program Game2048
 <span class="comment">// -------------------------------------------</span>
 <span class="function-name">calc</span> addTile
 <span class="highlight-indent-guides-even">    </span><span class="function-name">var</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>v = <span class="function-name">if</span> random() &gt; <span class="constant">0.9</span> <span class="function-name">then</span> <span class="constant">4</span> <span class="function-name">else</span> <span class="constant">2</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>v = <span class="constant">2</span> <span class="function-name">if</span> random() &lt; <span class="constant">0.9</span> <span class="function-name">else</span> <span class="constant">4</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>p = random_int(<span class="constant">1</span>,blanks)
 <span class="highlight-indent-guides-even">    </span>dec blanks
 <span class="highlight-indent-guides-even">    </span><span class="function-name">loop</span> <span class="variable-name">reps:</span><span class="constant">16</span> <span class="variable-name">count:</span>ix
@@ -254,9 +254,15 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">var</span> 
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>v
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>ix = round(lg(board[<span class="type">b.</span>cell_seq],<span class="variable-name">base:</span><span class="constant">2</span>))
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>ix = <span class="function-name">if</span> ix&gt;<span class="constant">12</span> <span class="function-name">then</span> <span class="constant">13</span> <span class="function-name">else</span> <span class="function-name">if</span> ix&gt;<span class="constant">0</span> <span class="function-name">then</span> ix+<span class="constant">1</span> <span class="function-name">else</span> <span class="constant">1</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">case</span> ix
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>| &gt;<span class="constant">12</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>ix = <span class="constant">13</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>| &gt;<span class="constant">0</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>inc ix
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">else</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>ix = <span class="constant">1</span>          
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>color = colors[ix]
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>v = <span class="function-name">if</span> is_numeric(board[<span class="type">b.</span>cell_seq]) <span class="function-name">then</span> board[<span class="type">b.</span>cell_seq] <span class="function-name">else</span> <span class="string">""</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>v = board[<span class="type">b.</span>cell_seq] <span class="function-name">if</span> is_numeric(board[<span class="type">b.</span>cell_seq]) <span class="function-name">else</span> <span class="string">""</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">0</span> pt)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(v, <span class="variable-name">size:</span><span class="constant">0.5</span>, <span class="variable-name">bold:</span>Y)
 <span class="highlight-indent-guides-even">    </span>over
@@ -287,6 +293,9 @@ beads <span class="constant">1</span> program Game2048
     
 <span class="comment">// -------------------------------------------</span>
 <span class="function-name">track</span> EV_KEYBOARD
+<span class="highlight-indent-guides-even">    </span><span class="function-name">if</span> <span class="type">e.</span>keycode == KEYCODE_ESC
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>init_board
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">return</span> Y
 <span class="highlight-indent-guides-even">    </span>execMove(<span class="type">e.</span>keycode)
 <span class="highlight-indent-guides-even">    </span><span class="function-name">return</span> Y
     
