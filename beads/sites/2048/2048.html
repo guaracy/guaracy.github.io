@@ -25,40 +25,59 @@ div:hover { cursor:default; }
 </head>
 <body style="margin:0; padding:0;">
 <script type="module">
-// beads ver 0.40 compiled Sat Mar 6 23:06:08 GMT-0300 2021
+// beads ver 0.40 compiled Sun Mar 7 16:19:35 GMT-0300 2021
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, adr } from '../../runtime_040/beads_std.js';
 import * as std from '../../runtime_040/beads_std.js';
 import * as str from '../../runtime_040/beads_str.js';
-export const CODE_HASH= 0x624b31cb;
+export const CODE_HASH= 0xea1741d7;
 const _M = std.MODULES.push("Game2048");
 std.rtl_init();
 std.aaaa.main_init = main_init;
 std.aaaa.main_module = "Game2048";
 std.aaaa.main_drawer = new std.a_function(_M, "main_draw", main_draw);
 //------- enums
+const F_score=9007190801204706; std.ENUMS[9007190801204706]="score";
+std.FIELDS[F_score] = true;
+const F_best=9007192451363598; std.ENUMS[9007192451363598]="best";
+std.FIELDS[F_best] = true;
 const F_won=9007191862969040; std.ENUMS[9007191862969040]="won";
 std.FIELDS[F_won] = true;
+const F_moves=9007193725797866; std.ENUMS[9007193725797866]="moves";
+std.FIELDS[F_moves] = true;
 const F_noMoreMoves=9007193935798764; std.ENUMS[9007193935798764]="noMoreMoves";
 std.FIELDS[F_noMoreMoves] = true;
 const R_game=9007192591338094; std.ENUMS[9007192591338094]="game";
 //[reflAAA]
 std.merge_lit(_M,0,std.META,_M, std.F_mod_const, "colors", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "gap", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, std.F_mod_funcs, "addTile"
-, std.F_vv_funck, VAL, std.FK_CALC, POP, "canMove", std.F_vv_funck, VAL, std.FK_CALC, POP, "d_board", std.F_vv_funck, VAL, std.FK_DRAW, POP, "execMove", std.F_vv_funck, VAL, 
-std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "dir", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, "init_board", std.F_vv_funck
-, VAL, std.FK_CALC, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, "trymove", std.F_vv_funck, VAL, std.FK_CALC
-, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "p1", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 2, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn
-, VAL, "ix", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 3, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "iy", std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, POP, 
-std.F_mod_recs, "game", std.F_vv_fields, "noMoreMoves", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "won", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, POP, POP, POP, std.F_mod_vars
-, "blanks", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "g", std.F_vv_rec
-, VAL, "game", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "moved", std.F_vv_typek, VAL, std.TYPE_YESNO);
+, std.F_vv_funck, VAL, std.FK_CALC, POP, "canMove", std.F_vv_funck, VAL, std.FK_CALC, POP, "d_board", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_game", std.F_vv_funck, VAL, 
+std.FK_DRAW, POP, "d_top", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_top_140", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_top_143", std.F_vv_funck, VAL, std.FK_DRAW, POP, "d_top_146"
+, std.F_vv_funck, VAL, std.FK_DRAW, POP, "execMove", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "dir", std.F_vv_typek
+, VAL, std.TYPE_NUM, POP, POP, POP, "init_board", std.F_vv_funck, VAL, std.FK_CALC, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, 
+std.FK_CALC, POP, "trymove", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "p1", std.F_vv_typek, VAL, std.TYPE_NUM
+, POP, 2, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "ix", std.F_vv_typek, VAL, std.TYPE_NUM, POP, 3, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "iy"
+, std.F_vv_typek, VAL, std.TYPE_NUM, POP, POP, POP, POP, std.F_mod_recs, "game", std.F_vv_fields, "best", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "moves", std.F_vv_typek, VAL, 
+std.TYPE_NUM, POP, "noMoreMoves", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "score", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "won", std.F_vv_typek, VAL, std.TYPE_YESNO, POP
+, POP, POP, POP, std.F_mod_vars, "bkg", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "blanks", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "board", std.F_vv_typek, VAL, std.TYPE_ARRAY
+, POP, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "g", std.F_vv_rec, VAL, "game", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "moved", std.F_vv_typek, VAL, std.TYPE_YESNO
+);
 //[reflZZZ]
 //-------  func const
 const d_board_F = new std.a_function(_M, "d_board", d_board, track_d_board);
 std.FUNCS[d_board_F.hash]=d_board_F;
-const init_board_F = new std.a_function(_M, "init_board", init_board);
-std.FUNCS[init_board_F.hash]=init_board_F;
+const d_top_F = new std.a_function(_M, "d_top", d_top);
+std.FUNCS[d_top_F.hash]=d_top_F;
 const canMove_F = new std.a_function(_M, "canMove", canMove);
 std.FUNCS[canMove_F.hash]=canMove_F;
+const d_top_140_F = new std.a_function(_M, "d_top_140", d_top_140);
+std.FUNCS[d_top_140_F.hash]=d_top_140_F;
+const init_board_F = new std.a_function(_M, "init_board", init_board);
+std.FUNCS[init_board_F.hash]=init_board_F;
+const d_top_146_F = new std.a_function(_M, "d_top_146", d_top_146);
+std.FUNCS[d_top_146_F.hash]=d_top_146_F;
+const d_game_F = new std.a_function(_M, "d_game", d_game);
+std.FUNCS[d_game_F.hash]=d_game_F;
+const d_top_143_F = new std.a_function(_M, "d_top_143", d_top_143);
+std.FUNCS[d_top_143_F.hash]=d_top_143_F;
 const addTile_F = new std.a_function(_M, "addTile", addTile);
 std.FUNCS[addTile_F.hash]=addTile_F;
 //-------  top nodes
@@ -69,6 +88,7 @@ let board = new std.a_tree(_M,"board", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LO
 let g = new std.a_tree(_M,"g", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
 let blanks = U;
 let moved = U;
+let bkg = U;
 let color = U;
 
 //====================
@@ -78,14 +98,14 @@ function d_board(b) {
 std.k_enter(b);
 std.div_begin(b, new std.a_function(_M, "d_board_cell", d_board_cell, null), false, false, false);
   std.div_spa(b, 0, gap, std.al);
-  var loop22 = new std.a_loop({ limit:4 });
-  while (loop22.next()) {
+  var loop542 = new std.a_loop({ limit:4 });
+  while (loop542.next()) {
     std.div_add(b, U, 0, 40, std.al, null, 0);
     std.div_spa(b, 0, gap, std.al);
   }
   std.div_spa(b, 1, gap, std.al);
-  var loop23 = new std.a_loop({ limit:4 });
-  while (loop23.next()) {
+  var loop543 = new std.a_loop({ limit:4 });
+  while (loop543.next()) {
     std.div_add(b, U, 1, 40, std.al, null, 0);
     std.div_spa(b, 1, gap, std.al);
   }
@@ -117,18 +137,17 @@ std.k_leave(b);
 //====================
 function d_board_cell(b) {
   std.k_enter(b);
-  let v = U;
+  let v = std.is_numeric(getn(board, getn(b.extra, std.F_cell_seq))) === Y ? getn(board, getn(b.extra, std.F_cell_seq)) : "";
   let ix = std.round(std.lg(getn(board, getn(b.extra, std.F_cell_seq)), { base:2 }), {});
-  var case24 = ix;
-  if (std.gt2(case24,12)) {
+  var case544 = ix;
+  if (std.gt2(case544,12)) {
     ix = 13;
-  } else if (std.gt2(case24,0)) {
+  } else if (std.gt2(case544,0)) {
     ix = std.add(ix, 1);
   } else {
     ix = 1;
   }
   color = std.get_generic(colors, ix);
-  v = std.is_numeric(getn(board, getn(b.extra, std.F_cell_seq))) === Y ? getn(board, getn(b.extra, std.F_cell_seq)) : "";
   std.draw_rect(b, { fill:color, thick:std.pt_to_dots(b, 0) });
   std.draw_str(b, v, { size:0.5, bold:Y });
   std.k_leave(b);
@@ -142,14 +161,14 @@ function track_d_board(b, e) {
   //   on EV_TAP
   //---------------
   if (std.getn(e, std.F_evkind) == std.EV_TAP) {
-    var case25 = getn(b.extra, std.F_cell_seq);
-    if (case25 === 2 || case25 === 3) {
+    var case545 = getn(b.extra, std.F_cell_seq);
+    if (case545 === 2 || case545 === 3) {
       execMove(std.KEYCODE_UP);
-    } else if (case25 === 5 || case25 === 9) {
+    } else if (case545 === 5 || case545 === 9) {
       execMove(std.KEYCODE_LEFT);
-    } else if (case25 === 8 || case25 === 12) {
+    } else if (case545 === 8 || case545 === 12) {
       execMove(std.KEYCODE_RIGHT);
-    } else if (case25 === 14 || case25 === 15) {
+    } else if (case545 === 14 || case545 === 15) {
       execMove(std.KEYCODE_DOWN);
     }
     return Y;
@@ -171,12 +190,42 @@ function track_d_board(b, e) {
 }
 
 //====================
+//   d_game
+//====================
+function d_game(b) {
+std.k_enter(b);
+std.div_begin(b, null, false, false, false);
+  std.div_add(b, U, 1, 1, std.al, d_top_F, 0);
+  std.div_add(b, U, 1, 9, std.al, d_board_F, 0);
+  std.div_end(b);
+  std.draw_slices(b);
+std.k_leave(b);
+}
+
+
+//====================
+//   d_top
+//====================
+function d_top(b) {
+std.k_enter(b);
+std.div_begin(b, null, false, false, false);
+  bkg = std.LIGHT_YELLOW;
+  std.div_add(b, U, 0, 50, std.al, d_top_140_F, 0);
+  std.div_add(b, U, 0, 50, std.al, d_top_143_F, 0);
+  std.div_add(b, U, 0, 50, std.al, d_top_146_F, 0);
+  std.div_end(b);
+  std.draw_slices(b);
+std.k_leave(b);
+}
+
+
+//====================
 //   main_draw
 //====================
 export function main_draw(b) {
 std.k_enter(b);
-  var b4=std.k_layer(b, d_board_F, { area:std.solve_rect({ basis:adr(b.extra, std.F_box), pin:std.MID_CENTER, aspect:1 }) });
-  d_board(b4);
+  var b54=std.k_layer(b, d_game_F, { area:std.solve_rect({ basis:adr(b.extra, std.F_box), pin:std.MID_CENTER, aspect:0.8 }) });
+  d_game(b54);
 std.k_leave(b);
 }
 
@@ -188,15 +237,15 @@ function addTile() {
   let v = std.lt2(std.random(), 0.9) ? 2 : 4;
   let p = std.random_int(1, blanks);
   blanks = std.sub(blanks, 1);
-  var loop26 = new std.a_loop({ limit:16 });
-  while (loop26.next()) {
-  var ix = loop26.count;
+  var loop546 = new std.a_loop({ limit:16 });
+  while (loop546.next()) {
+  var ix = loop546.count;
     if (std.is_numeric(getn(board, ix)) === Y) {
       continue;
     }
     p = std.sub(p, 1);
     if (std.eq2(p, 0)) {
-      std.path_setv(_M, 31, std.adr(board, ix), v);
+      std.path_setv(_M, 35, std.adr(board, ix), v);
       break;
     }
   }
@@ -208,14 +257,14 @@ function addTile() {
 //====================
 function canMove() {
   let p = 1;
-  std.path_setv(_M, 37, std.adr(g, F_noMoreMoves), N);
+  std.path_setv(_M, 41, std.adr(g, F_noMoreMoves), N);
   if (std.gt2(blanks, 0)) {
     return;
   }
-  var loop27 = new std.a_loop({ limit:4 });
-  while (loop27.next()) {
-    var loop28 = new std.a_loop({ limit:3 });
-    while (loop28.next()) {
+  var loop547 = new std.a_loop({ limit:4 });
+  while (loop547.next()) {
+    var loop548 = new std.a_loop({ limit:3 });
+    while (loop548.next()) {
       if ((std.eq2(getn(board, p), getn(board, std.add(p, 1))) || std.eq2(getn(board, p), getn(board, std.add(p, 4))))) {
         return;
       }
@@ -223,7 +272,7 @@ function canMove() {
     }
     p = std.add(p, 1);
   }
-  std.path_setv(_M, 46, std.adr(g, F_noMoreMoves), Y);
+  std.path_setv(_M, 50, std.adr(g, F_noMoreMoves), Y);
 }
 
 
@@ -232,7 +281,7 @@ function canMove() {
 //====================
 function execMove(dir) {
   if (getn(g, F_won) === Y) {
-    std.path_setv(_M, 53, std.adr(g, F_won), N);
+    std.path_setv(_M, 57, std.adr(g, F_won), N);
     return;
   }
   if (getn(g, F_noMoreMoves) === Y) {
@@ -240,17 +289,18 @@ function execMove(dir) {
     return;
   }
   moved = N;
-  var case29 = dir;
-  if (case29 === std.KEYCODE_UP) {
+  var case549 = dir;
+  if (case549 === std.KEYCODE_UP) {
     trymove(1, 4, 1);
-  } else if (case29 === std.KEYCODE_LEFT) {
+  } else if (case549 === std.KEYCODE_LEFT) {
     trymove(1, 1, 4);
-  } else if (case29 === std.KEYCODE_DOWN) {
+  } else if (case549 === std.KEYCODE_DOWN) {
     trymove(13, -4, 1);
-  } else if (case29 === std.KEYCODE_RIGHT) {
+  } else if (case549 === std.KEYCODE_RIGHT) {
     trymove(4, -1, 4);
   }
   if (moved === Y) {
+    std.tree_add(_M, 73, 1, std.adr(g, F_moves));
     moved = N;
     addTile();
   }
@@ -262,12 +312,14 @@ function execMove(dir) {
 //   init_board
 //====================
 function init_board() {
-  std.copy_tree(_M, 76, std.tree_lit(_M, 76), std.adr(board));
+  std.copy_tree(_M, 81, std.tree_lit(_M, 81), std.adr(board));
   blanks = 16;
   addTile();
   addTile();
-  std.path_setv(_M, 80, std.adr(g, F_won), N);
-  std.path_setv(_M, 81, std.adr(g, F_noMoreMoves), N);
+  std.path_setv(_M, 85, std.adr(g, F_score), 0);
+  std.path_setv(_M, 86, std.adr(g, F_moves), 0);
+  std.path_setv(_M, 87, std.adr(g, F_won), N);
+  std.path_setv(_M, 88, std.adr(g, F_noMoreMoves), N);
 }
 
 
@@ -275,6 +327,9 @@ function init_board() {
 //   main_init
 //====================
 export function main_init() {
+  std.path_setv(_M, 213, std.adr(g, F_best), 0);
+  std.path_setv(_M, 214, std.adr(g, F_score), 0);
+  std.path_setv(_M, 215, std.adr(g, F_moves), 0);
   init_board();
 }
 
@@ -285,41 +340,77 @@ export function main_init() {
 function trymove(p1, ix, iy) {
   let x1 = U;
   let x2 = U;
-  var loop30 = new std.a_loop({ limit:4 });
-  while (loop30.next()) {
+  var loop550 = new std.a_loop({ limit:4 });
+  while (loop550.next()) {
     x1 = p1;
     x2 = std.add(p1, ix);
     p1 = std.add(p1, iy);
-    var loop31 = new std.a_loop({ limit:3 });
-    while (loop31.next()) {
+    var loop551 = new std.a_loop({ limit:3 });
+    while (loop551.next()) {
       if (getn(board, x2) === U) {
         x2 = std.add(x2, ix);
       } else if (getn(board, x1) === U) {
-        std.path_setv(_M, 100, std.adr(board, x1), getn(board, x2));
-        std.path_setv(_M, 101, std.adr(board, x2), U);
+        std.path_setv(_M, 107, std.adr(board, x1), getn(board, x2));
+        std.path_setv(_M, 108, std.adr(board, x2), U);
         x2 = std.add(x2, ix);
         moved = Y;
       } else if (std.eq2(getn(board, x1), getn(board, x2))) {
-        std.path_setv(_M, 105, std.adr(board, x1), std.mul(getn(board, x1), 2));
+        std.path_setv(_M, 112, std.adr(board, x1), std.mul(getn(board, x1), 2));
+        std.path_setv(_M, 113, std.adr(g, F_score), std.add(getn(g, F_score), getn(board, x1)));
+        std.path_setv(_M, 114, std.adr(g, F_best), std.lt2(getn(g, F_score), getn(g, F_best)) ? getn(g, F_best) : getn(g, F_score));
+        std.log(std.cat("score: ", str.to_str(getn(g, F_score), {}), " best: ", str.to_str(getn(g, F_best), {})));
         if (std.eq2(getn(board, x1), 2048)) {
-          std.path_setv(_M, 107, std.adr(g, F_won), Y);
+          std.path_setv(_M, 117, std.adr(g, F_won), Y);
         }
         blanks = std.add(blanks, 1);
         moved = Y;
-        std.path_setv(_M, 110, std.adr(board, x2), U);
+        std.path_setv(_M, 120, std.adr(board, x2), U);
         x1 = std.add(x1, ix);
         x2 = std.add(x2, ix);
       } else {
         x1 = std.add(x1, ix);
         if (getn(board, x1) === U) {
-          std.path_setv(_M, 116, std.adr(board, x1), getn(board, x2));
-          std.path_setv(_M, 117, std.adr(board, x2), U);
+          std.path_setv(_M, 126, std.adr(board, x1), getn(board, x2));
+          std.path_setv(_M, 127, std.adr(board, x2), U);
           moved = Y;
         }
         x2 = std.add(x2, ix);
       }
     }
   }
+}
+
+
+//====================
+//   d_top_140
+//====================
+function d_top_140(b) {
+std.k_enter(b);
+  std.draw_rect(b, { fill:bkg, thick:std.pt_to_dots(b, 2) });
+  std.draw_str(b, std.cat("Score\n", str.to_str(getn(g, F_score), {})), { size:0.3, bold:Y });
+std.k_leave(b);
+}
+
+
+//====================
+//   d_top_143
+//====================
+function d_top_143(b) {
+std.k_enter(b);
+  std.draw_rect(b, { fill:bkg, thick:std.pt_to_dots(b, 2) });
+  std.draw_str(b, std.cat("Best\n", str.to_str(getn(g, F_best), {})), { size:0.3, bold:Y });
+std.k_leave(b);
+}
+
+
+//====================
+//   d_top_146
+//====================
+function d_top_146(b) {
+std.k_enter(b);
+  std.draw_rect(b, { fill:bkg, thick:std.pt_to_dots(b, 2) });
+  std.draw_str(b, std.cat("Moves\n", str.to_str(getn(g, F_moves), {})), { size:0.3, bold:Y });
+std.k_leave(b);
 }
 
 std.setv(_M, 0, std.runtime, std.F_app_name, "Game2048");

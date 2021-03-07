@@ -126,6 +126,9 @@ beads <span class="constant">1</span> program Game2048
 <span class="function-name">record</span> game  
 <span class="highlight-indent-guides-even">    </span>won : yesno
 <span class="highlight-indent-guides-even">    </span>noMoreMoves : yesno
+<span class="highlight-indent-guides-even">    </span>moves
+<span class="highlight-indent-guides-even">    </span>score
+<span class="highlight-indent-guides-even">    </span>best
 
 <span class="comment">// -------------------------------------------</span>
 <span class="function-name">var</span>
@@ -133,6 +136,7 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span>g : game
 <span class="highlight-indent-guides-even">    </span>blanks
 <span class="highlight-indent-guides-even">    </span>moved : yesno
+<span class="highlight-indent-guides-even">    </span>bkg : color
 <span class="highlight-indent-guides-even">    </span>color : color
 
 <span class="comment">// -------------------------------------------</span>
@@ -184,6 +188,7 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span>| KEYCODE_RIGHT
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>trymove(<span class="constant">4</span>, -<span class="constant">1</span>, <span class="constant">4</span>)
 <span class="highlight-indent-guides-even">    </span><span class="function-name">if</span> moved
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>inc <span class="type">g.</span>moves
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>moved = N
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>addTile
 <span class="highlight-indent-guides-even">    </span>canMove
@@ -195,6 +200,8 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span>blanks = <span class="constant">16</span>
 <span class="highlight-indent-guides-even">    </span>addTile
 <span class="highlight-indent-guides-even">    </span>addTile
+<span class="highlight-indent-guides-even">    </span><span class="type">g.</span>score = <span class="constant">0</span>
+<span class="highlight-indent-guides-even">    </span><span class="type">g.</span>moves = <span class="constant">0</span>
 <span class="highlight-indent-guides-even">    </span><span class="type">g.</span>won = N
 <span class="highlight-indent-guides-even">    </span><span class="type">g.</span>noMoreMoves = N
     
@@ -221,6 +228,9 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>moved = Y
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="function-name">elif</span> board[x1] == board[x2]
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>board[x1] = board[x1] * <span class="constant">2</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="type">g.</span>score = <span class="type">g.</span>score + board[x1]
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="type">g.</span>best = <span class="type">g.</span>best <span class="function-name">if</span> <span class="type">g.</span>score &lt; <span class="type">g.</span>best <span class="function-name">else</span> <span class="type">g.</span>score
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">log</span> <span class="string">"score: {g.score} best: {g.best}"</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">if</span> board[x1] == <span class="constant">2048</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="type">g.</span>won = Y
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>inc blanks
@@ -237,6 +247,24 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>x2 = x2 + ix
 
 <span class="comment">// -------------------------------------------</span>
+<span class="function-name">vert</span> slice d_game
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">1</span> al d_top
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">9</span> al d_board
+
+<span class="comment">// -------------------------------------------</span>
+<span class="function-name">horz</span> slice d_top
+<span class="highlight-indent-guides-even">    </span>bkg = LIGHT_YELLOW
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">50</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>bkg, <span class="variable-name">thick:</span><span class="constant">2</span> pt)
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Score\n{g.score}"</span>, <span class="variable-name">size:</span><span class="constant">0.3</span>, <span class="variable-name">bold:</span>Y)  
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">50</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>bkg, <span class="variable-name">thick:</span><span class="constant">2</span> pt)
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Best\n{g.best}"</span>, <span class="variable-name">size:</span><span class="constant">0.3</span>, <span class="variable-name">bold:</span>Y)    
+<span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">50</span> al
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>bkg, <span class="variable-name">thick:</span><span class="constant">2</span> pt)
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"Moves\n{g.moves}"</span>, <span class="variable-name">size:</span><span class="constant">0.3</span>, <span class="variable-name">bold:</span>Y)  
+    
+<span class="comment">// -------------------------------------------</span>
 <span class="function-name">grid</span> d_board
 <span class="highlight-indent-guides-even">    </span><span class="function-name">horz</span> slice
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">skip</span> gap al
@@ -252,7 +280,7 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span><span class="custom"><span class="custom-14">#BBADA0</span></span>)
 <span class="highlight-indent-guides-even">    </span><span class="function-name">cell</span>    
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">var</span> 
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>v
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>v  = board[<span class="type">b.</span>cell_seq] <span class="function-name">if</span> is_numeric(board[<span class="type">b.</span>cell_seq]) <span class="function-name">else</span> <span class="string">""</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>ix = round(lg(board[<span class="type">b.</span>cell_seq],<span class="variable-name">base:</span><span class="constant">2</span>))
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">case</span> ix
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>| &gt;<span class="constant">12</span>
@@ -262,7 +290,6 @@ beads <span class="constant">1</span> program Game2048
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">else</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>ix = <span class="constant">1</span>          
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>color = colors[ix]
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>v = board[<span class="type">b.</span>cell_seq] <span class="function-name">if</span> is_numeric(board[<span class="type">b.</span>cell_seq]) <span class="function-name">else</span> <span class="string">""</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">0</span> pt)
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(v, <span class="variable-name">size:</span><span class="constant">0.5</span>, <span class="variable-name">bold:</span>Y)
 <span class="highlight-indent-guides-even">    </span>over
@@ -301,11 +328,14 @@ beads <span class="constant">1</span> program Game2048
     
 <span class="comment">// -------------------------------------------</span>
 <span class="function-name">calc</span> main_init
+<span class="highlight-indent-guides-even">    </span><span class="type">g.</span>best = <span class="constant">0</span>
+<span class="highlight-indent-guides-even">    </span><span class="type">g.</span>score = <span class="constant">0</span>
+<span class="highlight-indent-guides-even">    </span><span class="type">g.</span>moves = <span class="constant">0</span>
 <span class="highlight-indent-guides-even">    </span>init_board
      
 <span class="comment">// -------------------------------------------</span>
 <span class="function-name">draw</span> main_draw
-<span class="highlight-indent-guides-even">    </span>layer <span class="variable-name">area:</span>solve_rect(<span class="variable-name">basis:</span><span class="type">b.</span>box, <span class="variable-name">pin:</span>MID_CENTER, <span class="variable-name">aspect:</span><span class="constant">1</span>) d_board        
+<span class="highlight-indent-guides-even">    </span>layer <span class="variable-name">area:</span>solve_rect(<span class="variable-name">basis:</span><span class="type">b.</span>box, <span class="variable-name">pin:</span>MID_CENTER, <span class="variable-name">aspect:</span><span class="constant">0.8</span>) d_game       
 </pre>
   </body>
 </html>
