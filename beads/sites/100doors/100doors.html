@@ -25,11 +25,11 @@ div:hover { cursor:default; }
 </head>
 <body style="margin:0; padding:0;">
 <script type="module">
-// beads ver 0.40 compiled Tue Mar 9 22:21:59 GMT-0300 2021
+// beads ver 0.40 compiled Tue Mar 9 19:19:58 GMT-0300 2021
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, adr } from '../../runtime_040/beads_std.js';
 import * as std from '../../runtime_040/beads_std.js';
 import * as str from '../../runtime_040/beads_str.js';
-export const CODE_HASH= 0xaa0d030f;
+export const CODE_HASH= 0x323f71e1;
 const _M = std.MODULES.push("100 Doors");
 std.rtl_init();
 std.aaaa.main_init = main_init;
@@ -55,14 +55,14 @@ export function main_draw(b) {
 std.k_enter(b);
 std.div_begin(b, new std.a_function(_M, "main_draw_cell", main_draw_cell, null), false, false, false);
   std.div_spa(b, 0, 2, std.al);
-  var loop2 = new std.a_loop({ limit:10 });
-  while (loop2.next()) {
+  var loop329 = new std.a_loop({ limit:10 });
+  while (loop329.next()) {
     std.div_add(b, U, 0, 20, std.al, null, 0);
     std.div_spa(b, 0, 2, std.al);
   }
   std.div_spa(b, 1, 2, std.al);
-  var loop3 = new std.a_loop({ limit:10 });
-  while (loop3.next()) {
+  var loop330 = new std.a_loop({ limit:10 });
+  while (loop330.next()) {
     std.div_add(b, U, 1, 20, std.al, null, 0);
     std.div_spa(b, 1, 2, std.al);
   }
@@ -95,13 +95,13 @@ function main_draw_cell(b) {
 //   main_init
 //====================
 export function main_init() {
-  var loop4 = new std.a_loop({ from:1, to_:100 });
-  while (loop4.next()) {
-  var i = loop4.index;
-    var loop5 = new std.a_loop({ from:i, to_:100, by:i });
-    while (loop5.next()) {
-    var ix = loop5.index;
-      std.toggle(_M, 13, std.adr(doors, ix));
+  var loop331 = new std.a_loop({ from:1, to_:100 });
+  while (loop331.next()) {
+  var i = loop331.index;
+    var loop332 = new std.a_loop({ from:i, to_:100, by:i });
+    while (loop332.next()) {
+    var ix = loop332.index;
+      std.toggle(_M, 12, std.adr(doors, ix));
     }
   }
 }
