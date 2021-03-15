@@ -25,11 +25,11 @@ div:hover { cursor:default; }
 </head>
 <body style="margin:0; padding:0;">
 <script type="module">
-// beads ver 0.40 compiled Mon Mar 15 00:58:28 GMT-0300 2021
+// beads ver 0.40 compiled Mon Mar 15 01:05:14 GMT-0300 2021
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, adr } from '../../runtime_040/beads_std.js';
 import * as std from '../../runtime_040/beads_std.js';
 import * as str from '../../runtime_040/beads_str.js';
-export const CODE_HASH= 0x55bb985d;
+export const CODE_HASH= 0x1a4d62db;
 const _M = std.MODULES.push("Matching pairs");
 std.rtl_init();
 std.aaaa.main_init = main_init;
@@ -89,17 +89,17 @@ let busy = U;
 function d_game(b) {
 std.k_enter(b);
 std.div_begin(b, new std.a_function(_M, "d_game_cell", d_game_cell, null), false, false, false);
-  std.div_spa(b, 0, 2, std.pt);
-  var loop405 = new std.a_loop({ limit:10 });
-  while (loop405.next()) {
-    std.div_add(b, U, 0, 5, std.al, null, 0);
-    std.div_spa(b, 0, 2, std.pt);
+  std.div_spa(b, 0, 2, std.px);
+  var loop430 = new std.a_loop({ limit:10 });
+  while (loop430.next()) {
+    std.div_add(b, U, 0, 20, std.al, null, 0);
+    std.div_spa(b, 0, 2, std.px);
   }
-  std.div_spa(b, 1, 2, std.pt);
-  var loop406 = new std.a_loop({ limit:10 });
-  while (loop406.next()) {
-    std.div_add(b, U, 1, 5, std.al, null, 0);
-    std.div_spa(b, 1, 2, std.pt);
+  std.div_spa(b, 1, 2, std.px);
+  var loop431 = new std.a_loop({ limit:10 });
+  while (loop431.next()) {
+    std.div_add(b, U, 1, 20, std.al, null, 0);
+    std.div_spa(b, 1, 2, std.px);
   }
   std.div_end(b);
   std.draw_grid(b);
@@ -112,12 +112,12 @@ std.k_leave(b);
 //====================
 function d_game_cell(b) {
   std.k_enter(b);
-  var case407 = getn(g, F_board, getn(b.extra, std.F_cell_seq), F_state);
-  if (case407 === Y) {
+  var case432 = getn(g, F_board, getn(b.extra, std.F_cell_seq), F_state);
+  if (case432 === Y) {
     color = std.PALE_GREEN;
-  } else if (case407 === N) {
+  } else if (case432 === N) {
     color = std.LIGHT_CORAL;
-  } else if (case407 === U) {
+  } else if (case432 === U) {
     color = std.GRAY2;
   }
   std.draw_rect(b, { fill:color, corner:5 });
@@ -177,8 +177,8 @@ function track_d_game(b, e) {
 //====================
 export function main_draw(b) {
 std.k_enter(b);
-  var b2=std.k_layer(b, d_game_F, { area:std.solve_rect({ basis:adr(b.extra, std.F_box), pin:std.MID_CENTER, aspect:1 }) });
-  d_game(b2);
+  var b7=std.k_layer(b, d_game_F, { area:std.solve_rect({ basis:adr(b.extra, std.F_box), pin:std.MID_CENTER, aspect:1 }) });
+  d_game(b7);
 std.k_leave(b);
 }
 
@@ -190,9 +190,9 @@ function init_board() {
   let pg = new std.a_tree(_M,"pg", 0);
   std.copy_tree(_M, 40, std.tree_lit(_M, 40), std.adr(g, F_board));
   std.path_setv(_M, 41, std.adr(pg, F_state), U);
-  var loop408 = new std.a_loop({ limit:getn(g, F_level) });
-  while (loop408.next()) {
-  var ix = loop408.count;
+  var loop433 = new std.a_loop({ limit:getn(g, F_level) });
+  while (loop433.next()) {
+  var ix = loop433.count;
     std.path_setv(_M, 43, std.adr(pg, F_p), std.get_generic(arr, ix));
     std.append_tree(_M, 44, std.adr(pg), std.adr(g, F_board));
     std.append_tree(_M, 45, std.adr(pg), std.adr(g, F_board));
@@ -210,9 +210,9 @@ function knuth_shuffle(a_arr) {
   let l = std.tree_hi(a_arr);
   let a = new std.a_tree(_M,"a", 0, a_arr);
   let j = U;
-  var loop409 = new std.a_loop({ from:1, to_:l, rev:Y });
-  while (loop409.next()) {
-  var i = loop409.index;
+  var loop434 = new std.a_loop({ from:1, to_:l, rev:Y });
+  while (loop434.next()) {
+  var i = loop434.index;
     j = std.random_int(1, l);
     std.swap_tree(_M, 34, std.adr(a, i), std.adr(a, j));
   }
