@@ -25,16 +25,16 @@ div:hover { cursor:default; }
 </head>
 <body style="margin:0; padding:0;">
 <script type="module">
-// beads ver 0.40 compiled Mon Mar 15 00:39:26 GMT-0300 2021
+// beads ver 0.40 compiled Mon Mar 15 00:58:28 GMT-0300 2021
 import { U, Y, N, POP, VAL, VNP, setv, gets, getn, adr } from '../../runtime_040/beads_std.js';
 import * as std from '../../runtime_040/beads_std.js';
 import * as str from '../../runtime_040/beads_str.js';
-export const CODE_HASH= 0x7515e99a;
+export const CODE_HASH= 0x55bb985d;
 const _M = std.MODULES.push("Matching pairs");
 std.rtl_init();
 std.aaaa.main_init = main_init;
 std.aaaa.main_module = "Matching pairs";
-std.aaaa.main_drawer = new std.a_function(_M, "main_draw", main_draw, track_main_draw);
+std.aaaa.main_drawer = new std.a_function(_M, "main_draw", main_draw);
 //------- enums
 const F_ok=9007193401478162; std.ENUMS[9007193401478162]="ok";
 std.FIELDS[F_ok] = true;
@@ -55,22 +55,22 @@ std.FIELDS[F_level] = true;
 const F_p=9007191024094656; std.ENUMS[9007191024094656]="p";
 std.FIELDS[F_p] = true;
 //[reflAAA]
-std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "init_board", std.F_vv_funck, VAL, std.FK_CALC, POP, "knuth_shuffle", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms, 1, 
-std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "a_arr", std.F_vv_typek, VAL, std.TYPE_TREE, POP, POP, std.F_vv_typek, VAL, std.TYPE_TREE, POP, "main_draw", std.F_vv_funck
-, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, "reset_cards", std.F_vv_funck, VAL, std.FK_CALC, POP, "wait", std.F_vv_funck, VAL, std.FK_CALC
-, POP, POP, std.F_mod_recs, "game", std.F_vv_fields, "board", std.F_vv_rec, VAL, "piece", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "level", std.F_vv_typek, VAL, std.TYPE_NUM
-, POP, "ok", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "piece1", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "piece2", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "pieceOK", std.F_vv_typek
-, VAL, std.TYPE_YESNO, POP, POP, POP, "piece", std.F_vv_fields, "p", std.F_vv_typek, VAL, std.TYPE_STR, POP, "state", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, POP, POP, POP
-, std.F_mod_vars, "arr", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "busy", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "g"
-, std.F_vv_rec, VAL, "game", std.F_vv_typek, VAL, std.TYPE_RECORD);
+std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "d_game", std.F_vv_funck, VAL, std.FK_DRAW, POP, "init_board", std.F_vv_funck, VAL, std.FK_CALC, POP, "knuth_shuffle", std.F_vv_funck
+, VAL, std.FK_CALC, std.F_vv_parms, 1, std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "a_arr", std.F_vv_typek, VAL, std.TYPE_TREE, POP, POP, std.F_vv_typek, VAL, std.TYPE_TREE
+, POP, "main_draw", std.F_vv_funck, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, "reset_cards", std.F_vv_funck, VAL, std.FK_CALC, POP, "wait"
+, std.F_vv_funck, VAL, std.FK_CALC, POP, POP, std.F_mod_recs, "game", std.F_vv_fields, "board", std.F_vv_rec, VAL, "piece", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "level"
+, std.F_vv_typek, VAL, std.TYPE_NUM, POP, "ok", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "piece1", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "piece2", std.F_vv_typek, VAL, std.TYPE_NUM
+, POP, "pieceOK", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, POP, POP, "piece", std.F_vv_fields, "p", std.F_vv_typek, VAL, std.TYPE_STR, POP, "state", std.F_vv_typek, VAL, 
+std.TYPE_YESNO, POP, POP, POP, POP, std.F_mod_vars, "arr", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "busy", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "color", std.F_vv_typek
+, VAL, std.TYPE_COLOR, POP, "g", std.F_vv_rec, VAL, "game", std.F_vv_typek, VAL, std.TYPE_RECORD);
 //[reflZZZ]
 //-------  func const
 const init_board_F = new std.a_function(_M, "init_board", init_board);
 std.FUNCS[init_board_F.hash]=init_board_F;
+const d_game_F = new std.a_function(_M, "d_game", d_game, track_d_game);
+std.FUNCS[d_game_F.hash]=d_game_F;
 const reset_cards_F = new std.a_function(_M, "reset_cards", reset_cards);
 std.FUNCS[reset_cards_F.hash]=reset_cards_F;
-const main_draw_F = new std.a_function(_M, "main_draw", main_draw, track_main_draw);
-std.FUNCS[main_draw_F.hash]=main_draw_F;
 const wait_F = new std.a_function(_M, "wait", wait);
 std.FUNCS[wait_F.hash]=wait_F;
 //-------  top nodes
@@ -84,20 +84,20 @@ let color = U;
 let busy = U;
 
 //====================
-//   main_draw
+//   d_game
 //====================
-export function main_draw(b) {
+function d_game(b) {
 std.k_enter(b);
-std.div_begin(b, new std.a_function(_M, "main_draw_cell", main_draw_cell, null), false, false, false);
+std.div_begin(b, new std.a_function(_M, "d_game_cell", d_game_cell, null), false, false, false);
   std.div_spa(b, 0, 2, std.pt);
-  var loop400 = new std.a_loop({ limit:10 });
-  while (loop400.next()) {
+  var loop405 = new std.a_loop({ limit:10 });
+  while (loop405.next()) {
     std.div_add(b, U, 0, 5, std.al, null, 0);
     std.div_spa(b, 0, 2, std.pt);
   }
   std.div_spa(b, 1, 2, std.pt);
-  var loop401 = new std.a_loop({ limit:10 });
-  while (loop401.next()) {
+  var loop406 = new std.a_loop({ limit:10 });
+  while (loop406.next()) {
     std.div_add(b, U, 1, 5, std.al, null, 0);
     std.div_spa(b, 1, 2, std.pt);
   }
@@ -108,16 +108,16 @@ std.k_leave(b);
 
 
 //====================
-//   main_draw_cell
+//   d_game_cell
 //====================
-function main_draw_cell(b) {
+function d_game_cell(b) {
   std.k_enter(b);
-  var case402 = getn(g, F_board, getn(b.extra, std.F_cell_seq), F_state);
-  if (case402 === Y) {
+  var case407 = getn(g, F_board, getn(b.extra, std.F_cell_seq), F_state);
+  if (case407 === Y) {
     color = std.PALE_GREEN;
-  } else if (case402 === N) {
+  } else if (case407 === N) {
     color = std.LIGHT_CORAL;
-  } else if (case402 === U) {
+  } else if (case407 === U) {
     color = std.GRAY2;
   }
   std.draw_rect(b, { fill:color, corner:5 });
@@ -134,9 +134,9 @@ function main_draw_cell(b) {
 }
 
 //====================
-//   track_main_draw
+//   track_d_game
 //====================
-export function track_main_draw(b, e) {
+function track_d_game(b, e) {
   //---------------
   //   on EV_TAP
   //---------------
@@ -173,15 +173,26 @@ export function track_main_draw(b, e) {
 }
 
 //====================
+//   main_draw
+//====================
+export function main_draw(b) {
+std.k_enter(b);
+  var b2=std.k_layer(b, d_game_F, { area:std.solve_rect({ basis:adr(b.extra, std.F_box), pin:std.MID_CENTER, aspect:1 }) });
+  d_game(b2);
+std.k_leave(b);
+}
+
+
+//====================
 //   init_board
 //====================
 function init_board() {
   let pg = new std.a_tree(_M,"pg", 0);
   std.copy_tree(_M, 40, std.tree_lit(_M, 40), std.adr(g, F_board));
   std.path_setv(_M, 41, std.adr(pg, F_state), U);
-  var loop403 = new std.a_loop({ limit:getn(g, F_level) });
-  while (loop403.next()) {
-  var ix = loop403.count;
+  var loop408 = new std.a_loop({ limit:getn(g, F_level) });
+  while (loop408.next()) {
+  var ix = loop408.count;
     std.path_setv(_M, 43, std.adr(pg, F_p), std.get_generic(arr, ix));
     std.append_tree(_M, 44, std.adr(pg), std.adr(g, F_board));
     std.append_tree(_M, 45, std.adr(pg), std.adr(g, F_board));
@@ -199,9 +210,9 @@ function knuth_shuffle(a_arr) {
   let l = std.tree_hi(a_arr);
   let a = new std.a_tree(_M,"a", 0, a_arr);
   let j = U;
-  var loop404 = new std.a_loop({ from:1, to_:l, rev:Y });
-  while (loop404.next()) {
-  var i = loop404.index;
+  var loop409 = new std.a_loop({ from:1, to_:l, rev:Y });
+  while (loop409.next()) {
+  var i = loop409.index;
     j = std.random_int(1, l);
     std.swap_tree(_M, 34, std.adr(a, i), std.adr(a, j));
   }
