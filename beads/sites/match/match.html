@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Matching pairs</title>
+<link rel="shortcut icon" href="data:,">
+<style>
+/*  the above empty icon shuts the favicon stuff up.
+	put stmt above style if you want favicon: <link rel="shortcut icon" href="favicon.ico" />
+    this disables the annoying double click highlighting of DIV blocks  */
+div { outline-style:none;}
+div:hover { cursor:default; }
+/*  this customizes the default scrollbar appearance */
+::-webkit-scrollbar { width: 12pt; }
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 15px grey; 
+    border-radius: 6pt; }
+::-webkit-scrollbar-thumb {
+    background: OliveDrab; 
+    border-radius: 6pt; }
+::-webkit-scrollbar-thumb:hover {
+    background: Olive; }
+</style>
+</head>
+<body style="margin:0; padding:0;">
+<script type="module">
+// beads ver 0.40 compiled Mon Mar 15 00:39:26 GMT-0300 2021
+import { U, Y, N, POP, VAL, VNP, setv, gets, getn, adr } from '../../runtime_040/beads_std.js';
+import * as std from '../../runtime_040/beads_std.js';
+import * as str from '../../runtime_040/beads_str.js';
+export const CODE_HASH= 0x7515e99a;
+const _M = std.MODULES.push("Matching pairs");
+std.rtl_init();
+std.aaaa.main_init = main_init;
+std.aaaa.main_module = "Matching pairs";
+std.aaaa.main_drawer = new std.a_function(_M, "main_draw", main_draw, track_main_draw);
+//------- enums
+const F_ok=9007193401478162; std.ENUMS[9007193401478162]="ok";
+std.FIELDS[F_ok] = true;
+const F_board=9007192136647888; std.ENUMS[9007192136647888]="board";
+std.FIELDS[F_board] = true;
+const R_piece=9007191132266694; std.ENUMS[9007191132266694]="piece";
+const R_game=9007192591338094; std.ENUMS[9007192591338094]="game";
+const F_state=9007193054594181; std.ENUMS[9007193054594181]="state";
+std.FIELDS[F_state] = true;
+const F_piece1=9007193235864929; std.ENUMS[9007193235864929]="piece1";
+std.FIELDS[F_piece1] = true;
+const F_pieceOK=9007192982111036; std.ENUMS[9007192982111036]="pieceOK";
+std.FIELDS[F_pieceOK] = true;
+const F_piece2=9007193185532072; std.ENUMS[9007193185532072]="piece2";
+std.FIELDS[F_piece2] = true;
+const F_level=9007190262332278; std.ENUMS[9007190262332278]="level";
+std.FIELDS[F_level] = true;
+const F_p=9007191024094656; std.ENUMS[9007191024094656]="p";
+std.FIELDS[F_p] = true;
+//[reflAAA]
+std.merge_lit(_M,0,std.META,_M, std.F_mod_funcs, "init_board", std.F_vv_funck, VAL, std.FK_CALC, POP, "knuth_shuffle", std.F_vv_funck, VAL, std.FK_CALC, std.F_vv_parms, 1, 
+std.F_vv_parmk, VAL, std.PK_POS, std.F_vv_parmn, VAL, "a_arr", std.F_vv_typek, VAL, std.TYPE_TREE, POP, POP, std.F_vv_typek, VAL, std.TYPE_TREE, POP, "main_draw", std.F_vv_funck
+, VAL, std.FK_DRAW, POP, "main_init", std.F_vv_funck, VAL, std.FK_CALC, POP, "reset_cards", std.F_vv_funck, VAL, std.FK_CALC, POP, "wait", std.F_vv_funck, VAL, std.FK_CALC
+, POP, POP, std.F_mod_recs, "game", std.F_vv_fields, "board", std.F_vv_rec, VAL, "piece", std.F_vv_typek, VAL, std.TYPE_RECORD, POP, "level", std.F_vv_typek, VAL, std.TYPE_NUM
+, POP, "ok", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "piece1", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "piece2", std.F_vv_typek, VAL, std.TYPE_NUM, POP, "pieceOK", std.F_vv_typek
+, VAL, std.TYPE_YESNO, POP, POP, POP, "piece", std.F_vv_fields, "p", std.F_vv_typek, VAL, std.TYPE_STR, POP, "state", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, POP, POP, POP
+, std.F_mod_vars, "arr", std.F_vv_typek, VAL, std.TYPE_ARRAY, POP, "busy", std.F_vv_typek, VAL, std.TYPE_YESNO, POP, "color", std.F_vv_typek, VAL, std.TYPE_COLOR, POP, "g"
+, std.F_vv_rec, VAL, "game", std.F_vv_typek, VAL, std.TYPE_RECORD);
+//[reflZZZ]
+//-------  func const
+const init_board_F = new std.a_function(_M, "init_board", init_board);
+std.FUNCS[init_board_F.hash]=init_board_F;
+const reset_cards_F = new std.a_function(_M, "reset_cards", reset_cards);
+std.FUNCS[reset_cards_F.hash]=reset_cards_F;
+const main_draw_F = new std.a_function(_M, "main_draw", main_draw, track_main_draw);
+std.FUNCS[main_draw_F.hash]=main_draw_F;
+const wait_F = new std.a_function(_M, "wait", wait);
+std.FUNCS[wait_F.hash]=wait_F;
+//-------  top nodes
+let arr = new std.a_tree(_M,"arr", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED, std.tree_lit(_M, 20, 1, VAL, "🤴", 2, VAL, "🦓", 3, VAL, "🤵", 4, VAL, "🥎", 5, VAL, "🥞"
+, 6, VAL, "🥁", 7, VAL, "🤓", 8, VAL, "🥧", 9, VAL, "🦉", 10, VAL, "🦊", 11, VAL, "🦋", 12, VAL, "🦌", 13, VAL, "🦍", 14, VAL, "🦛", 15, VAL, "🦝", 16, VAL, "🦡", 17, VAL, 
+"🦢", 18, VAL, "🧑", 19, VAL, "🧒", 20, VAL, "🧓", 21, VAL, "🧔", 22, VAL, "🚥", 23, VAL, "🚦", 24, VAL, "🚩", 25, VAL, "🚷", 26, VAL, "🚸", 27, VAL, "❌", 28, VAL, "➕", 29
+, VAL, "➖", 30, VAL, "➗", 31, VAL, "🙈", 32, VAL, "🙉", 33, VAL, "🙊", 34, VAL, "😍", 35, VAL, "😎", 36, VAL, "😇", 37, VAL, "😸", 38, VAL, "😹", 39, VAL, "😺", 40, VAL, "🙅"
+, 41, VAL, "🙆", 42, VAL, "🙇", 43, VAL, "🙋", 44, VAL, "🙍", 45, VAL, "🚙", 46, VAL, "🚚", 47, VAL, "🚛", 48, VAL, "🚜", 49, VAL, "🚓", 50, VAL, "🚴"));
+let g = new std.a_tree(_M,"g", std.NF_TOPLEVEL|std.NF_STATEFUL|std.NF_LOGGED);
+let color = U;
+let busy = U;
+
+//====================
+//   main_draw
+//====================
+export function main_draw(b) {
+std.k_enter(b);
+std.div_begin(b, new std.a_function(_M, "main_draw_cell", main_draw_cell, null), false, false, false);
+  std.div_spa(b, 0, 2, std.pt);
+  var loop400 = new std.a_loop({ limit:10 });
+  while (loop400.next()) {
+    std.div_add(b, U, 0, 5, std.al, null, 0);
+    std.div_spa(b, 0, 2, std.pt);
+  }
+  std.div_spa(b, 1, 2, std.pt);
+  var loop401 = new std.a_loop({ limit:10 });
+  while (loop401.next()) {
+    std.div_add(b, U, 1, 5, std.al, null, 0);
+    std.div_spa(b, 1, 2, std.pt);
+  }
+  std.div_end(b);
+  std.draw_grid(b);
+std.k_leave(b);
+}
+
+
+//====================
+//   main_draw_cell
+//====================
+function main_draw_cell(b) {
+  std.k_enter(b);
+  var case402 = getn(g, F_board, getn(b.extra, std.F_cell_seq), F_state);
+  if (case402 === Y) {
+    color = std.PALE_GREEN;
+  } else if (case402 === N) {
+    color = std.LIGHT_CORAL;
+  } else if (case402 === U) {
+    color = std.GRAY2;
+  }
+  std.draw_rect(b, { fill:color, corner:5 });
+  if (std.le2(getn(b.extra, std.F_cell_seq), std.mul(getn(g, F_level), 2))) {
+    if (std.eq2(getn(b.extra, std.F_cell_seq), getn(g, F_piece1))) {
+      std.k_leave(b);
+      return;
+    }
+    if (getn(g, F_board, getn(b.extra, std.F_cell_seq), F_state) === U) {
+      std.draw_str(b, gets(g, F_board, getn(b.extra, std.F_cell_seq), F_p), { size:0.9 });
+    }
+  }
+  std.k_leave(b);
+}
+
+//====================
+//   track_main_draw
+//====================
+export function track_main_draw(b, e) {
+  //---------------
+  //   on EV_TAP
+  //---------------
+  if (std.getn(e, std.F_evkind) == std.EV_TAP) {
+    if ((std.gt2(getn(b.extra, std.F_cell_seq), std.mul(getn(g, F_level), 2)) || (getn(g, F_board, getn(b.extra, std.F_cell_seq), F_state) !== U || busy === Y))) {
+      return Y;
+    }
+    if (getn(g, F_piece1) === U) {
+      std.path_setv(_M, 84, std.adr(g, F_board, getn(b.extra, std.F_cell_seq), F_state), Y);
+      std.path_setv(_M, 85, std.adr(g, F_piece1), getn(b.extra, std.F_cell_seq));
+      return Y;
+    }
+    if (std.eq2(gets(g, F_board, getn(b.extra, std.F_cell_seq), F_p), gets(g, F_board, getn(g, F_piece1), F_p))) {
+      std.path_setv(_M, 89, std.adr(g, F_board, getn(b.extra, std.F_cell_seq), F_state), Y);
+      std.path_setv(_M, 90, std.adr(g, F_piece1), U);
+      std.tree_add(_M, 91, 1, std.adr(g, F_ok));
+      if (std.eq2(getn(g, F_ok), getn(g, F_level))) {
+        std.tree_add(_M, 93, 1, std.adr(g, F_level));
+        busy = Y;
+        std.loom_timer(wait_F, { delay:std.meas(3, std.N_sec, std.Y_Time) });
+        init_board();
+      }
+      return Y;
+    }
+    std.path_setv(_M, 99, std.adr(g, F_piece2), getn(b.extra, std.F_cell_seq));
+    std.path_setv(_M, 100, std.adr(g, F_board, getn(g, F_piece1), F_state), N);
+    std.path_setv(_M, 101, std.adr(g, F_board, getn(g, F_piece2), F_state), N);
+    busy = Y;
+    std.loom_timer(reset_cards_F, { delay:std.meas(1, std.N_sec, std.Y_Time) });
+    return Y;
+  return Y;
+  }
+  return N;
+}
+
+//====================
+//   init_board
+//====================
+function init_board() {
+  let pg = new std.a_tree(_M,"pg", 0);
+  std.copy_tree(_M, 40, std.tree_lit(_M, 40), std.adr(g, F_board));
+  std.path_setv(_M, 41, std.adr(pg, F_state), U);
+  var loop403 = new std.a_loop({ limit:getn(g, F_level) });
+  while (loop403.next()) {
+  var ix = loop403.count;
+    std.path_setv(_M, 43, std.adr(pg, F_p), std.get_generic(arr, ix));
+    std.append_tree(_M, 44, std.adr(pg), std.adr(g, F_board));
+    std.append_tree(_M, 45, std.adr(pg), std.adr(g, F_board));
+  }
+  std.copy_tree(_M, 46, knuth_shuffle(std.adr(g, F_board)), std.adr(g, F_board));
+  std.path_setv(_M, 47, std.adr(g, F_ok), 0);
+  busy = N;
+}
+
+
+//====================
+//   knuth_shuffle
+//====================
+function knuth_shuffle(a_arr) {
+  let l = std.tree_hi(a_arr);
+  let a = new std.a_tree(_M,"a", 0, a_arr);
+  let j = U;
+  var loop404 = new std.a_loop({ from:1, to_:l, rev:Y });
+  while (loop404.next()) {
+  var i = loop404.index;
+    j = std.random_int(1, l);
+    std.swap_tree(_M, 34, std.adr(a, i), std.adr(a, j));
+  }
+  return a;
+}
+
+
+//====================
+//   main_init
+//====================
+export function main_init() {
+  std.path_setv(_M, 51, std.adr(g, F_level), 2);
+  init_board();
+}
+
+
+//====================
+//   reset_cards
+//====================
+function reset_cards() {
+  std.path_setv(_M, 110, std.adr(g, F_board, getn(g, F_piece1), F_state), U);
+  std.path_setv(_M, 111, std.adr(g, F_board, getn(g, F_piece2), F_state), U);
+  std.path_setv(_M, 112, std.adr(g, F_piece1), U);
+  busy = N;
+}
+
+
+//====================
+//   wait
+//====================
+function wait() {
+}
+
+std.setv(_M, 0, std.runtime, std.F_app_name, "Matching pairs");
+main_init();
+std.rebuild_all();
+
+</script>
+</body>
+</html>
