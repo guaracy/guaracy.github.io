@@ -2,7 +2,7 @@
 
 Ah, mas uma moeda só tem dois lados! Ok, mas vamos começar com o lado de dentro. Mas atenção:
 
-* Não tente aprender [Beads](http://beadslang.org/home) Beads por aqui. Utilize a documentação.
+* Não tente aprender [Beads](http://beadslang.org/home) por aqui. Utilize a documentação.
 * Não tente aprender técnicas de programação lendo este texto. Faça um bom curso!
 * Não pense que se você entendeu o programa, programar é tão fácil.
 * A situação é ficção mas vai que...
@@ -129,7 +129,7 @@ const
 
 #### especificar o que iremos compartilhar
 
-Para quem trabalha com OO, seria parecido com métodos variáveis públicas. O que não for exportado não poderá ser visto pelo cliente.  Veja que `COUNTER_ID*` e `SERVER_PORT*` estão sendo exportados, isto é, o cliente terá acesso à porta (se os dois não usarem a mesma porta não poderão se comunicar, né?). Outras informações que deveremos exportar é o `record a_counter*`para o cliente saber como é a estrutura do nosso registro e as funções `inc_counter*` e `dec_counter*`. O cliente não terá como acessar `main_init` pois não foi exportada. As funções `inc_counter` e `dec_counter` poderia ser agrupadas em uma função chmada `delta_counter(value)` e ser chamada com 1 ou -1 para incrementar ou decrementar. 
+Para quem trabalha com OO, seria parecido com métodos ou variáveis públicas. O que não for exportado não poderá ser visto pelo cliente.  Apenas colocamos um asterisco  para os itens que desejamos que sejam visíveis por outros programas. Veja que `COUNTER_ID*` e `SERVER_PORT*` estão sendo exportados, isto é, o cliente terá acesso à porta (se os dois não usarem a mesma porta não poderão se comunicar, né?). Outras informações que deveremos exportar é o `record a_counter*`para o cliente saber como é a estrutura do nosso registro e as funções `inc_counter*` e `dec_counter*`. O cliente não terá como acessar `main_init` pois não foi exportada. As funções `inc_counter` e `dec_counter` poderia ser agrupadas em uma função chamada `delta_counter(value)` e ser chamada com 1 ou -1 para incrementar ou decrementar. 
 
 #### disponibilizar o servidor
 
@@ -142,12 +142,12 @@ publish_start(SERVER_PORT, COUNTER_ID, 1000, counter, inc_counter, dec_counter)
 * SERVER_PORT é a porta (4444)
 * COUNTER_ID é o número mágico para a conexão
 * 1000 é a largura de banda máxima (Kb/s)
-* counter são os dados que o servidor irá receber (apenas leitura)
+* counter são os dados que o servidor irá receber (é feita uma cópia para o cliente não podendo sere alteradas pelo cliente)
 * inc_counter, dec_counter é a lista de funções que o cliente poderá chamar remotamente.
 
 #### resultado final
 
-Trocamos o cabeçalho do programa, incluímos 4 linhas (poderia ser apenas duas pois poderiíamos escrever na mesma linha) os valores de `enum` e `const`),  incluímos a linha para iniciar o servidor e definimos o que poderia ser compartilhado com os clientes. O resultado é:
+Trocamos o cabeçalho do programa, incluímos a linha para o identificador, outra para a porta,  uma linha para iniciar o servidor e definimos o que poderia ser compartilhado com os clientes. O resultado é:
 
 ```
 beads 1 server 'Counter Server'
@@ -191,9 +191,9 @@ Praticamente o mesmo programa inicial. Foi de 29 para 35 linhas.
 
 ## 3.Lado três
 
-Agora precisamos do cliente. Também será igual ao original acrescentando a cominucação com o servidor.
+Agora precisamos do cliente. Também será igual ao original acrescentando a comunicação com o servidor.
 
-#### principais alterações no programa inicialinicio do servidor
+#### principais alterações no programa inicial
 
 ```
 beads 1 program 'Counter Client'
@@ -220,7 +220,7 @@ O cabeçalho poderia ficar o mesmo mas eu troquei o nome para `Counter Client`. 
 * U é o número de atualizações por segundo (se for um número) ou U (indefinido) para o servidor atualizar quando necessário
 * counter é a variável onde o servidor irá armazenar os dados enviados
 
-A parte dos botões (feitas em casa) precisou de algumas alterações. Não foi possível enviar o endereço das funções do servido como parâmetro para os botões. Não sei se será no futuro. Então, tive que criar as funções `my_inc` e `my_dec` para as chamadas ao servidor. Ficou assim:
+A parte dos botões (feitas em casa) precisou de algumas alterações. Não foi possível enviar o endereço das funções do servido como parâmetro para os botões (será resolvido em uma versão futura de Beads). Então, tive que criar as funções `my_inc` e `my_dec` para as chamadas ao servidor. Ficou assim:
 
 ```
 calc my_inc
@@ -250,7 +250,7 @@ horz slice d_buttons
         my_button('➖',my_dec,#00AA00)
 ```
 
-Como são apenas duas funções não tem muito problema. Mas se fossem várias, poderia ser mais interessante criar uma função para gerenciar as tarefas.
+Como são apenas duas funções não tem muito problema. Mas se fossem várias, poderia ser mais interessante criar uma função para gerenciar as tarefas (até que a limitação seja resolvida).
 
 Finalmente, `main_draw` ficou assim:
 
@@ -268,7 +268,7 @@ draw main_draw
         draw_str("😲 Server not responding", size:50 pt, color:WHITE)
 ```
 
-Mas para dar um retorno ao usuário. Se estiver conectado, o programa roda normalmente. Caso esteja conectando ou o servidor caia, é importante que o usuário saiba. E se o programa estiver rodando e o servidor cair? Leia a documentação da linguagem. Beads é suficientemente inteligente para saber qualdo algo for alterado e tiver que ser mostrado novamente. Como uma planilha onde tem uma fórmula tipo `A1 = C5 + D18`. Se o valor de C5 ou D18 for alterado, o valor de A1 deve ser recalculado. 
+Mais para dar um retorno ao usuário. Se estiver conectado, o programa roda normalmente. Caso esteja conectando ou o servidor caia, é importante que o usuário saiba. E se o programa estiver rodando e o servidor cair? Leia a documentação da linguagem. Beads é suficientemente inteligente para saber qualdo algo for alterado e tiver que ser mostrado novamente. Como uma planilha onde tem uma fórmula tipo `A1 = C5 + D18`. Se o valor de C5 ou D18 for alterado, o valor de A1 deve ser recalculado. 
 
 O programa completo ficou assim:
 
@@ -292,7 +292,7 @@ calc main_init
 // -----------
 
 const
-    TITLE = 'Counter'
+    TITLE = 'Clientes'
 
 calc my_inc
     inc_counter via con1
@@ -344,5 +344,7 @@ draw main_draw
 ```
 
 O resultado fica assim (oops. agora a lei exige quatro entradas/saída e temos computador em todas). Agora, com a versão C/S do nosso programa, não temos limitação para o número de entradas e saídas. Mesmo assim, é melhor contratar um engenheiro para o prédio não cair.
+
+
 
 ![](clientesCS.gif) 
