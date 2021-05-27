@@ -14,12 +14,12 @@
         color: #81A1C1;
       }
       .custom {
-        /* (:background "#FFB6B5") */
-        background-color: #FFB6B5;
-      }
-      .custom-1 {
         /* (:background "#B9FE6F") */
         background-color: #B9FE6F;
+      }
+      .custom-1 {
+        /* (:background "#FFB6B5") */
+        background-color: #FFB6B5;
       }
       .custom-2 {
         /* (:foreground "black") */
@@ -68,9 +68,6 @@ beads <span class="constant">1</span> program '<span class="constant">100</span>
 
 <span class="function-name">var</span>
 <span class="highlight-indent-guides-even">    </span>doors : array of yesno
-<span class="highlight-indent-guides-even">    </span>color : color
-<span class="highlight-indent-guides-even">    </span>state : str
-<span class="highlight-indent-guides-even">    </span>bold  : yesno
 
 <span class="function-name">calc</span> main_init
 <span class="highlight-indent-guides-even">    </span><span class="function-name">loop</span> <span class="variable-name">from:</span><span class="constant">1</span> <span class="variable-name">to:</span><span class="constant">100</span> <span class="variable-name">index:</span>i
@@ -89,15 +86,16 @@ beads <span class="constant">1</span> program '<span class="constant">100</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="function-name">add</span> <span class="constant">20</span> al
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span><span class="function-name">skip</span> <span class="constant">2</span> al
 <span class="highlight-indent-guides-even">    </span><span class="function-name">cell</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">if</span> doors[<span class="type">b.</span>cell_seq]
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>color = <span class="custom-1"><span class="custom-2">#B9FE6F</span></span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>state = <span class="string">"OPEN"</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>bold  = Y
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">else</span>
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>color = <span class="custom"><span class="custom-2">#FFB6B5</span></span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">var</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>color = <span class="custom-1"><span class="custom-2">#FFB6B5</span></span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>state = <span class="string">"closed"</span>
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>bold  = N
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="function-name">if</span> doors[<span class="type">b.</span>cell_seq]
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>color = <span class="custom"><span class="custom-2">#B9FE6F</span></span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>state = <span class="string">"OPEN"</span>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span><span class="highlight-indent-guides-even">    </span>bold  = Y
 <span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_rect(<span class="variable-name">fill:</span>color, <span class="variable-name">thick:</span><span class="constant">1</span> pt)
-<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"{b.cell_seq}\n{state}"</span>, <span class="variable-name">size:</span><span class="constant">0.3</span>, <span class="variable-name">bold:</span>bold)</pre>
+<span class="highlight-indent-guides-even">    </span><span class="highlight-indent-guides-odd">    </span>draw_str(<span class="string">"{b.cell_seq}\n{state}"</span>, <span class="variable-name">size:</span><span class="constant">0.3</span>, <span class="variable-name">bold:</span>bold)
+</pre>
   </body>
 </html>
